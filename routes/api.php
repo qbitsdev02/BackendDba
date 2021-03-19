@@ -22,3 +22,4 @@ Route::group([
 });
 
 Route::resource('users', UserController::class);
+Route::resource('roles', RoleController::class);

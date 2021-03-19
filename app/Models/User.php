@@ -19,6 +19,12 @@ use Laravel\Passport\HasApiTokens;
  *       description="The user name"
  *   ),
  *   @OA\Property(
+ *       property="last_name",
+ *       type="string",
+ *       required={"true"},
+ *       description="The Users password"
+ *   ),
+ *   @OA\Property(
  *       property="email",
  *       required={"true"},
  *       type="string",
@@ -29,6 +35,20 @@ use Laravel\Passport\HasApiTokens;
  *       type="string",
  *       required={"true"},
  *       description="The Users password"
+ *   ),
+ *   @OA\Property(
+ *       property="user_created_id",
+ *       type="number",
+ *       required={"true"},
+ *       example=1,
+ *       description="The Users crete"
+ *   ),
+ *    @OA\Property(
+ *       property="user_updated_id",
+ *       type="number",
+ *       required={"true"},
+ *       example=1,
+ *       description="The Users update"
  *   ),
  * )
  */
@@ -47,8 +67,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'last_name',
         'email',
         'password',
+        'user_created_id',
+        'user_updated_id'
     ];
 
     /**
@@ -69,4 +92,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id')
+            ->using(RoleUser::class);
+    }
 }

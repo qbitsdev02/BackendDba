@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class RoleController extends Controller
 {
     /**
     * @OA\Get(
-    *     path="/api/users",
-    *     summary="Show users",
-    *     tags={"Users"},
+    *     path="/api/roles",
+    *     summary="Show roles",
+    *     tags={"Roles"},
     *     @OA\Response(
     *         response=200,
-    *         description="Show user all."
+    *         description="Show roles all."
     *     ),
     *     @OA\Response(
     *         response="default",
@@ -30,8 +29,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(10);
-        return response()->json($users, 200); 
+        $roles = Role::paginate(10);
+        return response()->json($roles, 200); 
     }
 
     /**
@@ -45,21 +44,21 @@ class UserController extends Controller
     }
     /**
         * @OA\Post(
-        *   path="/api/users",
+        *   path="/api/roles",
         *   summary="Creates a new user",
         *   description="Creates a new user",
-        *   tags={"Users"},
+        *   tags={"Roles"},
         *   security={{"passport": {"*"}}},
         *   @OA\RequestBody(
         *       @OA\MediaType(
         *           mediaType="application/json",
-        *           @OA\Schema(ref="#/components/schemas/User")
+        *           @OA\Schema(ref="#/components/schemas/Role")
         *       )
         *   ),
         *   @OA\Response(
         *       @OA\MediaType(mediaType="application/json"),
         *       response=200,
-        *       description="The User resource created",
+        *       description="The Role resource created",
         *   ),
         *   @OA\Response(
         *       @OA\MediaType(mediaType="application/json"),
@@ -87,24 +86,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->user_created_id = $request->user_created_id;
-        $user->password = Hash::make($request->password);
-        $user->save();
-        return response()->json($user, 201);
+        $role = new Role();
+        $role->name = $request->name;
+        $role->acronym = $request->acronym;
+        $role->user_created_id = $request->user_created_id;
+        $role->save();
+        return response()->json($role, 201);
     }
     /**
      * @OA\Get(
-     *      path="/api/users/{id}",
+     *      path="/api/roles/{id}",
      *      operationId="getUserById",
-     *      tags={"Users"},
-     *      summary="Get User information",
-     *      description="Returns User data",
+     *      tags={"Roles"},
+     *      summary="Get Role information",
+     *      description="Returns Role data",
      *      @OA\Parameter(
      *          name="id",
-     *          description="User id",
+     *          description="Role id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -114,7 +112,7 @@ class UserController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/User")
+     *          @OA\JsonContent(ref="#/components/schemas/Role")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -136,9 +134,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Role $role)
     {
-        return response()->json($user, 201);
+        return response()->json($role, 201);
     }
 
     /**
@@ -153,14 +151,14 @@ class UserController extends Controller
     }
     /**
      * @OA\Put(
-     *      path="/api/users/{id}",
-     *      operationId="updateUser",
-     *      tags={"Users"},
-     *      summary="Update existing User",
-     *      description="Returns updated User data",
+     *      path="/api/roles/{id}",
+     *      operationId="updateRole",
+     *      tags={"Roles"},
+     *      summary="Update existing Role",
+     *      description="Returns updated Role data",
      *      @OA\Parameter(
      *          name="id",
-     *          description="User id",
+     *          description="Role id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -169,12 +167,12 @@ class UserController extends Controller
      *      ),
      *      @OA\RequestBody(
      *          required=true,
-     *          @OA\JsonContent(ref="#/components/schemas/User")
+     *          @OA\JsonContent(ref="#/components/schemas/Role")
      *      ),
      *      @OA\Response(
      *          response=202,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/User")
+     *          @OA\JsonContent(ref="#/components/schemas/Role")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -201,25 +199,24 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Role $role)
     {
-        $user->name = $request->name;
-        $user->last_name = $request->last_name;
-        $user->email = $request->email;
-        $user->user_updated_id = $request->user_updated_id;
-        $user->update();
-        return response()->json($user, 200);
+        $role->name = $request->name;
+        $role->acronym = $request->acronym;
+        $role->user_updated_id = $request->user_updated_id;
+        $role->update();
+        return response()->json($role, 200);
     }
     /**
      * @OA\Delete(
-     *      path="/api/users/{id}",
+     *      path="/api/roles/{id}",
      *      operationId="deleteProject",
-     *      tags={"Users"},
-     *      summary="Delete existing User",
+     *      tags={"Roles"},
+     *      summary="Delete existing Role",
      *      description="Deletes a record and returns no content",
      *      @OA\Parameter(
      *          name="id",
-     *          description="User id",
+     *          description="Role id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -251,9 +248,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Role $role)
     {
-        $user->delete();
+        $role->delete();
         return response()->json('succesfull delete', 200);
     }
 }
