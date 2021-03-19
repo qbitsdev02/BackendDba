@@ -8,10 +8,10 @@ class Login extends BaseAuthResolver
 {
     /**
         * @OA\Post(
-        *   path="/api/ventas/login",
-        *   tags={"Login"},
-        *   summary="Login",
-        *   operationId="login",
+        *   path="/api/authentication/login",
+        *   tags={"Authentication"},
+        *   summary="Authentication",
+        *   operationId="Authentication",
         *   @OA\Parameter(
         *      name="username",
         *      in="query",
@@ -58,7 +58,7 @@ class Login extends BaseAuthResolver
      *
      * @return \Illuminate\Http\Response
      */
-    public function login(Request $request)
+    public function authentication(Request $request)
     {
         $credentials = $this->buildCredentials($request->all());
         $response = $this->makeRequest($credentials);

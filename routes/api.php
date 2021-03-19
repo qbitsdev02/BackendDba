@@ -14,9 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::group([
+//     'prefix' => 'ventas/',
+// ], function ($router) {
+//     // Routes
+//     $router->post('login', 'Login\Login@login');
+// });
+
 Route::group([
-    'prefix' => 'ventas/',
+    'prefix' => 'authentication',
 ], function ($router) {
     // Routes
-    $router->post('login', 'Login\Login@login');
+    $router->post('/login', 'Login\Login@authentication');
 });

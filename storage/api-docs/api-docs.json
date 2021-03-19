@@ -10,13 +10,13 @@
         }
     ],
     "paths": {
-        "/api/ventas/login": {
+        "/api/authentication/login": {
             "post": {
                 "tags": [
-                    "Login"
+                    "Authentication"
                 ],
-                "summary": "Login",
-                "operationId": "login",
+                "summary": "Authentication",
+                "operationId": "Authentication",
                 "parameters": [
                     {
                         "name": "username",
