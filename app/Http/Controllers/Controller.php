@@ -11,7 +11,7 @@ use Illuminate\Routing\Controller as BaseController;
 * @OA\Info(title="API Facturación", version="1.0")
 *
 * @OA\Server(url="http://127.0.0.1:8000")
-* @OA\Server(url="https://api-facturador.herokuapp.com/")
+* @OA\Server(url="http://api-facturador.herokuapp.com/")
 */
 class Controller extends BaseController
 {
