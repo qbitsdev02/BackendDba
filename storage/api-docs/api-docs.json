@@ -105,10 +105,74 @@
                     "Roles"
                 ],
                 "summary": "Show roles",
-                "responses": {
-                    "200": {
-                        "description": "Show roles all."
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
                     },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a curso resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
                     "default": {
                         "description": "error."
                     }
@@ -297,6 +361,73 @@
                     "Users"
                 ],
                 "summary": "Show users",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a curso resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Show user all."
@@ -569,6 +700,14 @@
                     }
                 },
                 "type": "object"
+            }
+        },
+        "responses": {
+            "200": {
+                "description": "Show roles all."
+            },
+            "default": {
+                "description": "error."
             }
         }
     },

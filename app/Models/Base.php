@@ -5,12 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Arr;
 
 class Base extends Model
 {
     use HasFactory, SoftDeletes;
 
 	public static $filterable = [];
+
+    public function scopeFilters($q, array $data = array())
+	{
+		if (!empty($data['dataFilter'])) {
+            $fields = json_decode($data['dataFilter'], true);
+            $fields = array_filter($fields, 'strlen');
+            $fields = Arr::only($fields, static::$filterable);
+            $q->where($fields);
+		}
+    }
+
 	/**
 	 * Search function of fields in the database.
 	 *
@@ -20,27 +32,24 @@ class Base extends Model
 	 */
 	// llamada por wh? dejame quitarle el telefono a mi madre
 
-    public function scopeFilters($q, array $data = array())
-	{
-		if (!empty($data['dataFilter'])) {
-            $q->where($data['dataFilter']);
-		}
-    }
-
-	public function scopeSearch($q, array $data = array())
+	public static function scopeSearch($q, array $data = array())
 	{
 		if (!empty($data['dataSearch'])) {
-            $fields = array_filter($data['dataSearch'], 'strlen');
-            $q->where(function ($query) use ($fields) {
+            $fields = json_decode($data['dataSearch'], true);
+            $fields = array_filter($fields, 'strlen');
+            $fields = Arr::only($fields, static::$filterable);
+            $q->where(function ($query) use ($fields, $data) {
                 foreach ($fields as $field => $value) {
                     if (isset($fields[$field])) {
-                        $query->orWhere($field, 'LIKE', "%$fields[$field]%");
+                        $query->orWhere($field, 'LIKE', "%$fields[$field]%")->orderBy($data['sortField'], $data['sortOrder']);
                     }
                 }
             });
 		}
-        if (isset($data['commonSearch']['sortBy']) && ($data['commonSearch']['sortOrder'])) {
-            return $q->orderBy($data['commonSearch']['sortBy'], $data['commonSearch']['sortOrder']);
-        }
+		if (isset($data['paginate']) && $data['paginate'] === "true") {
+			return $q->paginate($data['perPage']);
+		} else {
+			return $q->get();
+		}
 	}
 }

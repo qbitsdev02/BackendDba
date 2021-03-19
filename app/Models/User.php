@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Arr;
 
 /**
  * @OA\Schema(
@@ -92,6 +93,56 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static $filterable = ["name", "last_name", "email"];
+	/**
+	 * Search function of fields in the database.
+	 *
+	 * @param array fields for searches
+	 *
+	 * @return results data
+	 */
+	// llamada por wh? dejame quitarle el telefono a mi madre
+
+    public function scopeFilters($q, array $data = array())
+	{
+		if (!empty($data['dataFilter'])) {
+            $fields = json_decode($data['dataFilter'], true);
+            $fields = array_filter($fields, 'strlen');
+            $fields = Arr::only($fields, static::$filterable);
+            $q->where($fields);
+		}
+    }
+
+	/**
+	 * Search function of fields in the database.
+	 *
+	 * @param array fields for searches
+	 *
+	 * @return results data
+	 */
+	// llamada por wh? dejame quitarle el telefono a mi madre
+
+	public static function scopeSearch($q, array $data = array())
+	{
+		if (!empty($data['dataSearch'])) {
+            $fields = json_decode($data['dataSearch'], true);
+            $fields = array_filter($fields, 'strlen');
+            $fields = Arr::only($fields, static::$filterable);
+            $q->where(function ($query) use ($fields, $data) {
+                foreach ($fields as $field => $value) {
+                    if (isset($fields[$field])) {
+                        $query->orWhere($field, 'LIKE', "%$fields[$field]%")->orderBy($data['sortField'], $data['sortOrder']);
+                    }
+                }
+            });
+		}
+		if (isset($data['paginate']) && $data['paginate'] === "true") {
+			return $q->paginate($data['perPage']);
+		} else {
+			return $q->get();
+		}
+	}
 
     public function roles()
     {

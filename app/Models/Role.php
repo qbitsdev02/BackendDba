@@ -47,4 +47,6 @@ class Role extends Base
         'user_created_id',
         'user_updated_id'
     ];
+
+    public static $filterable = ["name", "acronym"];
 }

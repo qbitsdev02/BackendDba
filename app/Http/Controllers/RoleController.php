@@ -12,6 +12,76 @@ class RoleController extends Controller
     *     path="/api/roles",
     *     summary="Show roles",
     *     tags={"Roles"},
+    *   @OA\Parameter(
+    *       name="paginate",
+    *       in="query",
+    *       description="paginate",
+    *       required=false,
+    *       @OA\Schema(
+    *           title="Paginate",
+    *           example="true",
+    *           type="boolean",
+    *           description="The Paginate data"
+    *       )
+    *   ),
+    *   @OA\Parameter(
+    *       name="sortField",
+    *       in="query",
+    *       description="turno resource name",
+    *       required=false,
+    *       @OA\Schema(
+    *           type="string",
+    *           example="id",
+    *           description="The unique identifier of a turno resource"
+    *       )
+    *    ),
+    *   @OA\Parameter(
+    *       name="sortOrder",
+    *       in="query",
+    *       description="turno resource name",
+    *       required=false,
+    *       @OA\Schema(
+    *           type="string",
+    *           example="desc",
+    *           description="The unique identifier of a turno resource"
+    *       )
+    *    ),
+    *   @OA\Parameter(
+    *       name="perPage",
+    *       in="query",
+    *       description="Sort order field",
+    *       @OA\Schema(
+    *           title="perPage",
+    *           type="number",
+    *           default="10",
+    *           description="The unique identifier of a curso resource"
+    *       )
+    *    ),
+    *   @OA\Parameter(
+    *       name="dataSearch",
+    *       in="query",
+    *       description="turno resource name",
+    *       required=false,
+    *       @OA\Schema(
+    *           type="string",
+    *           description="Search data"
+    *       )
+    *    ),
+    *   @OA\Parameter(
+    *       name="dataFilter",
+    *       in="query",
+    *       description="turno resource name",
+    *       required=false,
+    *       @OA\Schema(
+    *           type="string",
+    *           description="The unique identifier of a turno resource"
+    *       )
+    *    ),
+    *     @OA\Response(
+    *         response="default",
+    *         description="error."
+    *     )
+    * )
     *     @OA\Response(
     *         response=200,
     *         description="Show roles all."
@@ -27,9 +97,9 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $roles = Role::paginate(10);
+        $roles = Role::filters($request->all())->search($request->all());
         return response()->json($roles, 200); 
     }
 
