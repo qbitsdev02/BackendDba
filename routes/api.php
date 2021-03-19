@@ -13,17 +13,11 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-// Route::group([
-//     'prefix' => 'ventas/',
-// ], function ($router) {
-//     // Routes
-//     $router->post('login', 'Login\Login@login');
-// });
-
 Route::group([
     'prefix' => 'authentication',
 ], function ($router) {
     // Routes
     $router->post('/login', 'Login\Login@authentication');
 });
+
+Route::resource('users', UserController::class);
