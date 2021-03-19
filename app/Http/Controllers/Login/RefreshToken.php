@@ -2,20 +2,56 @@
 
 namespace App\Http\Controllers\Login;
 
+use Illuminate\Http\Request;
+
 class RefreshToken extends BaseAuthResolver
 {
     /**
+        * @OA\Post(
+        *   path="/api/authentication/refresh-token",
+        *   tags={"Authentication"},
+        *   summary="RefreshToken",
+        *   operationId="RefreshToken",
+        *   @OA\Parameter(
+        *      name="refresh_token",
+        *      in="query",
+        *      required=true,
+        *      @OA\Schema(
+        *           type="string"
+        *      )
+        *   ),
+        *   @OA\Response(
+        *      response=200,
+        *       description="Success",
+        *      @OA\MediaType(
+        *           mediaType="application/json",
+        *      )
+        *   ),
+        *   @OA\Response(
+        *      response=401,
+        *       description="Unauthenticated"
+        *   ),
+        *   @OA\Response(
+        *      response=400,
+        *      description="Bad Request"
+        *   ),
+        *   @OA\Response(
+        *      response=404,
+        *      description="not found"
+        *   ),
+        *   @OA\Response(
+        *      response=403,
+        *      description="Forbidden"
+        *   )
+        * )
+    */
+    /**
      * Return a value for the field.
-     *
-     * @param  null  $rootValue Usually contains the result returned from the parent field. In this case, it is always `null`.
-     * @param  mixed[]  $args The arguments that were passed into the field.
-     * @param  \Nuwave\Lighthouse\Support\Contracts\GraphQLContext  $context Arbitrary data that is shared between all fields of a single query.
-     * @param  \GraphQL\Type\Definition\ResolveInfo  $resolveInfo Information about the query itself, such as the execution state, the field name, path to the field from the root, and more.
      * @return mixed
      */
-    public function resolve($rootValue, array $args)
+    public function refreshToken(Request $request)
     {
-        $credentials = $this->buildCredentials($args, 'refresh_token');
+        $credentials = $this->buildCredentials($request->all(), 'refresh_token');
 
         return $this->makeRequest($credentials);
     }

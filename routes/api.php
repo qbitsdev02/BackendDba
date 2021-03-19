@@ -18,6 +18,7 @@ Route::group([
 ], function ($router) {
     // Routes
     $router->post('/login', 'Login\Login@authentication');
+    $router->post('/refresh-token', 'Login\RefreshToken@refreshToken');
 });
 
 Route::resource('users', UserController::class);
