@@ -26,3 +26,6 @@ Route::resource('roles', RoleController::class);
 Route::resource('vehicle-models', VehicleModelController::class);
 Route::resource('vehicle-types', VehicleTypeController::class);
 Route::resource('vehicle-brands', VehicleBrandController::class);
+Route::resource('products', ProductController::class);
+Route::resource('attribute-types', AttributeTypeController::class);
+// Route::resource('attribute-types-product', VehicleBrandController::class);

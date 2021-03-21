@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\VehicleModel;
+use App\Models\AttributeType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class VehicleModelFactory extends Factory
+class AttributeTypeFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = VehicleModel::class;
+    protected $model = AttributeType::class;
 
     /**
      * Define the model's default state.

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVehicleModelsTable extends Migration
+class CreateAttributeTypeProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateVehicleModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('vehicle_models', function (Blueprint $table) {
+        Schema::create('attribute_type_product', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('acronym');
+            $table->foreignId('product_id')->constrained();
+            $table->foreignId('attribute_type_id')->constrained();
+            $table->string('description');
+            $table->unique(['role_id', 'user_id', 'description']);
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->timestamps();
@@ -31,6 +33,6 @@ class CreateVehicleModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vehicle_models');
+        Schema::dropIfExists('attribute_type_product');
     }
 }
