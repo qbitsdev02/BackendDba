@@ -2,91 +2,91 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Role;
+use App\Models\VehicleBrand;
 use Illuminate\Http\Request;
 
-class RoleController extends Controller
+class VehicleBrandController extends Controller
 {
     /**
-    * @OA\Get(
-    *     path="/api/roles",
-    *     summary="Show roles",
-    *     tags={"Roles"},
-    *     @OA\Parameter(
-    *       name="paginate",
-    *       in="query",
-    *       description="paginate",
-    *       required=false,
-    *       @OA\Schema(
-    *           title="Paginate",
-    *           example="true",
-    *           type="boolean",
-    *           description="The Paginate data"
-    *       )
-    *     ),
-    *     @OA\Parameter(
-    *       name="sortField",
-    *       in="query",
-    *       description="turno resource name",
-    *       required=false,
-    *       @OA\Schema(
-    *           type="string",
-    *           example="id",
-    *           description="The unique identifier of a turno resource"
-    *       )
-    *     ),
-    *     @OA\Parameter(
-    *       name="sortOrder",
-    *       in="query",
-    *       description="turno resource name",
-    *       required=false,
-    *       @OA\Schema(
-    *           type="string",
-    *           example="desc",
-    *           description="The unique identifier of a turno resource"
-    *       )
-    *      ),
-    *     @OA\Parameter(
-    *       name="perPage",
-    *       in="query",
-    *       description="Sort order field",
-    *       @OA\Schema(
-    *           title="perPage",
-    *           type="number",
-    *           default="10",
-    *           description="The unique identifier of a curso resource"
-    *       )
-    *      ),
-    *     @OA\Parameter(
-    *       name="dataSearch",
-    *       in="query",
-    *       description="turno resource name",
-    *       required=false,
-    *       @OA\Schema(
-    *           type="string",
-    *           description="Search data"
-    *       )
-    *      ),
-    *     @OA\Parameter(
-    *       name="dataFilter",
-    *       in="query",
-    *       description="turno resource name",
-    *       required=false,
-    *       @OA\Schema(
-    *           type="string",
-    *           description="The unique identifier of a turno resource"
-    *       )
-    *     ),
-    *     @OA\Response(
-    *         response=200,
-    *         description="Show roles all."
-    *     ),
-    *     @OA\Response(
-    *         response="default",
-    *         description="error."
-    *     )
-    *  )
-    */
+        * @OA\Get(
+        *     path="/api/vehicle-brands",
+        *     summary="Show vehicle brands",
+        *     tags={"VehicleBrand"},
+        *   @OA\Parameter(
+        *       name="paginate",
+        *       in="query",
+        *       description="paginate",
+        *       required=false,
+        *       @OA\Schema(
+        *           title="Paginate",
+        *           example="true",
+        *           type="boolean",
+        *           description="The Paginate data"
+        *       )
+        *   ),
+        *   @OA\Parameter(
+        *       name="sortField",
+        *       in="query",
+        *       description="turno resource name",
+        *       required=false,
+        *       @OA\Schema(
+        *           type="string",
+        *           example="id",
+        *           description="The unique identifier of a turno resource"
+        *       )
+        *    ),
+        *   @OA\Parameter(
+        *       name="sortOrder",
+        *       in="query",
+        *       description="turno resource name",
+        *       required=false,
+        *       @OA\Schema(
+        *           type="string",
+        *           example="desc",
+        *           description="The unique identifier of a Vehicle Brand resource"
+        *       )
+        *    ),
+        *   @OA\Parameter(
+        *       name="perPage",
+        *       in="query",
+        *       description="Sort order field",
+        *       @OA\Schema(
+        *           title="perPage",
+        *           type="number",
+        *           default="10",
+        *           description="The unique identifier of a Vehicle Brand resource"
+        *       )
+        *    ),
+        *   @OA\Parameter(
+        *       name="dataSearch",
+        *       in="query",
+        *       description="Vehicle Brand resource name",
+        *       required=false,
+        *       @OA\Schema(
+        *           type="string",
+        *           description="Search data"
+        *       )
+        *    ),
+        *   @OA\Parameter(
+        *       name="dataFilter",
+        *       in="query",
+        *       description="Vehicle Brand resource name",
+        *       required=false,
+        *       @OA\Schema(
+        *           type="string",
+        *           description="The unique identifier of a Vehicle Brand resource"
+        *       )
+        *    ),
+        *     @OA\Response(
+        *         response=200,
+        *         description="Show Vehicle Brands all."
+        *     ),
+        *     @OA\Response(
+        *         response="default",
+        *         description="error."
+        *     )
+        * )
+        */
     /**
      * Display a listing of the resource.
      *
@@ -94,8 +94,8 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-        $roles = Role::filters($request->all())->search($request->all());
-        return response()->json($roles, 200); 
+        $vehicleBrands = VehicleBrand::filters($request->all())->search($request->all());
+        return response()->json($vehicleBrands, 200);
     }
 
     /**
@@ -109,15 +109,15 @@ class RoleController extends Controller
     }
     /**
         * @OA\Post(
-        *   path="/api/roles",
-        *   summary="Creates a new user",
-        *   description="Creates a new user",
-        *   tags={"Roles"},
+        *   path="/api/vehicle-brands",
+        *   summary="Creates a new vehicle brand",
+        *   description="Creates a new vehicle brand",
+        *   tags={"VehicleBrand"},
         *   security={{"passport": {"*"}}},
         *   @OA\RequestBody(
         *       @OA\MediaType(
         *           mediaType="application/json",
-        *           @OA\Schema(ref="#/components/schemas/Role")
+        *           @OA\Schema(ref="#/components/schemas/VehicleBrand")
         *       )
         *   ),
         *   @OA\Response(
@@ -151,23 +151,23 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $role = new Role();
-        $role->name = $request->name;
-        $role->acronym = $request->acronym;
-        $role->user_created_id = $request->user_created_id;
-        $role->save();
-        return response()->json($role, 201);
+        $vehicleBrand = new VehicleBrand();
+        $vehicleBrand->name = $request->name;
+        $vehicleBrand->acronym = $request->acronym;
+        $vehicleBrand->user_created_id = $request->user_created_id;
+        $vehicleBrand->save();
+        return response()->json($vehicleBrand, 201);
     }
     /**
      * @OA\Get(
-     *      path="/api/roles/{id}",
+     *      path="/api/vehicle-brands/{id}",
      *      operationId="getUserById",
-     *      tags={"Roles"},
-     *      summary="Get Role information",
-     *      description="Returns Role data",
+     *      tags={"VehicleBrand"},
+     *      summary="Get Vehicle Brand information",
+     *      description="Returns VehicleBrand data",
      *      @OA\Parameter(
      *          name="id",
-     *          description="Role id",
+     *          description="Vehicle Brand id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -177,7 +177,7 @@ class RoleController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/Role")
+     *          @OA\JsonContent(ref="#/components/schemas/VehicleBrand")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -199,9 +199,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Role $role)
+    public function show(VehicleBrand $vehicleBrand)
     {
-        return response()->json($role, 201);
+        return response()->json($vehicleBrand, 201);
     }
 
     /**
@@ -216,14 +216,14 @@ class RoleController extends Controller
     }
     /**
      * @OA\Put(
-     *      path="/api/roles/{id}",
-     *      operationId="updateRole",
-     *      tags={"Roles"},
-     *      summary="Update existing Role",
-     *      description="Returns updated Role data",
+     *      path="/api/vehicle-brands/{id}",
+     *      operationId="vehicleBrandId",
+     *      tags={"VehicleBrand"},
+     *      summary="Update existing Vehicle Brand",
+     *      description="Returns updated VehicleBrand data",
      *      @OA\Parameter(
      *          name="id",
-     *          description="Role id",
+     *          description="Vehicle Brand id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -232,7 +232,7 @@ class RoleController extends Controller
      *      ),
      *      @OA\RequestBody(
      *          required=true,
-     *          @OA\JsonContent(ref="#/components/schemas/Role")
+     *          @OA\JsonContent(ref="#/components/schemas/VehicleBrand")
      *      ),
      *      @OA\Response(
      *          response=202,
@@ -264,24 +264,24 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request, VehicleBrand $vehicleBrand)
     {
-        $role->name = $request->name;
-        $role->acronym = $request->acronym;
-        $role->user_updated_id = $request->user_updated_id;
-        $role->update();
-        return response()->json($role, 200);
+        $vehicleBrand->name = $request->name;
+        $vehicleBrand->acronym = $request->acronym;
+        $vehicleBrand->user_updated_id = $request->user_updated_id;
+        $vehicleBrand->update();
+        return response()->json($vehicleBrand, 200);
     }
     /**
      * @OA\Delete(
-     *      path="/api/roles/{id}",
+     *      path="/api/vehicle-brands/{id}",
      *      operationId="deleteProject",
-     *      tags={"Roles"},
-     *      summary="Delete existing Role",
+     *      tags={"VehicleBrand"},
+     *      summary="Delete existing VehicleBrand",
      *      description="Deletes a record and returns no content",
      *      @OA\Parameter(
      *          name="id",
-     *          description="Role id",
+     *          description="VehicleBrand id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -313,9 +313,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy(VehicleBrand $vehicleBrand)
     {
-        $role->delete();
+        $vehicleBrand->delete();
         return response()->json('succesfull delete', 200);
     }
 }
