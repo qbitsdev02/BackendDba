@@ -912,7 +912,7 @@
                         "description": "turno resource name",
                         "required": false,
                         "schema": {
-                            "description": "The unique identifier of a Vehicle Brand resource",
+                            "description": "The unique identifier of a Vehicle Type resource",
                             "type": "string",
                             "example": "desc"
                         }
@@ -923,7 +923,7 @@
                         "description": "Sort order field",
                         "schema": {
                             "title": "perPage",
-                            "description": "The unique identifier of a Vehicle Brand resource",
+                            "description": "The unique identifier of a Vehicle Type resource",
                             "type": "number",
                             "default": "10"
                         }
@@ -931,7 +931,7 @@
                     {
                         "name": "dataSearch",
                         "in": "query",
-                        "description": "Vehicle Brand resource name",
+                        "description": "Vehicle Type resource name",
                         "required": false,
                         "schema": {
                             "description": "Search data",
@@ -941,10 +941,10 @@
                     {
                         "name": "dataFilter",
                         "in": "query",
-                        "description": "Vehicle Brand resource name",
+                        "description": "Vehicle Type resource name",
                         "required": false,
                         "schema": {
-                            "description": "The unique identifier of a Vehicle Brand resource",
+                            "description": "The unique identifier of a Vehicle Type resource",
                             "type": "string"
                         }
                     }
@@ -1134,6 +1134,265 @@
                     }
                 }
             }
+        },
+        "/api/vehicle-types": {
+            "get": {
+                "tags": [
+                    "VehicleType"
+                ],
+                "summary": "Show vehicle types",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Vehicle Type resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a Vehicle Type resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "Vehicle Type resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "Vehicle Type resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Vehicle Type resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Vehicle types all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "VehicleType"
+                ],
+                "summary": "Creates a new vehicle Type",
+                "description": "Creates a new vehicle Type",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VehicleType"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Role resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/api/vehicle-types/{id}": {
+            "get": {
+                "tags": [
+                    "VehicleType"
+                ],
+                "summary": "Get Vehicle Type information",
+                "description": "Returns VehicleType data",
+                "operationId": "vehicleTypeId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Vehicle Type id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VehicleType"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "VehicleType"
+                ],
+                "summary": "Update existing Vehicle Type",
+                "description": "Returns updated VehicleType data",
+                "operationId": "vehicleTypeUpdateId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Vehicle Type id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VehicleType"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Role"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "VehicleType"
+                ],
+                "summary": "Delete existing VehicleType",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteProject",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "VehicleType id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -1292,7 +1551,7 @@
                 },
                 "type": "object"
             },
-            "Vehicle type": {
+            "VehicleType": {
                 "properties": {
                     "name": {
                         "description": "The Vehicle type name",

@@ -43,7 +43,7 @@ class VehicleModelController extends Controller
         *       @OA\Schema(
         *           type="string",
         *           example="desc",
-        *           description="The unique identifier of a Vehicle Brand resource"
+        *           description="The unique identifier of a Vehicle Type resource"
         *       )
         *    ),
         *   @OA\Parameter(
@@ -54,13 +54,13 @@ class VehicleModelController extends Controller
         *           title="perPage",
         *           type="number",
         *           default="10",
-        *           description="The unique identifier of a Vehicle Brand resource"
+        *           description="The unique identifier of a Vehicle Type resource"
         *       )
         *    ),
         *   @OA\Parameter(
         *       name="dataSearch",
         *       in="query",
-        *       description="Vehicle Brand resource name",
+        *       description="Vehicle Type resource name",
         *       required=false,
         *       @OA\Schema(
         *           type="string",
@@ -70,11 +70,11 @@ class VehicleModelController extends Controller
         *   @OA\Parameter(
         *       name="dataFilter",
         *       in="query",
-        *       description="Vehicle Brand resource name",
+        *       description="Vehicle Type resource name",
         *       required=false,
         *       @OA\Schema(
         *           type="string",
-        *           description="The unique identifier of a Vehicle Brand resource"
+        *           description="The unique identifier of a Vehicle Type resource"
         *       )
         *    ),
         *     @OA\Response(

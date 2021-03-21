@@ -4,9 +4,9 @@ namespace App\Models;
 
 class VehicleType extends Base
 {
-      /**
+    /**
      * @OA\Schema(
-     *   schema="Vehicle type",
+     *   schema="VehicleType",
      *   type="object",
      *   @OA\Property(
      *       property="name",
@@ -49,3 +49,4 @@ class VehicleType extends Base
     ];
 
     public static $filterable = ["name", "acronym"];
+}
