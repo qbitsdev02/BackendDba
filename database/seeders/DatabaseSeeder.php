@@ -14,12 +14,18 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\User::factory(4)->create();
+        
         $this->call([
             RoleSeeder::class,
             RoleUserSeeder::class,
-            VehicleBrandSeeder::class,
-            VehicleModelSeeder::class,
-            VehicleTypeSeeder::class
+            BrandSeeder::class,
+            CategorySeeder::class,
+            AttributeTypeSeeder::class,
+            AttributeTypeProductSeeder::class
         ]);
+
+        \App\Models\Product::factory(6000)
+            ->hasAttributeTypes()
+            ->create();
     }
 }

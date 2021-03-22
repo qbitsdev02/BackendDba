@@ -18,16 +18,16 @@ class ProductSeeder extends Seeder
                 'name' => 'TAPONES DE MOTOR (COPA) U 3089 70',
                 'description' => 'TAPONES DE MOTOR (COPA) U 3089 70',
                 'code' => '123',
-                'vehicle_type_id' => 1,
-                'vehicle_brand_id' => 1, 
+                'category_id' => 1,
+                'brand_id' => 1, 
                 'user_created_id' => 1
             ],
             [
                 'name' => 'TAPONES DE MOTOR (COPA) U 3089 108',
                 'description' => 'TAPONES DE MOTOR (COPA) U 3089 108',
                 'code' => '123',
-                'vehicle_type_id' => 1,
-                'vehicle_brand_id' => 1, 
+                'category_id' => 1,
+                'brand_id' => 1, 
                 'user_created_id' => 1
             ]
         ]);

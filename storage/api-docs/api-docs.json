@@ -99,6 +99,89 @@
                 }
             }
         },
+        "/api/products": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Show products",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "product resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a product resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "product resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a product resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a product resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "product resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "product resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a product resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show roles all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            }
+        },
         "/api/roles": {
             "get": {
                 "tags": [
@@ -616,528 +699,45 @@
                     }
                 }
             }
-        },
-        "/api/vehicle-brands": {
-            "get": {
-                "tags": [
-                    "VehicleBrand"
-                ],
-                "summary": "Show vehicle brands",
-                "parameters": [
-                    {
-                        "name": "paginate",
-                        "in": "query",
-                        "description": "paginate",
-                        "required": false,
-                        "schema": {
-                            "title": "Paginate",
-                            "description": "The Paginate data",
-                            "type": "boolean",
-                            "example": "true"
-                        }
-                    },
-                    {
-                        "name": "sortField",
-                        "in": "query",
-                        "description": "turno resource name",
-                        "required": false,
-                        "schema": {
-                            "description": "The unique identifier of a turno resource",
-                            "type": "string",
-                            "example": "id"
-                        }
-                    },
-                    {
-                        "name": "sortOrder",
-                        "in": "query",
-                        "description": "turno resource name",
-                        "required": false,
-                        "schema": {
-                            "description": "The unique identifier of a Vehicle Brand resource",
-                            "type": "string",
-                            "example": "desc"
-                        }
-                    },
-                    {
-                        "name": "perPage",
-                        "in": "query",
-                        "description": "Sort order field",
-                        "schema": {
-                            "title": "perPage",
-                            "description": "The unique identifier of a Vehicle Brand resource",
-                            "type": "number",
-                            "default": "10"
-                        }
-                    },
-                    {
-                        "name": "dataSearch",
-                        "in": "query",
-                        "description": "Vehicle Brand resource name",
-                        "required": false,
-                        "schema": {
-                            "description": "Search data",
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "dataFilter",
-                        "in": "query",
-                        "description": "Vehicle Brand resource name",
-                        "required": false,
-                        "schema": {
-                            "description": "The unique identifier of a Vehicle Brand resource",
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Show Vehicle Brands all."
-                    },
-                    "default": {
-                        "description": "error."
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "VehicleBrand"
-                ],
-                "summary": "Creates a new vehicle brand",
-                "description": "Creates a new vehicle brand",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/VehicleBrand"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "The Role resource created",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated.",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "default": {
-                        "description": "an \"unexpected\" error",
-                        "content": {
-                            "application/json": {}
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "passport": [
-                            "*"
-                        ]
-                    }
-                ]
-            }
-        },
-        "/api/vehicle-brands/{id}": {
-            "get": {
-                "tags": [
-                    "VehicleBrand"
-                ],
-                "summary": "Get Vehicle Brand information",
-                "description": "Returns VehicleBrand data",
-                "operationId": "getUserById",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Vehicle Brand id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/VehicleBrand"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request"
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "VehicleBrand"
-                ],
-                "summary": "Update existing Vehicle Brand",
-                "description": "Returns updated VehicleBrand data",
-                "operationId": "vehicleBrandId",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Vehicle Brand id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/VehicleBrand"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "202": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Role"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request"
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "VehicleBrand"
-                ],
-                "summary": "Delete existing VehicleBrand",
-                "description": "Deletes a record and returns no content",
-                "operationId": "deleteProject",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "VehicleBrand id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                }
-            }
-        },
-        "/api/vehicle-types": {
-            "get": {
-                "tags": [
-                    "VehicleType"
-                ],
-                "summary": "Show vehicle types",
-                "parameters": [
-                    {
-                        "name": "paginate",
-                        "in": "query",
-                        "description": "paginate",
-                        "required": false,
-                        "schema": {
-                            "title": "Paginate",
-                            "description": "The Paginate data",
-                            "type": "boolean",
-                            "example": "true"
-                        }
-                    },
-                    {
-                        "name": "sortField",
-                        "in": "query",
-                        "description": "turno resource name",
-                        "required": false,
-                        "schema": {
-                            "description": "The unique identifier of a turno resource",
-                            "type": "string",
-                            "example": "id"
-                        }
-                    },
-                    {
-                        "name": "sortOrder",
-                        "in": "query",
-                        "description": "turno resource name",
-                        "required": false,
-                        "schema": {
-                            "description": "The unique identifier of a Vehicle Type resource",
-                            "type": "string",
-                            "example": "desc"
-                        }
-                    },
-                    {
-                        "name": "perPage",
-                        "in": "query",
-                        "description": "Sort order field",
-                        "schema": {
-                            "title": "perPage",
-                            "description": "The unique identifier of a Vehicle Type resource",
-                            "type": "number",
-                            "default": "10"
-                        }
-                    },
-                    {
-                        "name": "dataSearch",
-                        "in": "query",
-                        "description": "Vehicle Type resource name",
-                        "required": false,
-                        "schema": {
-                            "description": "Search data",
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "dataFilter",
-                        "in": "query",
-                        "description": "Vehicle Type resource name",
-                        "required": false,
-                        "schema": {
-                            "description": "The unique identifier of a Vehicle Type resource",
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Show Vehicle types all."
-                    },
-                    "default": {
-                        "description": "error."
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "VehicleType"
-                ],
-                "summary": "Creates a new vehicle Type",
-                "description": "Creates a new vehicle Type",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/VehicleType"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "The Role resource created",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated.",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "default": {
-                        "description": "an \"unexpected\" error",
-                        "content": {
-                            "application/json": {}
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "passport": [
-                            "*"
-                        ]
-                    }
-                ]
-            }
-        },
-        "/api/vehicle-types/{id}": {
-            "get": {
-                "tags": [
-                    "VehicleType"
-                ],
-                "summary": "Get Vehicle Type information",
-                "description": "Returns VehicleType data",
-                "operationId": "vehicleTypeId",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Vehicle Type id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/VehicleType"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request"
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "VehicleType"
-                ],
-                "summary": "Update existing Vehicle Type",
-                "description": "Returns updated VehicleType data",
-                "operationId": "vehicleTypeUpdateId",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Vehicle Type id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/VehicleType"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "202": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Role"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request"
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "VehicleType"
-                ],
-                "summary": "Delete existing VehicleType",
-                "description": "Deletes a record and returns no content",
-                "operationId": "deleteProject",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "VehicleType id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                }
-            }
         }
     },
     "components": {
         "schemas": {
+            "Product": {
+                "properties": {
+                    "name": {
+                        "description": "The Productname",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "The Product description",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
             "Role": {
                 "properties": {
                     "name": {
@@ -1198,76 +798,6 @@
                     },
                     "password": {
                         "description": "The Users password",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "user_created_id": {
-                        "description": "The Users crete",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "number",
-                        "example": 1
-                    },
-                    "user_updated_id": {
-                        "description": "The Users update",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "number",
-                        "example": 1
-                    }
-                },
-                "type": "object"
-            },
-            "VehicleBrand": {
-                "properties": {
-                    "name": {
-                        "description": "The Vehicle brand name",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "acronym": {
-                        "description": "The Vehicle brand password",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "user_created_id": {
-                        "description": "The Users crete",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "number",
-                        "example": 1
-                    },
-                    "user_updated_id": {
-                        "description": "The Users update",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "number",
-                        "example": 1
-                    }
-                },
-                "type": "object"
-            },
-            "VehicleType": {
-                "properties": {
-                    "name": {
-                        "description": "The Vehicle type name",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "acronym": {
-                        "description": "The Vehicle type password",
                         "required": [
                             "true"
                         ],

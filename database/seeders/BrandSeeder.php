@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use DB;
-class VehicleBrandSeeder extends Seeder
+class BrandSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,30 +13,30 @@ class VehicleBrandSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('vehicle_brands')->insert([
+        DB::table('brands')->insert([
             [
                 'name' => 'U',
-                'acronym' => 'U',
+                'description' => 'U',
                 'user_created_id' => 1
             ],
             [
                 'name' => 'CH',
-                'acronym' => 'CH',
+                'description' => 'CH',
                 'user_created_id' => 1
             ],
             [
                 'name' => 'PG',
-                'acronym' => 'PG',
+                'description' => 'PG',
                 'user_created_id' => 1
             ],
             [
                 'name' => 'KU',
-                'acronym' => 'KU',
+                'description' => 'KU',
                 'user_created_id' => 1
             ],
             [
                 'name' => 'E',
-                'acronym' => 'E',
+                'description' => 'E',
                 'user_created_id' => 1
             ]
         ]);

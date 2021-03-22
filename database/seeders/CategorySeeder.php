@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use DB;
-class VehicleTypeSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,25 +13,25 @@ class VehicleTypeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('vehicle_types')->insert([
+        DB::table('categories')->insert([
             [
-                'name' => 'AUT',
-                'acronym' => 'AUTO',
+                'name' => 'AUTO',
+                'description' => 'AUTO',
                 'user_created_id' => 1
             ],
             [
                 'name' => 'VAN',
-                'acronym' => 'VAN',
+                'description' => 'VAN',
                 'user_created_id' => 1
             ],
             [
                 'name' => 'T6',
-                'acronym' => 'T6',
+                'description' => 'T6',
                 'user_created_id' => 1
             ],
             [
                 'name' => '6DR5',
-                'acronym' => '6DR5',
+                'description' => '6DR5',
                 'user_created_id' => 1
             ],
             [
@@ -55,38 +55,8 @@ class VehicleTypeSeeder extends Seeder
                 'user_created_id' => 1
             ],
             [
-                'name' => 'ROLLWAY',
-                'acronym' => 'ROLLWAY',
-                'user_created_id' => 1
-            ],
-            [
-                'name' => 'DIESEL',
-                'acronym' => 'DIESEL',
-                'user_created_id' => 1
-            ],
-            [
-                'name' => 'HOLLE',
-                'acronym' => 'HOLLE',
-                'user_created_id' => 1
-            ],
-            [
-                'name' => 'MONROE',
-                'acronym' => 'MONROE',
-                'user_created_id' => 1
-            ],
-            [
-                'name' => 'HIT',
-                'acronym' => 'HIT',
-                'user_created_id' => 1
-            ],
-            [
-                'name' => 'FIE',
-                'acronym' => 'FIE',
-                'user_created_id' => 1
-            ],
-            [
-                'name' => 'NISSAN',
-                'acronym' => 'NISSAN',
+                'name' => 'ROLLWY',
+                'acronym' => 'ROLLWY',
                 'user_created_id' => 1
             ]
         ]);

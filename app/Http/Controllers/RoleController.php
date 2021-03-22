@@ -95,7 +95,7 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         $roles = Role::filters($request->all())->search($request->all());
-        return response()->json($roles, 200); 
+        return response()->json($roles, 200);
     }
 
     /**
