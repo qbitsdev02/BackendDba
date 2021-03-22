@@ -1,11 +1,43 @@
 <?php
 
 namespace App\Models;
-
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class ClientType extends Model
+class ClientType extends Base
 {
-    use HasFactory;
+    /**
+     * @OA\Schema(
+     *   schema="ClientType",
+     *   type="object",
+     *   @OA\Property(
+     *       property="name",
+     *       type="string",
+     *       required={"true"},
+     *       description="The ClientType name"
+     *   ),
+     *   @OA\Property(
+     *       property="user_created_id",
+     *       type="number",
+     *       required={"true"},
+     *       example=1,
+     *       description="The Users crete"
+     *   ),
+     *    @OA\Property(
+     *       property="user_updated_id",
+     *       type="number",
+     *       required={"true"},
+     *       example=1,
+     *       description="The Users update"
+     *   ),
+     * )
+     */
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'description',
+        'user_created_id',
+        'user_updated_id'
+    ];
 }

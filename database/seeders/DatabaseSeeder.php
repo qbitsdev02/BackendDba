@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             RoleUserSeeder::class,
             BrandSeeder::class,
             CategorySeeder::class,
-            AttributeTypeSeeder::class
+            AttributeTypeSeeder::class,
+            ClientTypeSeeder::class
         ]);
 
         \App\Models\Product::factory(500)->create();

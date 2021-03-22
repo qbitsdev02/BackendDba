@@ -15,7 +15,11 @@ class CreateClientTypesTable extends Migration
     {
         Schema::create('client_types', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->foreignId('user_created_id')->constrained('users');
+            $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

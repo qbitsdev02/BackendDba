@@ -790,6 +790,265 @@
                 }
             }
         },
+        "/api/client-types": {
+            "get": {
+                "tags": [
+                    "ClientType"
+                ],
+                "summary": "Show client types",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "ClientType resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a ClientType resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "ClientType resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a ClientType resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a ClientType resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "ClientType resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "ClientType resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a ClientType resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show client types all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "ClientType"
+                ],
+                "summary": "Creates a new client types",
+                "description": "Creates a new client types",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ClientType"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The ClientType resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/api/client-types/{id}": {
+            "get": {
+                "tags": [
+                    "ClientType"
+                ],
+                "summary": "Get ClientType information",
+                "description": "Returns ClientType data",
+                "operationId": "getClientTypeById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ClientType id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClientType"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "ClientType"
+                ],
+                "summary": "Update existing ClientType",
+                "description": "Returns updated ClientType data",
+                "operationId": "updateClientType",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ClientType id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ClientType"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClientType"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "ClientType"
+                ],
+                "summary": "Delete existing ClientType",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteProject",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ClientType id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/api/authentication/login": {
             "post": {
                 "tags": [
@@ -1737,6 +1996,34 @@
                     },
                     "description": {
                         "description": "The Category description",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "ClientType": {
+                "properties": {
+                    "name": {
+                        "description": "The ClientType name",
                         "required": [
                             "true"
                         ],
