@@ -2,14 +2,18 @@
 
 namespace App\Models;
 
-use Attribute;
-
 class Product extends Base
 {
     /**
         * @OA\Schema(
         *   schema="Product",
         *   type="object",
+        *   @OA\Property(
+        *       property="code",
+        *       type="string",
+        *       required={"false"},
+        *       description="The Product code"
+        *   ),
         *   @OA\Property(
         *       property="name",
         *       type="string",
@@ -23,6 +27,29 @@ class Product extends Base
         *       description="The Product description"
         *   ),
         *   @OA\Property(
+        *       property="category_id",
+        *       type="number",
+        *       required={"false"},
+        *       description="The Product category"
+        *   ),
+        *   @OA\Property(
+        *       property="brand_id",
+        *       type="number",
+        *       required={"false"},
+        *       description="The Product brand"
+        *   ),
+        *   @OA\Property(
+        *       property="attribute_types",
+        *       type="array",
+        *       required={"false"},
+        *       @OA\Items(
+        *           @OA\Property(property="attribute_type_id", type="number"),
+        *           @OA\Property(property="description", type="string"),
+        *           @OA\Property(property="user_created_id", type="number"),
+        *       ),
+        *       description="The Product attribute_types"
+        *   ),
+        *   @OA\Property(
         *       property="user_created_id",
         *       type="number",
         *       required={"true"},
@@ -32,12 +59,36 @@ class Product extends Base
         *    @OA\Property(
         *       property="user_updated_id",
         *       type="number",
-        *       required={"true"},
+        *       required={"false"},
         *       example=1,
         *       description="The Users update"
         *   ),
         * )
     */
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'code',
+        'name',
+        'description',
+        'category_id',
+        'brand_id',
+        'user_created_id',
+        'user_updated_id'
+    ];
+    /**
+     * The attributes that are mass with.
+     *
+     * @var array
+     */
+    protected $with = [
+        'category',
+        'brand',
+        'attributeTypes'
+    ];
     /**
      * Get the category that owns the Product
      *
@@ -68,6 +119,5 @@ class Product extends Base
             ->withPivot([
                 'description'
             ]);
-;
     }
 }

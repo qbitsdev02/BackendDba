@@ -136,13 +136,7 @@ class RoleController extends Controller
         *       description="an ""unexpected"" error",
         *   )
         * )
-        *
-        * Store a newly created resource in storage.
-        *
-        * @param \Illuminate\Http\Request $request
-        *
-        * @return \Illuminate\Http\Response
-        */
+    */
     /**
      * Store a newly created resource in storage.
      *
