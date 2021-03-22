@@ -20,12 +20,15 @@ class DatabaseSeeder extends Seeder
             RoleUserSeeder::class,
             BrandSeeder::class,
             CategorySeeder::class,
-            AttributeTypeSeeder::class,
-            AttributeTypeProductSeeder::class
+            AttributeTypeSeeder::class
         ]);
 
         \App\Models\Product::factory(6000)
             ->hasAttributeTypes()
             ->create();
+        
+        $this->call([
+            AttributeTypeProductSeeder::class
+        ]);
     }
 }
