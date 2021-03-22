@@ -14,9 +14,11 @@ class ProductOberver
      */
     public function created(Product $product)
     {
-        $product
-            ->attributeTypes()
-            ->attach(request()->attribute_types);
+        if (request()->attribute_types) {
+            $product
+                ->attributeTypes()
+                ->attach(request()->attribute_types);
+        }
     }
 
     /**
@@ -27,9 +29,11 @@ class ProductOberver
      */
     public function updated(Product $product)
     {
-        $product
-            ->attributeTypes()
-            ->sync(request()->attribute_types);
+        if (request()->attribute_types) {
+            $product
+                ->attributeTypes()
+                ->sync(request()->attribute_types);
+        }
     }
 
     /**

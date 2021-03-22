@@ -24,9 +24,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Product::factory(6000)
-            ->hasAttributeTypes()
             ->create();
-        
+
         $this->call([
             AttributeTypeProductSeeder::class
         ]);

@@ -16,37 +16,37 @@ class AttributeTypeSeeder extends Seeder
         DB::table('attribute_types')->insert([
             [
                 'name' => 'Alternate',
-                'description' => null,
+                'description' => 'Alternate',
                 'user_created_id' => 1
             ],
             [
                 'name' => 'NUMSEC',
-                'description' => null,
+                'description' => 'NUMSEC',
                 'user_created_id' => 1
             ],
             [
                 'name' => 'CMOTOR',
-                'description' => null,
+                'description' => 'CMOTOR',
                 'user_created_id' => 1
             ],
             [
                 'name' => 'NUMCIL',
-                'description' => null,
+                'description' => 'NUMCIL',
                 'user_created_id' => 1
             ],
             [
                 'name' => 'CILIND',
-                'description' => null,
+                'description' => 'CILIND',
                 'user_created_id' => 1
             ],
             [
                 'name' => 'CYLIND',
-                'description' => null,
+                'description' => 'CYLIND',
                 'user_created_id' => 1
             ],
             [
                 'name' => 'DIAMET',
-                'description' => null,
+                'description' => 'DIAMET',
                 'user_created_id' => 1
             ]
         ]);
