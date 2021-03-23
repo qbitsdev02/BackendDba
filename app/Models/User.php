@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
@@ -55,7 +56,7 @@ use Illuminate\Support\Arr;
  */
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasApiTokens;
+    use HasFactory, Notifiable, HasApiTokens, SoftDeletes;
     /**
      * Create a new controller instance.
      *
@@ -69,6 +70,10 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'last_name',
+        'phone',
+        'phone_contact',
+        'full_name_contact',
+        'client_type_id',
         'email',
         'password',
         'user_created_id',
@@ -93,6 +98,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    /**
+     * Scope a query to return users of a type.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOfType($query, $typeAcronym)
+    {
+        // Doesn't work on static methods
+        return $query
+            ->whereHas('roles', function ($q) use ($typeAcronym) {
+                $q->where('acronym', $typeAcronym);
+            });
+    }
 
     public static $filterable = ["name", "last_name", "email"];
 	/**

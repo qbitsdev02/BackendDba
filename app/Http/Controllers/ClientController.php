@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Client;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use App\Helpers\RoleAcronym;
 
-class UserController extends Controller
+class ClientController extends Controller
 {
     /**
     * @OA\Get(
-    *     path="/api/users",
-    *     summary="Show users",
-    *     tags={"Users"},
+    *     path="/api/clients",
+    *     summary="Show clients",
+    *     tags={"Client"},
     *     @OA\Response(
     *         response=200,
-    *         description="Show user all."
+    *         description="Show clients all."
     *     ),
     *   @OA\Parameter(
     *       name="paginate",
@@ -32,23 +32,23 @@ class UserController extends Controller
     *   @OA\Parameter(
     *       name="sortField",
     *       in="query",
-    *       description="turno resource name",
+    *       description="client resource name",
     *       required=false,
     *       @OA\Schema(
     *           type="string",
     *           example="id",
-    *           description="The unique identifier of a turno resource"
+    *           description="The unique identifier of a client resource"
     *       )
     *    ),
     *   @OA\Parameter(
     *       name="sortOrder",
     *       in="query",
-    *       description="turno resource name",
+    *       description="client resource name",
     *       required=false,
     *       @OA\Schema(
     *           type="string",
     *           example="desc",
-    *           description="The unique identifier of a turno resource"
+    *           description="The unique identifier of a client resource"
     *       )
     *    ),
     *   @OA\Parameter(
@@ -59,13 +59,13 @@ class UserController extends Controller
     *           title="perPage",
     *           type="number",
     *           default="10",
-    *           description="The unique identifier of a curso resource"
+    *           description="The unique identifier of a client resource"
     *       )
     *    ),
     *   @OA\Parameter(
     *       name="dataSearch",
     *       in="query",
-    *       description="turno resource name",
+    *       description="client resource name",
     *       required=false,
     *       @OA\Schema(
     *           type="string",
@@ -75,11 +75,11 @@ class UserController extends Controller
     *   @OA\Parameter(
     *       name="dataFilter",
     *       in="query",
-    *       description="turno resource name",
+    *       description="client resource name",
     *       required=false,
     *       @OA\Schema(
     *           type="string",
-    *           description="The unique identifier of a turno resource"
+    *           description="The unique identifier of a client resource"
     *       )
     *    ),
     *     @OA\Response(
@@ -95,8 +95,11 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::filters($request->all())->search($request->all());
-        return response()->json($users, 200);
+        $clients = Client::filters($request->all())
+            ->ofType(RoleAcronym::CLIENT)
+            ->search($request->all());
+
+        return response()->json($clients, 200);
     }
 
     /**
@@ -110,21 +113,21 @@ class UserController extends Controller
     }
     /**
         * @OA\Post(
-        *   path="/api/users",
-        *   summary="Creates a new user",
-        *   description="Creates a new user",
-        *   tags={"Users"},
+        *   path="/api/clients",
+        *   summary="Creates a new client",
+        *   description="Creates a new client",
+        *   tags={"Client"},
         *   security={{"passport": {"*"}}},
         *   @OA\RequestBody(
         *       @OA\MediaType(
         *           mediaType="application/json",
-        *           @OA\Schema(ref="#/components/schemas/User")
+        *           @OA\Schema(ref="#/components/schemas/Client")
         *       )
         *   ),
         *   @OA\Response(
         *       @OA\MediaType(mediaType="application/json"),
         *       response=200,
-        *       description="The User resource created",
+        *       description="The CLient resource created",
         *   ),
         *   @OA\Response(
         *       @OA\MediaType(mediaType="application/json"),
@@ -146,24 +149,28 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->user_created_id = $request->user_created_id;
-        $user->password = Hash::make($request->password);
-        $user->save();
-        return response()->json($user, 201);
+        $client = new Client();
+        $client->name = $request->name;
+        $client->last_name = $request->last_name;
+        $client->email = $request->email;
+        $client->phone = $request->phone;
+        $client->phone_contact = $request->phone_contact;
+        $client->full_name_contact = $request->full_name_contact;
+        $client->client_type_id = $request->client_type_id;
+        $client->user_created_id = $request->user_created_id;
+        $client->save();
+        return response()->json($client, 201);
     }
     /**
      * @OA\Get(
-     *      path="/api/users/{id}",
-     *      operationId="getUserById",
-     *      tags={"Users"},
-     *      summary="Get User information",
-     *      description="Returns User data",
+     *      path="/api/clients/{id}",
+     *      operationId="getClientById",
+     *      tags={"Client"},
+     *      summary="Get Client information",
+     *      description="Returns Client data",
      *      @OA\Parameter(
      *          name="id",
-     *          description="User id",
+     *          description="Client id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -173,7 +180,7 @@ class UserController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/User")
+     *          @OA\JsonContent(ref="#/components/schemas/Client")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -192,34 +199,34 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Client $client)
     {
-        return response()->json($user, 201);
+        return response()->json($client, 200);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Client $client)
     {
         //
     }
     /**
      * @OA\Put(
-     *      path="/api/users/{id}",
-     *      operationId="updateUser",
-     *      tags={"Users"},
-     *      summary="Update existing User",
-     *      description="Returns updated User data",
+     *      path="/api/clients/{id}",
+     *      operationId="updateClient",
+     *      tags={"Client"},
+     *      summary="Update existing Client",
+     *      description="Returns updated Client data",
      *      @OA\Parameter(
      *          name="id",
-     *          description="User id",
+     *          description="Client id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -228,12 +235,12 @@ class UserController extends Controller
      *      ),
      *      @OA\RequestBody(
      *          required=true,
-     *          @OA\JsonContent(ref="#/components/schemas/User")
+     *          @OA\JsonContent(ref="#/components/schemas/Client")
      *      ),
      *      @OA\Response(
      *          response=202,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/User")
+     *          @OA\JsonContent(ref="#/components/schemas/Client")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -257,28 +264,32 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Client $client)
     {
-        $user->name = $request->name;
-        $user->last_name = $request->last_name;
-        $user->email = $request->email;
-        $user->user_updated_id = $request->user_updated_id;
-        $user->update();
-        return response()->json($user, 200);
+        $client->name = $request->name;
+        $client->last_name = $request->last_name;
+        $client->email = $request->email;
+        $client->phone = $request->phone;
+        $client->phone_contact = $request->phone_contact;
+        $client->full_name_contact = $request->full_name_contact;
+        $client->client_type_id = $request->client_type_id;
+        $client->user_updated_id = $request->user_updated_id;
+        $client->update();
+        return response()->json($client, 200);
     }
     /**
      * @OA\Delete(
-     *      path="/api/users/{id}",
-     *      operationId="deleteProject",
-     *      tags={"Users"},
-     *      summary="Delete existing User",
+     *      path="/api/clients/{id}",
+     *      operationId="deleteClient",
+     *      tags={"Client"},
+     *      summary="Delete existing Client",
      *      description="Deletes a record and returns no content",
      *      @OA\Parameter(
      *          name="id",
-     *          description="User id",
+     *          description="Client id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -307,12 +318,12 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Client $client)
     {
-        $user->delete();
+        $client->delete();
         return response()->json('succesfull delete', 200);
     }
 }
