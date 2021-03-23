@@ -45,6 +45,12 @@ class Client extends User
      *       description="The Client client type"
      *   ),
      *   @OA\Property(
+     *       property="document_type_id",
+     *       type="number",
+     *       required={"false"},
+     *       description="The document document type"
+     *   ),
+     *   @OA\Property(
      *       property="email",
      *       required={"true"},
      *       type="string",
@@ -69,7 +75,8 @@ class Client extends User
     protected $table = 'users';
 
     protected $with = [
-        'clientType'
+        'clientType',
+        'documentType'
     ];
 
     /**
@@ -80,5 +87,15 @@ class Client extends User
     public function clientType()
     {
         return $this->belongsTo(ClientType::class);
+    }
+
+    /**
+     * Get the clientType that owns the Client
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function documentType()
+    {
+        return $this->belongsTo(DocumentType::class);
     }
 }

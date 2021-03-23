@@ -29,4 +29,5 @@ Route::resource('brands', BrandController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('client-types', ClientTypeController::class);
 Route::resource('clients', ClientController::class);
+Route::resource('document-types', DocumentTypeController::class);
 // Route::resource('attribute-types-product', VehicleBrandController::class);

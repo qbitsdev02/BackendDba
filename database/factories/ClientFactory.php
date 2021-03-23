@@ -25,6 +25,8 @@ class ClientFactory extends Factory
             'name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
             'full_name_contact' => $this->faker->name,
+            'document_type_id' => 1,
+            'document_number' => $this->faker->randomNumber(8),
             'phone' => $this->faker->phoneNumber,
             'client_type_id' => $this->faker->numberBetween(1, 2),
             'phone_contact' => $this->faker->phoneNumber,

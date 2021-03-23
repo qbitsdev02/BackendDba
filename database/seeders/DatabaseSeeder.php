@@ -21,21 +21,14 @@ class DatabaseSeeder extends Seeder
             BrandSeeder::class,
             CategorySeeder::class,
             AttributeTypeSeeder::class,
-            ClientTypeSeeder::class
+            ClientTypeSeeder::class,
+            DocumentTypeSeeder::class
         ]);
 
         \App\Models\Product::factory(500)->create();
-        
-        \App\Models\Client::factory(5)
-            ->create()
-            ->each(function($client) {
-                $client->roles()->attach(
-                    \App\Models\Role::where('acronym', RoleAcronym::CLIENT)->first()->id,
-                    [
-                        'user_created_id' => 1
-                    ]
-                );
-            });
+
+        \App\Models\Client::factory(10)->create();
+
         $this->call([
             AttributeTypeProductSeeder::class
         ]);

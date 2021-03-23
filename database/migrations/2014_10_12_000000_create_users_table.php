@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('phone_contact')->nullable();
             $table->string('full_name_contact')->nullable();
             $table->foreignId('client_type_id')->nullable()->constrained();
+            $table->foreignId('document_type_id')->nullable()->constrained();
+            $table->string('document_number')->nullable();
             // --
             $table->id();
             $table->string('name');

@@ -28,11 +28,6 @@ class RoleUserSeeder extends Seeder
                 'user_id' => 3,
                 'role_id' => 3,
                 'user_created_id' => 1
-            ],
-            [
-                'user_id' => 4,
-                'role_id' => 4,
-                'user_created_id' => 1
             ]
         ]);
     }
