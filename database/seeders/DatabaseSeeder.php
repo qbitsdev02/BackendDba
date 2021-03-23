@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
             DocumentTypeSeeder::class,
             CoinSeeder::class,
             OperationType::class,
-            VoucherTypeSeeder::class
+            VoucherTypeSeeder::class,
+            BranchOfficeSeeder::class
         ]);
 
         \App\Models\Product::factory(500)->create();
