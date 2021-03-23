@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "API Facturación",
+        "title": "API SUDAMERICA",
         "version": "1.0"
     },
     "servers": [

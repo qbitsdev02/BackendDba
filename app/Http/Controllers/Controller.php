@@ -8,7 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
 /**
-* @OA\Info(title="API Facturación", version="1.0")
+* @OA\Info(title="API SUDAMERICA", version="1.0")
 *
 * @OA\Server(url="http://127.0.0.1:8000")
 * @OA\Server(url="http://api-facturador.herokuapp.com/")

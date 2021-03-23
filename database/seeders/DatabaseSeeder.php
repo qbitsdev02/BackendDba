@@ -22,7 +22,10 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             AttributeTypeSeeder::class,
             ClientTypeSeeder::class,
-            DocumentTypeSeeder::class
+            DocumentTypeSeeder::class,
+            CoinSeeder::class,
+            OperationType::class,
+            VoucherTypeSeeder::class
         ]);
 
         \App\Models\Product::factory(500)->create();
