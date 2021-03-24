@@ -65,6 +65,7 @@ class Product extends Base
         *   ),
         * )
     */
+    public static $filterable = ['category.name', 'name', 'attribute_types.pivot'];
     /**
      * The attributes that are mass assignable.
      *
