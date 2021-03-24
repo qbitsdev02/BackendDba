@@ -45,21 +45,19 @@ class Base extends Model
 						$contains = Str::of($field)->contains('.');
 						$containsPivot = Str::of($field)->contains('pivot');
 						$relations = Str::of($field)->explode('.');
-						
-						if($containsPivot) {
-							$query->orWhereHas(Str::camel($relations[0]), function ($q) use ($relations, $fields, $field) {
-								$fieldsPivots = json_decode(Str::of($fields[$field])->replace("'", '"'), true);
-								foreach ($fieldsPivots as $fieldsPivot => $fieldsPivotValues) {
-									foreach ($fieldsPivotValues as $fieldsPivotValue => $fieldsPivotValueValue) {
-										$fieldRelation = Str::of($fieldsPivotValue)->explode('.');
-										\Log::info($fieldsPivotValueValue);
-										// $q->where($fieldRelation[0], $fieldRelation[1])
-										// 	->wherePivot($fieldRelation[2], 'LIKE', "%$fieldsPivotValueValue%");
-									}
-								}
-							});
-						}
-						
+						// if($containsPivot) {
+						// 	$query->orWhereHas(Str::camel($relations[0]), function ($q) use ($relations, $fields, $field) {
+						// 		$fieldsPivots = json_decode(Str::of($fields[$field])->replace("'", '"'), true);
+						// 		foreach ($fieldsPivots as $fieldsPivot => $fieldsPivotValues) {
+						// 			foreach ($fieldsPivotValues as $fieldsPivotValue => $fieldsPivotValueValue) {
+						// 				$fieldRelation = Str::of($fieldsPivotValue)->explode('.');
+						// 				\Log::info($fieldsPivotValueValue);
+						// 				// $q->where($fieldRelation[0], $fieldRelation[1])
+						// 				// 	->wherePivot($fieldRelation[2], 'LIKE', "%$fieldsPivotValueValue%");
+						// 			}
+						// 		}
+						// 	});
+						// }
 						if ($contains && !$containsPivot) {
 							$query->orWhereHas(Str::camel($relations[0]), function ($q) use ($relations, $fields, $field) {
 								$q->where($relations[1], 'LIKE', "%$fields[$field]%");
