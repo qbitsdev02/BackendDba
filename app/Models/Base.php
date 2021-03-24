@@ -50,12 +50,13 @@ class Base extends Model
 							$query->orWhereHas(Str::camel($relations[0]), function ($q) use ($relations, $fields, $field) {
 								$fieldsPivots = json_decode(Str::of($fields[$field])->replace("'", '"'), true);
 								foreach ($fieldsPivots as $fieldsPivot => $fieldsPivotValues) {
-									\Log::info($fieldsPivot);
 									foreach ($fieldsPivotValues as $fieldsPivotValue => $fieldsPivotValueValue) {
+										$fieldRelation = Str::of($fieldsPivotValue)->explode('.');
 										\Log::info($fieldsPivotValueValue);
+										// $q->where($fieldRelation[0], $fieldRelation[1])
+										// 	->wherePivot($fieldRelation[2], 'LIKE', "%$fieldsPivotValueValue%");
 									}
 								}
-								// $q->wherePivot($relations[1], 'LIKE', "%$fields[$field]%");
 							});
 						}
 						
