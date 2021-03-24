@@ -42,13 +42,19 @@ class Client extends User
      *       property="client_type_id",
      *       type="number",
      *       required={"false"},
-     *       description="The Client client type"
+     *       description="The Client type"
      *   ),
      *   @OA\Property(
      *       property="document_type_id",
      *       type="number",
      *       required={"false"},
-     *       description="The document document type"
+     *       description="The document type"
+     *   ),
+     *   @OA\Property(
+     *       property="document_number",
+     *       type="number",
+     *       required={"false"},
+     *       description="The document number"
      *   ),
      *   @OA\Property(
      *       property="email",

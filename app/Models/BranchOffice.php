@@ -1,11 +1,40 @@
 <?php
 
 namespace App\Models;
+/**
+ * @OA\Schema(
+ *   schema="BranchOffice",
+ *   type="object",
+ *   @OA\Property(
+ *       property="name",
+ *       type="string",
+ *       required={"true"},
+ *       description="The Branch Office name"
+ *   ),
+ *   @OA\Property(
+ *       property="Description",
+ *       type="string",
+ *       required={"true"},
+ *       description="The Branch Office Description"
+ *   ),
+ *   @OA\Property(
+ *       property="user_created_id",
+ *       type="number",
+ *       required={"true"},
+ *       example=1,
+ *       description="The Users crete"
+ *   ),
+ *    @OA\Property(
+ *       property="user_updated_id",
+ *       type="number",
+ *       required={"true"},
+ *       example=1,
+ *       description="The Users update"
+ *   ),
+ * )
+ */
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class BranchOffice extends Model
+class BranchOffice extends Base
 {
-    use HasFactory;
+    //
 }

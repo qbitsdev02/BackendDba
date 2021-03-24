@@ -30,4 +30,8 @@ Route::resource('categories', CategoryController::class);
 Route::resource('client-types', ClientTypeController::class);
 Route::resource('clients', ClientController::class);
 Route::resource('document-types', DocumentTypeController::class);
+Route::resource('operation-types', OperationTypeController::class);
+Route::resource('voucher-types', VoucherTypeController::class);
+Route::resource('coins', CoinController::class);
+Route::resource('branch-offices', BranchOfficeController::class);
 // Route::resource('attribute-types-product', VehicleBrandController::class);
