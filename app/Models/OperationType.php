@@ -35,5 +35,8 @@ namespace App\Models;
  */
 class OperationType extends Base
 {
-
+    public static $filterable = [
+        'name',
+        'description',
+    ];
 }

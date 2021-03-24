@@ -36,5 +36,21 @@ namespace App\Models;
 
 class BranchOffice extends Base
 {
-    //
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'description',
+        'user_created_id',
+        'user_updated_id'
+    ];
+
+    public static $filterable = [
+        'name',
+        'description',
+        'brand.description'
+    ];
 }
