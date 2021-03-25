@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             ClientTypeSeeder::class,
             DocumentTypeSeeder::class,
             CoinSeeder::class,
-            OperationType::class,
+            OperationTypeSeeder::class,
             VoucherTypeSeeder::class,
             BranchOfficeSeeder::class
         ]);
