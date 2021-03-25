@@ -65,6 +65,14 @@ class Product extends Base
         *   ),
         * )
     */
+    public static $filterable = [
+        'category.name',
+        'name',
+        'code',
+        'description',
+        'brand.name',
+        'brand.description'
+    ];
     /**
      * The attributes that are mass assignable.
      *
