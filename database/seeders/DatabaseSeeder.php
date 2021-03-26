@@ -4,6 +4,8 @@ namespace Database\Seeders;
 use DB;
 use Illuminate\Database\Seeder;
 use App\Helpers\RoleAcronym;
+use App\Models\Guide;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -26,10 +28,12 @@ class DatabaseSeeder extends Seeder
             CoinSeeder::class,
             OperationTypeSeeder::class,
             VoucherTypeSeeder::class,
-            BranchOfficeSeeder::class
+            BranchOfficeSeeder::class,
+            GuideSeeder::class,
+            SerieSeeder::class
         ]);
 
-        \App\Models\Product::factory(500)->create();
+        \App\Models\Product::factory(6000)->create();
 
         \App\Models\Client::factory(10)->create();
 

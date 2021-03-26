@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVoucherTypesTable extends Migration
+class CreateGuidesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateVoucherTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('voucher_types', function (Blueprint $table) {
+        Schema::create('guides', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description')->nullable();
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->timestamps();
@@ -31,6 +30,6 @@ class CreateVoucherTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('voucher_types');
+        Schema::dropIfExists('guides');
     }
 }
