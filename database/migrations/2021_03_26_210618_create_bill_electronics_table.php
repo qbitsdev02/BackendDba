@@ -16,15 +16,14 @@ class CreateBillElectronicsTable extends Migration
         Schema::create('bill_electronics', function (Blueprint $table) {
             $table->id();
             $table->foreignId('serie_id')->constrained();
-            $table->foreignId('client_id')->constrained();
+            $table->foreignId('client_id')->constrained('users');
             $table->foreignId('voucher_type_id')->constrained();
             $table->foreignId('branch_office_id')->constrained();
             $table->foreignId('operation_type_id')->constrained();
-            $table->foreignId('seller_id')->constrained();
+            $table->foreignId('seller_id')->constrained('users');
             $table->foreignId('coin_id')->constrained();
             $table->string('exchange_rate')->nullable();
             $table->string('igv')->nullable();
-            $table->timestamps('date_of_issue');
             $table->date('expiration_date')->nullable();
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
