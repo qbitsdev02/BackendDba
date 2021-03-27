@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\BillElectronic;
+use App\Services\BillElectronicService;
 
 class BillElectronicObserver
 {
@@ -14,11 +15,9 @@ class BillElectronicObserver
      */
     public function created(BillElectronic $billElectronic)
     {
-        if (request()->bill_electronic_details) {
-            $billElectronic
-                ->billElectronicDetails()
-                ->createMany(request()->bill_electronic_details);
-        }
+        $service = new BillElectronicService();
+        $service->saveBillElectronicDetails($billElectronic, request()->bill_electronic_details);
+        $service->saveBillElectronicPayments($billElectronic, request()->bill_electronic_payments);
     }
 
     /**

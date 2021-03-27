@@ -38,5 +38,5 @@ Route::resource('sellers', SellerController::class);
 Route::resource('bill-electronics', BillElectronicController::class);
 Route::resource('series', SerieController::class);
 Route::resource('payment-methods', PaymentMethodController::class);
-Route::resource('payment-destinations', SerieController::class);
+Route::resource('payment-destinations', PaymentDestinationController::class);
 // Route::resource('attribute-types-product', VehicleBrandController::class);

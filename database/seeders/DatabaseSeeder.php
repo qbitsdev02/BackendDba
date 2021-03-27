@@ -30,10 +30,12 @@ class DatabaseSeeder extends Seeder
             VoucherTypeSeeder::class,
             BranchOfficeSeeder::class,
             GuideSeeder::class,
-            SerieSeeder::class
+            SerieSeeder::class,
+            PaymentDestinationSeeder::class,
+            PaymentMethodSeeder::class
         ]);
 
-        \App\Models\Product::factory(6000)->create();
+        \App\Models\Product::factory(500)->create();
 
         \App\Models\Client::factory(10)->create();
 

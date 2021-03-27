@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\DB;
 class PaymentMethodSeeder extends Seeder
 {
     /**
@@ -13,6 +13,17 @@ class PaymentMethodSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('payment_methods')->insert([
+            [
+                'name' => 'Credito',
+                'description' => 'Credito',
+                'user_created_id' => 1
+            ],
+            [
+                'name' => 'Debito',
+                'description' => 'Debito',
+                'user_created_id' => 1
+            ]
+        ]);
     }
 }

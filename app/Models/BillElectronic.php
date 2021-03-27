@@ -85,6 +85,19 @@ use Database\Seeders\BillElectronicDetailSeeder;
  *       ),
  *       description="The bill electronic details"
  *   ),
+ *  @OA\Property(
+ *       property="bill_electronic_payments",
+ *       type="array",
+ *       required={"true"},
+ *       @OA\Items(
+ *           @OA\Property(property="payment_method_id", type="number"),
+ *           @OA\Property(property="payment_destination_id", type="number"),
+ *           @OA\Property(property="reference", type="string"),
+ *           @OA\Property(property="amount", type="string"),
+ *           @OA\Property(property="user_created_id", type="number")
+ *       ),
+ *       description="The bill electronic payments"
+ *   ),
  *   @OA\Property(
  *       property="user_created_id",
  *       type="number",
@@ -110,12 +123,13 @@ class BillElectronic extends Base
      * @var array
      */
     protected $with = [
-        'billElectronicDetails',
         'coin:id,name',
         'serie:id,name',
         'seller:id,name,last_name',
         'voucherType:id,name',
-        'branchOffice:id,name'
+        'branchOffice:id,name',
+        'billElectronicDetails',
+        'billElectronicPayments'
     ];
     /**
      * Get all of the billElectronicDetails for the BillElectronic
@@ -125,6 +139,15 @@ class BillElectronic extends Base
     public function billElectronicDetails()
     {
         return $this->hasMany(BillElectronicDetail::class);
+    }
+    /**
+     * Get all of the billElectronicDetails for the BillElectronic
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function billElectronicPayments()
+    {
+        return $this->hasMany(BillElectronicPayment::class);
     }
     /**
      * Get the coin that owns the BillElectronic
