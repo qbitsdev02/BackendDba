@@ -67,11 +67,15 @@ class Product extends Base
     */
     public static $filterable = [
         'category.name',
+        'category_id',
+        'brand_id',
         'name',
         'code',
         'description',
         'brand.name',
-        'brand.description'
+        'brand.description',
+        'attributeTypeProducts.attribute_type_id',
+        'attributeTypeProducts.description'
     ];
     /**
      * The attributes that are mass assignable.
@@ -95,7 +99,7 @@ class Product extends Base
     protected $with = [
         'category',
         'brand',
-        'attributeTypes:id,name'
+        'attributeTypeProducts'
     ];
     /**
      * Get the category that owns the Product
@@ -119,13 +123,10 @@ class Product extends Base
     /**
      * The attributeTypes that belong to the Product
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function attributeTypes()
+    public function attributeTypeProducts()
     {
-        return $this->belongsToMany(AttributeType::class)
-            ->withPivot([
-                'description'
-            ]);
+        return $this->hasMany(AttributeTypeProduct::class);
     }
 }

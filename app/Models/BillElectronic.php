@@ -98,6 +98,19 @@ use Database\Seeders\BillElectronicDetailSeeder;
  *       ),
  *       description="The bill electronic payments"
  *   ),
+ *  @OA\Property(
+ *       property="bill_electronic_guides",
+ *       type="array",
+ *       required={"true"},
+ *       @OA\Items(
+ *           @OA\Property(property="guide_id", type="number"),
+ *           @OA\Property(property="description", type="string"),
+ *           @OA\Property(property="observation", type="string"),
+ *           @OA\Property(property="pucharse_order", type="string"),
+ *           @OA\Property(property="user_created_id", type="number")
+ *       ),
+ *       description="The bill electronic payments"
+ *   ),
  *   @OA\Property(
  *       property="user_created_id",
  *       type="number",
@@ -129,7 +142,8 @@ class BillElectronic extends Base
         'voucherType:id,name',
         'branchOffice:id,name',
         'billElectronicDetails',
-        'billElectronicPayments'
+        'billElectronicPayments',
+        'billElectronicGuides'
     ];
     /**
      * Get all of the billElectronicDetails for the BillElectronic
@@ -139,6 +153,15 @@ class BillElectronic extends Base
     public function billElectronicDetails()
     {
         return $this->hasMany(BillElectronicDetail::class);
+    }
+    /**
+     * Get all of the billElectronicDetails for the BillElectronic
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function billElectronicGuides()
+    {
+        return $this->hasMany(BillElectronicGuide::class);
     }
     /**
      * Get all of the billElectronicDetails for the BillElectronic

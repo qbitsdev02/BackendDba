@@ -22,4 +22,13 @@ class BillElectronicService
                 ->createMany($billElectronicPayments);
         }
     }    
+
+    public function saveBillElectronicGuides(BillElectronic $billElectronic, $billElectronicGuides)
+    {
+        if ($billElectronicGuides) {
+            $billElectronic
+                ->billElectronicGuides()
+                ->createMany($billElectronicGuides);
+        }
+    }    
 }
