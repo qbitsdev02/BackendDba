@@ -35,4 +35,6 @@ Route::resource('voucher-types', VoucherTypeController::class);
 Route::resource('coins', CoinController::class);
 Route::resource('branch-offices', BranchOfficeController::class);
 Route::resource('sellers', SellerController::class);
+Route::resource('bill-electronics', BillElectronicController::class);
+Route::resource('series', SerieController::class);
 // Route::resource('attribute-types-product', VehicleBrandController::class);

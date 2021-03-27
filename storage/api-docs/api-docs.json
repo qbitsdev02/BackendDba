@@ -272,6 +272,210 @@
                 }
             }
         },
+        "/api/bill-electronics": {
+            "get": {
+                "tags": [
+                    "BillElectronic"
+                ],
+                "summary": "Show bill electronics",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "BillElectronic resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a BillElectronic resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "BillElectronic resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a BillElectronic resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a BillElectronic resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "BillElectronic resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "BillElectronic resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a BillElectronic resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show bill electronics all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "BillElectronic"
+                ],
+                "summary": "Creates a new bill electronics",
+                "description": "Creates a new bill electronics",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BillElectronic"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The BillElectronic resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/api/bill-electronics/{id}": {
+            "get": {
+                "tags": [
+                    "BillElectronic"
+                ],
+                "summary": "Get BillElectronic information",
+                "description": "Returns BillElectronic data",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "BillElectronic id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BillElectronic"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "BillElectronic"
+                ],
+                "summary": "Delete existing BillElectronic",
+                "description": "Deletes a record and returns no content",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "BillElectronic id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/api/branch-offices": {
             "get": {
                 "tags": [
@@ -3207,6 +3411,265 @@
                 }
             }
         },
+        "/api/series": {
+            "get": {
+                "tags": [
+                    "Serie"
+                ],
+                "summary": "Show series",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Serie resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Serie resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Serie resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Serie resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a Serie resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "Serie resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "Serie resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Serie resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show series all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Serie"
+                ],
+                "summary": "Creates a new series",
+                "description": "Creates a new series",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Serie"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Serie resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/api/series/{id}": {
+            "get": {
+                "tags": [
+                    "Serie"
+                ],
+                "summary": "Get Serie information",
+                "description": "Returns Serie data",
+                "operationId": "getSerieById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Serie id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Serie"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Serie"
+                ],
+                "summary": "Update existing Serie",
+                "description": "Returns updated Serie data",
+                "operationId": "updateSerie",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Serie id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Serie"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Serie"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Serie"
+                ],
+                "summary": "Delete existing Serie",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteProject",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Serie id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/api/users": {
             "get": {
                 "tags": [
@@ -3763,6 +4226,99 @@
                 },
                 "type": "object"
             },
+            "BillElectronic": {
+                "properties": {
+                    "serie_id": {
+                        "description": "The Bill Electronic serie_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "client_id": {
+                        "description": "The Bill Electronic client_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "voucher_type_id": {
+                        "description": "The Bill Electronic voucher_type_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "branch_office_id": {
+                        "description": "The Bill Electronic branch_office_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "operation_type_id": {
+                        "description": "The Bill Electronic operation_type_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "seller_id": {
+                        "description": "The Bill Electronic seller_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "coin_id": {
+                        "description": "The Bill Electronic coin_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "exchange_rate": {
+                        "description": "The Bill Electronic exchange_rate",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "igv": {
+                        "description": "The Bill Electronic igv",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "example": "12"
+                    },
+                    "expiration_date": {
+                        "description": "The Bill Electronic expiration_date",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": "2021-03-27"
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
             "BranchOffice": {
                 "properties": {
                     "name": {
@@ -4273,6 +4829,41 @@
                         "type": "object"
                     }
                 ]
+            },
+            "Serie": {
+                "properties": {
+                    "name": {
+                        "description": "The Serie name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "Description": {
+                        "description": "The Serie Description",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
             },
             "User": {
                 "properties": {
