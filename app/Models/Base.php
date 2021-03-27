@@ -19,8 +19,22 @@ class Base extends Model
 		if (!empty($data['dataFilter'])) {
             $fields = json_decode($data['dataFilter'], true);
             $fields = array_filter($fields, 'strlen');
-            $fields = Arr::only($fields, static::$filterable);
-            $q->where($fields);
+            $fields = Arr::except($fields, static::$filterable);
+			$q->where(function ($query) use ($fields) {
+				foreach ($fields as $field => $value) {
+					if (isset($fields[$field])) {
+						$contains = Str::of($field)->contains('.');
+						$relations = Str::of($field)->explode('.');
+						if ($contains) {
+							$query->whereHas(Str::camel($relations[0]), function ($q) use ($relations, $fields, $field) {
+								$q->where($relations[1], 'LIKE', "%$fields[$field]%");
+							});
+						} else {
+							$query->where($field, $fields[$field]);
+						}
+                    }
+                }
+            });
 		}
     }
 
@@ -38,7 +52,7 @@ class Base extends Model
 		if (!empty($data['dataSearch'])) {
 			$fields = json_decode($data['dataSearch'], true);
             $fields = array_filter($fields, 'strlen');
-            $fields = Arr::only($fields, static::$filterable);
+            $fields = Arr::except($fields, static::$filterable);
             $q->where(function ($query) use ($fields) {
 				foreach ($fields as $field => $value) {
 					if (isset($fields[$field])) {
