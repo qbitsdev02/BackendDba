@@ -146,7 +146,6 @@ class SerieController extends Controller
     {
         $serie = new Serie();
         $serie->name = $request->name;
-        $serie->description = $request->description;
         $serie->user_created_id = $request->user_created_id;
         $serie->save();
         return response()->json($serie, 201);
@@ -260,7 +259,6 @@ class SerieController extends Controller
     public function update(Request $request, Serie $serie)
     {
         $serie->name = $request->name;
-        $serie->description = $request->description;
         $serie->user_updated_id = $request->user_updated_id;
         $serie->update();
         return response()->json($serie, 200);

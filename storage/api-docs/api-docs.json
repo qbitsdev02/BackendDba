@@ -4240,42 +4240,42 @@
                         "required": [
                             "true"
                         ],
-                        "type": "string"
+                        "type": "number"
                     },
                     "voucher_type_id": {
                         "description": "The Bill Electronic voucher_type_id",
                         "required": [
                             "true"
                         ],
-                        "type": "string"
+                        "type": "number"
                     },
                     "branch_office_id": {
                         "description": "The Bill Electronic branch_office_id",
                         "required": [
                             "true"
                         ],
-                        "type": "string"
+                        "type": "number"
                     },
                     "operation_type_id": {
                         "description": "The Bill Electronic operation_type_id",
                         "required": [
                             "true"
                         ],
-                        "type": "string"
+                        "type": "number"
                     },
                     "seller_id": {
                         "description": "The Bill Electronic seller_id",
                         "required": [
                             "true"
                         ],
-                        "type": "string"
+                        "type": "number"
                     },
                     "coin_id": {
                         "description": "The Bill Electronic coin_id",
                         "required": [
                             "true"
                         ],
-                        "type": "string"
+                        "type": "number"
                     },
                     "exchange_rate": {
                         "description": "The Bill Electronic exchange_rate",
@@ -4299,6 +4299,39 @@
                         ],
                         "type": "number",
                         "example": "2021-03-27"
+                    },
+                    "bill_electronic_details": {
+                        "description": "The bill electronic details",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "product_id": {
+                                    "type": "number"
+                                },
+                                "amount": {
+                                    "type": "number"
+                                },
+                                "price": {
+                                    "type": "number"
+                                },
+                                "discount": {
+                                    "type": "number"
+                                },
+                                "igv": {
+                                    "type": "number"
+                                },
+                                "purchase_price": {
+                                    "type": "number"
+                                },
+                                "user_created_id": {
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        }
                     },
                     "user_created_id": {
                         "description": "The Users crete",
@@ -4834,13 +4867,6 @@
                 "properties": {
                     "name": {
                         "description": "The Serie name",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "Description": {
-                        "description": "The Serie Description",
                         "required": [
                             "true"
                         ],

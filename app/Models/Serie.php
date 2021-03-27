@@ -12,12 +12,6 @@ namespace App\Models;
  *       description="The Serie name"
  *   ),
  *   @OA\Property(
- *       property="Description",
- *       type="string",
- *       required={"true"},
- *       description="The Serie Description"
- *   ),
- *   @OA\Property(
  *       property="user_created_id",
  *       type="number",
  *       required={"true"},
