@@ -155,7 +155,7 @@ class ClientController extends Controller
         $client->email = $request->email;
         $client->phone = $request->phone;
         $client->document_type_id = $request->document_type_id;
-        $client->document_number = $request-document_number;
+        $client->document_number = $request->document_number;
         $client->phone_contact = $request->phone_contact;
         $client->full_name_contact = $request->full_name_contact;
         $client->client_type_id = $request->client_type_id;
