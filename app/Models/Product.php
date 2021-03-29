@@ -90,7 +90,7 @@ class Product extends Base
     protected $with = [
         'category',
         'brand',
-        'attributeTypeProducts'
+        'attributeTypes'
     ];
     /**
      * Get the category that owns the Product
