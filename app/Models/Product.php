@@ -120,4 +120,17 @@ class Product extends Base
     {
         return $this->hasMany(AttributeTypeProduct::class);
     }
+
+    /**
+     * The attributeTypes that belong to the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function attributeTypes()
+    {
+        return $this->belongsToMany(AttributeType::class)
+            ->withPivot([
+                'description'
+            ]);
+    }
 }
