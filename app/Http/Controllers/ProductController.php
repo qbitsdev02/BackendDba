@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class ProductController extends Controller
 {
     /**
@@ -269,6 +269,7 @@ class ProductController extends Controller
         $product->category_id = $request->category_id;
         $product->brand_id = $request->brand_id;
         $product->user_updated_id = $request->user_updated_id;
+        $product->updated_at = Carbon::now();
         $product->update();
         return response()->json($product, 200);
     }
