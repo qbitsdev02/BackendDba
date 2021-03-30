@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\User::factory(4)->create();
-        
+        \App\Models\Client::factory(10)->create();
         $this->call([
             RoleSeeder::class,
             RoleUserSeeder::class,
@@ -32,15 +32,8 @@ class DatabaseSeeder extends Seeder
             GuideSeeder::class,
             SerieSeeder::class,
             PaymentDestinationSeeder::class,
-            PaymentMethodSeeder::class
-        ]);
-
-        \App\Models\Product::factory(500)->create();
-
-        \App\Models\Client::factory(10)->create();
-
-        $this->call([
-            AttributeTypeProductSeeder::class
+            PaymentMethodSeeder::class,
+            ProductSeeder::class
         ]);
     }
 }

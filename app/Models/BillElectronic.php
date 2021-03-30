@@ -138,6 +138,7 @@ class BillElectronic extends Base
     protected $with = [
         'coin:id,name',
         'serie:id,name',
+        'client:id,name,last_name',
         'seller:id,name,last_name',
         'voucherType:id,name',
         'branchOffice:id,name',
@@ -145,6 +146,40 @@ class BillElectronic extends Base
         'billElectronicPayments',
         'billElectronicGuides'
     ];
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['total', 'total_igv', 'total_gravado'];
+    /**
+     * Attribute total
+     * @return total
+     */
+    public function getTotalAttribute()
+    {
+        return $this->total_igv + $this->total_gravado;
+    }
+    /**
+     * Attribute total
+     * @return total
+     */
+    public function getTotalIgvAttribute()
+    {
+        return $this->billElectronicDetails->sum(function($row) {
+            return ((($row->amount * $row->price) * $row->igv) / 100);
+        });
+    }
+    /**
+     * Attribute total
+     * @return total
+     */
+    public function getTotalGravadoAttribute()
+    {
+        return $this->billElectronicDetails->sum(function($row) {
+            return $row->amount * $row->price;
+        });
+    }
     /**
      * Get all of the billElectronicDetails for the BillElectronic
      *
@@ -202,6 +237,15 @@ class BillElectronic extends Base
         return $this->belongsTo(Seller::class);
     }
         
+    /**
+     * Get the client that owns the BillElectronic
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
     /**
      * Get the voucherType that owns the BillElectronic
      *

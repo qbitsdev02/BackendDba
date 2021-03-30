@@ -1,0 +1,20 @@
+[
+    {
+        "codpro": "0",
+        "supsec": "0",
+        "marveh": "HU",
+        "ma01coda": "HUYNDAY MOTORES",
+        "numsec": "3",
+        "tipveh": "HUYDAY",
+        "attributte_types": [
+            {"name": "MODELO", "value": "D4BA"},
+            {"name": "CMOTOR", "value": "4D56"},
+            {"name": "NUMCIL", "value": "4"},
+            {"name": "CILIND", "value": "4"},
+            {"name": "CYLIND", "value": "4"},
+            {"name": "DIAMET", "value": "91.1"},
+            {"name": "ANOINI", "value": "80"},
+            {"name": "ANOTER", "value": "1"}
+        ]
+    }
+]

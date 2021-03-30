@@ -17,9 +17,8 @@ class CreateAttributeTypeProductTable extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained();
             $table->foreignId('attribute_type_id')->constrained();
-            $table->string('description');
-            $table->unique(['product_id', 'attribute_type_id', 'description'], 'product_attr_des');
-            $table->foreignId('user_created_id')->constrained('users');
+            $table->string('description')->nullable();
+            $table->foreignId('user_created_id')->default(1)->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->timestamps();
             $table->softDeletes();
