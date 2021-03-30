@@ -22,7 +22,9 @@ class DatabaseSeeder extends Seeder
             ClientTypeSeeder::class,
             DocumentTypeSeeder::class
         ]);
+        
         \App\Models\Client::factory(10)->create();
+        
         $this->call([
             BrandSeeder::class,
             CategorySeeder::class,
@@ -35,7 +37,8 @@ class DatabaseSeeder extends Seeder
             SerieSeeder::class,
             PaymentDestinationSeeder::class,
             PaymentMethodSeeder::class,
-            ProductSeeder::class
+            ProductSeeder::class,
+            ProviderSeeder::class
         ]);
     }
 }

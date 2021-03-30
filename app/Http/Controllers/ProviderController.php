@@ -1,21 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Client;
 use Illuminate\Http\Request;
 use App\Helpers\RoleAcronym;
+use App\Models\Provider;
 
-class ClientController extends Controller
+class ProviderController extends Controller
 {
     /**
     * @OA\Get(
-    *     path="/api/clients",
-    *     summary="Show clients",
-    *     tags={"Client"},
+    *     path="/api/providers",
+    *     summary="Show providers",
+    *     tags={"Provider"},
     *     @OA\Response(
     *         response=200,
-    *         description="Show clients all."
+    *         description="Show providers all."
     *     ),
     *   @OA\Parameter(
     *       name="paginate",
@@ -32,23 +31,23 @@ class ClientController extends Controller
     *   @OA\Parameter(
     *       name="sortField",
     *       in="query",
-    *       description="client resource name",
+    *       description="Provider resource name",
     *       required=false,
     *       @OA\Schema(
     *           type="string",
     *           example="id",
-    *           description="The unique identifier of a client resource"
+    *           description="The unique identifier of a Provider resource"
     *       )
     *    ),
     *   @OA\Parameter(
     *       name="sortOrder",
     *       in="query",
-    *       description="client resource name",
+    *       description="Provider resource name",
     *       required=false,
     *       @OA\Schema(
     *           type="string",
     *           example="desc",
-    *           description="The unique identifier of a client resource"
+    *           description="The unique identifier of a Provider resource"
     *       )
     *    ),
     *   @OA\Parameter(
@@ -59,13 +58,13 @@ class ClientController extends Controller
     *           title="perPage",
     *           type="number",
     *           default="10",
-    *           description="The unique identifier of a client resource"
+    *           description="The unique identifier of a Provider resource"
     *       )
     *    ),
     *   @OA\Parameter(
     *       name="dataSearch",
     *       in="query",
-    *       description="client resource name",
+    *       description="Provider resource name",
     *       required=false,
     *       @OA\Schema(
     *           type="string",
@@ -75,11 +74,11 @@ class ClientController extends Controller
     *   @OA\Parameter(
     *       name="dataFilter",
     *       in="query",
-    *       description="client resource name",
+    *       description="Provider resource name",
     *       required=false,
     *       @OA\Schema(
     *           type="string",
-    *           description="The unique identifier of a client resource"
+    *           description="The unique identifier of a Provider resource"
     *       )
     *    ),
     *     @OA\Response(
@@ -95,11 +94,11 @@ class ClientController extends Controller
      */
     public function index(Request $request)
     {
-        $clients = Client::filters($request->all())
-            ->ofType(RoleAcronym::CLIENT)
+        $providers = Provider::filters($request->all())
+            ->ofType(RoleAcronym::PROVIDER)
             ->search($request->all());
 
-        return response()->json($clients, 200);
+        return response()->json($providers, 200);
     }
 
     /**
@@ -113,21 +112,21 @@ class ClientController extends Controller
     }
     /**
         * @OA\Post(
-        *   path="/api/clients",
-        *   summary="Creates a new client",
-        *   description="Creates a new client",
-        *   tags={"Client"},
+        *   path="/api/providers",
+        *   summary="Creates a new Provider",
+        *   description="Creates a new Provider",
+        *   tags={"Provider"},
         *   security={{"passport": {"*"}}},
         *   @OA\RequestBody(
         *       @OA\MediaType(
         *           mediaType="application/json",
-        *           @OA\Schema(ref="#/components/schemas/Client")
+        *           @OA\Schema(ref="#/components/schemas/Provider")
         *       )
         *   ),
         *   @OA\Response(
         *       @OA\MediaType(mediaType="application/json"),
         *       response=200,
-        *       description="The CLient resource created",
+        *       description="The Provider resource created",
         *   ),
         *   @OA\Response(
         *       @OA\MediaType(mediaType="application/json"),
@@ -149,30 +148,29 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        $client = new Client();
-        $client->name = $request->name;
-        $client->last_name = $request->last_name;
-        $client->email = $request->email;
-        $client->phone = $request->phone;
-        $client->document_type_id = $request->document_type_id;
-        $client->document_number = $request->document_number;
-        $client->phone_contact = $request->phone_contact;
-        $client->full_name_contact = $request->full_name_contact;
-        $client->client_type_id = $request->client_type_id;
-        $client->user_created_id = $request->user_created_id;
-        $client->save();
-        return response()->json($client, 201);
+        $provider = new Provider();
+        $provider->name = $request->name;
+        $provider->last_name = $request->last_name;
+        $provider->email = $request->email;
+        $provider->phone = $request->phone;
+        $provider->document_type_id = $request->document_type_id;
+        $provider->document_number = $request->document_number;
+        $provider->phone_contact = $request->phone_contact;
+        $provider->full_name_contact = $request->full_name_contact;
+        $provider->user_created_id = $request->user_created_id;
+        $provider->save();
+        return response()->json($provider, 201);
     }
     /**
      * @OA\Get(
-     *      path="/api/clients/{id}",
-     *      operationId="getClientById",
-     *      tags={"Client"},
-     *      summary="Get Client information",
-     *      description="Returns Client data",
+     *      path="/api/providers/{id}",
+     *      operationId="getProviderById",
+     *      tags={"Provider"},
+     *      summary="Get Provider information",
+     *      description="Returns Provider data",
      *      @OA\Parameter(
      *          name="id",
-     *          description="Client id",
+     *          description="Provider id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -182,7 +180,7 @@ class ClientController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/Client")
+     *          @OA\JsonContent(ref="#/components/schemas/Provider")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -201,34 +199,34 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Client  $client
+     * @param  \App\Models\Provider  $provider
      * @return \Illuminate\Http\Response
      */
-    public function show(Client $client)
+    public function show(Provider $provider)
     {
-        return response()->json($client, 200);
+        return response()->json($provider, 200);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Client  $client
+     * @param  \App\Models\Provider  $provider
      * @return \Illuminate\Http\Response
      */
-    public function edit(Client $client)
+    public function edit(Provider $provider)
     {
         //
     }
     /**
      * @OA\Put(
-     *      path="/api/clients/{id}",
-     *      operationId="updateClient",
-     *      tags={"Client"},
-     *      summary="Update existing Client",
-     *      description="Returns updated Client data",
+     *      path="/api/providers/{id}",
+     *      operationId="updateProvider",
+     *      tags={"Provider"},
+     *      summary="Update existing Provider",
+     *      description="Returns updated Provider data",
      *      @OA\Parameter(
      *          name="id",
-     *          description="Client id",
+     *          description="Provider id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -237,12 +235,12 @@ class ClientController extends Controller
      *      ),
      *      @OA\RequestBody(
      *          required=true,
-     *          @OA\JsonContent(ref="#/components/schemas/Client")
+     *          @OA\JsonContent(ref="#/components/schemas/Provider")
      *      ),
      *      @OA\Response(
      *          response=202,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/Client")
+     *          @OA\JsonContent(ref="#/components/schemas/Provider")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -266,34 +264,33 @@ class ClientController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Client  $client
+     * @param  \App\Models\Provider  $provider
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(Request $request, Provider $provider)
     {
-        $client->name = $request->name;
-        $client->last_name = $request->last_name;
-        $client->email = $request->email;
-        $client->phone = $request->phone;
-        $client->document_type_id = $request->document_type_id;
-        $client->document_number = $request->document_number;
-        $client->phone_contact = $request->phone_contact;
-        $client->full_name_contact = $request->full_name_contact;
-        $client->client_type_id = $request->client_type_id;
-        $client->user_updated_id = $request->user_updated_id;
-        $client->update();
-        return response()->json($client, 200);
+        $provider->name = $request->name;
+        $provider->last_name = $request->last_name;
+        $provider->email = $request->email;
+        $provider->phone = $request->phone;
+        $provider->document_type_id = $request->document_type_id;
+        $provider->document_number = $request->document_number;
+        $provider->phone_contact = $request->phone_contact;
+        $provider->full_name_contact = $request->full_name_contact;
+        $provider->user_updated_id = $request->user_updated_id;
+        $provider->update();
+        return response()->json($provider, 200);
     }
     /**
      * @OA\Delete(
-     *      path="/api/clients/{id}",
-     *      operationId="deleteClient",
-     *      tags={"Client"},
-     *      summary="Delete existing Client",
+     *      path="/api/providers/{id}",
+     *      operationId="deleteProvider",
+     *      tags={"Provider"},
+     *      summary="Delete existing Provider",
      *      description="Deletes a record and returns no content",
      *      @OA\Parameter(
      *          name="id",
-     *          description="Client id",
+     *          description="Provider id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -322,12 +319,12 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Client  $client
+     * @param  \App\Models\Provider  $provider
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client)
+    public function destroy(Provider $provider)
     {
-        $client->delete();
+        $provider->delete();
         return response()->json('succesfull delete', 200);
     }
 }

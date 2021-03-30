@@ -3670,6 +3670,265 @@
                 }
             }
         },
+        "/api/providers": {
+            "get": {
+                "tags": [
+                    "Provider"
+                ],
+                "summary": "Show providers",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Provider resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Provider resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Provider resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Provider resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a Provider resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "Provider resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "Provider resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Provider resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show providers all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Provider"
+                ],
+                "summary": "Creates a new Provider",
+                "description": "Creates a new Provider",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Provider"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Provider resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/api/providers/{id}": {
+            "get": {
+                "tags": [
+                    "Provider"
+                ],
+                "summary": "Get Provider information",
+                "description": "Returns Provider data",
+                "operationId": "getProviderById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Provider id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Provider"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Provider"
+                ],
+                "summary": "Update existing Provider",
+                "description": "Returns updated Provider data",
+                "operationId": "updateProvider",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Provider id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Provider"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Provider"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Provider"
+                ],
+                "summary": "Delete existing Provider",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteProvider",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Provider id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/api/roles": {
             "get": {
                 "tags": [
@@ -5687,6 +5946,83 @@
                         "description": "The Users update",
                         "required": [
                             "false"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "Provider": {
+                "properties": {
+                    "name": {
+                        "description": "The Provider name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "description": "The Provider last name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "full_name_contact": {
+                        "description": "The Provider full name contact",
+                        "required": [
+                            "false"
+                        ],
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "The Provider phone",
+                        "required": [
+                            "false"
+                        ],
+                        "type": "string"
+                    },
+                    "phone_contact": {
+                        "description": "The Provider phone contact",
+                        "required": [
+                            "false"
+                        ],
+                        "type": "string"
+                    },
+                    "document_type_id": {
+                        "description": "The document type",
+                        "required": [
+                            "false"
+                        ],
+                        "type": "number"
+                    },
+                    "document_number": {
+                        "description": "The document number",
+                        "required": [
+                            "false"
+                        ],
+                        "type": "number"
+                    },
+                    "email": {
+                        "description": "The Provider email",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "user_created_id": {
+                        "description": "The Provider crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Provider update",
+                        "required": [
+                            "true"
                         ],
                         "type": "number",
                         "example": 1

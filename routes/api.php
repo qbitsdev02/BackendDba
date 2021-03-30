@@ -40,4 +40,6 @@ Route::resource('series', SerieController::class);
 Route::resource('payment-methods', PaymentMethodController::class);
 Route::resource('payment-destinations', PaymentDestinationController::class);
 Route::resource('guides', GuideController::class);
+Route::resource('providers', ProviderController::class);
+Route::resource('purchases', PurchaseController::class);
 // Route::resource('attribute-types-product', VehicleBrandController::class);
