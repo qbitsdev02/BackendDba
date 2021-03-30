@@ -24,6 +24,8 @@ class ProductSeeder extends Seeder
             $productModel = new Product();
             $productModel->name = "{$value->codpro} {$value->marveh} {$value->ma01coda}";
             $productModel->code = $value->codpro;
+            $productModel->numsec = $value->numsec;
+            $productModel->supsec = $value->supsec;
             $productModel->description = "{$value->codpro} {$value->marveh} {$value->ma01coda}";
             $productModel->category_id = Category::where('name', Str::of($value->tipveh)->trim()->upper())->first()->id ?? null;
             $productModel->brand_id = Brand::where('name', Str::of($value->marveh)->trim()->upper())->first()->id ?? null;
