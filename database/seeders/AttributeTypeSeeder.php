@@ -30,11 +30,6 @@ class AttributeTypeSeeder extends Seeder
                 'user_created_id' => 1
             ],
             [
-                'name' => 'NUMCIL',
-                'description' => 'NUMCIL',
-                'user_created_id' => 1
-            ],
-            [
                 'name' => 'CILIND',
                 'description' => 'CILIND',
                 'user_created_id' => 1
@@ -60,8 +55,13 @@ class AttributeTypeSeeder extends Seeder
                 'user_created_id' => 1
             ],
             [
-                'name' => 'NUMSEC',
-                'description' => 'NUMSEC',
+                'name' => 'ALTERNANTE',
+                'description' => 'ALTERNANTE',
+                'user_created_id' => 1
+            ],
+            [
+                'name' => 'UM',
+                'description' => 'UM',
                 'user_created_id' => 1
             ]
         ]);
