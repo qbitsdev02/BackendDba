@@ -35,8 +35,12 @@ namespace App\Models;
  */
 class VoucherType extends Base
 {
-    public static $filterable = [
-        'name',
-        'description',
-    ];
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = [];
+
+    public static $filterable = [];
 }

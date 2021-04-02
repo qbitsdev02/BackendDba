@@ -15,7 +15,16 @@ class CreateCreditNoteDetailsTable extends Migration
     {
         Schema::create('credit_note_details', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('credit_note_id')->constrained();
+            $table->foreignId('product_id')->constrained();
+            $table->integer('amount');
+            $table->float('price');
+            $table->float('igv');
+            $table->float('purchase_price');
+            $table->foreignId('user_created_id')->constrained('users');
+            $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

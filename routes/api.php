@@ -48,4 +48,6 @@ Route::resource('guides', GuideController::class);
 Route::resource('providers', ProviderController::class);
 Route::resource('purchases', PurchaseController::class);
 Route::resource('quotations', QuotationController::class);
+Route::resource('voucher-type-notes', VoucherTypeNoteController::class);
+Route::resource('type-of-credit-notes', TypeOfCreditNoteController::class);
 // Route::resource('attribute-types-product', VehicleBrandController::class);
