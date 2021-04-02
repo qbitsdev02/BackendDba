@@ -2,21 +2,15 @@
 
 namespace App\Models;
 
-class BillElectronicPayment extends Base
+class QuotationPayment extends Base
 {
     /**
-     * The attributes that are mass assignable.
+     * The attributes that aren't mass assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'payment_method_id',
-        'payment_destination_id',
-        'reference',
-        'amount',
-        'user_created_id',
-        'user_updated_id'
-    ];
+    protected $guarded = [];
+
     /**
      * The attributes that are mass with.
      *
@@ -27,7 +21,7 @@ class BillElectronicPayment extends Base
         'paymentDestination:id,name'
     ];
     /**
-     * Get the paymentMethod that owns the BillElectronicPayment
+     * Get the paymentMethod that owns the QuotationDetail
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -36,7 +30,7 @@ class BillElectronicPayment extends Base
         return $this->belongsTo(PaymentMethod::class);
     }
     /**
-     * Get the paymentDestination that owns the BillElectronicPayment
+     * Get the paymentDestination that owns the QuotationDetail
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

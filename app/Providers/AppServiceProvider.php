@@ -7,10 +7,12 @@ use App\Models\Client;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Product;
 use App\Models\Provider;
+use App\Models\Quotation;
 use App\Observers\BillElectronicObserver;
 use App\Observers\ClientObserver;
 use App\Observers\ProductOberver;
 use App\Observers\ProviderObserver;
+use App\Observers\QuotationObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,5 +37,6 @@ class AppServiceProvider extends ServiceProvider
         BillElectronic::observe(BillElectronicObserver::class);
         Client::observe(ClientObserver::class);
         Provider::observe(ProviderObserver::class);
+        Quotation::observe(QuotationObserver::class);
     }
 }

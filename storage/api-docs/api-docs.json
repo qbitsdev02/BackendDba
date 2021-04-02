@@ -3929,6 +3929,210 @@
                 }
             }
         },
+        "/api/quotations": {
+            "get": {
+                "tags": [
+                    "Quotation"
+                ],
+                "summary": "Show bill electronics",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Quotation resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Quotation resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Quotation resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Quotation resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a Quotation resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "Quotation resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "Quotation resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Quotation resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show bill electronics all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Quotation"
+                ],
+                "summary": "Creates a new bill electronics",
+                "description": "Creates a new bill electronics",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Quotation"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Quotation resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/api/quotations/{id}": {
+            "get": {
+                "tags": [
+                    "Quotation"
+                ],
+                "summary": "Get Quotation information",
+                "description": "Returns Quotation data",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Quotation id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Quotation"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Quotation"
+                ],
+                "summary": "Delete existing Quotation",
+                "description": "Deletes a record and returns no content",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Quotation id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/api/roles": {
             "get": {
                 "tags": [
@@ -6021,6 +6225,169 @@
                     },
                     "user_updated_id": {
                         "description": "The Provider update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "Quotation": {
+                "properties": {
+                    "client_id": {
+                        "description": "The Quotation client_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "seller_id": {
+                        "description": "The Quotation seller_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "coin_id": {
+                        "description": "The Quotation coin_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "exchange_rate": {
+                        "description": "The Quotation exchange_rate",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "igv": {
+                        "description": "The Quotation igv",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "example": "12"
+                    },
+                    "expiration_date": {
+                        "description": "The Quotation expiration_date",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "example": "2021-03-27"
+                    },
+                    "validity_time": {
+                        "description": "The Quotation validity time",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "delivery_time": {
+                        "description": "The Quotation delivery time",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "shipping_address": {
+                        "description": "The Quotation shipping address",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "payment_method_id": {
+                        "description": "The Quotation Payment term",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "account_number": {
+                        "description": "The Quotation account number",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "quotation_details": {
+                        "description": "The Quotation details",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "product_id": {
+                                    "type": "number"
+                                },
+                                "amount": {
+                                    "type": "number"
+                                },
+                                "price": {
+                                    "type": "number"
+                                },
+                                "igv": {
+                                    "type": "number"
+                                },
+                                "purchase_price": {
+                                    "type": "number"
+                                },
+                                "extra_attribute": {
+                                    "type": "string"
+                                },
+                                "extra_attribute_description": {
+                                    "type": "string"
+                                },
+                                "user_created_id": {
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "quotation_payments": {
+                        "description": "The Quotation payments",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "payment_method_id": {
+                                    "type": "number"
+                                },
+                                "payment_destination_id": {
+                                    "type": "number"
+                                },
+                                "reference": {
+                                    "type": "string"
+                                },
+                                "amount": {
+                                    "type": "string"
+                                },
+                                "user_created_id": {
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
                         "required": [
                             "true"
                         ],

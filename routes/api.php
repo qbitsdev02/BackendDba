@@ -42,4 +42,5 @@ Route::resource('payment-destinations', PaymentDestinationController::class);
 Route::resource('guides', GuideController::class);
 Route::resource('providers', ProviderController::class);
 Route::resource('purchases', PurchaseController::class);
+Route::resource('quotations', QuotationController::class);
 // Route::resource('attribute-types-product', VehicleBrandController::class);
