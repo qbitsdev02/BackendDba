@@ -16,11 +16,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\User::factory(4)->create();
+        
         $this->call([
             RoleSeeder::class,
             RoleUserSeeder::class,
             ClientTypeSeeder::class,
-            DocumentTypeSeeder::class
+            DocumentTypeSeeder::class,
+            TypeOfCreditNoteSeeder::class,
+            VoucherTypeNoteSeeder::class
         ]);
         
         \App\Models\Client::factory(10)->create();
