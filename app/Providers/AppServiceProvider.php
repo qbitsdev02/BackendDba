@@ -13,7 +13,7 @@ use App\Observers\ClientObserver;
 use App\Observers\ProductOberver;
 use App\Observers\ProviderObserver;
 use App\Observers\QuotationObserver;
-
+use App\Models\Seller;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -38,5 +38,6 @@ class AppServiceProvider extends ServiceProvider
         Client::observe(ClientObserver::class);
         Provider::observe(ProviderObserver::class);
         Quotation::observe(QuotationObserver::class);
+        Seller::observe(SellerObserver::class);
     }
 }

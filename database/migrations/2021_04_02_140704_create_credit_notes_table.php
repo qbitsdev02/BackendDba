@@ -20,7 +20,6 @@ class CreateCreditNotesTable extends Migration
             $table->foreignId('type_of_credit_note_id')->constrained();
             $table->string('description')->nullable();
             $table->string('purchase_order')->nullable();
-            $table->foreignId('coin_id')->constrained();
             $table->string('exchange_rate')->nullable();
             $table->foreignId('seller_id')->constrained('users');
             $table->foreignId('user_created_id')->constrained('users');
