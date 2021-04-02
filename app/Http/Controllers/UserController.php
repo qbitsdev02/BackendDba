@@ -148,6 +148,7 @@ class UserController extends Controller
     {
         $user = new User();
         $user->name = $request->name;
+        $user->last_name = $request->last_name;
         $user->email = $request->email;
         $user->user_created_id = $request->user_created_id;
         $user->password = Hash::make($request->password);
@@ -265,6 +266,9 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->last_name = $request->last_name;
         $user->email = $request->email;
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+        }
         $user->user_updated_id = $request->user_updated_id;
         $user->update();
         return response()->json($user, 200);
