@@ -2030,6 +2030,100 @@
                 }
             }
         },
+        "/api/bill-electronic/{id}/note": {
+            "get": {
+                "tags": [
+                    "CreditNote"
+                ],
+                "summary": "Get Bill electronic information",
+                "description": "Returns Bill electronic data",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Bill electronic id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreditNote"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "CreditNote"
+                ],
+                "summary": "Update existing CreditNote",
+                "description": "Returns updated CreditNote data",
+                "operationId": "updateCreditNote",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Bill electronic id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreditNote"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreditNote"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/api/document-types": {
             "get": {
                 "tags": [
@@ -6410,6 +6504,99 @@
                             "true"
                         ],
                         "type": "string"
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "CreditNote": {
+                "properties": {
+                    "seller_id": {
+                        "description": "The Credit Note seller_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "voucher_type_note_id": {
+                        "description": "The Credit Note voucher_type_note_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "type_of_credit_note_id": {
+                        "description": "The Credit Note type_of_credit_note_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "description": {
+                        "description": "The Credit Note description",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "purchase_order": {
+                        "description": "The Credit Note purchase_order",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "exchange_rate": {
+                        "description": "The Credit Note exchange_rate",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "credit_note_details": {
+                        "description": "The Credit Note details",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "product_id": {
+                                    "type": "number"
+                                },
+                                "amount": {
+                                    "type": "number"
+                                },
+                                "price": {
+                                    "type": "number"
+                                },
+                                "igv": {
+                                    "type": "number"
+                                },
+                                "purchase_price": {
+                                    "type": "number"
+                                },
+                                "user_created_id": {
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        }
                     },
                     "user_created_id": {
                         "description": "The Users crete",

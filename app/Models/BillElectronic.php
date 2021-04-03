@@ -265,4 +265,14 @@ class BillElectronic extends Base
     {
         return $this->belongsTo(BranchOffice::class);
     }
+
+    /**
+     * Get the creditNote associated with the BillElectronic
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function creditNote()
+    {
+        return $this->hasOne(CreditNote::class);
+    }
 }

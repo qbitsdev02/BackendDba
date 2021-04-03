@@ -2,10 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class CreditNoteDetail extends Model
+class CreditNoteDetail extends Base
 {
-    use HasFactory;
+    protected $guarded = [];
+
+    /**
+     * Get the product for the CreditNoteDetail
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
+     */
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

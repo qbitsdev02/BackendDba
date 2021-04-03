@@ -14,6 +14,7 @@ use App\Observers\ProductOberver;
 use App\Observers\ProviderObserver;
 use App\Observers\QuotationObserver;
 use App\Models\Seller;
+use App\Observers\SellerObserver;
 class AppServiceProvider extends ServiceProvider
 {
     /**

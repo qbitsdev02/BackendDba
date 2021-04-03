@@ -30,6 +30,11 @@ Route::get('attribute-types', function () {
     $group = collect($products)->groupBy('Descripcion del Producto');
     return response()->json($products);
 });
+Route::prefix('bill-electronic')
+    ->group(function () {
+        Route::get('/{id}/note', 'CreditNoteController@index');
+        Route::post('/{id}/note', 'CreditNoteController@store');
+    });
 Route::resource('brands', BrandController::class);
 Route::resource('categories', CategoryController::class);
 Route::resource('client-types', ClientTypeController::class);
@@ -50,5 +55,3 @@ Route::resource('purchases', PurchaseController::class);
 Route::resource('quotations', QuotationController::class);
 Route::resource('voucher-type-notes', VoucherTypeNoteController::class);
 Route::resource('type-of-credit-notes', TypeOfCreditNoteController::class);
-Route::resource('bill-electronic/{id}/note', CreditNoteController::class);
-// Route::resource('attribute-types-product', VehicleBrandController::class);
