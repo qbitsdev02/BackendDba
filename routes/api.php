@@ -56,3 +56,5 @@ Route::resource('quotations', QuotationController::class);
 Route::resource('voucher-type-notes', VoucherTypeNoteController::class);
 Route::resource('type-of-credit-notes', TypeOfCreditNoteController::class);
 Route::resource('orders', OrderController::class);
+Route::resource('seller-commissions', SellerCommissionController::class);
+Route::resource('product-commissions', ProductCommissionController::class);
