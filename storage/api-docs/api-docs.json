@@ -6254,6 +6254,14 @@
                         ],
                         "type": "number",
                         "example": 1
+                    },
+                    "created_at": {
+                        "description": "date of issue",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "example": "2020-01-01 12:00:00"
                     }
                 },
                 "type": "object"

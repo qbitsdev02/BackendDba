@@ -125,6 +125,13 @@ use Database\Seeders\BillElectronicDetailSeeder;
  *       example=1,
  *       description="The Users update"
  *   ),
+ *    @OA\Property(
+ *       property="created_at",
+ *       type="string",
+ *       required={"true"},
+ *       example="2020-01-01 12:00:00",
+ *       description="date of issue"
+ *   ),
  * )
  */
 

@@ -155,6 +155,7 @@ class BillElectronicController extends Controller
         $billElectronic->igv = $request->igv;
         $billElectronic->coin_id = $request->coin_id;
         $billElectronic->exchange_rate = $request->exchange_rate;
+        $billElectronic->created_at = $request->created_at;
         $billElectronic->expiration_date = $request->expiration_date;
         $billElectronic->user_created_id = $request->user_created_id;
         $billElectronic->save();
