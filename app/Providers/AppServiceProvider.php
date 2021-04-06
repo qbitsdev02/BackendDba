@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\BillElectronic;
 use App\Models\Client;
+use App\Models\Order;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Product;
 use App\Models\Provider;
@@ -14,6 +15,7 @@ use App\Observers\ProductOberver;
 use App\Observers\ProviderObserver;
 use App\Observers\QuotationObserver;
 use App\Models\Seller;
+use App\Observers\OrderObserver;
 use App\Observers\SellerObserver;
 class AppServiceProvider extends ServiceProvider
 {
@@ -40,5 +42,6 @@ class AppServiceProvider extends ServiceProvider
         Provider::observe(ProviderObserver::class);
         Quotation::observe(QuotationObserver::class);
         Seller::observe(SellerObserver::class);
+        Order::observe(OrderObserver::class);
     }
 }
