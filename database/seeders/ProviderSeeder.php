@@ -13,10 +13,11 @@ class ProviderSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('role_user')->insert([
+        DB::table('branch_office_role_user')->insert([
             [
                 'user_id' => 4,
                 'role_id' => 5,
+                'branch_office_id' => 1,
                 'user_created_id' => 1
             ]
         ]);

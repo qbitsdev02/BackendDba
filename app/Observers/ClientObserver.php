@@ -18,6 +18,7 @@ class ClientObserver
         $client->roles()->attach(
             Role::where('acronym', RoleAcronym::CLIENT)->first()->id,
             [
+                'branch_office_id' => request()->branch_office_id ?? 1,
                 'user_created_id' => $client->user_created_id
             ]
         );

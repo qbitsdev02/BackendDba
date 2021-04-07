@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRoleUserTable extends Migration
+class CreateBranchOfficeRoleUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateRoleUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('role_user', function (Blueprint $table) {
+        Schema::create('branch_office_role_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('role_id')->constrained('roles');
+            $table->foreignId('role_id')->constrained();
             $table->foreignId('user_id')->constrained('users');
-            $table->unique(['role_id', 'user_id']);
+            $table->foreignId('branch_office_id')->constrained();
+            $table->unique(['role_id', 'user_id', 'branch_office_id'], 'role_branch_user__id');
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->timestamps();
@@ -32,6 +33,6 @@ class CreateRoleUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('role_user');
+        Schema::dropIfExists('branch_office_role_user');
     }
 }

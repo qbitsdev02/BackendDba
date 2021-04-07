@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(4)->create();
         
         $this->call([
+            BranchOfficeSeeder::class,
             RoleSeeder::class,
             RoleUserSeeder::class,
             ClientTypeSeeder::class,
@@ -35,7 +36,6 @@ class DatabaseSeeder extends Seeder
             CoinSeeder::class,
             OperationTypeSeeder::class,
             VoucherTypeSeeder::class,
-            BranchOfficeSeeder::class,
             GuideSeeder::class,
             SerieSeeder::class,
             PaymentDestinationSeeder::class,

@@ -166,7 +166,13 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id')
-            ->using(RoleUser::class);
+        return $this->belongsToMany(Role::class, 'branch_office_role_user', 'user_id', 'role_id')
+            ->using(BranchOfficeRoleUser::class);
+    }
+    
+    public function branchOffices()
+    {
+        return $this->belongsToMany(Role::class, 'branch_office_role_user', 'user_id', 'branch_office_id')
+            ->using(BranchOfficeRoleUser::class);
     }
 }
