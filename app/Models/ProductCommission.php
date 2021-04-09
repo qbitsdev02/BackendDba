@@ -54,6 +54,6 @@ class ProductCommission extends Base
      */
     public function product()
     {
-        return $this->belongsTo(Seller::class);
+        return $this->belongsTo(Product::class);
     }
 }
