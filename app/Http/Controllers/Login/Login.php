@@ -104,6 +104,6 @@ class Login extends BaseAuthResolver
             return $model->findForPassport($username);
         }
 
-        return $model->with('roles')->where('email', $username)->first();
+        return $model->with('roles', 'branchOffices')->where('email', $username)->first();
     }
 }
