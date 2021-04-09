@@ -8,6 +8,7 @@ use App\Models\Order;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Product;
 use App\Models\Provider;
+use App\Models\Purchase;
 use App\Models\Quotation;
 use App\Observers\BillElectronicObserver;
 use App\Observers\ClientObserver;
@@ -16,6 +17,7 @@ use App\Observers\ProviderObserver;
 use App\Observers\QuotationObserver;
 use App\Models\Seller;
 use App\Observers\OrderObserver;
+use App\Observers\PurchaseObserver;
 use App\Observers\SellerObserver;
 class AppServiceProvider extends ServiceProvider
 {
@@ -43,5 +45,6 @@ class AppServiceProvider extends ServiceProvider
         Quotation::observe(QuotationObserver::class);
         Seller::observe(SellerObserver::class);
         Order::observe(OrderObserver::class);
+        Purchase::observe(PurchaseObserver::class);
     }
 }
