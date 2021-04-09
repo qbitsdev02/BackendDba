@@ -10,19 +10,22 @@ class ProductHelper
     {
         return $product->branchOffices()
             ->distinct()
-            ->get();
-            // ->map(function(BranchOffice $branchOffice) use ($product) {
-            //     $product_sale = $branchOffice
-            //         ->billElectronics
-            //         //->where('billElectronicDetails.product_id', $product->id)
-            //         ->sum('billElectronicDetails.id');
+            ->get()
+            ->map(function(BranchOffice $branchOffice) use ($product) {
+                
+                $product_sale = $branchOffice
+                    ->billElectronics
+                    ->sum(function($row) use ($product) {
+                        return $row->billElectronicDetails
+                            ->where('product_id', $product->id)
+                            ->sum('amount');
+                    });
   
-            //     return [
-            //         'branch_office_id' => $branchOffice->id,
-            //         'branch_office_name' => $branchOffice->name,
-            //         'stock_product' => $branchOffice->purchaseDetails->sum('amount'),
-            //         'product_sale' => $product_sale
-            //     ];
-            // });
+                return [
+                    'branch_office_id' => $branchOffice->id,
+                    'branch_office_name' => $branchOffice->name,
+                    'stock_product' => $branchOffice->purchaseDetails->sum('amount') - $product_sale
+                ];
+            });
     }    
 }

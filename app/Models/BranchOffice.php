@@ -48,10 +48,6 @@ class BranchOffice extends Base
         'user_updated_id'
     ];
 
-    protected $with = [
-        'billElectronics'
-    ];
-
     public static $filterable = [];
     /**
      * Get all of the billElectronics for the BranchOffice

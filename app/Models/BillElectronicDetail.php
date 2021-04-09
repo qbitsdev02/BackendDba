@@ -27,9 +27,7 @@ class BillElectronicDetail extends Model
      *
      * @var array
      */
-    protected $with = [
-        'product:id,name'
-    ];
+    protected $with = [];
     /**
      * Get the product that owns the BillElectronicDetail
      *
