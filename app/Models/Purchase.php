@@ -30,12 +30,6 @@ namespace App\Models;
  *       description="The Purchase voucher_type_id"
  *   ),
  *   @OA\Property(
- *       property="branch_office_id",
- *       type="number",
- *       required={"true"},
- *       description="The Purchase branch_office_id"
- *   ),
- *   @OA\Property(
  *       property="operation_type_id",
  *       type="number",
  *       required={"true"},
@@ -65,7 +59,6 @@ namespace App\Models;
  *       property="coin_id",
  *       type="number",
  *       required={"true"},
- *       example="2021-03-27",
  *       description="The Purchase coin_id"
  *   ),
  *  @OA\Property(
@@ -120,9 +113,20 @@ namespace App\Models;
  *   ),
  * )
  */
-
 class Purchase extends Base
 {
+    /**
+     * The attributes that are mass with.
+     *
+     * @var array
+     */
+    protected $with = [
+        'coin:id,name',
+        'provider:id,name,last_name',
+        'voucherType:id,name',
+        'purchasePayments',
+        'purchaseDetails'
+    ];
     /**
      * Get all of the purchaseDetails for the Purchase
      *
@@ -140,5 +144,33 @@ class Purchase extends Base
     public function purchasePayments()
     {
         return $this->hasMany(PurchasePayment::class);
+    }
+    /**
+     * Get the coin that owns the BillElectronic
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function coin()
+    {
+        return $this->belongsTo(Coin::class);
+    }
+            
+    /**
+     * Get the provider that owns the BillElectronic
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function provider()
+    {
+        return $this->belongsTo(Provider::class);
+    }
+    /**
+     * Get the voucherType that owns the BillElectronic
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function voucherType()
+    {
+        return $this->belongsTo(VoucherType::class);
     }
 }

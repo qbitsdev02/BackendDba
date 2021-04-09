@@ -8069,13 +8069,6 @@
                         ],
                         "type": "number"
                     },
-                    "branch_office_id": {
-                        "description": "The Purchase branch_office_id",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "number"
-                    },
                     "operation_type_id": {
                         "description": "The Purchase operation_type_id",
                         "required": [
@@ -8111,8 +8104,7 @@
                         "required": [
                             "true"
                         ],
-                        "type": "number",
-                        "example": "2021-03-27"
+                        "type": "number"
                     },
                     "purchase_details": {
                         "description": "The Purchase details",
@@ -8168,33 +8160,6 @@
                                     "type": "string"
                                 },
                                 "amount": {
-                                    "type": "string"
-                                },
-                                "user_created_id": {
-                                    "type": "number"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "bill_electronic_guides": {
-                        "description": "The Purchase payments",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "array",
-                        "items": {
-                            "properties": {
-                                "guide_id": {
-                                    "type": "number"
-                                },
-                                "description": {
-                                    "type": "string"
-                                },
-                                "observation": {
-                                    "type": "string"
-                                },
-                                "pucharse_order": {
                                     "type": "string"
                                 },
                                 "user_created_id": {

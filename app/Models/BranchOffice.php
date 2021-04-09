@@ -48,9 +48,27 @@ class BranchOffice extends Base
         'user_updated_id'
     ];
 
-    public static $filterable = [
-        'name',
-        'description',
-        'brand.description'
+    protected $with = [
+        'billElectronics'
     ];
+
+    public static $filterable = [];
+    /**
+     * Get all of the billElectronics for the BranchOffice
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function billElectronics()
+    {
+        return $this->hasMany(BillElectronic::class);
+    }
+    /**
+     * Get all of the purchaseDetails for the BranchOffice
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function purchaseDetails()
+    {
+        return $this->hasMany(PurchaseDetail::class);
+    }
 }

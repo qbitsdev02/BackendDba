@@ -15,7 +15,7 @@ class CreatePurchasePaymentsTable extends Migration
     {
         Schema::create('purchase_payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('bill_electronic_id')->constrained();
+            $table->foreignId('purchase_id')->constrained();
             $table->foreignId('payment_method_id')->constrained();
             $table->foreignId('payment_destination_id')->constrained();
             $table->string('reference')->nullable();

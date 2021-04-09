@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Helpers\ProductHelper;
 
 class Product extends Base
 {
@@ -92,6 +93,18 @@ class Product extends Base
         'brand',
         'attributeTypes'
     ];
+
+    protected $appends = ['stock'];
+
+    /**
+     * The stock that belong to the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function getStockAttribute()
+    {
+        return ProductHelper::getStock($this);
+    }
     /**
      * Get the category that owns the Product
      *
@@ -120,7 +133,6 @@ class Product extends Base
     {
         return $this->hasMany(AttributeTypeProduct::class);
     }
-
     /**
      * The attributeTypes that belong to the Product
      *
@@ -132,5 +144,33 @@ class Product extends Base
             ->withPivot([
                 'description'
             ]);
+    }
+
+    /**
+     * Get all of the billElectronicDetails for the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function billElectronicDetails()
+    {
+        return $this->hasMany(BillElectronicDetail::class);
+    }
+
+    /**
+     * Get all of the purcharseDetails for the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function purcharseDetails()
+    {
+        return $this->hasMany(PurchaseDetail::class);
+    }
+
+        /**
+     * Get all of the deployments for the project.
+     */
+    public function branchOffices()
+    {
+        return $this->belongsToMany(BranchOffice::class, 'purchase_details', 'product_id', 'branch_office_id');
     }
 }

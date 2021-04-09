@@ -148,7 +148,6 @@ class BillElectronic extends Base
         'client:id,name,last_name',
         'seller:id,name,last_name',
         'voucherType:id,name',
-        'branchOffice:id,name',
         'billElectronicDetails',
         'billElectronicPayments',
         'billElectronicGuides'

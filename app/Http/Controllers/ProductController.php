@@ -95,6 +95,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $products = Product::filters($request->all())->search($request->all());
+
         return response()->json($products, 200);
     }
 
