@@ -30,7 +30,7 @@ class Base extends Model
 								$q->where($relations[1], 'LIKE', "%$fields[$field]%");
 							});
 						} else {
-							$query->where($field, $fields[$field]);
+							$query->where($field, 'LIKE', "%$fields[$field]%");
 						}
                     }
                 }
