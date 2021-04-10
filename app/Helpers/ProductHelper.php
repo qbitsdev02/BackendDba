@@ -24,6 +24,8 @@ class ProductHelper
                 return [
                     'branch_office_id' => $branchOffice->id,
                     'branch_office_name' => $branchOffice->name,
+                    'purchase_price' => $branchOffice->purchaseDetails->last()->purchase_price,
+                    'sale_price' => $branchOffice->purchaseDetails->last()->sale_price,
                     'stock_product' => $branchOffice->purchaseDetails->sum('amount') - $product_sale
                 ];
             });
