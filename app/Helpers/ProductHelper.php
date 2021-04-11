@@ -12,7 +12,7 @@ class ProductHelper
             ->distinct()
             ->get()
             ->map(function(BranchOffice $branchOffice) use ($product) {
-                
+
                 $product_sale = $branchOffice
                     ->billElectronics
                     ->sum(function($row) use ($product) {
@@ -20,7 +20,7 @@ class ProductHelper
                             ->where('product_id', $product->id)
                             ->sum('amount');
                     });
-  
+
                 return [
                     'branch_office_id' => $branchOffice->id,
                     'branch_office_name' => $branchOffice->name,
