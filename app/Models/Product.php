@@ -2,7 +2,8 @@
 
 namespace App\Models;
 use App\Helpers\ProductHelper;
-
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 class Product extends Base
 {
     /**
@@ -113,6 +114,33 @@ class Product extends Base
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function scopeFiltersProduct($q, array $data = array())
+	{
+		if (!empty($data['filterProduct'])) {
+            $dataField = json_decode($data['filterProduct'], true);
+            collect($dataField)
+                ->each(function ($fields) use($q) {
+                    $dataField = Arr::except($fields, static::$filterable);
+                    $dataField = array_filter($dataField, 'strlen');
+                    $q->where(function ($query) use ($dataField) {
+                        foreach ($dataField as $field => $value) {
+                            if (isset($dataField[$field])) {
+                                $contains = Str::of($field)->contains('.');
+                                $relations = Str::of($field)->explode('.');
+                                if ($contains) {
+                                    $query->whereHas(Str::camel($relations[0]), function ($q) use ($relations, $dataField, $field) {
+                                        $q->where($relations[1], 'like', "%$dataField[$field]%");
+                                    });
+                                } else {
+                                    $query->where($field, 'like', "%$dataField[$field]%");
+                                }
+                            }
+                        }
+                    });
+                });
+		}
     }
     /**
      * Get the brand that owns the Product

@@ -77,6 +77,16 @@ class ProductController extends Controller
     *           description="The unique identifier of a product resource"
     *       )
     *     ),
+    *     @OA\Parameter(
+    *       name="filterProduct",
+    *       in="query",
+    *       description="product resource name",
+    *       required=false,
+    *       @OA\Schema(
+    *           type="string",
+    *           description="The unique identifier of a product resource"
+    *       )
+    *     ),
     *     @OA\Response(
     *         response=200,
     *         description="Show Products all."
@@ -94,7 +104,9 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = Product::filters($request->all())->search($request->all());
+        $products = Product::filters($request->all())
+            ->filtersProduct($request->all())
+            ->search($request->all());
 
         return response()->json($products, 200);
     }

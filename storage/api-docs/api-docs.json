@@ -4133,6 +4133,16 @@
                             "description": "The unique identifier of a product resource",
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "filterProduct",
+                        "in": "query",
+                        "description": "product resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a product resource",
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
