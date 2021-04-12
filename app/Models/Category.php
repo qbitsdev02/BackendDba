@@ -48,8 +48,5 @@ class Category extends Base
         'user_updated_id'
     ];
 
-    public static $filterable = [
-        'name',
-        'description',
-    ];
+    public static $filterable = [];
 }
