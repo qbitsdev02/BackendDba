@@ -60,7 +60,7 @@
                     {
                         "name": "start_date",
                         "in": "query",
-                        "description": "AttributeType resource name",
+                        "description": "data of coin",
                         "required": false,
                         "schema": {
                             "description": "start date",
@@ -71,7 +71,7 @@
                     {
                         "name": "final_date",
                         "in": "query",
-                        "description": "AttributeType resource name",
+                        "description": "data of coin",
                         "required": false,
                         "schema": {
                             "description": "final date",
@@ -82,7 +82,7 @@
                     {
                         "name": "coin",
                         "in": "query",
-                        "description": "AttributeType resource name",
+                        "description": "data of coin",
                         "required": false,
                         "schema": {
                             "description": "coin price",
