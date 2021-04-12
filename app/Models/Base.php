@@ -27,10 +27,10 @@ class Base extends Model
 						$relations = Str::of($field)->explode('.');
 						if ($contains) {
 							$query->whereHas(Str::camel($relations[0]), function ($q) use ($relations, $fields, $field) {
-								$q->where($relations[1], 'LIKE', "%$fields[$field]%");
+								$q->where($relations[1], "%$fields[$field]%");
 							});
 						} else {
-							$query->where($field, $fields[$field]);
+							$query->where($field, "%$fields[$field]%");
 						}
                     }
                 }

@@ -24,12 +24,7 @@ Route::group([
 Route::resource('users', UserController::class);
 Route::resource('roles', RoleController::class);
 Route::resource('products', ProductController::class);
-Route::get('attribute-types', function () {
-    $jsonFile = file_get_contents(app_path('Data/newDataExample.json'));
-    $products = json_decode($jsonFile);
-    $group = collect($products)->groupBy('Descripcion del Producto');
-    return response()->json($products);
-});
+Route::resource('attribute-types', AttributeTypeController::class);
 Route::prefix('bill-electronic')
     ->group(function () {
         Route::get('/{id}/note', 'CreditNoteController@index');
