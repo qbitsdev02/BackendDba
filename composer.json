@@ -64,8 +64,7 @@
         ],
         "post-install-cmd": [
             "chmod -R 777 storage",
-            "php artisan passport:keys --force",
-            "apt-get install curl"
+            "php artisan passport:keys --force"
         ]
     }
 }
