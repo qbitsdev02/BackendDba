@@ -53,3 +53,4 @@ Route::resource('type-of-credit-notes', TypeOfCreditNoteController::class);
 Route::resource('orders', OrderController::class);
 Route::resource('seller-commissions', SellerCommissionController::class);
 Route::resource('product-commissions', ProductCommissionController::class);
+Route::get('ruc/{ruc}', 'ApiTerceroController@getRuc');

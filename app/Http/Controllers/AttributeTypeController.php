@@ -151,7 +151,7 @@ class AttributeTypeController extends Controller
         $attributeType->save();
         return response()->json($attributeType, 201);
     }
-/**
+    /**
      * @OA\Get(
      *      path="/api/attribute-types/{id}",
      *      operationId="getAttributeTypeById",
