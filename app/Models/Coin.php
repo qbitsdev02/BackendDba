@@ -47,10 +47,5 @@ namespace App\Models;
  */
 class Coin extends Base
 {
-    public static $filterable = [
-        'acronym',
-        'name',
-        'symbol',
-        'active'
-    ];
+    public static $filterable = [];
 }
