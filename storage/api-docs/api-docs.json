@@ -3247,6 +3247,59 @@
                     }
                 }
             },
+            "put": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Update existing order",
+                "description": "Returns updated order data",
+                "operationId": "updateorder",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "order id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Order"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Order"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "Order"
@@ -4753,6 +4806,59 @@
                     },
                     "403": {
                         "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Purchase"
+                ],
+                "summary": "Update existing purchases",
+                "description": "Returns updated purchases data",
+                "operationId": "updatepurchases",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "purchases id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Purchase"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Purchase"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
                     }
                 }
             },

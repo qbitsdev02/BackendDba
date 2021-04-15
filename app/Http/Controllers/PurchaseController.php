@@ -215,7 +215,49 @@ class PurchaseController extends Controller
     {
         //
     }
-
+    /**
+     * @OA\Put(
+     *      path="/api/purchases/{id}",
+     *      operationId="updatepurchases",
+     *      tags={"Purchase"},
+     *      summary="Update existing purchases",
+     *      description="Returns updated purchases data",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="purchases id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\JsonContent(ref="#/components/schemas/Purchase")
+     *      ),
+     *      @OA\Response(
+     *          response=202,
+     *          description="Successful operation",
+     *          @OA\JsonContent(ref="#/components/schemas/Purchase")
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found"
+     *      )
+     * )
+     */
     /**
      * Update the specified resource in storage.
      *
@@ -225,7 +267,20 @@ class PurchaseController extends Controller
      */
     public function update(Request $request, Purchase $purchase)
     {
-        //
+        $purchase->serie = $request->serie;
+        $purchase->number = $request->number;
+        $purchase->provider_id = $request->provider_id;
+        $purchase->voucher_type_id = $request->voucher_type_id;
+        $purchase->operation_type_id = $request->operation_type_id;
+        $purchase->coin_id = $request->coin_id;
+        $purchase->igv = $request->igv;
+        $purchase->exchange_rate = $request->exchange_rate;
+        $purchase->created_at = $request->created_at;
+        $purchase->expiration_date = $request->expiration_date;
+        $purchase->user_created_id = $request->user_created_id;
+        $purchase->updated_at = \Carbon\Carbon::now();
+        $purchase->update();
+        return response()->json($purchase, 200);
     }
     /**
      * @OA\Delete(

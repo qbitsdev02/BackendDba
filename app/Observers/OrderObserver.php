@@ -25,7 +25,8 @@ class OrderObserver
      */
     public function updated(Order $order)
     {
-        //
+        $order->orderDetails()->delete();
+        $order->orderDetails()->createMany(request()->order_details);
     }
 
     /**

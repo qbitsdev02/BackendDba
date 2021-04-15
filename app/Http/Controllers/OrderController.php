@@ -214,7 +214,49 @@ class OrderController extends Controller
     {
         //
     }
-
+    /**
+     * @OA\Put(
+     *      path="/api/orders/{id}",
+     *      operationId="updateorder",
+     *      tags={"Order"},
+     *      summary="Update existing order",
+     *      description="Returns updated order data",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="order id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\JsonContent(ref="#/components/schemas/Order")
+     *      ),
+     *      @OA\Response(
+     *          response=202,
+     *          description="Successful operation",
+     *          @OA\JsonContent(ref="#/components/schemas/Order")
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Resource Not Found"
+     *      )
+     * )
+     */
     /**
      * Update the specified resource in storage.
      *
@@ -224,7 +266,19 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        $order->client_id = $request->client_id;
+        $order->seller_id = $request->seller_id;
+        $order->coin_id = $request->coin_id;
+        $order->exchange_rate = $request->exchange_rate;
+        $order->address = $request->address;
+        $order->observation = $request->observation;
+        $order->delivery_date = $request->delivery_date;
+        $order->payment_method_id = $request->payment_method_id;
+        $order->user_created_id = $request->user_created_id;
+        $order->created_at = $request->created_at;
+        $order->updated_at = \Carbon\Carbon::now();
+        $order->update();
+        return response()->json($order, 201);
     }
     /**
      * @OA\Delete(
