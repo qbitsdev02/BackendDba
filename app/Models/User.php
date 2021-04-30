@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 /**
  * @OA\Schema(
@@ -98,7 +99,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
     /**
      * Scope a query to return users of a type.
      *
@@ -114,7 +115,7 @@ class User extends Authenticatable
             });
     }
 
-    public static $filterable = ["name", "last_name", "email"];
+    public static $filterable = [];
 	/**
 	 * Search function of fields in the database.
 	 *
@@ -129,8 +130,22 @@ class User extends Authenticatable
 		if (!empty($data['dataFilter'])) {
             $fields = json_decode($data['dataFilter'], true);
             $fields = array_filter($fields, 'strlen');
-            $fields = Arr::only($fields, static::$filterable);
-            $q->where($fields);
+            $fields = Arr::except($fields, static::$filterable);
+			$q->where(function ($query) use ($fields) {
+				foreach ($fields as $field => $value) {
+					if (isset($fields[$field])) {
+						$contains = Str::of($field)->contains('.');
+						$relations = Str::of($field)->explode('.');
+						if ($contains) {
+							$query->whereHas(Str::camel($relations[0]), function ($q) use ($relations, $fields, $field) {
+								$q->where($relations[1], 'like', "%$fields[$field]%");
+							});
+						} else {
+							$query->where($field, 'like', "%$fields[$field]%");
+						}
+                    }
+                }
+            });
 		}
     }
 
@@ -146,17 +161,30 @@ class User extends Authenticatable
 	public static function scopeSearch($q, array $data = array())
 	{
 		if (!empty($data['dataSearch'])) {
-            $fields = json_decode($data['dataSearch'], true);
+			$fields = json_decode($data['dataSearch'], true);
             $fields = array_filter($fields, 'strlen');
-            $fields = Arr::only($fields, static::$filterable);
-            $q->where(function ($query) use ($fields, $data) {
-                foreach ($fields as $field => $value) {
-                    if (isset($fields[$field])) {
-                        $query->orWhere($field, 'LIKE', "%$fields[$field]%")->orderBy($data['sortField'], $data['sortOrder']);
+            $fields = Arr::except($fields, static::$filterable);
+            $q->where(function ($query) use ($fields) {
+				foreach ($fields as $field => $value) {
+					if (isset($fields[$field])) {
+						$contains = Str::of($field)->contains('.');
+						$relations = Str::of($field)->explode('.');
+						if ($contains) {
+							$query->orWhereHas(Str::camel($relations[0]), function ($q) use ($relations, $fields, $field) {
+								$q->where($relations[1], 'LIKE', "%$fields[$field]%");
+							});
+						} else {
+							$query->orWhere($field, 'LIKE', "%$fields[$field]%");
+						}
                     }
                 }
             });
 		}
+
+        if(isset($data['sortField']) && isset($data['sortOrder'])) {
+            $q->orderBy($data['sortField'], $data['sortOrder']);
+        }
+
 		if (isset($data['paginate']) && $data['paginate'] === "true") {
 			return $q->paginate($data['perPage']);
 		} else {
@@ -169,7 +197,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class, 'branch_office_role_user', 'user_id', 'role_id')
             ->using(BranchOfficeRoleUser::class);
     }
-    
+
     public function branchOffices()
     {
         return $this->belongsToMany(Role::class, 'branch_office_role_user', 'user_id', 'branch_office_id')

@@ -108,8 +108,8 @@ class Order extends Base
      */
     protected $with = [
         'coin:id,name',
-        'client:id,name,last_name',
-        'seller:id,name,last_name',
+        'client:id,name,last_name,document_number',
+        'seller:id,name,last_name,document_number',
         'orderDetails'
     ];
     /**
@@ -120,7 +120,7 @@ class Order extends Base
     public function coin()
     {
         return $this->belongsTo(Coin::class);
-    }   
+    }
     /**
      * Get the seller that owns the Order
      *
@@ -130,7 +130,7 @@ class Order extends Base
     {
         return $this->belongsTo(Seller::class);
     }
-        
+
     /**
      * Get the client that owns the Order
      *
