@@ -4,7 +4,6 @@ namespace App\Models;
 class PurchaseDetail extends Base
 {
     protected $guarded = [];
-
     /**
      * Get the product that owns the PurchaseDetail
      *

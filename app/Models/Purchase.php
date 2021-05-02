@@ -125,7 +125,7 @@ class Purchase extends Base
         'provider:id,name,last_name',
         'voucherType:id,name',
         'purchasePayments',
-        'purchaseDetails'
+        'purchaseDetails.product:id,name'
     ];
     /**
      * Get all of the purchaseDetails for the Purchase
