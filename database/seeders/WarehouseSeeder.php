@@ -4,9 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
-class UserSeeder extends Seeder
+class WarehouseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,13 +14,11 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')
+        DB::table('warehouses')
             ->insert([
                 [
-                    'name' => 'Demo',
-                    'last_name' => 'Demo',
-                    'email' => 'demo@gmail.com',
-                    'password' => Hash::make('123456'),
+                    'branch_office_id' => 1,
+                    'description' => 'Almacen principal',
                     'user_created_id' => 1
                 ]
             ]);

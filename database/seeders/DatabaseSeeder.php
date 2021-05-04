@@ -41,7 +41,8 @@ class DatabaseSeeder extends Seeder
             PaymentDestinationSeeder::class,
             PaymentMethodSeeder::class,
             ProductSeeder::class,
-            ProviderSeeder::class
+            ProviderSeeder::class,
+            WarehouseSeeder::class
         ]);
     }
 }
