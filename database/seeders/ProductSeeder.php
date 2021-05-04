@@ -20,7 +20,7 @@ class ProductSeeder extends Seeder
     public function run()
     {
         $jsonFile = file_get_contents(app_path('Data/newDada.json'));
-        $products = json_decode($jsonFile);
+        $products = json_decode($jsonFile)->data;
         foreach ($products as $produc => $value) {
             $productModel = new Product();
             $productModel->name = $value->ma01coda;
