@@ -1,6 +1,7 @@
 <?php
 namespace App\Helpers;
 
+use App\Models\BillElectronicDetail;
 use App\Models\Product;
 use App\Models\Warehouse;
 
@@ -12,7 +13,7 @@ class ProductHelper
             ->distinct()
             ->get()
             ->map(function(Warehouse $warehouse) use ($product) {
-                $product_sale = $product->billElectronicDetails->sum('amount');
+                $product_sale = self::billProduct($product, $warehouse);
                 $warehouseProductEntry = self::inventory($product, 'entry');
                 $warehouseProductExit = self::inventory($product, 'exit');
 
@@ -32,6 +33,16 @@ class ProductHelper
             ->sum(function ($inventory) use($movement_type) {
                 if ($inventory->movement_type === $movement_type) {
                     return $inventory->amount;
+                }
+            });
+    }
+
+    private static function billProduct(Product $product, Warehouse $warehouse)
+    {
+        return $product->billElectronicDetails
+            ->sum(function (BillElectronicDetail $billElectronicDetail) use($warehouse) {
+                if ($billElectronicDetail->bill->branch_office_id === $warehouse->branch_office_id) {
+                    return $billElectronicDetail->amount;
                 }
             });
     }
