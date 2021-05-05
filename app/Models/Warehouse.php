@@ -46,4 +46,22 @@ class Warehouse extends Base
     {
         return $this->belongsTo(BranchOffice::class);
     }
+    /**
+     * Get all of the purchaseDetails for the Warehouse
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function purchaseDetails()
+    {
+        return $this->hasMany(PurchaseDetail::class);
+    }
+    /**
+     * Get all of the inventories for the Warehouse
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function inventories()
+    {
+        return $this->hasMany(Inventory::class);
+    }
 }

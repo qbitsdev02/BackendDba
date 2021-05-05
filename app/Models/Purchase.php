@@ -67,7 +67,7 @@ namespace App\Models;
  *       required={"true"},
  *       @OA\Items(
  *           @OA\Property(property="product_id", type="number"),
- *           @OA\Property(property="branch_office_id", type="number"),
+ *           @OA\Property(property="warehouse_id", type="number"),
  *           @OA\Property(property="amount", type="number"),
  *           @OA\Property(property="sale_price", type="number"),
  *           @OA\Property(property="purchase_price", type="number"),
@@ -154,7 +154,7 @@ class Purchase extends Base
     {
         return $this->belongsTo(Coin::class);
     }
-            
+
     /**
      * Get the provider that owns the BillElectronic
      *

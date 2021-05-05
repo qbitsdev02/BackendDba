@@ -54,5 +54,6 @@ Route::resource('orders', OrderController::class);
 Route::resource('seller-commissions', SellerCommissionController::class);
 Route::resource('product-commissions', ProductCommissionController::class);
 Route::resource('warehouses', WarehouseController::class);
+Route::resource('inventories',InventoryController::class);
 Route::get('ruc/{ruc}', 'ApiTerceroController@getRuc');
 Route::get('exchange-rate/', 'ApiTerceroController@exchangeRate');

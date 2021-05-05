@@ -109,34 +109,34 @@ class WarehouseController extends Controller
         //
     }
     /**
-        * @OA\Post(
-        *   path="/api/warehouses",
-        *   summary="Creates a new warehouses",
-        *   description="Creates a new warehouses",
-        *   tags={"Warehouse"},
-        *   security={{"passport": {"*"}}},
-        *   @OA\RequestBody(
-        *       @OA\MediaType(
-        *           mediaType="application/json",
-        *           @OA\Schema(ref="#/components/schemas/Warehouse")
-        *       )
-        *   ),
-        *   @OA\Response(
-        *       @OA\MediaType(mediaType="application/json"),
-        *       response=200,
-        *       description="The Warehouse resource created",
-        *   ),
-        *   @OA\Response(
-        *       @OA\MediaType(mediaType="application/json"),
-        *       response=401,
-        *       description="Unauthenticated."
-        *   ),
-        *   @OA\Response(
-        *       @OA\MediaType(mediaType="application/json"),
-        *       response="default",
-        *       description="an ""unexpected"" error",
-        *   )
-        * )
+     * @OA\Post(
+     *   path="/api/warehouses",
+     *   summary="Creates a new warehouses",
+     *   description="Creates a new warehouses",
+     *   tags={"Warehouse"},
+     *   security={{"passport": {"*"}}},
+     *   @OA\RequestBody(
+     *       @OA\MediaType(
+     *           mediaType="application/json",
+     *           @OA\Schema(ref="#/components/schemas/Warehouse")
+     *       )
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response=200,
+     *       description="The Warehouse resource created",
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response=401,
+     *       description="Unauthenticated."
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response="default",
+     *       description="an ""unexpected"" error",
+     *   )
+     * )
     */
     /**
      * Store a newly created resource in storage.
