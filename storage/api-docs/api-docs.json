@@ -8636,6 +8636,13 @@
                         ],
                         "type": "string"
                     },
+                    "residence_condition": {
+                        "description": "The Provider full name residence_condition",
+                        "required": [
+                            "false"
+                        ],
+                        "type": "string"
+                    },
                     "phone": {
                         "description": "The Provider phone",
                         "required": [

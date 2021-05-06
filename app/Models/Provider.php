@@ -42,6 +42,12 @@ class Provider extends User
      *       description="The Provider full name contact"
      *   ),
      *   @OA\Property(
+     *       property="residence_condition",
+     *       type="string",
+     *       required={"false"},
+     *       description="The Provider full name residence_condition"
+     *   ),
+     *   @OA\Property(
      *       property="phone",
      *       type="string",
      *       required={"false"},
