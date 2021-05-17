@@ -17,6 +17,8 @@ class CreateUsersTable extends Migration
 
             // Field Client
             $table->string('phone')->nullable();
+            $table->string('residence_condition')->nullable();
+            $table->string('status')->nullable();
             $table->string('phone_contact')->nullable();
             $table->string('full_name_contact')->nullable();
             $table->foreignId('client_type_id')->nullable()->constrained();

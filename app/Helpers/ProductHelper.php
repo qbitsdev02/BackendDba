@@ -1,33 +1,51 @@
 <?php
 namespace App\Helpers;
 
+use App\Models\BillElectronicDetail;
 use App\Models\Product;
-use App\Models\BranchOffice;
+use App\Models\Warehouse;
 
 class ProductHelper
 {
     public static function getStock(Product $product)
     {
-        return $product->branchOffices()
+        return $product
+            ->warehouses()
             ->distinct()
             ->get()
-            ->map(function(BranchOffice $branchOffice) use ($product) {
-
-                $product_sale = $branchOffice
-                    ->billElectronics
-                    ->sum(function($row) use ($product) {
-                        return $row->billElectronicDetails
-                            ->where('product_id', $product->id)
-                            ->sum('amount');
-                    });
+            ->map(function(Warehouse $warehouse) use ($product) {
+                $product_sale = self::billProduct($product, $warehouse);
+                $warehouseProductEntry = self::inventory($product, 'entry');
+                $warehouseProductExit = self::inventory($product, 'exit');
 
                 return [
-                    'branch_office_id' => $branchOffice->id,
-                    'branch_office_name' => $branchOffice->name,
-                    'purchase_price' => $branchOffice->purchaseDetails->last()->purchase_price,
-                    'sale_price' => $branchOffice->purchaseDetails->last()->sale_price,
-                    'stock_product' => $branchOffice->purchaseDetails->sum('amount') - $product_sale
+                    'warehouse_id' => $warehouse->id,
+                    'branch_office_id' => $warehouse->branch_office_id,
+                    'warehouse_name' => "{$warehouse->description} - {$warehouse->branchOffice->name}",
+                    'purchase_price' => $warehouse->purchaseDetails->last()->purchase_price,
+                    'sale_price' => $warehouse->purchaseDetails->last()->sale_price,
+                    'stock_product' => ($warehouse->purchaseDetails->sum('amount') + $warehouseProductEntry) - ($product_sale + $warehouseProductExit)
                 ];
             });
-    }    
+    }
+
+    private static function inventory(Product $product, $movement_type)
+    {
+        return $product->inventories
+            ->sum(function ($inventory) use($movement_type) {
+                if ($inventory->movement_type === $movement_type) {
+                    return $inventory->amount;
+                }
+            });
+    }
+
+    private static function billProduct(Product $product, Warehouse $warehouse)
+    {
+        return $product->billElectronicDetails
+            ->sum(function (BillElectronicDetail $billElectronicDetail) use($warehouse) {
+                if (isset($billElectronicDetail->billElectronic->branch_office_id) && $billElectronicDetail->billElectronic->branch_office_id === $warehouse->branch_office_id) {
+                    return $billElectronicDetail->amount;
+                }
+            });
+    }
 }

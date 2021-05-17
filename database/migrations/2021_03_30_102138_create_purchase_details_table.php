@@ -17,7 +17,7 @@ class CreatePurchaseDetailsTable extends Migration
             $table->id();
             $table->foreignId('purchase_id')->constrained();
             $table->foreignId('product_id')->constrained();
-            $table->foreignId('branch_office_id')->constrained();
+            $table->foreignId('warehouse_id')->constrained();
             $table->integer('amount');
             $table->float('sale_price');
             $table->float('purchase_price');

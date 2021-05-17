@@ -85,19 +85,6 @@ class Product extends Base
         'user_updated_id'
     ];
     /**
-     * The attributes that are mass with.
-     *
-     * @var array
-     */
-    protected $with = [
-        'category',
-        'brand',
-        'attributeTypes'
-    ];
-
-    protected $appends = ['stock'];
-
-    /**
      * The stock that belong to the Product
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -193,12 +180,20 @@ class Product extends Base
     {
         return $this->hasMany(PurchaseDetail::class);
     }
-
-        /**
+    /**
+     * Get all of the purcharseDetails for the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function inventories()
+    {
+        return $this->hasMany(Inventory::class);
+    }
+    /**
      * Get all of the deployments for the project.
      */
-    public function branchOffices()
+    public function warehouses()
     {
-        return $this->belongsToMany(BranchOffice::class, 'purchase_details', 'product_id', 'branch_office_id');
+        return $this->belongsToMany(Warehouse::class, 'purchase_details', 'product_id', 'warehouse_id');
     }
 }

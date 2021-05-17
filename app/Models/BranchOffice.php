@@ -58,13 +58,4 @@ class BranchOffice extends Base
     {
         return $this->hasMany(BillElectronic::class);
     }
-    /**
-     * Get all of the purchaseDetails for the BranchOffice
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function purchaseDetails()
-    {
-        return $this->hasMany(PurchaseDetail::class);
-    }
 }

@@ -2736,6 +2736,215 @@
                 }
             }
         },
+        "/api/inventories": {
+            "get": {
+                "tags": [
+                    "Inventory"
+                ],
+                "summary": "Show inventories",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Inventory resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Inventory resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Inventory resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Inventory resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a Inventory resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "Inventory resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "Inventory resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Inventory resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show inventories all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Inventory"
+                ],
+                "summary": "Creates a new inventories",
+                "description": "Creates a new inventories",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Inventory"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Inventory resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/api/kardex-reports": {
+            "get": {
+                "tags": [
+                    "KardexReport"
+                ],
+                "summary": "Show kardaex report",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "KardexReport resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a KardexReport resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "KardexReport resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a KardexReport resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a KardexReport resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "KardexReport resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "KardexReport resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a KardexReport resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show kardaex report all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            }
+        },
         "/api/authentication/login": {
             "post": {
                 "tags": [
@@ -7175,6 +7384,265 @@
                     }
                 }
             }
+        },
+        "/api/warehouses": {
+            "get": {
+                "tags": [
+                    "Warehouse"
+                ],
+                "summary": "Show warehouses",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Warehouse resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Warehouse resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Warehouse resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Warehouse resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a Warehouse resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "Warehouse resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "Warehouse resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Warehouse resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show warehouses all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Warehouse"
+                ],
+                "summary": "Creates a new warehouses",
+                "description": "Creates a new warehouses",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Warehouse"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Warehouse resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/api/warehouses/{id}": {
+            "get": {
+                "tags": [
+                    "Warehouse"
+                ],
+                "summary": "Get Warehouse information",
+                "description": "Returns Warehouse data",
+                "operationId": "getWarehouseById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Warehouse id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Warehouse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Warehouse"
+                ],
+                "summary": "Update existing Warehouse",
+                "description": "Returns updated Warehouse data",
+                "operationId": "updateWarehouse",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Warehouse id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Warehouse"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Warehouse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Warehouse"
+                ],
+                "summary": "Delete existing Warehouse",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteProject",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Warehouse id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -7824,6 +8292,62 @@
                 },
                 "type": "object"
             },
+            "Inventory": {
+                "properties": {
+                    "amount": {
+                        "description": "The Inventory amount",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "movement_type": {
+                        "description": "The Inventory movement_type, value example ['Entry', 'Exit']",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "warehouse_id": {
+                        "description": "The Inventory warehouse_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "reason_for_transfer_id": {
+                        "description": "The Inventory reason_for_transfer_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "product_id": {
+                        "description": "The Inventory product_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
             "OperationType": {
                 "properties": {
                     "name": {
@@ -8195,6 +8719,13 @@
                         ],
                         "type": "string"
                     },
+                    "residence_condition": {
+                        "description": "The Provider full name residence_condition",
+                        "required": [
+                            "false"
+                        ],
+                        "type": "string"
+                    },
                     "phone": {
                         "description": "The Provider phone",
                         "required": [
@@ -8327,7 +8858,7 @@
                                 "product_id": {
                                     "type": "number"
                                 },
-                                "branch_office_id": {
+                                "warehouse_id": {
                                     "type": "number"
                                 },
                                 "amount": {
@@ -8874,6 +9405,41 @@
                     },
                     "description": {
                         "description": "The VoucherTypeNote Description",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "Warehouse": {
+                "properties": {
+                    "description": {
+                        "description": "The Warehouse description",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "branch_office_id": {
+                        "description": "The Warehouse branch_office_id",
                         "required": [
                             "true"
                         ],
