@@ -2218,6 +2218,210 @@
                 }
             }
         },
+        "/api/devolutions": {
+            "get": {
+                "tags": [
+                    "Devolution"
+                ],
+                "summary": "Show devolution",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Devolution resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Devolution resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Devolution resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Devolution resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a Devolution resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "Devolution resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "Devolution resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Devolution resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show devolution all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Devolution"
+                ],
+                "summary": "Creates a new devolution",
+                "description": "Creates a new devolution",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Devolution"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Devolution resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/api/devolutions/{id}": {
+            "get": {
+                "tags": [
+                    "Devolution"
+                ],
+                "summary": "Get Devolution information",
+                "description": "Returns Devolution data",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Devolution id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Devolution"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Devolution"
+                ],
+                "summary": "Delete existing Devolution",
+                "description": "Deletes a record and returns no content",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Devolution id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/api/document-types": {
             "get": {
                 "tags": [
@@ -8225,6 +8429,70 @@
                         ],
                         "type": "number",
                         "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "Devolution": {
+                "properties": {
+                    "devolution_reason_id": {
+                        "description": "The Devolution devolution_reason_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "branch_office_id": {
+                        "description": "The Devolution branch_office_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "devolution_details": {
+                        "description": "The Devolution details",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "product_id": {
+                                    "type": "number"
+                                },
+                                "amount": {
+                                    "type": "number"
+                                },
+                                "user_created_id": {
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "created_at": {
+                        "description": "date of issue",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "example": "2020-01-01 12:00:00"
                     }
                 },
                 "type": "object"

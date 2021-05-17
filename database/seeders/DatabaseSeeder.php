@@ -43,7 +43,8 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             ProviderSeeder::class,
             WarehouseSeeder::class,
-            ReasonForTransferSeeder::class
+            ReasonForTransferSeeder::class,
+            DevolutionReasonSeeder::class
         ]);
     }
 }

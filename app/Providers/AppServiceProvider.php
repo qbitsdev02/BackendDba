@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\BillElectronic;
 use App\Models\BillElectronicDetail;
 use App\Models\Client;
+use App\Models\Devolution;
 use App\Models\Order;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Product;
@@ -18,6 +19,7 @@ use App\Observers\ProviderObserver;
 use App\Observers\QuotationObserver;
 use App\Models\Seller;
 use App\Observers\BillElectronicDetailObserver;
+use App\Observers\DevolutionObserver;
 use App\Observers\OrderObserver;
 use App\Observers\PurchaseObserver;
 use App\Observers\SellerObserver;
@@ -49,5 +51,6 @@ class AppServiceProvider extends ServiceProvider
         Order::observe(OrderObserver::class);
         Purchase::observe(PurchaseObserver::class);
         BillElectronicDetail::observe(BillElectronicDetailObserver::class);
+        Devolution::observe(DevolutionObserver::class);
     }
 }
