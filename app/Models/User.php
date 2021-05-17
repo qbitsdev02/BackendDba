@@ -114,7 +114,7 @@ class User extends Authenticatable
             });
     }
 
-    public static $filterable = ["name", "last_name", "email"];
+    public static $filterable = [];
 	/**
 	 * Search function of fields in the database.
 	 *
