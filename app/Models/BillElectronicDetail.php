@@ -28,6 +28,12 @@ class BillElectronicDetail extends Model
      * @var array
      */
     protected $with = [];
+
+
+    public function kardexReports()
+    {
+        return $this->morphMany(KardexReport::class, 'reportable');
+    }
     /**
      * Get the product that owns the BillElectronicDetail
      *
@@ -37,5 +43,15 @@ class BillElectronicDetail extends Model
     {
         return $this->belongsTo(Product::class);
     }
-    
+
+    /**
+     * Get the billElectronic that owns the BillElectronicDetail
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function billElectronic()
+    {
+        return $this->belongsTo(BillElectronic::class);
+    }
+
 }

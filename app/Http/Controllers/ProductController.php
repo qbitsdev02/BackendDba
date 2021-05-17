@@ -105,8 +105,14 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $products = Product::filters($request->all())
+            ->with(
+                'category:id,name',
+                'brand:id,name',
+                'attributeTypes'
+            )
             ->filtersProduct($request->all())
-            ->search($request->all());
+            ->search($request->all())
+            ->append('stock');
 
         return response()->json($products, 200);
     }

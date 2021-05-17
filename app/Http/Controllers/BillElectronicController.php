@@ -94,7 +94,18 @@ class BillElectronicController extends Controller
      */
     public function index(Request $request)
     {
-        $billElectronics = BillElectronic::filters($request->all())->search($request->all());
+        $billElectronics = BillElectronic::with(
+            'billElectronicDetails.product:id,name',
+            'coin:id,name',
+            'serie:id,name',
+            'client:id,name,last_name',
+            'seller:id,name,last_name',
+            'voucherType:id,name',
+            'billElectronicPayments',
+            'billElectronicGuides'
+        )
+        ->filters($request->all())
+        ->search($request->all());
         return response()->json($billElectronics, 200);
     }
 

@@ -9,7 +9,8 @@ class ProductHelper
 {
     public static function getStock(Product $product)
     {
-        return $product->warehouses()
+        return $product
+            ->warehouses()
             ->distinct()
             ->get()
             ->map(function(Warehouse $warehouse) use ($product) {
@@ -19,6 +20,7 @@ class ProductHelper
 
                 return [
                     'warehouse_id' => $warehouse->id,
+                    'branch_office_id' => $warehouse->branch_office_id,
                     'warehouse_name' => "{$warehouse->description} - {$warehouse->branchOffice->name}",
                     'purchase_price' => $warehouse->purchaseDetails->last()->purchase_price,
                     'sale_price' => $warehouse->purchaseDetails->last()->sale_price,
@@ -41,7 +43,7 @@ class ProductHelper
     {
         return $product->billElectronicDetails
             ->sum(function (BillElectronicDetail $billElectronicDetail) use($warehouse) {
-                if ($billElectronicDetail->bill->branch_office_id === $warehouse->branch_office_id) {
+                if (isset($billElectronicDetail->billElectronic->branch_office_id) && $billElectronicDetail->billElectronic->branch_office_id === $warehouse->branch_office_id) {
                     return $billElectronicDetail->amount;
                 }
             });

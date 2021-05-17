@@ -142,16 +142,7 @@ class BillElectronic extends Base
      *
      * @var array
      */
-    protected $with = [
-        'coin:id,name',
-        'serie:id,name',
-        'client:id,name,last_name',
-        'seller:id,name,last_name',
-        'voucherType:id,name',
-        'billElectronicDetails.product:id,name',
-        'billElectronicPayments',
-        'billElectronicGuides'
-    ];
+    protected $with = [];
     /**
      * The accessors to append to the model's array form.
      *
@@ -222,7 +213,7 @@ class BillElectronic extends Base
     {
         return $this->belongsTo(Coin::class);
     }
-    
+
     /**
      * Get the serie that owns the BillElectronic
      *
@@ -232,7 +223,7 @@ class BillElectronic extends Base
     {
         return $this->belongsTo(Serie::class);
     }
-        
+
     /**
      * Get the seller that owns the BillElectronic
      *
@@ -242,7 +233,7 @@ class BillElectronic extends Base
     {
         return $this->belongsTo(Seller::class);
     }
-        
+
     /**
      * Get the client that owns the BillElectronic
      *
@@ -261,7 +252,7 @@ class BillElectronic extends Base
     {
         return $this->belongsTo(VoucherType::class);
     }
-        
+
     /**
      * Get the branchOffice that owns the BillElectronic
      *

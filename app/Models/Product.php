@@ -85,19 +85,6 @@ class Product extends Base
         'user_updated_id'
     ];
     /**
-     * The attributes that are mass with.
-     *
-     * @var array
-     */
-    protected $with = [
-        'category',
-        'brand',
-        'attributeTypes'
-    ];
-
-    protected $appends = ['stock'];
-
-    /**
      * The stock that belong to the Product
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

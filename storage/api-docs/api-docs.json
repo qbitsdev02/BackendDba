@@ -2862,6 +2862,89 @@
                 ]
             }
         },
+        "/api/kardex-reports": {
+            "get": {
+                "tags": [
+                    "KardexReport"
+                ],
+                "summary": "Show kardaex report",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "KardexReport resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a KardexReport resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "KardexReport resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a KardexReport resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a KardexReport resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "KardexReport resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "KardexReport resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a KardexReport resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show kardaex report all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            }
+        },
         "/api/authentication/login": {
             "post": {
                 "tags": [
