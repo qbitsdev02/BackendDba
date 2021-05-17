@@ -20,4 +20,13 @@ class DevolutionDetail extends Base
     {
         return $this->belongsTo(Product::class);
     }
+    /**
+     * Get the devolution that owns the DevolutionDetail
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function devolution()
+    {
+        return $this->belongsTo(Devolution::class);
+    }
 }

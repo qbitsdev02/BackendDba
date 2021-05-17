@@ -185,6 +185,15 @@ class Product extends Base
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
+    public function devolutionDetails()
+    {
+        return $this->hasMany(DevolutionDetail::class);
+    }
+    /**
+     * Get all of the purcharseDetails for the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function inventories()
     {
         return $this->hasMany(Inventory::class);

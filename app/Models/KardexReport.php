@@ -6,12 +6,11 @@ class KardexReport extends Base
 {
     //
     protected $fillable = ['stock', 'user_created_id', 'product_id', 'user_updated_id'];
-    
-    
+
     protected $casts = [
         'stock' => 'array',
     ];
-    
+
     public function reportable()
     {
         return $this->morphTo();

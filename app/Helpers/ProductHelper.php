@@ -4,6 +4,7 @@ namespace App\Helpers;
 use App\Models\BillElectronicDetail;
 use App\Models\Product;
 use App\Models\Warehouse;
+use App\Models\DevolutionDetail;
 
 class ProductHelper
 {
@@ -15,6 +16,7 @@ class ProductHelper
             ->get()
             ->map(function(Warehouse $warehouse) use ($product) {
                 $product_sale = self::billProduct($product, $warehouse);
+                $devolution = self::devolutionProduct($product, $warehouse);
                 $warehouseProductEntry = self::inventory($product, 'entry');
                 $warehouseProductExit = self::inventory($product, 'exit');
 
@@ -24,7 +26,7 @@ class ProductHelper
                     'warehouse_name' => "{$warehouse->description} - {$warehouse->branchOffice->name}",
                     'purchase_price' => $warehouse->purchaseDetails->last()->purchase_price,
                     'sale_price' => $warehouse->purchaseDetails->last()->sale_price,
-                    'stock_product' => ($warehouse->purchaseDetails->sum('amount') + $warehouseProductEntry) - ($product_sale + $warehouseProductExit)
+                    'stock_product' => ($warehouse->purchaseDetails->sum('amount') + $warehouseProductEntry + $devolution) - ($product_sale + $warehouseProductExit)
                 ];
             });
     }
@@ -45,6 +47,16 @@ class ProductHelper
             ->sum(function (BillElectronicDetail $billElectronicDetail) use($warehouse) {
                 if (isset($billElectronicDetail->billElectronic->branch_office_id) && $billElectronicDetail->billElectronic->branch_office_id === $warehouse->branch_office_id) {
                     return $billElectronicDetail->amount;
+                }
+            });
+    }
+
+    private static function devolutionProduct(Product $product, Warehouse $warehouse)
+    {
+        return $product->devolutionDetails
+            ->sum(function (DevolutionDetail $devolutionDetail) use($warehouse) {
+                if (isset($devolutionDetail->devolution->branch_office_id) && $devolutionDetail->devolution->branch_office_id === $warehouse->branch_office_id) {
+                    return $devolutionDetail->amount;
                 }
             });
     }
