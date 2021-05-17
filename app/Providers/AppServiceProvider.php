@@ -6,11 +6,13 @@ use App\Models\BillElectronic;
 use App\Models\BillElectronicDetail;
 use App\Models\Client;
 use App\Models\Devolution;
+use App\Models\DevolutionDetail;
 use App\Models\Order;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Product;
 use App\Models\Provider;
 use App\Models\Purchase;
+use App\Models\PurchaseDetail;
 use App\Models\Quotation;
 use App\Observers\BillElectronicObserver;
 use App\Observers\ClientObserver;
@@ -23,6 +25,8 @@ use App\Observers\DevolutionObserver;
 use App\Observers\OrderObserver;
 use App\Observers\PurchaseObserver;
 use App\Observers\SellerObserver;
+use App\Observers\DevolutionDetailObserver;
+use App\Observers\PurchaseDetailObserver;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -52,5 +56,7 @@ class AppServiceProvider extends ServiceProvider
         Purchase::observe(PurchaseObserver::class);
         BillElectronicDetail::observe(BillElectronicDetailObserver::class);
         Devolution::observe(DevolutionObserver::class);
+        DevolutionDetail::observe(DevolutionDetailObserver::class);
+        PurchaseDetail::observe(PurchaseDetailObserver::class);
     }
 }

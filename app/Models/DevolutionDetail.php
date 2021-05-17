@@ -29,4 +29,9 @@ class DevolutionDetail extends Base
     {
         return $this->belongsTo(Devolution::class);
     }
+
+    public function kardexReports()
+    {
+        return $this->morphMany(KardexReport::class, 'reportable');
+    }
 }

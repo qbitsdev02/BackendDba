@@ -29,7 +29,6 @@ class BillElectronicDetail extends Model
      */
     protected $with = [];
 
-
     public function kardexReports()
     {
         return $this->morphMany(KardexReport::class, 'reportable');
