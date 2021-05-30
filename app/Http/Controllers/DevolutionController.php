@@ -96,6 +96,7 @@ class DevolutionController extends Controller
     {
         $devolution = Devolution::with(
             'devolutionReason:id,name',
+            'user:id,name,last_name',
             'devolutionDetails.product:id,name'
         )
         ->filters($request->all())

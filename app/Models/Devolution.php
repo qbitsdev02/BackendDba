@@ -79,4 +79,14 @@ class Devolution extends Base
     {
         return $this->belongsTo(DevolutionReason::class);
     }
+
+    /**
+     * Get the user that owns the Devolution
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_created_id', 'id');
+    }
 }
