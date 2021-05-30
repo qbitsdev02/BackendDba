@@ -95,6 +95,7 @@ class DevolutionController extends Controller
     public function index(Request $request)
     {
         $devolution = Devolution::with(
+            'devolutionReason:id,name',
             'devolutionDetails.product:id,name'
         )
         ->filters($request->all())

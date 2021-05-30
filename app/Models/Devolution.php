@@ -54,9 +54,9 @@ class Devolution extends Base
      *   ),
      * )
      */
-    
-    protected  $append = ['code'];
-    
+
+    protected  $appends = ['code'];
+
     public function getCodeAttribute()
     {
         return "DEV-{$this->id}";
@@ -68,6 +68,15 @@ class Devolution extends Base
      */
     public function devolutionDetails()
     {
-    return $this->hasMany(DevolutionDetail::class);
+        return $this->hasMany(DevolutionDetail::class);
+    }
+    /**
+     * Get the devolutionReason that owns the Devolution
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function devolutionReason()
+    {
+        return $this->belongsTo(DevolutionReason::class);
     }
 }
