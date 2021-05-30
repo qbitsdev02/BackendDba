@@ -34,6 +34,16 @@ use Illuminate\Support\Str;
  *       description="The Users email"
  *   ),
  *   @OA\Property(
+ *       property="roles",
+ *       type="array",
+ *       required={"false"},
+ *       @OA\Items(
+ *           @OA\Property(property="role_id", type="number"),
+ *           @OA\Property(property="branch_office_id", type="number")
+ *       ),
+ *       description="The Product attribute_types"
+ *   ),
+ *   @OA\Property(
  *       property="password",
  *       type="string",
  *       required={"true"},

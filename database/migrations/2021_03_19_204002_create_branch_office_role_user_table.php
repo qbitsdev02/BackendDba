@@ -18,9 +18,6 @@ class CreateBranchOfficeRoleUserTable extends Migration
             $table->foreignId('role_id')->constrained();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('branch_office_id')->constrained();
-            $table->unique(['role_id', 'user_id', 'branch_office_id'], 'role_branch_user__id');
-            $table->foreignId('user_created_id')->constrained('users');
-            $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->timestamps();
             $table->softDeletes();
         });

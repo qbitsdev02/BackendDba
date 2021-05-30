@@ -8,6 +8,7 @@ use App\Models\Client;
 use App\Models\Devolution;
 use App\Models\DevolutionDetail;
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Product;
 use App\Models\Provider;
@@ -27,6 +28,8 @@ use App\Observers\PurchaseObserver;
 use App\Observers\SellerObserver;
 use App\Observers\DevolutionDetailObserver;
 use App\Observers\PurchaseDetailObserver;
+use App\Observers\UserObserver;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -58,5 +61,6 @@ class AppServiceProvider extends ServiceProvider
         Devolution::observe(DevolutionObserver::class);
         DevolutionDetail::observe(DevolutionDetailObserver::class);
         PurchaseDetail::observe(PurchaseDetailObserver::class);
+        User::observe(UserObserver::class);
     }
 }

@@ -266,6 +266,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->last_name = $request->last_name;
         $user->email = $request->email;
+        $user->updated_at = \Carbon\Carbon::now();
         if ($request->password) {
             $user->password = Hash::make($request->password);
         }

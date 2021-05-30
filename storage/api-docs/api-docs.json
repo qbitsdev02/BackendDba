@@ -9722,6 +9722,24 @@
                         ],
                         "type": "string"
                     },
+                    "roles": {
+                        "description": "The Product attribute_types",
+                        "required": [
+                            "false"
+                        ],
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "role_id": {
+                                    "type": "number"
+                                },
+                                "branch_office_id": {
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
                     "password": {
                         "description": "The Users password",
                         "required": [
