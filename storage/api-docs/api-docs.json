@@ -10,6 +10,9 @@
         },
         {
             "url": "http://api-facturador.herokuapp.com/"
+        },
+        {
+            "url": "http://sudamerica.tranjr.com/"
         }
     ],
     "paths": {
@@ -2418,6 +2421,89 @@
                     },
                     "404": {
                         "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/devolution-reasons": {
+            "get": {
+                "tags": [
+                    "DevolutionReason"
+                ],
+                "summary": "Show DevolutionReason",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "DevolutionReason resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a DevolutionReason resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "DevolutionReason resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a DevolutionReason resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a DevolutionReason resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "DevolutionReason resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "DevolutionReason resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a DevolutionReason resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show DevolutionReason all."
+                    },
+                    "default": {
+                        "description": "error."
                     }
                 }
             }
@@ -8493,6 +8579,41 @@
                         ],
                         "type": "string",
                         "example": "2020-01-01 12:00:00"
+                    }
+                },
+                "type": "object"
+            },
+            "DevolutionReason": {
+                "properties": {
+                    "name": {
+                        "description": "The DevolutionReason name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "The DevolutionReason description",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
                     }
                 },
                 "type": "object"

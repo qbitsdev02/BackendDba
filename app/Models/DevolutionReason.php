@@ -2,10 +2,39 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class DevolutionReason extends Model
+class DevolutionReason extends Base
 {
-    use HasFactory;
+
+    /**
+     * @OA\Schema(
+     *   schema="DevolutionReason",
+     *   type="object",
+     *   @OA\Property(
+     *       property="name",
+     *       type="string",
+     *       required={"true"},
+     *       description="The DevolutionReason name"
+     *   ),
+     *   @OA\Property(
+     *       property="description",
+     *       type="string",
+     *       required={"true"},
+     *       description="The DevolutionReason description"
+     *   ),
+     *   @OA\Property(
+     *       property="user_created_id",
+     *       type="number",
+     *       required={"true"},
+     *       example=1,
+     *       description="The Users crete"
+     *   ),
+     *    @OA\Property(
+     *       property="user_updated_id",
+     *       type="number",
+     *       required={"true"},
+     *       example=1,
+     *       description="The Users update"
+     *   ),
+     * )
+     */
 }
