@@ -2,10 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Transfer extends Model
+class Transfer extends Base
 {
-    use HasFactory;
+    /**
+     * Get all of the transferDetails for the Transfer
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function transferDetails()
+    {
+        return $this->hasMany(TransferDetail::class);
+    }
 }

@@ -153,6 +153,7 @@ class DevolutionController extends Controller
     {
         $devolution = new Devolution();
         $devolution->devolution_reason_id = $request->devolution_reason_id;
+        $devolution->observation = $request->observation;
         $devolution->branch_office_id = $request->branch_office_id;
         $devolution->created_at = $request->created_at;
         $devolution->user_created_id = $request->user_created_id;
