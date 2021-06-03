@@ -108,7 +108,7 @@ class ProductController extends Controller
             ->with(
                 'category:id,name',
                 'brand:id,name',
-                'attributeTypes'
+                'attributeTypes:id,name'
             )
             ->filtersProduct($request->all())
             ->search($request->all())

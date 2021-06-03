@@ -15,6 +15,10 @@ class OrderDetail extends Base
         'product:id,name'
     ];
 
+    public function kardexReports()
+    {
+        return $this->morphMany(KardexReport::class, 'reportable');
+    }
     /**
      * Get the product that owns the QuotationDetail
      *
