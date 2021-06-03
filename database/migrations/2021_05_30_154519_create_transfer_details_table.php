@@ -15,6 +15,7 @@ class CreateTransferDetailsTable extends Migration
     {
         Schema::create('transfer_details', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('transfer_id')->constrained();
             $table->foreignId('product_id')->constrained();
             $table->float('amount');
             $table->foreignId('user_created_id')->constrained('users');

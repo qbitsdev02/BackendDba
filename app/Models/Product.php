@@ -190,6 +190,15 @@ class Product extends Base
         return $this->hasMany(DevolutionDetail::class);
     }
     /**
+     * Get all of the transferDetails for the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function transferDetails()
+    {
+        return $this->hasMany(TransferDetail::class);
+    }
+    /**
      * Get all of the purcharseDetails for the Product
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

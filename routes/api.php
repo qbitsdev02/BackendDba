@@ -58,5 +58,6 @@ Route::resource('inventories',InventoryController::class);
 Route::resource('kardex-reports', KardexReportController::class);
 Route::resource('devolutions', DevolutionController::class);
 Route::resource('devolution-reasons', DevolutionReasonController::class);
+Route::resource('transfers', TransferController::class);
 Route::get('ruc/{ruc}', 'ApiTerceroController@getRuc');
 Route::get('exchange-rate/', 'ApiTerceroController@exchangeRate');

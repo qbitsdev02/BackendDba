@@ -5,6 +5,7 @@ use App\Models\BillElectronicDetail;
 use App\Models\Product;
 use App\Models\Warehouse;
 use App\Models\DevolutionDetail;
+use App\Models\TransferDetail;
 
 class ProductHelper
 {
@@ -19,6 +20,8 @@ class ProductHelper
                 $devolution = self::devolutionProduct($product, $warehouse);
                 $warehouseProductEntry = self::inventory($product, 'entry');
                 $warehouseProductExit = self::inventory($product, 'exit');
+                $toWareHouse = self::toWareHouse($product, $warehouse);
+                $fromWareHouse = self::fromWareHouse($product, $warehouse);
 
                 return [
                     'warehouse_id' => $warehouse->id,
@@ -26,8 +29,28 @@ class ProductHelper
                     'warehouse_name' => "{$warehouse->description} - {$warehouse->branchOffice->name}",
                     'purchase_price' => $warehouse->purchaseDetails->last()->purchase_price,
                     'sale_price' => $warehouse->purchaseDetails->last()->sale_price,
-                    'stock_product' => ($warehouse->purchaseDetails->sum('amount') + $warehouseProductEntry + $devolution) - ($product_sale + $warehouseProductExit)
+                    'stock_product' => ($warehouse->purchaseDetails->sum('amount') + $warehouseProductEntry + $devolution + $toWareHouse) - ($product_sale + $warehouseProductExit + $fromWareHouse)
                 ];
+            });
+    }
+
+    private static function toWareHouse(Product $product, Warehouse $warehouse)
+    {
+        return $product->transferDetails
+            ->sum(function (TransferDetail $transferDetail) use($warehouse) {
+                if ($transferDetail->transfer->to_warehouse_id === $warehouse->id) {
+                    return $transferDetail->amount;
+                }
+            });
+    }
+
+    private static function fromWareHouse(Product $product, Warehouse $warehouse)
+    {
+        return $product->transferDetails
+            ->sum(function (TransferDetail $transferDetail) use($warehouse) {
+                if ($transferDetail->transfer->from_warehouse_id === $warehouse->id) {
+                    return $transferDetail->amount;
+                }
             });
     }
 
