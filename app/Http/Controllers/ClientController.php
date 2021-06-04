@@ -156,6 +156,10 @@ class ClientController extends Controller
         $client->phone = $request->phone;
         $client->document_type_id = $request->document_type_id;
         $client->document_number = $request->document_number;
+        $client->address = $request->address;
+        $client->province = $request->province;
+        $client->district = $request->district;
+        $client->full_address = $request->full_address;
         $client->phone_contact = $request->phone_contact;
         $client->full_name_contact = $request->full_name_contact;
         $client->client_type_id = $request->client_type_id;
@@ -277,6 +281,10 @@ class ClientController extends Controller
         $client->phone = $request->phone;
         $client->document_type_id = $request->document_type_id;
         $client->document_number = $request->document_number;
+        $client->address = $request->address;
+        $client->province = $request->province;
+        $client->district = $request->district;
+        $client->full_address = $request->full_address;
         $client->phone_contact = $request->phone_contact;
         $client->full_name_contact = $request->full_name_contact;
         $client->client_type_id = $request->client_type_id;

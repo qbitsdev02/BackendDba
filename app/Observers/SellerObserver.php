@@ -17,10 +17,7 @@ class SellerObserver
     {
         $seller->roles()->attach(
             Role::where('acronym', RoleAcronym::SELLER)->first()->id,
-            [
-                'branch_office_id' => request()->branch_office_id ?? 1,
-                'user_created_id' => $seller->user_created_id
-            ]
+            ['branch_office_id' => request()->branch_office_id]
         );
     }
 

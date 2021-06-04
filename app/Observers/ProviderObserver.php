@@ -17,10 +17,7 @@ class ProviderObserver
     {
         $provider->roles()->attach(
             Role::where('acronym', RoleAcronym::PROVIDER)->first()->id,
-            [
-                'branch_office_id' => request()->branch_office_id ?? 1,
-                'user_created_id' => $provider->user_created_id
-            ]
+            ['branch_office_id' => request()->branch_office_id]
         );
     }
 

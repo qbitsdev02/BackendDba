@@ -42,6 +42,13 @@ namespace App\Models;
  *       description="The seller email"
  *   ),
  *   @OA\Property(
+ *       property="branch_office_id",
+ *       type="number",
+ *       required={"true"},
+ *       example=1,
+ *       description="The Client branch office"
+ *   ),
+ *   @OA\Property(
  *       property="user_created_id",
  *       type="number",
  *       required={"true"},

@@ -8580,6 +8580,41 @@
                         ],
                         "type": "number"
                     },
+                    "departament": {
+                        "description": "The Provider departament",
+                        "required": [
+                            "false"
+                        ],
+                        "type": "string"
+                    },
+                    "province": {
+                        "description": "The Provider province",
+                        "required": [
+                            "false"
+                        ],
+                        "type": "string"
+                    },
+                    "district": {
+                        "description": "The Provider district",
+                        "required": [
+                            "false"
+                        ],
+                        "type": "string"
+                    },
+                    "address": {
+                        "description": "The Provider address",
+                        "required": [
+                            "false"
+                        ],
+                        "type": "string"
+                    },
+                    "full_address": {
+                        "description": "The Provider full_address",
+                        "required": [
+                            "false"
+                        ],
+                        "type": "string"
+                    },
                     "email": {
                         "description": "The Client email",
                         "required": [
@@ -8589,6 +8624,14 @@
                     },
                     "user_created_id": {
                         "description": "The Client crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "branch_office_id": {
+                        "description": "The Client branch office",
                         "required": [
                             "true"
                         ],
@@ -9372,6 +9415,41 @@
                         ],
                         "type": "string"
                     },
+                    "departament": {
+                        "description": "The Provider departament",
+                        "required": [
+                            "false"
+                        ],
+                        "type": "string"
+                    },
+                    "province": {
+                        "description": "The Provider province",
+                        "required": [
+                            "false"
+                        ],
+                        "type": "string"
+                    },
+                    "district": {
+                        "description": "The Provider district",
+                        "required": [
+                            "false"
+                        ],
+                        "type": "string"
+                    },
+                    "address": {
+                        "description": "The Provider address",
+                        "required": [
+                            "false"
+                        ],
+                        "type": "string"
+                    },
+                    "full_address": {
+                        "description": "The Provider full_address",
+                        "required": [
+                            "false"
+                        ],
+                        "type": "string"
+                    },
                     "phone": {
                         "description": "The Provider phone",
                         "required": [
@@ -9406,6 +9484,14 @@
                             "true"
                         ],
                         "type": "string"
+                    },
+                    "branch_office_id": {
+                        "description": "The Client branch office",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
                     },
                     "user_created_id": {
                         "description": "The Provider crete",
@@ -9829,6 +9915,14 @@
                                     "true"
                                 ],
                                 "type": "string"
+                            },
+                            "branch_office_id": {
+                                "description": "The Client branch office",
+                                "required": [
+                                    "true"
+                                ],
+                                "type": "number",
+                                "example": 1
                             },
                             "user_created_id": {
                                 "description": "The user crete",

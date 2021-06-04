@@ -154,6 +154,10 @@ class ProviderController extends Controller
         $provider->email = $request->email;
         $provider->phone = $request->phone;
         $provider->residence_condition = $request->residence_condition;
+        $provider->address = $request->address;
+        $provider->province = $request->province;
+        $provider->district = $request->district;
+        $provider->full_address = $request->full_address;
         $provider->document_type_id = $request->document_type_id;
         $provider->document_number = $request->document_number;
         $provider->phone_contact = $request->phone_contact;
@@ -274,6 +278,10 @@ class ProviderController extends Controller
         $provider->last_name = $request->last_name;
         $provider->email = $request->email;
         $provider->phone = $request->phone;
+        $provider->address = $request->address;
+        $provider->province = $request->province;
+        $provider->district = $request->district;
+        $provider->full_address = $request->full_address;
         $provider->residence_condition = $request->residence_condition;
         $provider->document_type_id = $request->document_type_id;
         $provider->document_number = $request->document_number;

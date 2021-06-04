@@ -57,6 +57,36 @@ class Client extends User
      *       description="The document number"
      *   ),
      *   @OA\Property(
+     *       property="departament",
+     *       type="string",
+     *       required={"false"},
+     *       description="The Provider departament"
+     *   ),
+     *   @OA\Property(
+     *       property="province",
+     *       type="string",
+     *       required={"false"},
+     *       description="The Provider province"
+     *   ),
+     *   @OA\Property(
+     *       property="district",
+     *       type="string",
+     *       required={"false"},
+     *       description="The Provider district"
+     *   ),
+     *   @OA\Property(
+     *       property="address",
+     *       type="string",
+     *       required={"false"},
+     *       description="The Provider address"
+     *   ),
+     *   @OA\Property(
+     *       property="full_address",
+     *       type="string",
+     *       required={"false"},
+     *       description="The Provider full_address"
+     *   ),
+     *   @OA\Property(
      *       property="email",
      *       required={"true"},
      *       type="string",
@@ -68,6 +98,13 @@ class Client extends User
      *       required={"true"},
      *       example=1,
      *       description="The Client crete"
+     *   ),
+     *   @OA\Property(
+     *       property="branch_office_id",
+     *       type="number",
+     *       required={"true"},
+     *       example=1,
+     *       description="The Client branch office"
      *   ),
      *    @OA\Property(
      *       property="user_updated_id",
