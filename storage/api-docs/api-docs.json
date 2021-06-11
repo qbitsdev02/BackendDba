@@ -8948,19 +8948,174 @@
             },
             "Guide": {
                 "properties": {
-                    "name": {
-                        "description": "The Guide name",
+                    "serie_id": {
+                        "description": "The guide serie",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "date_of_issue": {
+                        "description": "The date of issue",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": "2021/01/01"
+                    },
+                    "date_transfer": {
+                        "description": "The date transfer",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": "2021/01/01"
+                    },
+                    "total_packet": {
+                        "description": "The total packet",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "description": {
+                        "description": "The description guide",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "branch_office_id": {
+                        "description": "The branch office id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "measurement_unit_id": {
+                        "description": "The measurement unit id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "transfer_mode_id": {
+                        "description": "The transfer mode id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "transfer_subject_id": {
+                        "description": "The Guide transfer_subject_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "example": 1
+                    },
+                    "client_id": {
+                        "description": "The client guide",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "observation": {
+                        "description": "The observation guide",
                         "required": [
                             "true"
                         ],
                         "type": "string"
                     },
-                    "Description": {
-                        "description": "The Guide description",
+                    "from_country": {
+                        "description": "The from country",
                         "required": [
                             "true"
                         ],
                         "type": "string"
+                    },
+                    "from_ubigeo": {
+                        "description": "The from ubigeo",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "from_address": {
+                        "description": "The from address",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "to_country": {
+                        "description": "The to country",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "to_ubigeo": {
+                        "description": "The to ubigeo",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "to_address": {
+                        "description": "The to address",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "carrier_document_type_id": {
+                        "description": "The carrier document type id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "carrier_document_number": {
+                        "description": "The carrier document number",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "plate_number": {
+                        "description": "The plate number",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "license_number": {
+                        "description": "The license number",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "semitrailer_number": {
+                        "description": "The semitrailer number",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
                     },
                     "user_created_id": {
                         "description": "The Users crete",

@@ -145,8 +145,30 @@ class GuideController extends Controller
     public function store(Request $request)
     {
         $guide = new Guide();
-        $guide->name = $request->name;
+        $guide->serie_id = $request->serie_id;
+        $guide->date_of_issue = $request->date_of_issue;
+        $guide->date_transfer = $request->date_transfer;
+        $guide->total_packet = $request->total_packet;
         $guide->description = $request->description;
+        $guide->branch_office_id = $request->branch_office_id;
+        $guide->measurement_unit_id = $request->measurement_unit_id;
+        $guide->transfer_mode_id = $request->transfer_mode_id;
+        $guide->transfer_subject_id = $request->transfer_subject_id;
+        $guide->client_id = $request->client_id;
+        $guide->observation = $request->observation;
+        $guide->from_country = $request->from_country;
+        $guide->from_ubigeo = $request->from_ubigeo;
+        $guide->from_address = $request->from_address;
+        $guide->to_country = $request->to_country;
+        $guide->to_ubigeo = $request->to_ubigeo;
+        $guide->to_address = $request->to_address;
+        $guide->carrier_document_type_id = $request->carrier_document_type_id;
+        $guide->carrier_document_number = $request->carrier_document_number;
+        $guide->plate_number = $request->plate_number;
+        $guide->license_number = $request->license_number;
+        $guide->semitrailer_number = $request->semitrailer_number;
+        $guide->user_created_id = $request->user_created_id;
+        $guide->user_updated_id = $request->user_updated_id;
         $guide->user_created_id = $request->user_created_id;
         $guide->save();
         return response()->json($guide, 201);
@@ -259,9 +281,31 @@ class GuideController extends Controller
      */
     public function update(Request $request, Guide $guide)
     {
-        $guide->name = $request->name;
+        $guide->serie_id = $request->serie_id;
+        $guide->date_of_issue = $request->date_of_issue;
+        $guide->date_transfer = $request->date_transfer;
+        $guide->total_packet = $request->total_packet;
         $guide->description = $request->description;
+        $guide->branch_office_id = $request->branch_office_id;
+        $guide->measurement_unit_id = $request->measurement_unit_id;
+        $guide->transfer_mode_id = $request->transfer_mode_id;
+        $guide->transfer_subject_id = $request->transfer_subject_id;
+        $guide->client_id = $request->client_id;
+        $guide->observation = $request->observation;
+        $guide->from_country = $request->from_country;
+        $guide->from_ubigeo = $request->from_ubigeo;
+        $guide->from_address = $request->from_address;
+        $guide->to_country = $request->to_country;
+        $guide->to_ubigeo = $request->to_ubigeo;
+        $guide->to_address = $request->to_address;
+        $guide->carrier_document_type_id = $request->carrier_document_type_id;
+        $guide->carrier_document_number = $request->carrier_document_number;
+        $guide->plate_number = $request->plate_number;
+        $guide->license_number = $request->license_number;
+        $guide->semitrailer_number = $request->semitrailer_number;
+        $guide->user_created_id = $request->user_created_id;
         $guide->user_updated_id = $request->user_updated_id;
+        $guide->user_created_id = $request->user_created_id;
         $guide->update();
         return response()->json($guide, 200);
     }
