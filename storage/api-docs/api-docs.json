@@ -5399,6 +5399,263 @@
                 }
             }
         },
+        "/api/purchase-orders": {
+            "get": {
+                "tags": [
+                    "PurchaseOrder"
+                ],
+                "summary": "Show purchaseOrder",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Purchase resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a PurchaseOrder resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Purchase resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a PurchaseOrder resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a PurchaseOrder resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "Purchase resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "Purchase resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a PurchaseOrder resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show purchaseOrder all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "PurchaseOrder"
+                ],
+                "summary": "Creates a new purchaseOrder",
+                "description": "Creates a new purchaseOrder",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PurchaseOrder"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The PurchaseOrder resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/api/purchase-orders/{id}": {
+            "get": {
+                "tags": [
+                    "PurchaseOrder"
+                ],
+                "summary": "Get PurchaseOrder information",
+                "description": "Returns PurchaseOrder data",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Purchase id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PurchaseOrder"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "PurchaseOrder"
+                ],
+                "summary": "Update existing purchaseOrders",
+                "description": "Returns updated purchaseOrders data",
+                "operationId": "updatepurchases",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "purchases id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PurchaseOrder"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PurchaseOrder"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "PurchaseOrder"
+                ],
+                "summary": "Delete existing PurchaseOrder",
+                "description": "Deletes a record and returns no content",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Purchase id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/api/quotations": {
             "get": {
                 "tags": [
@@ -9789,6 +10046,112 @@
                                 },
                                 "amount": {
                                     "type": "string"
+                                },
+                                "user_created_id": {
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "created_at": {
+                        "description": "date of issue",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "example": "2020-01-01 12:00:00"
+                    }
+                },
+                "type": "object"
+            },
+            "PurchaseOrder": {
+                "properties": {
+                    "payment_method_id": {
+                        "description": "The Purchase serie",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "provider_id": {
+                        "description": "The Purchase provider_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "coin_id": {
+                        "description": "The Purchase coin_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "exchange_rate": {
+                        "description": "The Purchase exchange_rate",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "igv": {
+                        "description": "The Purchase igv",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "example": "12"
+                    },
+                    "expiration_date": {
+                        "description": "The Purchase expiration_date",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "example": "2021-03-27"
+                    },
+                    "purchase_order_details": {
+                        "description": "The Purchase details",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "product_id": {
+                                    "type": "number"
+                                },
+                                "warehouse_id": {
+                                    "type": "number"
+                                },
+                                "amount": {
+                                    "type": "number"
+                                },
+                                "price": {
+                                    "type": "number"
+                                },
+                                "purchase_price": {
+                                    "type": "number"
+                                },
+                                "igv": {
+                                    "type": "number"
                                 },
                                 "user_created_id": {
                                     "type": "number"

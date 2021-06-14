@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePurchaseOrdersTable extends Migration
+class CreatePurchaseOrderDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreatePurchaseOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('purchase_orders', function (Blueprint $table) {
+        Schema::create('purchase_order_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('provider_id')->constrained('users');
-            $table->foreignId('payment_method_id')->constrained();
-            $table->foreignId('coin_id')->constrained();
-            $table->float('exchange_rate')->nullable();
-            $table->date('expiration_date')->nullable();
+            $table->foreignId('purchase_order_id')->constrained();
+            $table->foreignId('product_id')->constrained();
+            $table->integer('amount');
+            $table->float('price');
+            $table->float('purchase_price');
+            $table->float('igv');
+            $table->foreignId('warehouse_id')->constrained();
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->timestamps();
@@ -34,6 +36,6 @@ class CreatePurchaseOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('purchase_orders');
+        Schema::dropIfExists('purchase_order_details');
     }
 }

@@ -15,6 +15,7 @@ use App\Models\Product;
 use App\Models\Provider;
 use App\Models\Purchase;
 use App\Models\PurchaseDetail;
+use App\Models\PurchaseOrder;
 use App\Models\Quotation;
 use App\Observers\BillElectronicObserver;
 use App\Observers\ClientObserver;
@@ -32,6 +33,7 @@ use App\Observers\SellerObserver;
 use App\Observers\DevolutionDetailObserver;
 use App\Observers\OrderDetailObserver;
 use App\Observers\PurchaseDetailObserver;
+use App\Observers\PurchaseOrderObserver;
 use App\Observers\TransferDetailObserver;
 use App\Observers\TransferObserver;
 use App\Observers\UserObserver;
@@ -71,5 +73,6 @@ class AppServiceProvider extends ServiceProvider
         Transfer::observe(TransferObserver::class);
         TransferDetail::observe(TransferDetailObserver::class);
         OrderDetail::observe(OrderDetailObserver::class);
+        PurchaseOrder::observe(PurchaseOrderObserver::class);
     }
 }
