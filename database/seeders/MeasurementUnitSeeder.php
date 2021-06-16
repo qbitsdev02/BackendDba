@@ -18,7 +18,7 @@ class MeasurementUnitSeeder extends Seeder
             ->insert([
                 [
                     'name' => 'Servicio',
-                    'acronyms' => 'sv',
+                    'acronym' => 'sv',
                     'user_created_id' => 1
                 ],
                 [
