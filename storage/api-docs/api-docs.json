@@ -1091,6 +1091,132 @@
                 }
             }
         },
+        "/api/budget-requests": {
+            "get": {
+                "tags": [
+                    "BudgetRequest"
+                ],
+                "summary": "Show Budget-requests",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "BudgetRequest resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a BudgetRequest resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "BudgetRequest resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a BudgetRequest resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a BudgetRequest resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "BudgetRequest resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "BudgetRequest resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a BudgetRequest resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Budget-requests all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "BudgetRequest"
+                ],
+                "summary": "Creates a new BudgetRequest",
+                "description": "Creates a new BudgetRequest",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/BudgetRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Brand resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
         "/api/categories": {
             "get": {
                 "tags": [
@@ -8740,6 +8866,59 @@
                         ],
                         "type": "number",
                         "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "BudgetRequest": {
+                "properties": {
+                    "user_created_id": {
+                        "type": "number"
+                    },
+                    "user_updated_id": {
+                        "type": "number"
+                    },
+                    "budgetRequestDetails": {
+                        "description": "The Budget Request provider",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "provider_id": {
+                                    "type": "number"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "user_created_id": {
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "providers": {
+                        "description": "The Budget Request details",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "product_id": {
+                                    "type": "number"
+                                },
+                                "amount": {
+                                    "type": "number"
+                                },
+                                "user_created_id": {
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        }
                     }
                 },
                 "type": "object"

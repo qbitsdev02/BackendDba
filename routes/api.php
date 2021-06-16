@@ -60,5 +60,6 @@ Route::resource('devolutions', DevolutionController::class);
 Route::resource('devolution-reasons', DevolutionReasonController::class);
 Route::resource('transfers', TransferController::class);
 Route::resource('purchase-orders', PurchaseOrderController::class);
+Route::resource('budget-requests', BudgetRequestController::class);
 Route::get('ruc/{ruc}', 'ApiTerceroController@getRuc');
 Route::get('exchange-rate/', 'ApiTerceroController@exchangeRate');

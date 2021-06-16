@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\BillElectronic;
 use App\Models\BillElectronicDetail;
+use App\Models\BudgetRequest;
 use App\Models\Client;
 use App\Models\Devolution;
 use App\Models\DevolutionDetail;
@@ -26,6 +27,7 @@ use App\Models\Seller;
 use App\Models\Transfer;
 use App\Models\TransferDetail;
 use App\Observers\BillElectronicDetailObserver;
+use App\Observers\BudgetRequestObserver;
 use App\Observers\DevolutionObserver;
 use App\Observers\OrderObserver;
 use App\Observers\PurchaseObserver;
@@ -74,5 +76,6 @@ class AppServiceProvider extends ServiceProvider
         TransferDetail::observe(TransferDetailObserver::class);
         OrderDetail::observe(OrderDetailObserver::class);
         PurchaseOrder::observe(PurchaseOrderObserver::class);
+        BudgetRequest::observe(BudgetRequestObserver::class);
     }
 }
