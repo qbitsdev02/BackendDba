@@ -11,7 +11,7 @@ class BudgetRequest extends Base
      *  @OA\Property(property="user_created_id", type="number"),
      *  @OA\Property(property="user_updated_id", type="number"),
      *  @OA\Property(
-     *       property="budgetRequestDetails",
+     *       property="providers",
      *       type="array",
      *       required={"true"},
      *       @OA\Items(
@@ -22,7 +22,7 @@ class BudgetRequest extends Base
      *       description="The Budget Request provider"
      *   ),
      *  @OA\Property(
-     *       property="providers",
+     *       property="budgetRequestDetails",
      *       type="array",
      *       required={"true"},
      *       @OA\Items(

@@ -132,6 +132,27 @@ namespace App\Models;
  *       description="The carrier document number"
  *   ),
  *   @OA\Property(
+ *       property="driver_document_type_id",
+ *       type="number",
+ *       required={"true"},
+ *       example=1,
+ *       description="The driver document type id"
+ *   ),
+ *   @OA\Property(
+ *       property="driver_document_number",
+ *       type="number",
+ *       required={"true"},
+ *       example=1,
+ *       description="The driver document number"
+ *   ),
+ *   @OA\Property(
+ *       property="total_weight",
+ *       type="number",
+ *       required={"true"},
+ *       example=1,
+ *       description="The total weight number"
+ *   ),
+ *   @OA\Property(
  *       property="plate_number",
  *       type="number",
  *       required={"true"},
@@ -152,6 +173,18 @@ namespace App\Models;
  *       example=1,
  *       description="The semitrailer number"
  *   ),
+ *  @OA\Property(
+ *       property="guideDetails",
+ *       type="array",
+ *       required={"true"},
+ *       @OA\Items(
+ *           @OA\Property(property="product_id", type="number"),
+ *           @OA\Property(property="amount", type="number"),
+ *           @OA\Property(property="user_created_id", type="number")
+ *       ),
+ *       description="The Budget Request details"
+ *   )
+ * )
  *   @OA\Property(
  *       property="user_created_id",
  *       type="number",
@@ -170,5 +203,13 @@ namespace App\Models;
  */
 class Guide extends Base
 {
-    //
+    /**
+     * Get all of the guideDetails for the Guide
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function guideDetails()
+    {
+        return $this->hasMany(GuideDetail::class);
+    }
 }

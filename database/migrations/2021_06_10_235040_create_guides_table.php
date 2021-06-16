@@ -19,7 +19,7 @@ class CreateGuidesTable extends Migration
             $table->integer('serie_number');
             $table->date('date_of_issue');
             $table->date('date_transfer');
-            $table->float('total_stress');
+            $table->float('total_weight');
             $table->float('total_packet');
             $table->string('description')->nullable();
             $table->foreignId('branch_office_id')->constrained();

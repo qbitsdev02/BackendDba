@@ -8878,7 +8878,7 @@
                     "user_updated_id": {
                         "type": "number"
                     },
-                    "budgetRequestDetails": {
+                    "providers": {
                         "description": "The Budget Request provider",
                         "required": [
                             "true"
@@ -8899,7 +8899,7 @@
                             "type": "object"
                         }
                     },
-                    "providers": {
+                    "budgetRequestDetails": {
                         "description": "The Budget Request details",
                         "required": [
                             "true"
@@ -9529,6 +9529,30 @@
                         "type": "number",
                         "example": 1
                     },
+                    "driver_document_type_id": {
+                        "description": "The driver document type id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "driver_document_number": {
+                        "description": "The driver document number",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "total_weight": {
+                        "description": "The total weight number",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
                     "plate_number": {
                         "description": "The plate number",
                         "required": [
@@ -9553,7 +9577,29 @@
                         "type": "number",
                         "example": 1
                     },
+                    "guideDetails": {
+                        "description": "The Budget Request details",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "product_id": {
+                                    "type": "number"
+                                },
+                                "amount": {
+                                    "type": "number"
+                                },
+                                "user_created_id": {
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
                     "user_created_id": {
+                        "schema": "Guide",
                         "description": "The Users crete",
                         "required": [
                             "true"
@@ -9562,6 +9608,7 @@
                         "example": 1
                     },
                     "user_updated_id": {
+                        "schema": "Guide",
                         "description": "The Users update",
                         "required": [
                             "true"
