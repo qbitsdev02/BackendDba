@@ -99,6 +99,7 @@ class TransferController extends Controller
                 'toWarehouse:id,description',
                 'fromWarehouse:id,description'
             )
+            ->betweenDate($request->all())
             ->filters($request->all())
             ->search($request->all());
         return response()->json($transfers, 200);

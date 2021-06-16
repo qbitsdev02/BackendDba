@@ -100,6 +100,7 @@ class DevolutionController extends Controller
             'devolutionDetails.product:id,name'
         )
         ->filters($request->all())
+        ->betweenDate($request->all())
         ->search($request->all());
         return response()->json($devolution, 200);
     }

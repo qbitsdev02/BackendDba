@@ -14,6 +14,28 @@ class Base extends Model
 
 	public static $filterable = [];
 
+    public function scopeBetweenDate($q, array $data = array())
+    {
+        if (!empty($data['dateFilter'])) {
+            $fields = json_decode($data['dateFilter'], true);
+            $fields = array_filter($fields, 'strlen');
+            $fields = Arr::except($fields, static::$filterable);
+            if (isset($fields['to']) && isset($fields['from']) && isset($fields['field'])) {
+                $contains = Str::of($fields['field'])->contains('.');
+                $relations = Str::of($fields['field'])->explode('.');
+                if ($contains) {
+                    $q->whereDate(Str::camel($relations[0]), function ($q) use ($relations, $fields) {
+                        $q->whereDate($relations[1], '>=', $fields["from"])
+                        ->whereDate($relations[1], '<=', $fields["to"]);
+                    });
+                } else {
+                    $q->whereDate($fields['field'], '>=', $fields["from"])
+                        ->whereDate($fields['field'], '<=', $fields["to"]);
+                }
+            }
+        }
+    }
+
     public function scopeFilters($q, array $data = array())
 	{
 		if (!empty($data['dataFilter'])) {

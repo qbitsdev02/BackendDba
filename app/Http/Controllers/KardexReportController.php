@@ -96,6 +96,7 @@ class KardexReportController extends Controller
     {
         $kardexReports = KardexReport::with(['reportable', 'product:id,name'])
             ->filters($request->all())
+            ->betweenDate($request->all())
             ->search($request->all());
 
         return response()->json($kardexReports, 200);
