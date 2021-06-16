@@ -96,8 +96,8 @@ class TransferController extends Controller
     {
         $transfers = Transfer::with(
                 'transferDetails.product:id,name',
-                'toWarehouse:id,name',
-                'fromWarehouse:id,name'
+                'toWarehouse:id,description',
+                'fromWarehouse:id,description'
             )
             ->filters($request->all())
             ->search($request->all());
