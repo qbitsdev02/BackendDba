@@ -45,7 +45,7 @@ class ProductHelper
     {
         return $product->transferDetails
             ->sum(function (TransferDetail $transferDetail) use($warehouse) {
-                if ($transferDetail->transfer->to_warehouse_id === $warehouse->id) {
+                if (isset($transferDetail->transfer->to_warehouse_id) && $transferDetail->transfer->to_warehouse_id === $warehouse->id) {
                     return $transferDetail->amount;
                 }
             });
