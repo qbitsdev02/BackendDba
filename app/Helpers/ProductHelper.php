@@ -29,11 +29,18 @@ class ProductHelper
                     'warehouse_name' => "{$warehouse->description} - {$warehouse->branchOffice->name}",
                     'purchase_price' => $warehouse->purchaseDetails->last()->purchase_price,
                     'sale_price' => $warehouse->purchaseDetails->last()->sale_price,
-                    'stock_product' => ($warehouse->purchaseDetails->sum('amount') + $warehouseProductEntry + $devolution + $toWareHouse) - ($product_sale + $warehouseProductExit + $fromWareHouse)
+                    'stock_product' => (self::stock($product, $warehouse) + $warehouseProductEntry + $devolution + $toWareHouse) - ($product_sale + $warehouseProductExit + $fromWareHouse)
                 ];
             });
     }
-
+    private static function stock(Product $product, Warehouse $warehouse)
+    {
+        return $warehouse->purchaseDetails->sum(function ($row) use($product) {
+            if ($product->id === $row->product_id) {
+                return $row->amount;
+            }
+        });
+    }
     private static function toWareHouse(Product $product, Warehouse $warehouse)
     {
         return $product->transferDetails
