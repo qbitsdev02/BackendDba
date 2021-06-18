@@ -202,8 +202,9 @@ class PurchaseOrderController extends Controller
      * @param  \App\Models\Purchase  $purchaseOrder
      * @return \Illuminate\Http\Response
      */
-    public function show(PurchaseOrder $purchaseOrder)
+    public function show($id)
     {
+        $purchaseOrder = PurchaseOrder::with('purchaseOrderDetails.product:id,name')->findOrfail($id);
         return response()->json($purchaseOrder, 200);
     }
 
