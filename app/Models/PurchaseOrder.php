@@ -92,4 +92,14 @@ class PurchaseOrder extends Base
     {
         return $this->hasMany(PurchaseOrderDetail::class);
     }
+
+    /**
+     * Get the provider that owns the PurchaseOrder
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function provider()
+    {
+        return $this->belongsTo(Provider::class);
+    }
 }

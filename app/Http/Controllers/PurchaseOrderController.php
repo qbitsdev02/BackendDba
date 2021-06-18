@@ -94,7 +94,7 @@ class PurchaseOrderController extends Controller
      */
     public function index(Request $request)
     {
-        $purchaseOrderOrders = PurchaseOrder::with('purchaseOrderDetails')
+        $purchaseOrderOrders = PurchaseOrder::with('purchaseOrderDetails', 'provider:id,name')
             ->filters($request->all())
             ->search($request->all());
         return response()->json($purchaseOrderOrders, 200);
