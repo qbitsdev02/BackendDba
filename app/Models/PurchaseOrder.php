@@ -102,4 +102,13 @@ class PurchaseOrder extends Base
     {
         return $this->belongsTo(Provider::class);
     }
+    /**
+     * Get the coin that owns the PurchaseOrder
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function coin()
+    {
+        return $this->belongsTo(Coin::class);
+    }
 }
