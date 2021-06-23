@@ -7,15 +7,97 @@ use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
 {
+/**
+     * @OA\Get(
+     *     path="/api/expense",
+     *     summary="Show expense",
+     *     tags={"Expense"},
+     *     @OA\Parameter(
+     *       name="paginate",
+     *       in="query",
+     *       description="paginate",
+     *       required=false,
+     *       @OA\Schema(
+     *           title="Paginate",
+     *           example="true",
+     *           type="boolean",
+     *           description="The Paginate data"
+     *       )
+     *     ),
+     *     @OA\Parameter(
+     *       name="sortField",
+     *       in="query",
+     *       description="Expense resource name",
+     *       required=false,
+     *       @OA\Schema(
+     *           type="string",
+     *           example="id",
+     *           description="The unique identifier of a Expense resource"
+     *       )
+     *     ),
+     *     @OA\Parameter(
+     *       name="sortExpense",
+     *       in="query",
+     *       description="Expense resource name",
+     *       required=false,
+     *       @OA\Schema(
+     *           type="string",
+     *           example="desc",
+     *           description="The unique identifier of a Expense resource"
+     *       )
+     *      ),
+     *     @OA\Parameter(
+     *       name="perPage",
+     *       in="query",
+     *       description="Sort Expense field",
+     *       @OA\Schema(
+     *           title="perPage",
+     *           type="number",
+     *           default="10",
+     *           description="The unique identifier of a Expense resource"
+     *       )
+     *      ),
+     *     @OA\Parameter(
+     *       name="dataSearch",
+     *       in="query",
+     *       description="Expense resource name",
+     *       required=false,
+     *       @OA\Schema(
+     *           type="string",
+     *           description="Search data"
+     *       )
+     *      ),
+     *     @OA\Parameter(
+     *       name="dataFilter",
+     *       in="query",
+     *       description="Expense resource name",
+     *       required=false,
+     *       @OA\Schema(
+     *           type="string",
+     *           description="The unique identifier of a Expense resource"
+     *       )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Show expense all."
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="error."
+     *     )
+     *  )
+    */
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $expense = Expense::filters($request->all())->search($request->all());
+        return response()->json($expense, 200);
     }
+
 
     /**
      * Show the form for creating a new resource.

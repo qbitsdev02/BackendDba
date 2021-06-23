@@ -2893,6 +2893,89 @@
                 }
             }
         },
+        "/api/expense": {
+            "get": {
+                "tags": [
+                    "Expense"
+                ],
+                "summary": "Show expense",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Expense resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Expense resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortExpense",
+                        "in": "query",
+                        "description": "Expense resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Expense resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort Expense field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a Expense resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "Expense resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "Expense resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Expense resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show expense all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            }
+        },
         "/api/guides": {
             "get": {
                 "tags": [
@@ -9611,6 +9694,76 @@
                             "true"
                         ],
                         "type": "string"
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "Expense": {
+                "properties": {
+                    "provider_id": {
+                        "description": "The Expense provider_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "seller_id": {
+                        "description": "The Expense expense_reason_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "coin_id": {
+                        "description": "The Expense coin_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "exchange_rate": {
+                        "description": "The Expense exchange_rate",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "expense_details": {
+                        "description": "The Expense details",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "description": {
+                                    "type": "string"
+                                },
+                                "price": {
+                                    "type": "number"
+                                },
+                                "user_created_id": {
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        }
                     },
                     "user_created_id": {
                         "description": "The Users crete",
