@@ -64,5 +64,6 @@ Route::resource('budget-requests', BudgetRequestController::class);
 Route::resource('transfer-modes', TransferModeController::class);
 Route::resource('transfer-subjects', TransferSubjectController::class);
 Route::resource('measurement-units', MeasurementUnitController::class);
+Route::resource('expenses', ExpenseController::class);
 Route::get('ruc/{ruc}', 'ApiTerceroController@getRuc');
 Route::get('exchange-rate/', 'ApiTerceroController@exchangeRate');

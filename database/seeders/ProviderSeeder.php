@@ -17,8 +17,7 @@ class ProviderSeeder extends Seeder
             [
                 'user_id' => 4,
                 'role_id' => 5,
-                'branch_office_id' => 1,
-                'user_created_id' => 1
+                'branch_office_id' => 1
             ]
         ]);
     }

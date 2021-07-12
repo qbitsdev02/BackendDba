@@ -9,7 +9,7 @@ class ExpenseController extends Controller
 {
 /**
      * @OA\Get(
-     *     path="/api/expense",
+     *     path="/api/expenses",
      *     summary="Show expense",
      *     tags={"Expense"},
      *     @OA\Parameter(
@@ -108,7 +108,36 @@ class ExpenseController extends Controller
     {
         //
     }
-
+    /**
+     * @OA\Post(
+     *   path="/api/expenses",
+     *   summary="Creates a new Expense",
+     *   description="Creates a new Expense",
+     *   tags={"Expense"},
+     *   security={{"passport": {"*"}}},
+     *   @OA\RequestBody(
+     *       @OA\MediaType(
+     *           mediaType="application/json",
+     *           @OA\Schema(ref="#/components/schemas/Expense")
+     *       )
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response=200,
+     *       description="The Expense resource created",
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response=401,
+     *       description="Unauthenticated."
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response="default",
+     *       description="an ""unexpected"" error",
+     *   )
+     * )
+    */
     /**
      * Store a newly created resource in storage.
      *
@@ -117,9 +146,15 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
+        $expense = new Expense();
+        $expense->exchange = $request->exchange;
+        $expense->provider_id = $request->provider_id;
+        $expense->coin_id = $request->coin_id;
+        $expense->expense_reason_id = $request->expense_reason_id;
+        $expense->user_created_id = $request->user_created_id;
+        $expense->save();
+        return response($expense, 201);
+     }
     /**
      * Display the specified resource.
      *

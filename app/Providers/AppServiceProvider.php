@@ -8,6 +8,7 @@ use App\Models\BudgetRequest;
 use App\Models\Client;
 use App\Models\Devolution;
 use App\Models\DevolutionDetail;
+use App\Models\Expense;
 use App\Models\Guide;
 use App\Models\Order;
 use App\Models\OrderDetail;
@@ -34,6 +35,7 @@ use App\Observers\OrderObserver;
 use App\Observers\PurchaseObserver;
 use App\Observers\SellerObserver;
 use App\Observers\DevolutionDetailObserver;
+use App\Observers\ExpenseObserver;
 use App\Observers\GuideObserver;
 use App\Observers\OrderDetailObserver;
 use App\Observers\PurchaseDetailObserver;
@@ -80,5 +82,6 @@ class AppServiceProvider extends ServiceProvider
         PurchaseOrder::observe(PurchaseOrderObserver::class);
         BudgetRequest::observe(BudgetRequestObserver::class);
         Guide::observe(GuideObserver::class);
+        Expense::observe(ExpenseObserver::class);
     }
 }
