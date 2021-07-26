@@ -94,7 +94,15 @@ class PurchaseController extends Controller
      */
     public function index(Request $request)
     {
-        $purchases = Purchase::filters($request->all())->search($request->all());
+        $purchases = Purchase::with(
+            'coin:id,name',
+            'provider:id,name,last_name',
+            'voucherType:id,name',
+            'purchasePayments',
+            'purchaseDetails.product:id,name'
+        )
+            ->filters($request->all())
+            ->search($request->all());
         return response()->json($purchases, 200);
     }
 

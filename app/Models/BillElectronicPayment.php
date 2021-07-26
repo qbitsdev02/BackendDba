@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Helpers\Calculate;
 class BillElectronicPayment extends Base
 {
     /**
@@ -15,7 +15,9 @@ class BillElectronicPayment extends Base
         'reference',
         'amount',
         'user_created_id',
-        'user_updated_id'
+        'user_updated_id',
+        'exchange',
+        'balance'
     ];
     /**
      * The attributes that are mass with.
@@ -26,6 +28,13 @@ class BillElectronicPayment extends Base
         'paymentMethod:id,name',
         'paymentDestination:id,name'
     ];
+
+    protected $appends = ['type'];
+
+    public function getTypeAttribute()
+    {
+        return 'CPE';
+    }
     /**
      * Get the paymentMethod that owns the BillElectronicPayment
      *
@@ -43,5 +52,25 @@ class BillElectronicPayment extends Base
     public function paymentDestination()
     {
         return $this->belongsTo(PaymentDestination::class);
+    }
+
+    /**
+     * Get the billElectronic that owns the BillElectronicPayment
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function billElectronic()
+    {
+        return $this->belongsTo(BillElectronic::class);
+    }
+
+    /**
+     * Get the coin that owns the BillElectronicPayment
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function coin()
+    {
+        return $this->belongsTo(Coin::class);
     }
 }

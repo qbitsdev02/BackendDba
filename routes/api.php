@@ -67,3 +67,8 @@ Route::resource('measurement-units', MeasurementUnitController::class);
 Route::resource('expenses', ExpenseController::class);
 Route::get('ruc/{ruc}', 'ApiTerceroController@getRuc');
 Route::get('exchange-rate/', 'ApiTerceroController@exchangeRate');
+
+Route::prefix('finances')
+    ->group(function () {
+        Route::get('movements', 'FinanceController@movements');
+    });

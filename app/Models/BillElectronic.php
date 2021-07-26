@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use Database\Seeders\BillElectronicDetailSeeder;
-
 /**
  * @OA\Schema(
  *   schema="BillElectronic",

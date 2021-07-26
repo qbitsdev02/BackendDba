@@ -116,18 +116,6 @@ namespace App\Models;
 class Purchase extends Base
 {
     /**
-     * The attributes that are mass with.
-     *
-     * @var array
-     */
-    protected $with = [
-        'coin:id,name',
-        'provider:id,name,last_name',
-        'voucherType:id,name',
-        'purchasePayments',
-        'purchaseDetails.product:id,name'
-    ];
-    /**
      * Get all of the purchaseDetails for the Purchase
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

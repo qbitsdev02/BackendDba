@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\BillElectronic;
 use App\Models\BillElectronicDetail;
+use App\Models\BillElectronicPayment;
 use App\Models\BudgetRequest;
 use App\Models\Client;
 use App\Models\Devolution;
@@ -19,6 +20,7 @@ use App\Models\Provider;
 use App\Models\Purchase;
 use App\Models\PurchaseDetail;
 use App\Models\PurchaseOrder;
+use App\Models\PurchasePayment;
 use App\Models\Quotation;
 use App\Observers\BillElectronicObserver;
 use App\Observers\ClientObserver;
@@ -29,6 +31,7 @@ use App\Models\Seller;
 use App\Models\Transfer;
 use App\Models\TransferDetail;
 use App\Observers\BillElectronicDetailObserver;
+use App\Observers\BillElectronicPaymentObserver;
 use App\Observers\BudgetRequestObserver;
 use App\Observers\DevolutionObserver;
 use App\Observers\OrderObserver;
@@ -40,6 +43,7 @@ use App\Observers\GuideObserver;
 use App\Observers\OrderDetailObserver;
 use App\Observers\PurchaseDetailObserver;
 use App\Observers\PurchaseOrderObserver;
+use App\Observers\PurchasePaymentObserver;
 use App\Observers\TransferDetailObserver;
 use App\Observers\TransferObserver;
 use App\Observers\UserObserver;
@@ -83,5 +87,7 @@ class AppServiceProvider extends ServiceProvider
         BudgetRequest::observe(BudgetRequestObserver::class);
         Guide::observe(GuideObserver::class);
         Expense::observe(ExpenseObserver::class);
+        BillElectronicPayment::observe(BillElectronicPaymentObserver::class);
+        PurchasePayment::observe(PurchasePaymentObserver::class);
     }
 }

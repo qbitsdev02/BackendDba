@@ -16,6 +16,89 @@
         }
     ],
     "paths": {
+        "/api/accounting-plans": {
+            "get": {
+                "tags": [
+                    "AccountingPlan"
+                ],
+                "summary": "Show AccountingPlan",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "AccountingPlan resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a AccountingPlan resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "AccountingPlan resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a AccountingPlan resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a AccountingPlan resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "AccountingPlan resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "AccountingPlan resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a AccountingPlan resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show AccountingPlan all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            }
+        },
         "/api/ruc/{ruc}": {
             "get": {
                 "tags": [
@@ -3017,6 +3100,89 @@
                         ]
                     }
                 ]
+            }
+        },
+        "/api/finances/movements": {
+            "get": {
+                "tags": [
+                    "Finance"
+                ],
+                "summary": "Show movements",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "Movement resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Movement resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "Movement resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Movement resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a Movement resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "Movement resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "Movement resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a Movement resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Movement all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
             }
         },
         "/api/guides": {
@@ -8952,6 +9118,41 @@
     },
     "components": {
         "schemas": {
+            "AccountingPlan": {
+                "properties": {
+                    "name": {
+                        "description": "The AccountingPlan name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "The AccountingPlan description",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
             "AttributeType": {
                 "properties": {
                     "name": {
