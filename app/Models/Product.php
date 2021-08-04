@@ -84,14 +84,23 @@ class Product extends Base
         'user_created_id',
         'user_updated_id'
     ];
+
+    protected $appends = ['full_name'];
     /**
      * The stock that belong to the Product
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function getStockAttribute()
     {
         return ProductHelper::getStock($this);
+    }
+    /**
+     * The full_name the Product
+     *
+     */
+    public function getFullNameAttribute()
+    {
+        return "{$this->code} - {$this->name}";
     }
     /**
      * Get the category that owns the Product

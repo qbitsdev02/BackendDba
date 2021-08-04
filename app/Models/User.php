@@ -91,6 +91,8 @@ class User extends Authenticatable
         'user_updated_id'
     ];
 
+    protected $appends = ['full_name'];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -123,6 +125,11 @@ class User extends Authenticatable
             ->whereHas('roles', function ($q) use ($typeAcronym) {
                 $q->where('acronym', $typeAcronym);
             });
+    }
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->document_number} - {$this->name} {$this->last_name}";
     }
 
     public static $filterable = [];
@@ -191,11 +198,11 @@ class User extends Authenticatable
             });
 		}
 
-        if(isset($data['sortField']) && isset($data['sortOrder'])) {
-            $q->orderBy($data['sortField'], $data['sortOrder']);
+        if(isset($data['sortBy']) && isset($data['sortOrder'])) {
+            $q->orderBy($data['sortBy'], $data['sortOrder']);
         }
 
-		if (isset($data['paginate']) && $data['paginate'] === "true") {
+		if (isset($data['paginate']) && $data['paginate'] === "true" || isset($data['paginated']) && $data['paginated'] === "true") {
 			return $q->paginate($data['perPage']);
 		} else {
 			return $q->get();

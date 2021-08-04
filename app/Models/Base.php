@@ -92,11 +92,11 @@ class Base extends Model
             });
 		}
 
-        if(isset($data['sortField']) && isset($data['sortOrder'])) {
-            $q->orderBy($data['sortField'], $data['sortOrder']);
+        if(isset($data['sortBy']) && isset($data['sortOrder'])) {
+            $q->orderBy($data['sortBy'], $data['sortOrder']);
         }
 
-		if (isset($data['paginate']) && $data['paginate'] === "true") {
+		if (isset($data['paginate']) && $data['paginate'] === "true" || isset($data['paginated']) && $data['paginated'] === "true") {
 			return $q->paginate($data['perPage']);
 		} else {
 			return $q->get();
