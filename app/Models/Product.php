@@ -85,7 +85,7 @@ class Product extends Base
         'user_updated_id'
     ];
 
-    protected $appends = ['full_name'];
+    protected $appends = ['full_name', 'stock'];
     /**
      * The stock that belong to the Product
      *
@@ -100,7 +100,8 @@ class Product extends Base
      */
     public function getFullNameAttribute()
     {
-        return "{$this->code} - {$this->name}";
+        $brand = $this->brand->name ?? '';
+        return "{$brand} {$this->code} {$this->supsec} - {$this->name}";
     }
     /**
      * Get the category that owns the Product
@@ -114,29 +115,26 @@ class Product extends Base
 
     public function scopeFiltersProduct($q, array $data = array())
 	{
-		if (!empty($data['filterProduct'])) {
-            $dataField = json_decode($data['filterProduct'], true);
-            collect($dataField)
-                ->each(function ($fields) use($q) {
-                    $dataField = Arr::except($fields, static::$filterable);
-                    $dataField = array_filter($dataField, 'strlen');
-                    $q->where(function ($query) use ($dataField) {
-                        foreach ($dataField as $field => $value) {
-                            if (isset($dataField[$field])) {
-                                $contains = Str::of($field)->contains('.');
-                                $relations = Str::of($field)->explode('.');
-                                if ($contains) {
-                                    $query->whereHas(Str::camel($relations[0]), function ($q) use ($relations, $dataField, $field) {
-                                        $q->where($relations[1], 'like', "%$dataField[$field]%");
-                                    });
-                                } else {
-                                    $query->where($field, 'like', "%$dataField[$field]%");
-                                }
-                            }
+        if (!empty($data['filterProduct'])) {
+            $fields = json_decode($data['filterProduct'], true);
+            $fields = array_filter($fields, 'strlen');
+            $fields = Arr::except($fields, static::$filterable);
+            $q->where(function ($query) use ($fields) {
+                foreach ($fields as $field => $value) {
+                    if (isset($fields[$field])) {
+                        $contains = Str::of($field)->contains('.');
+                        $relations = Str::of($field)->explode('.');
+                        if ($contains) {
+                            $query->whereHas(Str::camel($relations[0]), function ($q) use ($relations, $fields, $field) {
+                                $q->where($relations[1], $fields[$field]);
+                            });
+                        } else {
+                            $query->where($field, $fields[$field]);
                         }
-                    });
-                });
-		}
+                    }
+                }
+            });
+        }
     }
     /**
      * Get the brand that owns the Product

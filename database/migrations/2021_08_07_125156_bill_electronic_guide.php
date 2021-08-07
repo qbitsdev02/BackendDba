@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductCommissionsTable extends Migration
+class BillElectronicGuide extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateProductCommissionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_commissions', function (Blueprint $table) {
+        Schema::create('bill_electronic_guide', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained();
-            $table->enum('commission_type', ['m', 'p'])->default('p');
-            $table->string('amount');
+            $table->string('description')->nullable();
+            $table->string('observation')->nullable();
+            $table->string('purchase_order')->nullable();
+            $table->foreignId('guide_id')->constrained();
+            $table->foreignId('bill_electronic_id')->constrained();
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->timestamps();
@@ -32,6 +34,6 @@ class CreateProductCommissionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_commissions');
+        Schema::dropIfExists('bill_electronic_guide');
     }
 }

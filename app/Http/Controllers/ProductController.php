@@ -110,9 +110,9 @@ class ProductController extends Controller
                 'brand:id,name',
                 'attributeTypes:id,name'
             )
+            ->distinct()
             ->filtersProduct($request->all())
-            ->search($request->all())
-            ->append('stock');
+            ->search($request->all());
 
         return response()->json($products, 200);
     }
@@ -167,6 +167,8 @@ class ProductController extends Controller
         $product = new Product();
         $product->code = $request->code;
         $product->name = $request->name;
+        $product->numsec = $request->numsec;
+        $product->supsec = $request->supsec;
         $product->description = $request->description;
         $product->category_id = $request->category_id;
         $product->brand_id = $request->brand_id;
@@ -284,6 +286,8 @@ class ProductController extends Controller
     {
         $product->code = $request->code;
         $product->name = $request->name;
+        $product->numsec = $request->numsec;
+        $product->supsec = $request->supsec;
         $product->description = $request->description;
         $product->category_id = $request->category_id;
         $product->brand_id = $request->brand_id;

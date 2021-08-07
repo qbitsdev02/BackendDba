@@ -15,7 +15,7 @@ class BillElectronicGuide extends Pivot
         'guide_id',
         'description',
         'observation',
-        'pucharse_order',
+        'purchase_order',
         'user_created_id',
         'user_updated_id'
     ];
