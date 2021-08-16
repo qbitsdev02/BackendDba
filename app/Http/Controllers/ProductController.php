@@ -111,7 +111,6 @@ class ProductController extends Controller
                 'attributeTypes:id,name',
                 'productPrices:product_id,name,price'
             )
-            ->distinct()
             ->filtersProduct($request->all())
             ->search($request->all());
 

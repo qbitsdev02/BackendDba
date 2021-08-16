@@ -213,9 +213,15 @@ class BillElectronicController extends Controller
      * @param  \App\Models\BillElectronic  $billElectronic
      * @return \Illuminate\Http\Response
      */
-    public function show(BillElectronic $billElectronic)
+    public function show($id)
     {
-        return response()->json($billElectronic, 200);
+        $billElectronic = new BillElectronic;
+        $billElectronic->makeHidden('billElectronicDetails.product.stock');
+
+        $billElectronic = BillElectronic::with('billElectronicDetails.product:id,name')
+            ->findOrFail($id);
+
+            return response()->json($billElectronic, 200);
     }
 
     /**

@@ -52,7 +52,8 @@ class CreditNoteController extends Controller
         return BillElectronic::select(
             'id',
             'client_id',
-            'coin_id'
+            'coin_id',
+            'seller_id'
         )
         ->without(
             'billElectronicPayments',
@@ -60,11 +61,12 @@ class CreditNoteController extends Controller
             'serie',
             'CreditNote',
             'voucherType',
-            'branchOffice',
-            'seller'
+            'branchOffice'
         )
         ->with(
-            'creditNote'
+            'creditNote',
+            'seller:id,name,last_name,document_number',
+            'billElectronicDetails.product:id,name,description'
         )
         ->findOrFail($id);
     }
@@ -143,7 +145,11 @@ class CreditNoteController extends Controller
                 'user_created_id' => $request->user_created_id
             ]
         );
-        
+
+        $creditNote
+            ->creditNoteDetails()
+            ->delete();
+
         $creditNote
             ->creditNoteDetails()
             ->createMany($request->credit_note_details);

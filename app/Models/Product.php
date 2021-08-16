@@ -136,6 +136,24 @@ class Product extends Base
             });
         }
     }
+
+    public static $withoutAppends = false;
+
+    public function scopeWithoutAppends($query)
+    {
+        self::$withoutAppends = true;
+
+        return $query;
+    }
+
+    protected function getArrayableAppends()
+    {
+        if (self::$withoutAppends) {
+            return [];
+        }
+
+        return parent::getArrayableAppends();
+    }
     /**
      * Get the brand that owns the Product
      *
