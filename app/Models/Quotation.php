@@ -128,8 +128,8 @@ class Quotation extends Base
      */
     protected $with = [
         'coin:id,name',
-        'client:id,name,last_name',
-        'seller:id,name,last_name',
+        'client:id,name,last_name,document_number',
+        'seller:id,name,last_name,document_number',
         'quotationPayments',
         'quotationDetails'
     ];
@@ -141,7 +141,7 @@ class Quotation extends Base
     public function coin()
     {
         return $this->belongsTo(Coin::class);
-    }   
+    }
     /**
      * Get the seller that owns the Quotation
      *
@@ -151,7 +151,7 @@ class Quotation extends Base
     {
         return $this->belongsTo(Seller::class);
     }
-        
+
     /**
      * Get the client that owns the Quotation
      *

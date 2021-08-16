@@ -2,15 +2,27 @@
 
 namespace App\Models;
 
-class QuotationDetail extends Base
+use Illuminate\Database\Eloquent\Model;
+
+class QuotationDetail extends Model
 {
     /**
-     * The attributes that aren't mass assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $guarded = [];
-
+    protected $fillable = [
+        'quotation_id',
+        'product_id',
+        'amount',
+        'price',
+        'igv',
+        'purchase_price',
+        'user_created_id',
+        'user_updated_id',
+        'extra_attribute',
+        'extra_attribute_description'
+    ];
     /**
      * The attributes that are mass with.
      *
