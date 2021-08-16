@@ -16,8 +16,8 @@ class BillElectronicObserver
     public function created(BillElectronic $billElectronic)
     {
         $service = new BillElectronicService();
-        $service->saveBillElectronicDetails($billElectronic, request()->bill_electronic_details);
         $service->saveBillElectronicPayments($billElectronic, request()->bill_electronic_payments);
+        $service->saveBillElectronicDetails($billElectronic, request()->bill_electronic_details);
         $service->saveBillElectronicGuides($billElectronic, request()->bill_electronic_guides);
         $service->saveBillFees($billElectronic, request()->bill_fees);
     }
@@ -30,7 +30,8 @@ class BillElectronicObserver
      */
     public function updated(BillElectronic $billElectronic)
     {
-        //
+        $service = new BillElectronicService();
+        $service->saveBillElectronicPayments($billElectronic, request()->bill_electronic_payments);
     }
 
     /**

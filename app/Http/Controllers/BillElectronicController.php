@@ -244,7 +244,8 @@ class BillElectronicController extends Controller
      */
     public function update(Request $request, BillElectronic $billElectronic)
     {
-        //
+        $billElectronic->updated_at = \Carbon\Carbon::now();
+        $billElectronic->update();
     }
     /**
      * @OA\Delete(

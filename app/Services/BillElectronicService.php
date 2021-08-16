@@ -14,9 +14,13 @@ class BillElectronicService
         }
     }
 
-    public function savebillElectronicPayments(BillElectronic $billElectronic, $billElectronicPayments)
+    public function saveBillElectronicPayments(BillElectronic $billElectronic, $billElectronicPayments)
     {
         if ($billElectronicPayments) {
+            $billElectronic
+                ->billElectronicPayments()
+                ->delete();
+
             $billElectronic
                 ->billElectronicPayments()
                 ->createMany($billElectronicPayments);
