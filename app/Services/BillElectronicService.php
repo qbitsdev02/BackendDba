@@ -21,7 +21,7 @@ class BillElectronicService
                 ->billElectronicPayments()
                 ->createMany($billElectronicPayments);
         }
-    }    
+    }
 
     public function saveBillElectronicGuides(BillElectronic $billElectronic, $billElectronicGuides)
     {
@@ -30,5 +30,14 @@ class BillElectronicService
                 ->billElectronicGuides()
                 ->createMany($billElectronicGuides);
         }
-    }    
+    }
+
+    public function saveBillFees(BillElectronic $billElectronic, $saveBillFees)
+    {
+        if ($saveBillFees) {
+            $billElectronic
+                ->billFess()
+                ->createMany($saveBillFees);
+        }
+    }
 }

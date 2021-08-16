@@ -19,6 +19,12 @@ class ProductOberver
                 ->attributeTypes()
                 ->attach(request()->attribute_types);
         }
+
+        if (request()->product_prices) {
+            $product
+                ->productPrices()
+                ->createMany(request()->product_prices);
+        }
     }
 
     /**
@@ -33,6 +39,15 @@ class ProductOberver
             $product
                 ->attributeTypes()
                 ->sync(request()->attribute_types);
+        }
+        if (request()->product_prices) {
+            $product
+                ->productPrices()
+                ->delete();
+
+            $product
+                ->productPrices()
+                ->createMany(request()->product_prices);
         }
     }
 

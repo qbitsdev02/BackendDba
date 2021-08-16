@@ -98,9 +98,10 @@ class BillElectronicController extends Controller
             'billElectronicDetails.product:id,name',
             'coin:id,name',
             'serie:id,name',
-            'client:id,name,last_name',
+            'client:id,name,last_name,document_number,document_type_id',
             'seller:id,name,last_name',
             'voucherType:id,name',
+            'operationType:id,name',
             'billElectronicPayments',
             'billElectronicGuides'
         )

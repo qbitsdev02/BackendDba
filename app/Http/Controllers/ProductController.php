@@ -108,7 +108,8 @@ class ProductController extends Controller
             ->with(
                 'category:id,name',
                 'brand:id,name',
-                'attributeTypes:id,name'
+                'attributeTypes:id,name',
+                'productPrices:product_id,name,price'
             )
             ->distinct()
             ->filtersProduct($request->all())
@@ -217,8 +218,16 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
+        $product = Product::with(
+            'category:id,name',
+            'brand:id,name',
+            'attributeTypes:id,name',
+            'productPrices:product_id,name,price'
+        )
+        ->findOrFail($id);
+
         return response()->json($product, 200);
     }
 

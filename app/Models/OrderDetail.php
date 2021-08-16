@@ -1,10 +1,24 @@
 <?php
 
 namespace App\Models;
-
-class OrderDetail extends Base
+use Illuminate\Database\Eloquent\Model;
+class OrderDetail extends Model
 {
-    protected $guarded = [];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'order_id',
+        'product_id',
+        'amount',
+        'price',
+        'igv',
+        'purchase_price',
+        'user_created_id',
+        'user_updated_id'
+    ];
 
     /**
      * The attributes that are mass with.

@@ -14,6 +14,7 @@ class AttributeTypeProduct extends Pivot
    protected $fillable = [
        'product_id',
        'attribute_type_id',
+       'description',
        'user_created_id',
        'user_updated_id'
    ];

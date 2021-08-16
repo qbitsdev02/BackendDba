@@ -110,6 +110,7 @@ class Order extends Base
         'coin:id,name',
         'client:id,name,last_name,document_number',
         'seller:id,name,last_name,document_number',
+        'paymentMethod:id,name',
         'orderDetails'
     ];
     /**
@@ -140,7 +141,16 @@ class Order extends Base
     {
         return $this->belongsTo(Client::class);
     }
-        /**
+    /**
+     * Get the paymentMethod that owns the Order
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function paymentMethod()
+    {
+        return $this->belongsTo(PaymentMethod::class);
+    }
+    /**
      * Get all of the orderDetails for the Order
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

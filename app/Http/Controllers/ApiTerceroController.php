@@ -40,23 +40,19 @@ class ApiTerceroController extends Controller
      *      )
      * )
      */
-    public function getRuc($ruc)
+    public function getRuc($ruc, Request $request)
     {
-        $ruta = "https://ruc.com.pe/api/v1/consultas";
-        $token = "47210953-9eaf-4f48-8479-8e2f523200dd-06b42d2c-8428-4dda-941d-7cbbb711b0e4";
-        $rucaconsultar = $ruc;
-
         $data = array(
-            "token"	=> $token,
-            "ruc"   => $rucaconsultar
+            "token"	=> '47210953-9eaf-4f48-8479-8e2f523200dd-06b42d2c-8428-4dda-941d-7cbbb711b0e4',
+            $request->documentType => $ruc
         );
-            
+
         $data_json = json_encode($data);
 
         // Invocamos el servicio a ruc.com.pe
         // Ejemplo para JSON
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $ruta);
+        curl_setopt($ch, CURLOPT_URL, 'https://ruc.com.pe/api/v1/consultas');
         curl_setopt(
             $ch, CURLOPT_HTTPHEADER, array(
             'Content-Type: application/json',
@@ -150,7 +146,7 @@ class ApiTerceroController extends Controller
                 "fecha_fin" => $request->final_date,
             ]
         );
-            
+
         $data_json = json_encode($data);
 
         // Invocamos el servicio a ruc.com.pe

@@ -109,6 +109,17 @@ namespace App\Models;
  *       ),
  *       description="The bill electronic payments"
  *   ),
+ *  @OA\Property(
+ *       property="bill_fees",
+ *       type="array",
+ *       required={"true"},
+ *       @OA\Items(
+ *           @OA\Property(property="amount", type="number"),
+ *           @OA\Property(property="date", type="string"),
+ *           @OA\Property(property="user_created_id", type="number")
+ *       ),
+ *       description="The bill electronic fees"
+ *   ),
  *   @OA\Property(
  *       property="user_created_id",
  *       type="number",
@@ -260,6 +271,15 @@ class BillElectronic extends Base
     {
         return $this->belongsTo(BranchOffice::class);
     }
+    /**
+     * Get the operationType that owns the BillElectronic
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function operationType()
+    {
+        return $this->belongsTo(OperationType::class);
+    }
 
     /**
      * Get the creditNote associated with the BillElectronic
@@ -269,5 +289,15 @@ class BillElectronic extends Base
     public function creditNote()
     {
         return $this->hasOne(CreditNote::class);
+    }
+
+    /**
+     * Get all of the billFess for the BillElectronic
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function billFess()
+    {
+        return $this->hasMany(BillFees::class);
     }
 }

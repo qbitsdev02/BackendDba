@@ -9349,6 +9349,27 @@
                             "type": "object"
                         }
                     },
+                    "bill_fees": {
+                        "description": "The bill electronic fees",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "amount": {
+                                    "type": "number"
+                                },
+                                "date": {
+                                    "type": "string"
+                                },
+                                "user_created_id": {
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
                     "user_created_id": {
                         "description": "The Users crete",
                         "required": [

@@ -152,6 +152,7 @@ class OrderController extends Controller
         $order->exchange_rate = $request->exchange_rate;
         $order->address = $request->address;
         $order->observation = $request->observation;
+        $order->expiration_date = $request->expiration_date;
         $order->delivery_date = $request->delivery_date;
         $order->payment_method_id = $request->payment_method_id;
         $order->user_created_id = $request->user_created_id;
@@ -273,6 +274,7 @@ class OrderController extends Controller
         $order->address = $request->address;
         $order->observation = $request->observation;
         $order->delivery_date = $request->delivery_date;
+        $order->expiration_date = $request->expiration_date;
         $order->payment_method_id = $request->payment_method_id;
         $order->user_created_id = $request->user_created_id;
         $order->created_at = $request->created_at;

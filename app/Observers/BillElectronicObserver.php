@@ -19,6 +19,7 @@ class BillElectronicObserver
         $service->saveBillElectronicDetails($billElectronic, request()->bill_electronic_details);
         $service->saveBillElectronicPayments($billElectronic, request()->bill_electronic_payments);
         $service->saveBillElectronicGuides($billElectronic, request()->bill_electronic_guides);
+        $service->saveBillFees($billElectronic, request()->bill_fees);
     }
 
     /**

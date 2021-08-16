@@ -101,7 +101,7 @@ class Product extends Base
     public function getFullNameAttribute()
     {
         $brand = $this->brand->name ?? '';
-        return "{$brand} {$this->code} {$this->supsec} - {$this->name}";
+        return "{$brand}-{$this->code}-{$this->supsec} - {$this->description}";
     }
     /**
      * Get the category that owns the Product
@@ -220,5 +220,15 @@ class Product extends Base
     public function warehouses()
     {
         return $this->belongsToMany(Warehouse::class, 'purchase_details', 'product_id', 'warehouse_id');
+    }
+
+    /**
+     * Get all of the productPrices for the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function productPrices()
+    {
+        return $this->hasMany(ProductPrice::class);
     }
 }
