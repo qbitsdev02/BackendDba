@@ -26,7 +26,7 @@ class OrderDetail extends Model
      * @var array
      */
     protected $with = [
-        'product:id,name'
+        'product:id,name,description'
     ];
 
     public function kardexReports()
@@ -40,6 +40,6 @@ class OrderDetail extends Model
      */
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class)->withoutAppends();
     }
 }
