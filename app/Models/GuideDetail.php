@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
-class GuideDetail extends Base
+use Illuminate\Database\Eloquent\Model;
+
+class GuideDetail extends Model
 {
     protected $fillable = [
         'product_id',
@@ -18,6 +20,6 @@ class GuideDetail extends Base
      */
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class)->withoutAppends();
     }
 }

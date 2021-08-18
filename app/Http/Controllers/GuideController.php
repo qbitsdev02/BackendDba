@@ -147,7 +147,7 @@ class GuideController extends Controller
     public function store(Request $request)
     {
         $guide = new Guide();
-        $guide->serie = $request->serie;
+        $guide->serie = 'G001';
         $guide->serie_number = 1;
         $guide->date_of_issue = $request->date_of_issue;
         $guide->date_transfer = $request->date_transfer;

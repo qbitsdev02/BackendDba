@@ -16,7 +16,7 @@ class CreateKardexReportsTable extends Migration
         Schema::create('kardex_reports', function (Blueprint $table) {
             $table->id();
             $table->morphs('reportable');
-            $table->string('stock');
+            $table->text('stock');
             $table->foreignId('product_id')->constrained();
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');

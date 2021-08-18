@@ -95,7 +95,7 @@ class BillElectronicController extends Controller
     public function index(Request $request)
     {
         $billElectronics = BillElectronic::with(
-            'billElectronicDetails.product:id,name',
+            'billElectronicDetails.product:id,name,description',
             'coin:id,name',
             'serie:id,name',
             'client:id,name,last_name,document_number,document_type_id',
@@ -218,7 +218,10 @@ class BillElectronicController extends Controller
         $billElectronic = new BillElectronic;
         $billElectronic->makeHidden('billElectronicDetails.product.stock');
 
-        $billElectronic = BillElectronic::with('billElectronicDetails.product:id,name')
+        $billElectronic = BillElectronic::with(
+            'billElectronicDetails.product:id,name,description',
+            'client:id,name,last_name,document_number'
+        )
             ->findOrFail($id);
 
             return response()->json($billElectronic, 200);
