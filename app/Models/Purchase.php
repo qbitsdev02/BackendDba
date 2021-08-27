@@ -29,12 +29,6 @@ namespace App\Models;
  *       required={"true"},
  *       description="The Purchase voucher_type_id"
  *   ),
- *   @OA\Property(
- *       property="operation_type_id",
- *       type="number",
- *       required={"true"},
- *       description="The Purchase operation_type_id"
- *   ),
  *  @OA\Property(
  *       property="exchange_rate",
  *       type="string",

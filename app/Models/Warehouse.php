@@ -37,6 +37,13 @@ class Warehouse extends Base
 {
     public static $filterable = [];
 
+    protected $appends = ['full_name'];
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->description} {$this->branchOffice->name}";
+    }
+
     /**
      * Get the branchOffice that owns the Warehouse
      *

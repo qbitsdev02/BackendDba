@@ -158,7 +158,6 @@ class PurchaseController extends Controller
         $purchase->number = $request->number;
         $purchase->provider_id = $request->provider_id;
         $purchase->voucher_type_id = $request->voucher_type_id;
-        $purchase->operation_type_id = $request->operation_type_id;
         $purchase->coin_id = $request->coin_id;
         $purchase->igv = $request->igv;
         $purchase->exchange_rate = $request->exchange_rate;
@@ -279,7 +278,6 @@ class PurchaseController extends Controller
         $purchase->number = $request->number;
         $purchase->provider_id = $request->provider_id;
         $purchase->voucher_type_id = $request->voucher_type_id;
-        $purchase->operation_type_id = $request->operation_type_id;
         $purchase->coin_id = $request->coin_id;
         $purchase->igv = $request->igv;
         $purchase->exchange_rate = $request->exchange_rate;
