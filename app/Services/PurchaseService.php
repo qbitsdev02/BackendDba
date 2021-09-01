@@ -10,6 +10,10 @@ class PurchaseService
         if ($purchaseDetail) {
             $purchase
                 ->purchaseDetails()
+                ->delete();
+
+            $purchase
+                ->purchaseDetails()
                 ->createMany($purchaseDetail);
         }
     }
@@ -17,6 +21,9 @@ class PurchaseService
     public function savePurchasePayments(Purchase $purchase, $purchasePayments)
     {
         if ($purchasePayments) {
+            $purchase
+                ->purchasePayments()
+                ->delete();
             $purchase
                 ->purchasePayments()
                 ->createMany($purchasePayments);

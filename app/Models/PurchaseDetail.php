@@ -3,8 +3,18 @@
 namespace App\Models;
 class PurchaseDetail extends Base
 {
-    protected $guarded = [];
-    
+    protected $fillable = [
+        'product_id',
+        'purchase_id',
+        'warehouse_id',
+        'amount',
+        'sale_price',
+        'purchase_price',
+        'discount',
+        'igv',
+        'user_created_id'
+    ];
+
     public function kardexReports()
     {
         return $this->morphMany(KardexReport::class, 'reportable');
@@ -16,6 +26,6 @@ class PurchaseDetail extends Base
      */
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class)->withoutAppends();
     }
 }

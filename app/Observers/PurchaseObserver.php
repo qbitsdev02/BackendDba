@@ -28,8 +28,8 @@ class PurchaseObserver
     public function updated(Purchase $purchase)
     {
         $service = new PurchaseService();
-        $purchase->purchaseDetails()->delete();
         $service->savePurchaseDetails($purchase, request()->purchase_details);
+        $service->savePurchasePayments($purchase, request()->purchase_payments);
     }
 
     /**

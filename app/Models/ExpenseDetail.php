@@ -2,10 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class ExpenseDetail extends Model
 {
-    use HasFactory;
+    protected $fillable = ['description', 'price', 'user_created_id', 'user_updated_id'];
 }

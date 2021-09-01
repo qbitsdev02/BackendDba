@@ -94,7 +94,9 @@ class ExpenseController extends Controller
      */
     public function index(Request $request)
     {
-        $expense = Expense::filters($request->all())->search($request->all());
+        $expense = Expense::with('provider:id,name,last_name', 'expenseReason:id,name', 'coin:id,name', 'expenseDetails')
+            ->filters($request->all())
+            ->search($request->all());
         return response()->json($expense, 200);
     }
 
@@ -147,7 +149,8 @@ class ExpenseController extends Controller
     public function store(Request $request)
     {
         $expense = new Expense();
-        $expense->exchange = $request->exchange;
+        $expense->exchange = $request->exchange_rate;
+        $expense->number = $request->number;
         $expense->provider_id = $request->provider_id;
         $expense->coin_id = $request->coin_id;
         $expense->expense_reason_id = $request->expense_reason_id;

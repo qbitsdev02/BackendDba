@@ -18,7 +18,6 @@ class CreatePurchasesTable extends Migration
             $table->string('serie');
             $table->string('number')->nullable();
             $table->foreignId('voucher_type_id')->constrained();
-            $table->foreignId('operation_type_id')->constrained();
             $table->foreignId('provider_id')->constrained('users');
             $table->foreignId('coin_id')->constrained();
             $table->string('exchange_rate')->nullable();

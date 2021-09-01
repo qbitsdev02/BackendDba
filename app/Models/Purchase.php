@@ -109,6 +109,40 @@ namespace App\Models;
  */
 class Purchase extends Base
 {
+        /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['total', 'total_igv', 'total_gravado'];
+    /**
+     * Attribute total
+     * @return total
+     */
+    public function getTotalAttribute()
+    {
+        return $this->total_igv + $this->total_gravado;
+    }
+    /**
+     * Attribute total
+     * @return total
+     */
+    public function getTotalIgvAttribute()
+    {
+        return $this->purchaseDetails->sum(function($row) {
+            return ((($row->amount * $row->sale_price) * $row->igv) / 100);
+        });
+    }
+    /**
+     * Attribute total
+     * @return total
+     */
+    public function getTotalGravadoAttribute()
+    {
+        return $this->purchaseDetails->sum(function($row) {
+            return $row->amount * $row->sale_price;
+        });
+    }
     /**
      * Get all of the purchaseDetails for the Purchase
      *

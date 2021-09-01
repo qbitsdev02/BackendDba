@@ -8,6 +8,16 @@ class PurchasePayment extends Base
 
     protected $appends = ['type'];
 
+    /**
+     * The attributes that are mass with.
+     *
+     * @var array
+     */
+    protected $with = [
+        'paymentMethod:id,name',
+        'paymentDestination:id,name'
+    ];
+
     public function getTypeAttribute()
     {
         return 'COMPRA';

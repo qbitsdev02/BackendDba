@@ -3102,6 +3102,89 @@
                 ]
             }
         },
+        "/api/expense-reasons": {
+            "get": {
+                "tags": [
+                    "ExpesneReason"
+                ],
+                "summary": "Show ExpesneReason",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortField",
+                        "in": "query",
+                        "description": "ExpesneReason resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a ExpesneReason resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "ExpesneReason resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a ExpesneReason resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a ExpesneReason resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "ExpesneReason resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "ExpesneReason resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a ExpesneReason resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show ExpesneReason all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            }
+        },
         "/api/finances/movements": {
             "get": {
                 "tags": [
@@ -10842,13 +10925,6 @@
                     },
                     "voucher_type_id": {
                         "description": "The Purchase voucher_type_id",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "number"
-                    },
-                    "operation_type_id": {
-                        "description": "The Purchase operation_type_id",
                         "required": [
                             "true"
                         ],

@@ -99,7 +99,8 @@ class PurchaseController extends Controller
             'provider:id,name,last_name',
             'voucherType:id,name',
             'purchasePayments',
-            'purchaseDetails.product:id,name'
+            'purchasePayments',
+            'purchaseDetails.product:id,name,description'
         )
             ->filters($request->all())
             ->search($request->all());

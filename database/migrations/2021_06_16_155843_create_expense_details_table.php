@@ -15,7 +15,7 @@ class CreateExpenseDetailsTable extends Migration
     {
         Schema::create('expense_details', function (Blueprint $table) {
             $table->id();
-            $table->integer('description');
+            $table->string('description');
             $table->float('price');
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
