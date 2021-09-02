@@ -154,6 +154,7 @@ class ProviderController extends Controller
         $provider->email = $request->email;
         $provider->phone = $request->phone;
         $provider->residence_condition = $request->residence_condition;
+        $provider->status = $request->status;
         $provider->address = $request->address;
         $provider->province = $request->province;
         $provider->district = $request->district;
