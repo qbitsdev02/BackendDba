@@ -22,12 +22,6 @@ class BillElectronicDetail extends Model
         'user_created_id',
         'user_updated_id'
     ];
-    /**
-     * The attributes that are mass with.
-     *
-     * @var array
-     */
-    protected $with = [];
 
     public function kardexReports()
     {

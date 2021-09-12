@@ -95,10 +95,11 @@ class TransferController extends Controller
     public function index(Request $request)
     {
         $transfers = Transfer::with(
-                'transferDetails.product:id,name',
-                'toWarehouse:id,description',
-                'fromWarehouse:id,description'
+                'transferDetails.product:id,name,description',
+                'toWarehouse:id,description,branch_office_id',
+                'fromWarehouse:id,description,branch_office_id'
             )
+            ->withCount('transferDetails')
             ->betweenDate($request->all())
             ->filters($request->all())
             ->search($request->all());
