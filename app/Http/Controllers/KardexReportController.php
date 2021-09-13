@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BillElectronicDetail;
 use App\Models\KardexReport;
+use App\Models\PurchaseDetail;
 use Illuminate\Http\Request;
 
 class KardexReportController extends Controller
@@ -94,12 +96,25 @@ class KardexReportController extends Controller
      */
     public function index(Request $request)
     {
-        $kardexReports = KardexReport::with(['reportable', 'product:id,name'])
-            ->filters($request->all())
-            ->betweenDate($request->all())
-            ->search($request->all());
+        // $kardexReports = KardexReport::with(['reportable', 'product:id,name'])
+        //     ->filters($request->all())
+        //     ->betweenDate($request->all())
+        //     ->search($request->all());
 
-        return response()->json($kardexReports, 200);
+
+        $billDetails = BillElectronicDetail::select('product_id', 'created_at', 'amount', 'bill_electronic_id', 'stock')
+            ->with('product:id,description,name')
+            ->where('product_id', $request->product_id)
+            ->betweenDate($request->all())
+            ->get();
+
+        $purchaseDetails = PurchaseDetail::select('product_id', 'created_at', 'amount', 'purchase_id', 'stock')
+            ->with('product:id,description,name')
+            ->where('product_id', $request->product_id)
+            ->betweenDate($request->all())
+            ->get();
+
+        return response()->json([...$billDetails, ...$purchaseDetails], 200);
     }
 
     /**

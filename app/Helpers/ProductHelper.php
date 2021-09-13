@@ -22,7 +22,6 @@ class ProductHelper
                 $warehouseProductExit = self::inventory($product, 'exit');
                 $toWareHouse = self::toWareHouse($product, $warehouse);
                 $fromWareHouse = self::fromWareHouse($product, $warehouse);
-
                 return [
                     'warehouse_id' => $warehouse->id,
                     'branch_office_id' => $warehouse->branch_office_id,

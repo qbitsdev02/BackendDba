@@ -8,13 +8,8 @@ class KardexReportService
     public function saveKardexReport($model)
     {
         $product = Product::find($model->product_id);
-        $model->kardexReports()
-            ->create([
-                'stock' => $product->stock,
-                'product_id' => $model->product_id,
-                'user_created_id' => $model->user_created_id
-            ]);
-
+        $model->stock = collect($product->stock)->sum('stock_product');
+        $model->update();
         return $this;
     }
 }

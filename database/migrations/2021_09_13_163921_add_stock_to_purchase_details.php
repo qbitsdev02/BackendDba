@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddExpenseIdToExpenseDetails extends Migration
+class AddStockToPurchaseDetails extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddExpenseIdToExpenseDetails extends Migration
      */
     public function up()
     {
-        Schema::table('expense_details', function (Blueprint $table) {
-            $table->foreignId('expense_id')->constrained();
+        Schema::table('purchase_details', function (Blueprint $table) {
+            $table->string('stock')->nullable();
         });
     }
 
@@ -25,9 +25,8 @@ class AddExpenseIdToExpenseDetails extends Migration
      */
     public function down()
     {
-        Schema::table('expense_details', function (Blueprint $table) {
-            $table->dropColumn('expense_id');
-            $table->dropForeign('expense_details_expense_id_foreign');
+        Schema::table('purchase_details', function (Blueprint $table) {
+            $table->dropColumn('stock');
         });
     }
 }
