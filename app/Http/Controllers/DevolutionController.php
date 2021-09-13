@@ -97,7 +97,7 @@ class DevolutionController extends Controller
         $devolution = Devolution::with(
             'devolutionReason:id,name',
             'user:id,name,last_name',
-            'devolutionDetails.product:id,name'
+            'devolutionDetails.product:id,name,description'
         )
         ->filters($request->all())
         ->betweenDate($request->all())
