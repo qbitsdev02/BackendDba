@@ -106,17 +106,17 @@ class KardexReportController extends Controller
             ->with('product:id,description,name')
             ->where('product_id', $request->product_id)
             ->betweenDate($request->all())
-            ->orderBy('created_at', 'desc')
             ->get();
 
         $purchaseDetails = PurchaseDetail::select('product_id', 'created_at', 'amount', 'purchase_id', 'stock')
             ->with('product:id,description,name')
             ->where('product_id', $request->product_id)
             ->betweenDate($request->all())
-            ->orderBy('created_at', 'desc')
             ->get();
 
-        return response()->json([...$billDetails, ...$purchaseDetails], 200);
+        $all = collect([...$billDetails, ...$purchaseDetails])->sortBy([['created_at', 'desc']]);
+
+        return response()->json($all, 200);
     }
 
     /**
