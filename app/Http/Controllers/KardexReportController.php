@@ -116,7 +116,11 @@ class KardexReportController extends Controller
             ->betweenDate($request->all())
             ->get();
 
-        $all = collect([...$billDetails, ...$purchaseDetails])->sortBy([['created_at', 'desc']]);
+        $all = collect([
+            ...$billDetails,
+            ...$purchaseDetails
+        ])
+        ->sortBy([['created_at', 'desc']]);
 
         return response()->json($all, 200);
     }

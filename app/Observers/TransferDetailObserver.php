@@ -15,8 +15,7 @@ class TransferDetailObserver
      */
     public function created(TransferDetail $transferDetail)
     {
-        $kardexServices = new KardexReportService();
-        $kardexServices->saveKardexReport($transferDetail);
+        //
     }
 
     /**
