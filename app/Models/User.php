@@ -217,7 +217,7 @@ class User extends Authenticatable
 
     public function branchOffices()
     {
-        return $this->belongsToMany(Role::class, 'branch_office_role_user', 'user_id', 'branch_office_id')
+        return $this->belongsToMany(BranchOffice::class, 'branch_office_role_user', 'user_id', 'branch_office_id')
             ->using(BranchOfficeRoleUser::class);
     }
 }

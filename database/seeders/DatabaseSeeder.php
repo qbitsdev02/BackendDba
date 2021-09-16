@@ -46,7 +46,10 @@ class DatabaseSeeder extends Seeder
             DevolutionReasonSeeder::class,
             MeasurementUnitSeeder::class,
             TransferModeSeeder::class,
-            TransferSubjectSeeder::class
+            TransferSubjectSeeder::class,
+            SectionSeeder::class,
+            ModuleSeeder::class,
+            ModuleRoleSeeder::class
         ]);
     }
 }

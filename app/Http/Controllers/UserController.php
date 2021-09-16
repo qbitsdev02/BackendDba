@@ -95,7 +95,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::filters($request->all())->search($request->all());
+        $users = User::filters($request->all())->with('roles', 'branchOffices')->search($request->all());
         return response()->json($users, 200);
     }
 
@@ -150,6 +150,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->last_name = $request->last_name;
         $user->email = $request->email;
+        $user->phone = $request->phone;
         $user->user_created_id = $request->user_created_id;
         $user->password = Hash::make($request->password);
         $user->save();
@@ -266,6 +267,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->last_name = $request->last_name;
         $user->email = $request->email;
+        $user->phone = $request->phone;
         $user->updated_at = \Carbon\Carbon::now();
         if ($request->password) {
             $user->password = Hash::make($request->password);
