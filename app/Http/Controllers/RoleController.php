@@ -94,7 +94,9 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-        $roles = Role::filters($request->all())->search($request->all());
+        $roles = Role::with('modules:id,name')
+            ->filters($request->all())
+            ->search($request->all());
         return response()->json($roles, 200);
     }
 
@@ -263,6 +265,7 @@ class RoleController extends Controller
         $role->name = $request->name;
         $role->acronym = $request->acronym;
         $role->user_updated_id = $request->user_updated_id;
+        $role->updated_at = \Carbon\Carbon::now();
         $role->update();
         return response()->json($role, 200);
     }

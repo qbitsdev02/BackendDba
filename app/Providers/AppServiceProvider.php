@@ -22,6 +22,7 @@ use App\Models\PurchaseDetail;
 use App\Models\PurchaseOrder;
 use App\Models\PurchasePayment;
 use App\Models\Quotation;
+use App\Models\Role;
 use App\Observers\BillElectronicObserver;
 use App\Observers\ClientObserver;
 use App\Observers\ProductOberver;
@@ -44,6 +45,7 @@ use App\Observers\OrderDetailObserver;
 use App\Observers\PurchaseDetailObserver;
 use App\Observers\PurchaseOrderObserver;
 use App\Observers\PurchasePaymentObserver;
+use App\Observers\RoleObserver;
 use App\Observers\TransferDetailObserver;
 use App\Observers\TransferObserver;
 use App\Observers\UserObserver;
@@ -89,5 +91,6 @@ class AppServiceProvider extends ServiceProvider
         Expense::observe(ExpenseObserver::class);
         BillElectronicPayment::observe(BillElectronicPaymentObserver::class);
         PurchasePayment::observe(PurchasePaymentObserver::class);
+        Role::observe(RoleObserver::class);
     }
 }
