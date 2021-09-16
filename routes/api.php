@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,6 +65,7 @@ Route::resource('transfer-subjects', TransferSubjectController::class);
 Route::resource('measurement-units', MeasurementUnitController::class);
 Route::resource('expenses', ExpenseController::class);
 Route::resource('expense-reasons', ExpenseReasonController::class);
+Route::resource('sections', SectionController::class);
 Route::get('ruc/{ruc}', 'ApiTerceroController@getRuc');
 Route::get('exchange-rate/', 'ApiTerceroController@exchangeRate');
 

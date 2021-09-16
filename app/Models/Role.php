@@ -49,4 +49,14 @@ class Role extends Base
     ];
 
     public static $filterable = [];
+
+    /**
+     * The modules that belong to the Role
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function modules()
+    {
+        return $this->belongsToMany(Module::class);
+    }
 }

@@ -71,7 +71,7 @@ class Login extends BaseAuthResolver
             ]
         );
     }
-    
+
     protected function validateUser($user)
     {
         $authModelClass = $this->getAuthModelClass();
@@ -104,6 +104,6 @@ class Login extends BaseAuthResolver
             return $model->findForPassport($username);
         }
 
-        return $model->with('roles', 'branchOffices')->where('email', $username)->first();
+        return $model->with('roles.modules', 'branchOffices')->where('email', $username)->first();
     }
 }
