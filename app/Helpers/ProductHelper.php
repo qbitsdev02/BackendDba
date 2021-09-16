@@ -74,7 +74,7 @@ class ProductHelper
     {
         return $product->billElectronicDetails
             ->sum(function (BillElectronicDetail $billElectronicDetail) use($warehouse) {
-                if (isset($billElectronicDetail->billElectronic->branch_office_id) && $billElectronicDetail->billElectronic->branch_office_id === $warehouse->branch_office_id) {
+                if ($billElectronicDetail->warehouse_id === $warehouse->id) {
                     return $billElectronicDetail->amount;
                 }
             });

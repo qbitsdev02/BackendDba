@@ -105,12 +105,14 @@ class KardexReportController extends Controller
         $billDetails = BillElectronicDetail::select('product_id', 'created_at', 'amount', 'bill_electronic_id', 'stock')
             ->with('product:id,description,name')
             ->where('product_id', $request->product_id)
+            ->orderBy('id', 'desc')
             ->betweenDate($request->all())
             ->get();
 
         $purchaseDetails = PurchaseDetail::select('product_id', 'created_at', 'amount', 'purchase_id', 'stock')
             ->with('product:id,description,name')
             ->where('product_id', $request->product_id)
+            ->orderBy('id', 'desc')
             ->betweenDate($request->all())
             ->get();
 

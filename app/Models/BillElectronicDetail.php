@@ -20,7 +20,8 @@ class BillElectronicDetail extends Base
         'igv',
         'purchase_price',
         'user_created_id',
-        'user_updated_id'
+        'user_updated_id',
+        'warehouse_id'
     ];
 
     public function kardexReports()
