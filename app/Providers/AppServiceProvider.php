@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\BillElectronic;
 use App\Models\BillElectronicDetail;
 use App\Models\BillElectronicPayment;
+use App\Models\BranchOffice;
 use App\Models\BudgetRequest;
 use App\Models\Client;
 use App\Models\Devolution;
@@ -25,7 +26,7 @@ use App\Models\Quotation;
 use App\Models\Role;
 use App\Observers\BillElectronicObserver;
 use App\Observers\ClientObserver;
-use App\Observers\ProductOberver;
+use App\Observers\ProductObserver;
 use App\Observers\ProviderObserver;
 use App\Observers\QuotationObserver;
 use App\Models\Seller;
@@ -33,6 +34,7 @@ use App\Models\Transfer;
 use App\Models\TransferDetail;
 use App\Observers\BillElectronicDetailObserver;
 use App\Observers\BillElectronicPaymentObserver;
+use App\Observers\BranchOfficeObserver;
 use App\Observers\BudgetRequestObserver;
 use App\Observers\DevolutionObserver;
 use App\Observers\OrderObserver;
@@ -69,7 +71,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Product::observe(ProductOberver::class);
+        Product::observe(ProductObserver::class);
         BillElectronic::observe(BillElectronicObserver::class);
         Client::observe(ClientObserver::class);
         Provider::observe(ProviderObserver::class);
@@ -92,5 +94,6 @@ class AppServiceProvider extends ServiceProvider
         BillElectronicPayment::observe(BillElectronicPaymentObserver::class);
         PurchasePayment::observe(PurchasePaymentObserver::class);
         Role::observe(RoleObserver::class);
+        BranchOffice::observe(BranchOfficeObserver::class);
     }
 }

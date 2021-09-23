@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Helpers\BillSerie;
+
 /**
  * @OA\Schema(
  *   schema="BillElectronic",
@@ -158,6 +160,13 @@ class BillElectronic extends Base
      * @var array
      */
     protected $appends = ['total', 'total_igv', 'total_gravado'];
+
+    public function setSerieIdAttribute($value)
+    {
+        $this->attributes['number'] = BillSerie::lastNumber($value);
+        $this->attributes['serie_id'] = $value;
+    }
+
     /**
      * Attribute total
      * @return total

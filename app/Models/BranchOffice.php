@@ -58,4 +58,14 @@ class BranchOffice extends Base
     {
         return $this->hasMany(BillElectronic::class);
     }
+
+    /**
+     * Get all of the series for the BranchOffice
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function series()
+    {
+        return $this->hasMany(Serie::class);
+    }
 }

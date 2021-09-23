@@ -16,10 +16,13 @@ class CreateSeriesTable extends Migration
         Schema::create('series', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->foreignId('branch_office_id')->constrained();
+            $table->foreignId('voucher_type_id')->constrained();
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->timestamps();
             $table->softDeletes();
+
         });
     }
 

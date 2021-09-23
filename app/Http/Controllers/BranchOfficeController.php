@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BranchOffice;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class BranchOfficeController extends Controller
@@ -94,7 +95,9 @@ class BranchOfficeController extends Controller
      */
     public function index(Request $request)
     {
-        $branchOffices = BranchOffice::filters($request->all())->search($request->all());
+        $branchOffices = BranchOffice::with('series.voucherType')
+            ->filters($request->all())
+            ->search($request->all());
         return response()->json($branchOffices, 200);
     }
     /**
@@ -262,6 +265,7 @@ class BranchOfficeController extends Controller
         $branchOffice->name = $request->name;
         $branchOffice->description = $request->description;
         $branchOffice->user_updated_id = $request->user_updated_id;
+        $branchOffice->updated_at = Carbon::now();
         $branchOffice->update();
         return response()->json($branchOffice, 200);
     }

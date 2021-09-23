@@ -4,7 +4,7 @@ namespace App\Observers;
 
 use App\Models\Product;
 
-class ProductOberver
+class ProductObserver
 {
     /**
      * Handle the Product "created" event.

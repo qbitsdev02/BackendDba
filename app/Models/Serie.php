@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Models;
+
+use Illuminate\Database\Eloquent\Relations\Pivot;
+
 /**
  * @OA\Schema(
  *   schema="Serie",
@@ -27,7 +30,17 @@ namespace App\Models;
  *   ),
  * )
  */
-class Serie extends Base
+class Serie extends  Base
 {
-    //
+    protected $table = 'series';
+
+    /**
+     * Get the voucherType that owns the Serie
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function voucherType()
+    {
+        return $this->belongsTo(VoucherType::class);
+    }
 }
