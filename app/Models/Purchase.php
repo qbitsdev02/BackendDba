@@ -114,14 +114,14 @@ class Purchase extends Base
      *
      * @var array
      */
-    protected $appends = ['total', 'total_igv', 'total_gravado'];
+    protected $appends = ['total'];
     /**
      * Attribute total
      * @return total
      */
     public function getTotalAttribute()
     {
-        return $this->total_igv + $this->total_gravado;
+        return $this->total_gravado;
     }
     /**
      * Attribute total
@@ -130,7 +130,7 @@ class Purchase extends Base
     public function getTotalIgvAttribute()
     {
         return $this->purchaseDetails->sum(function($row) {
-            return ((($row->amount * $row->sale_price) * $row->igv) / 100);
+            return $row->amount * $row->sale_price;
         });
     }
     /**
