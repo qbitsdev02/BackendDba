@@ -159,37 +159,18 @@ class BillElectronic extends Base
      *
      * @var array
      */
-    protected $appends = ['total', 'total_igv', 'total_gravado'];
+    protected $appends = ['total'];
 
     public function setSerieIdAttribute($value)
     {
         $this->attributes['number'] = BillSerie::lastNumber($value);
         $this->attributes['serie_id'] = $value;
     }
-
     /**
      * Attribute total
      * @return total
      */
     public function getTotalAttribute()
-    {
-        return $this->total_igv + $this->total_gravado;
-    }
-    /**
-     * Attribute total
-     * @return total
-     */
-    public function getTotalIgvAttribute()
-    {
-        return $this->billElectronicDetails->sum(function($row) {
-            return ((($row->amount * $row->price) * $row->igv) / 100);
-        });
-    }
-    /**
-     * Attribute total
-     * @return total
-     */
-    public function getTotalGravadoAttribute()
     {
         return $this->billElectronicDetails->sum(function($row) {
             return $row->amount * $row->price;
