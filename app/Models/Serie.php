@@ -34,7 +34,7 @@ class Serie extends  Base
 {
     protected $table = 'series';
 
-    protected $fillable = ['voucher_type_id'];
+    protected $fillable = ['voucher_type_id', 'name'];
 
     /**
      * Get the voucherType that owns the Serie
