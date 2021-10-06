@@ -111,6 +111,7 @@ class ProductController extends Controller
                 'attributeTypes:id,name',
                 'productPrices:product_id,name,price'
             )
+            ->withCount('billElectronicDetails')
             ->filtersProduct($request->all())
             ->search($request->all());
 
@@ -169,6 +170,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->numsec = $request->numsec;
         $product->supsec = $request->supsec;
+        $product->branch_office_id = $request->branch_office_id;
         $product->description = $request->description;
         $product->category_id = $request->category_id;
         $product->brand_id = $request->brand_id;

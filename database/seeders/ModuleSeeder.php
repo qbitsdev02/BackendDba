@@ -188,8 +188,16 @@ class ModuleSeeder extends Seeder
                 [
                     'name' => 'branch-offices',
                     'icon' => 'home',
-                    'route' => 'branch-offices',
+                    'route' => 'BranchOffices',
                     'section_id' => 4,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                [
+                    'name' => 'kardex-valued',
+                    'icon' => 'all_inbox',
+                    'route' => 'KardexValued',
+                    'section_id' => 3,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ]
