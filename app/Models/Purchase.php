@@ -130,7 +130,8 @@ class Purchase extends Base
     public function getTotalIgvAttribute()
     {
         return $this->purchaseDetails->sum(function($row) {
-            return $row->amount * $row->sale_price;
+            $total = $row->amount * $row->sale_price;
+            return $total + (($total * $row->igv) / 100);
         });
     }
     /**
@@ -140,7 +141,8 @@ class Purchase extends Base
     public function getTotalGravadoAttribute()
     {
         return $this->purchaseDetails->sum(function($row) {
-            return $row->amount * $row->sale_price;
+            $total = $row->amount * $row->purchase_price;
+            return $total + (($total * $row->igv) / 100);
         });
     }
     /**
