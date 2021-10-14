@@ -127,22 +127,10 @@ class Purchase extends Base
      * Attribute total
      * @return total
      */
-    public function getTotalIgvAttribute()
-    {
-        return $this->purchaseDetails->sum(function($row) {
-            $total = $row->amount * $row->sale_price;
-            return $total + (($total * $row->igv) / 100);
-        });
-    }
-    /**
-     * Attribute total
-     * @return total
-     */
     public function getTotalGravadoAttribute()
     {
         return $this->purchaseDetails->sum(function($row) {
-            $total = $row->amount * $row->purchase_price;
-            return $total + (($total * $row->igv) / 100);
+            return ($row->amount * $row->purchase_price) + $row->igv;
         });
     }
     /**
