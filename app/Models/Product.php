@@ -113,6 +113,12 @@ class Product extends Base
         return $this->belongsTo(Category::class);
     }
 
+    public function scopeFiltersReports($q, array $data = array())
+	{
+        if (!empty($data['filterReports'])) {
+            $q->has('purcharseDetails');
+        }
+    }
     public function scopeFiltersProduct($q, array $data = array())
 	{
         if (!empty($data['filterProduct'])) {

@@ -113,6 +113,7 @@ class ProductController extends Controller
             )
             ->withCount('billElectronicDetails')
             ->filtersProduct($request->all())
+            ->filtersReports($request->all())
             ->search($request->all());
 
         return response()->json($products, 200);
