@@ -171,6 +171,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->numsec = $request->numsec;
         $product->supsec = $request->supsec;
+        $product->margin_percentage = $request->margin_percentage;
         $product->branch_office_id = $request->branch_office_id;
         $product->description = $request->description;
         $product->category_id = $request->category_id;
@@ -302,6 +303,7 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->category_id = $request->category_id;
         $product->brand_id = $request->brand_id;
+        $product->margin_percentage = $request->margin_percentage;
         $product->user_updated_id = $request->user_updated_id;
         $product->updated_at = Carbon::now();
         $product->update();
