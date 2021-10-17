@@ -173,7 +173,7 @@ class BillElectronic extends Base
     public function getTotalAttribute()
     {
         return $this->billElectronicDetails->sum(function($row) {
-            return $row->amount * $row->price;
+            return $row->amount * $row->price + $row->igv;
         });
     }
     /**
