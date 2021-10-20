@@ -26,7 +26,6 @@ class ProductHelper
                     'warehouse_id' => $warehouse->id,
                     'branch_office_id' => $warehouse->branch_office_id,
                     'warehouse_name' => "{$warehouse->description} - {$warehouse->branchOffice->name}",
-                    'purchase_price' => $warehouse->purchaseDetails->last()->purchase_price,
                     'sale_price' => $warehouse->purchaseDetails->last()->sale_price,
                     'stock_product' => (self::stock($product, $warehouse) + $warehouseProductEntry + $devolution + $toWareHouse) - ($product_sale + $warehouseProductExit + $fromWareHouse)
                 ];

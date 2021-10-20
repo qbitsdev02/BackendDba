@@ -17,10 +17,14 @@ class SerieSeeder extends Seeder
             ->insert([
                 [
                     'name' => 'F001',
+                    'voucher_type_id' => 1,
+                    'branch_office_id' => 1,
                     'user_created_id' => 1
                 ],
                 [
                     'name' => 'F002',
+                    'voucher_type_id' => 1,
+                    'branch_office_id' => 1,
                     'user_created_id' => 1
                 ]
             ]);

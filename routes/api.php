@@ -22,6 +22,7 @@ Route::group([
 
 Route::resource('users', UserController::class);
 Route::resource('roles', RoleController::class);
+Route::get('select-products', 'ProductController@select');
 Route::resource('products', ProductController::class);
 Route::resource('attribute-types', AttributeTypeController::class);
 Route::prefix('bill-electronic')

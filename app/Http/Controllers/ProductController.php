@@ -119,6 +119,25 @@ class ProductController extends Controller
         return response()->json($products, 200);
     }
 
+    public function select(Request $request)
+    {
+        $products = Product::select('id', 'code', 'brand_id', 'supsec', 'name', 'description')
+            ->with(
+                'category:id,name',
+                'brand:id,name',
+                'attributeTypes:id,name',
+                'productPrices:product_id,name,price'
+            )
+            ->withCount('billElectronicDetails')
+            ->filtersProduct($request->all())
+            ->filtersReports($request->all())
+            ->filters($request->all())
+            ->groupBy('code', 'brand_id', 'supsec')
+            ->search($request->all());
+
+        return response()->json($products, 200);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
