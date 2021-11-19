@@ -92,7 +92,7 @@ class AccountingPlanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $accountingPlans = AccountingPlan::filters($request->all())->search($request->all());
         return response()->json($accountingPlans, 200);

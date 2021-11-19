@@ -67,6 +67,7 @@ Route::resource('measurement-units', MeasurementUnitController::class);
 Route::resource('expenses', ExpenseController::class);
 Route::resource('expense-reasons', ExpenseReasonController::class);
 Route::resource('sections', SectionController::class);
+Route::resource('accounting-plans', AccountingPlanController::class);
 Route::get('ruc/{ruc}', 'ApiTerceroController@getRuc');
 Route::get('exchange-rate/', 'ApiTerceroController@exchangeRate');
 
