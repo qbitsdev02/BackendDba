@@ -15,17 +15,15 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
 
+            $table->id();
             // Field Client
-            $table->string('phone')->nullable();
-            $table->string('residence_condition')->nullable();
+            $table->string('phone_number')->nullable();
             $table->string('status')->nullable();
-            $table->string('phone_contact')->nullable();
-            $table->string('full_name_contact')->nullable();
-            $table->foreignId('client_type_id')->nullable()->constrained();
-            $table->foreignId('document_type_id')->nullable()->constrained();
+            $table->string('representative')->nullable();
+            $table->string('address')->nullable();
+            $table->string('document_type')->nullable();
             $table->string('document_number')->nullable();
             // --
-            $table->id();
             $table->string('name');
             $table->string('last_name')->nullable();
             $table->string('email')->unique();
