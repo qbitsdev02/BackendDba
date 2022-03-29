@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\EgressType;
 use App\Http\Requests\StoreEgressTypeRequest;
 use App\Http\Requests\UpdateEgressTypeRequest;
+use Illuminate\Http\Request;
 
 /**
  * @OA\Info(
@@ -25,7 +26,7 @@ class EgressTypeController extends Controller
       *
       * @return \Illuminate\Http\Response
       * @OA\Get(
-      *     path="/api/egress-types",
+      *     path="/egress-types",
       *     operationId="getEgresstype",
       *     tags={"EgressType"},
       *     @OA\Parameter(
@@ -41,7 +42,7 @@ class EgressTypeController extends Controller
       *       )
       *     ),
       *     @OA\Parameter(
-      *       name="sortField",
+      *       name="sortBy",
       *       in="query",
       *       description="turno resource name",
       *       required=false,
@@ -103,9 +104,10 @@ class EgressTypeController extends Controller
       *     )
       *  )
       */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $egressTypes = EgressType::filters($request->all())->search($request->all());
+        return response()->json($egressTypes, 200);
     }
 
     /**
@@ -124,7 +126,7 @@ class EgressTypeController extends Controller
       * @param  \App\Http\Requests\StoreEgressTypeRequest  $request
       * @return \Illuminate\Http\Response
       * @OA\Post(
-      *   path="/api/egress-types",
+      *   path="/egress-types",
       *   summary="Creates a new EgressType",
       *   description="Creates a new EgressType",
       *   tags={"EgressType"},
@@ -154,7 +156,12 @@ class EgressTypeController extends Controller
      */
     public function store(StoreEgressTypeRequest $request)
     {
-        //
+        $egressType = new EgressType();
+        $egressType->name = $request->name;
+        $egressType->description = $request->description;
+        $egressType->user_created_id = $request->user_created_id;
+        $egressType->save();
+        return response()->json($egressType, 201);
     }
 
     /**
@@ -163,7 +170,7 @@ class EgressTypeController extends Controller
      * @param  \App\Models\EgressType  $egressType
      * @return \Illuminate\Http\Response
      * @OA\Get(
-     *   path="/api/egress-types/{id}",
+     *   path="/egress-types/{id}",
      *   operationId="getEgressTypeById",
      *   tags={"EgressType"},
      *   summary="Get EgressType information",
@@ -198,7 +205,7 @@ class EgressTypeController extends Controller
      */
     public function show(EgressType $egressType)
     {
-        //
+        return response($egressType, 200);
     }
 
     /**
@@ -220,7 +227,7 @@ class EgressTypeController extends Controller
      * @param  \App\Models\EgressType  $egressType
      * @return \Illuminate\Http\Response
      * @OA\Put(
-     *  path="/api/egress-types/{id}",
+     *  path="/egress-types/{id}",
      *  operationId="updateEgress",
      *  tags={"EgressType"},
      *  summary="Update existing Egresstype",
@@ -263,7 +270,11 @@ class EgressTypeController extends Controller
      */
     public function update(UpdateEgressTypeRequest $request, EgressType $egressType)
     {
-        //
+        $egressType->name = $request->name;
+        $egressType->description = $request->description;
+        $egressType->user_created_id = $request->user_created_id;
+        $egressType->update();
+        return response()->json($egressType, 201);
     }
 
     /**
@@ -272,8 +283,8 @@ class EgressTypeController extends Controller
      * @param  \App\Models\EgressType  $egressType
      * @return \Illuminate\Http\Response
      * @OA\Delete(
-     *  path="/api/egress-types/{id}",
-     *  operationId="deleteProject",
+     *  path="/egress-types/{id}",
+     *  operationId="deleteEgress",
      *  tags={"EgressType"},
      *  summary="Delete existing EgressType",
      *  description="Deletes a record and returns no content",
@@ -307,6 +318,7 @@ class EgressTypeController extends Controller
      */
     public function destroy(EgressType $egressType)
     {
-        //
+        $egressType->delete();
+        return response('the data was deleted successfully', 200);
     }
 }

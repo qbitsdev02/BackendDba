@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Illuminate\Validation\Rule;
 class UpdateEgressTypeRequest extends FormRequest
 {
     /**
@@ -13,7 +13,7 @@ class UpdateEgressTypeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,14 @@ class UpdateEgressTypeRequest extends FormRequest
      */
     public function rules()
     {
+        \Log::info(request());
         return [
-            //
+            'name' => [
+                'required',
+                Rule::unique('egress_types')
+                    // ->ignore($this->id)
+                    ->whereNull('deleted_at'),
+            ]
         ];
     }
 }

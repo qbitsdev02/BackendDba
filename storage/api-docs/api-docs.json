@@ -12,7 +12,7 @@
     ],
     "paths": {
         "/api": {},
-        "/api/egress-types": {
+        "/egress-types": {
             "get": {
                 "tags": [
                     "EgressType"
@@ -33,7 +33,7 @@
                         }
                     },
                     {
-                        "name": "sortField",
+                        "name": "sortBy",
                         "in": "query",
                         "description": "turno resource name",
                         "required": false,
@@ -101,7 +101,7 @@
                 ],
                 "summary": "Creates a new EgressType",
                 "description": "Creates a new EgressType",
-                "operationId": "b2c448bb6ff7cd0988a49fec10d96957",
+                "operationId": "956d6aa71690740550967bb983616f6f",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -140,7 +140,7 @@
                 ]
             }
         },
-        "/api/egress-types/{id}": {
+        "/egress-types/{id}": {
             "get": {
                 "tags": [
                     "EgressType"
@@ -240,7 +240,7 @@
                 ],
                 "summary": "Delete existing EgressType",
                 "description": "Deletes a record and returns no content",
-                "operationId": "deleteProject",
+                "operationId": "deleteEgress",
                 "parameters": [
                     {
                         "name": "id",

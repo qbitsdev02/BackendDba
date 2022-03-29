@@ -23,3 +23,4 @@ Route::group([
 Route::resource('users', UserController::class);
 Route::resource('roles', RoleController::class);
 Route::resource('sections', SectionController::class);
+Route::resource('egress-types', EgressTypeController::class);
