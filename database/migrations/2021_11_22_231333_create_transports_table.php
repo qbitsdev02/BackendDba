@@ -19,7 +19,7 @@ class CreateTransportsTable extends Migration
             $table->string('color');
             $table->foreignId('provider_id')->constrained();
             $table->foreignId('brand_id')->constrained();
-            $table->foreignId('model_id')->constrained();
+            $table->foreignId('transport_model_id')->constrained();
             $table->timestamps();
         });
     }

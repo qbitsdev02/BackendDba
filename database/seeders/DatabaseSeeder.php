@@ -15,41 +15,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UserSeeder::class);
-        \App\Models\User::factory(4)->create();
         $this->call([
-            BranchOfficeSeeder::class,
-            RoleSeeder::class,
-            RoleUserSeeder::class,
-            ClientTypeSeeder::class,
-            DocumentTypeSeeder::class,
-            TypeOfCreditNoteSeeder::class,
-            VoucherTypeNoteSeeder::class
-        ]);
-
-        \App\Models\Client::factory(10)->create();
-
-        $this->call([
-            BrandSeeder::class,
-            CategorySeeder::class,
-            AttributeTypeSeeder::class,
-            CoinSeeder::class,
-            OperationTypeSeeder::class,
-            VoucherTypeSeeder::class,
-            SerieSeeder::class,
-            PaymentDestinationSeeder::class,
-            PaymentMethodSeeder::class,
-            // ProductSeeder::class,
-            ProviderSeeder::class,
-            WarehouseSeeder::class,
-            ReasonForTransferSeeder::class,
-            DevolutionReasonSeeder::class,
-            MeasurementUnitSeeder::class,
-            TransferModeSeeder::class,
-            TransferSubjectSeeder::class,
-            SectionSeeder::class,
-            ModuleSeeder::class,
-            ModuleRoleSeeder::class
+            EgressTypeSeeder::class,
+            UserSeeder::class
+            // SectionSeeder::class,
+            // ModuleSeeder::class,
+            // ModuleRoleSeeder::class
         ]);
     }
 }
