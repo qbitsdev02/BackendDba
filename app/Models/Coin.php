@@ -1,11 +1,39 @@
 <?php
 
 namespace App\Models;
-
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Coin extends Model
+/**
+ * @OA\Schema(
+ *   schema="Coin",
+ *   type="object",
+ *   @OA\Property(
+ *       property="name",
+ *       type="string",
+ *       required={"true"},
+ *       description="The Coin name"
+ *   ),
+ *   @OA\Property(
+ *       property="symbol",
+ *       type="string",
+ *       required={"true"},
+ *       description="The Coin symbol"
+ *   ),
+ *   @OA\Property(
+ *       property="user_created_id",
+ *       type="number",
+ *       required={"true"},
+ *       example=1,
+ *       description="The Users crete"
+ *   ),
+ *    @OA\Property(
+ *       property="user_updated_id",
+ *       type="number",
+ *       required={"true"},
+ *       example=1,
+ *       description="The Users update"
+ *   ),
+ * )
+ */
+class Coin extends Base
 {
-    use HasFactory;
+
 }

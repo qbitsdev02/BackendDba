@@ -24,3 +24,4 @@ Route::resource('users', UserController::class);
 Route::resource('roles', RoleController::class);
 Route::resource('sections', SectionController::class);
 Route::resource('egress-types', EgressTypeController::class);
+Route::resource('coins', CoinController::class);

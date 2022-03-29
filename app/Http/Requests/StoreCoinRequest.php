@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Illuminate\Validation\Rule;
 class StoreCoinRequest extends FormRequest
 {
     /**
@@ -13,7 +13,7 @@ class StoreCoinRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class StoreCoinRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => [
+                'required'
+            ],
+            'symbol' => [
+                'required',
+                Rule::unique('coins')
+                    ->whereNull('deleted_at')
+            ]
         ];
     }
 }

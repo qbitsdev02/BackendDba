@@ -7,17 +7,6 @@ use App\Http\Requests\StoreEgressTypeRequest;
 use App\Http\Requests\UpdateEgressTypeRequest;
 use Illuminate\Http\Request;
 
-/**
- * @OA\Info(
- *     title="CMM API Documentation",
- *     version="0.1",
- * ),
- * @OA\PathItem(path="/api"),
- * @OA\Server(
- *      description="CMM env",
- *      url="http://localhost:8000/api/"
- *  )
- */
 class EgressTypeController extends Controller
 {
 
