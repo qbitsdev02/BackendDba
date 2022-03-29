@@ -23,14 +23,8 @@ class UpdateEgressTypeRequest extends FormRequest
      */
     public function rules()
     {
-        \Log::info(request());
         return [
-            'name' => [
-                'required',
-                Rule::unique('egress_types')
-                    // ->ignore($this->id)
-                    ->whereNull('deleted_at'),
-            ]
+            'name' => 'required'
         ];
     }
 }
