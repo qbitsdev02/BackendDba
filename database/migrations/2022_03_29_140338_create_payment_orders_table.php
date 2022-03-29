@@ -15,7 +15,16 @@ class CreatePaymentOrdersTable extends Migration
     {
         Schema::create('payment_orders', function (Blueprint $table) {
             $table->id();
+            $table->string('reference')->nullable();
+            $table->float('amount');
+            $table->foreignId('operation_type_id')->constrained();
+            $table->foreignId('pay_order_id')->constrained();
+            $table->foreignId('entity_id')->constrained();
+            $table->foreignId('coin_id')->constrained();
+            $table->foreignId('user_created_id')->constrained('users');
+            $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

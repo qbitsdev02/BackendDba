@@ -15,6 +15,11 @@ class CreateFieldsTable extends Migration
     {
         Schema::create('fields', function (Blueprint $table) {
             $table->id();
+            $table->string('denomination');
+            $table->string('acronym');
+            $table->string('address');
+            $table->foreignId('organization_id')->constrained();
+            $table->foreignId('field_supervisor_id')->constrained('users');
             $table->timestamps();
         });
     }
