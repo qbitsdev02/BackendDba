@@ -26,4 +26,6 @@ Route::resource('sections', SectionController::class);
 Route::resource('egress-types', EgressTypeController::class);
 Route::resource('operation-types', OperationTypeController::class);
 Route::resource('entities', EntityController::class);
+Route::resource('fields', FieldController::class);
+Route::resource('organizations', OrganizationController::class);
 Route::resource('coins', CoinController::class);

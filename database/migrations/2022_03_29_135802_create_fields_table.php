@@ -20,7 +20,9 @@ class CreateFieldsTable extends Migration
             $table->string('address');
             $table->foreignId('organization_id')->constrained();
             $table->foreignId('field_supervisor_id')->constrained('users');
+            $table->foreignId('user_created_id')->constrained('users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

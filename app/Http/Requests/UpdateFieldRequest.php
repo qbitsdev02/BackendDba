@@ -13,7 +13,7 @@ class UpdateFieldRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class UpdateFieldRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'acronym' => 'required',
+            'denomination' => 'required',
+            'address' => 'required',
+            'organization_id' => 'required',
+            'field_supervisor_id' => 'required'
         ];
     }
 }
