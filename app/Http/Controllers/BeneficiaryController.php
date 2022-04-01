@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\RoleAcronym;
-use App\Models\Order;
-use App\Http\Requests\StoreOrderRequest;
-use App\Http\Requests\UpdateOrderRequest;
+use App\Models\Beneficiary;
+use App\Http\Requests\StoreBeneficiaryRequest;
+use App\Http\Requests\UpdateBeneficiaryRequest;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class BeneficiaryController extends Controller
 {
 
     /**
@@ -16,9 +16,9 @@ class OrderController extends Controller
       *
       * @return \Illuminate\Http\Response
       * @OA\Get(
-      *     path="/orders",
-      *     operationId="getOrder",
-      *     tags={"Order"},
+      *     path="/beneficiaries",
+      *     operationId="getBeneficiary",
+      *     tags={"Beneficiary"},
       *     @OA\Parameter(
       *       name="paginate",
       *       in="query",
@@ -86,7 +86,7 @@ class OrderController extends Controller
       *     ),
       *     @OA\Response(
       *         response=200,
-      *         description="Show Orders all."
+      *         description="Show Beneficiarys all."
       *     ),
       *     @OA\Response(
       *         response="default",
@@ -96,8 +96,11 @@ class OrderController extends Controller
       */
     public function index(Request $request)
     {
-        $orders = Order::filters($request->all())->search($request->all());
-        return response()->json($orders, 200);
+        $beneficiaries = Beneficiary::ofType(RoleAcronym::BNFCR)
+            ->filters($request->all())
+            ->search($request->all());
+
+        return response()->json($beneficiaries, 200);
     }
 
     /**
@@ -113,24 +116,24 @@ class OrderController extends Controller
     /**
       * Store a newly created resource in storage.
       *
-      * @param  \App\Http\Requests\StoreOrderRequest  $request
+      * @param  \App\Http\Requests\StoreBeneficiaryRequest  $request
       * @return \Illuminate\Http\Response
       * @OA\Post(
-      *   path="/orders",
-      *   summary="Creates a new Order",
-      *   description="Creates a new Order",
-      *   tags={"Order"},
+      *   path="/beneficiaries",
+      *   summary="Creates a new Beneficiary",
+      *   description="Creates a new Beneficiary",
+      *   tags={"Beneficiary"},
       *   security={{"passport": {"*"}}},
       *   @OA\RequestBody(
       *       @OA\MediaType(
       *           mediaType="application/json",
-      *           @OA\Schema(ref="#/components/schemas/Order")
+      *           @OA\Schema(ref="#/components/schemas/Beneficiary")
       *       )
       *   ),
       *   @OA\Response(
       *       @OA\MediaType(mediaType="application/json"),
       *       response=200,
-      *       description="The Order resource created",
+      *       description="The Beneficiary resource created",
       *   ),
       *   @OA\Response(
       *       @OA\MediaType(mediaType="application/json"),
@@ -144,34 +147,33 @@ class OrderController extends Controller
       *   )
       * )
      */
-    public function store(StoreOrderRequest $request)
+    public function store(StoreBeneficiaryRequest $request)
     {
-        $responsable = new Order();
-        $responsable->organization_id = $request->organization_id;
-        $responsable->egress_type_id = $request->egress_type_id;
-        $responsable->field_id = $request->field_id;
-        $responsable->beneficiary_id = $request->beneficiary_id;
-        $responsable->responsable_id = $request->responsable_id;
-        $responsable->contract = $request->contract;
-        $responsable->user_created_id = $request->user_created_id;
-        $responsable->save();
-        return response()->json($responsable, 201);
+        $beneficiary = new Beneficiary();
+        $beneficiary->name = $request->name;
+        $beneficiary->last_name = $request->last_name;
+        $beneficiary->document_number = $request->document_number;
+        $beneficiary->email = $request->email;
+        $beneficiary->phone_number = $request->phone_number;
+        $beneficiary->user_created_id = $request->user_created_id;
+        $beneficiary->save();
+        return response()->json($beneficiary, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Order  $responsable
+     * @param  \App\Models\Beneficiary  $beneficiary
      * @return \Illuminate\Http\Response
      * @OA\Get(
-     *   path="/orders/{id}",
-     *   operationId="getOrderById",
-     *   tags={"Order"},
-     *   summary="Get Order information",
-     *   description="Returns Order data",
+     *   path="/beneficiaries/{id}",
+     *   operationId="getBeneficiaryById",
+     *   tags={"Beneficiary"},
+     *   summary="Get Beneficiary information",
+     *   description="Returns Beneficiary data",
      *   @OA\Parameter(
      *      name="id",
-     *      description="Order id",
+     *      description="Beneficiary id",
      *      required=true,
      *      in="path",
      *          @OA\Schema(
@@ -181,7 +183,7 @@ class OrderController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/Order")
+     *          @OA\JsonContent(ref="#/components/schemas/Beneficiary")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -197,18 +199,18 @@ class OrderController extends Controller
      *      )
      *   )
      */
-    public function show(Order $responsable)
+    public function show(Beneficiary $beneficiary)
     {
-        return response($responsable, 200);
+        return response($beneficiary, 200);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Order  $responsable
+     * @param  \App\Models\Beneficiary  $beneficiary
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $responsable)
+    public function edit(Beneficiary $beneficiary)
     {
         //
     }
@@ -217,18 +219,18 @@ class OrderController extends Controller
      * Update the specified resource in storage.
      *
      *
-     * @param  \App\Http\Requests\UpdateOrderRequest  $request
-     * @param  \App\Models\Order  $responsable
+     * @param  \App\Http\Requests\UpdateBeneficiaryRequest  $request
+     * @param  \App\Models\Beneficiary  $beneficiary
      * @return \Illuminate\Http\Response
      * @OA\Put(
-     *  path="/orders/{id}",
-     *  operationId="updateOrder",
-     *  tags={"Order"},
-     *  summary="Update existing Order",
-     *  description="Returns updated Order data",
+     *  path="/beneficiaries/{id}",
+     *  operationId="updateBeneficiary",
+     *  tags={"Beneficiary"},
+     *  summary="Update existing Beneficiary",
+     *  description="Returns updated Beneficiary data",
      *  @OA\Parameter(
      *      name="id",
-     *      description="Order id",
+     *      description="Beneficiary id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -237,12 +239,12 @@ class OrderController extends Controller
      *  ),
      *  @OA\RequestBody(
      *      required=true,
-     *      @OA\JsonContent(ref="#/components/schemas/Order")
+     *      @OA\JsonContent(ref="#/components/schemas/Beneficiary")
      *   ),
      *   @OA\Response(
      *      response=202,
      *      description="Successful operation",
-     *      @OA\JsonContent(ref="#/components/schemas/Order")
+     *      @OA\JsonContent(ref="#/components/schemas/Beneficiary")
      *   ),
      *   @OA\Response(
      *      response=400,
@@ -262,33 +264,32 @@ class OrderController extends Controller
      *   )
      * )
      */
-    public function update(UpdateOrderRequest $request, Order $responsable)
+    public function update(UpdateBeneficiaryRequest $request, Beneficiary $beneficiary)
     {
-        $responsable->organization_id = $request->organization_id;
-        $responsable->egress_type_id = $request->egress_type_id;
-        $responsable->field_id = $request->field_id;
-        $responsable->beneficiary_id = $request->beneficiary_id;
-        $responsable->responsable_id = $request->responsable_id;
-        $responsable->contract = $request->contract;
-        $responsable->user_created_id = $request->user_created_id;
-        $responsable->update();
-        return response()->json($responsable, 200);
+        $beneficiary->name = $request->name;
+        $beneficiary->last_name = $request->last_name;
+        $beneficiary->document_number = $request->document_number;
+        $beneficiary->email = $request->email;
+        $beneficiary->phone_number = $request->phone_number;
+        $beneficiary->user_updated_id = $request->user_updated_id;
+        $beneficiary->update();
+        return response()->json($beneficiary, 201);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Order  $responsable
+     * @param  \App\Models\Beneficiary  $beneficiary
      * @return \Illuminate\Http\Response
      * @OA\Delete(
-     *  path="/orders/{id}",
-     *  operationId="deleteOrder",
-     *  tags={"Order"},
-     *  summary="Delete existing Order",
+     *  path="/beneficiaries/{id}",
+     *  operationId="deleteBeneficiary",
+     *  tags={"Beneficiary"},
+     *  summary="Delete existing Beneficiary",
      *  description="Deletes a record and returns no content",
      *  @OA\Parameter(
      *      name="id",
-     *      description="Order id",
+     *      description="Beneficiary id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -314,9 +315,9 @@ class OrderController extends Controller
      *  )
      * )
      */
-    public function destroy(Order $responsable)
+    public function destroy(Beneficiary $beneficiary)
     {
-        $responsable->delete();
+        $beneficiary->delete();
         return response('the data was deleted successfully', 200);
     }
 }

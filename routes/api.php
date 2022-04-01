@@ -28,4 +28,7 @@ Route::resource('operation-types', OperationTypeController::class);
 Route::resource('entities', EntityController::class);
 Route::resource('fields', FieldController::class);
 Route::resource('organizations', OrganizationController::class);
+Route::resource('beneficiaries', BeneficiaryController::class);
 Route::resource('coins', CoinController::class);
+Route::resource('responsables', ResponsableController::class);
+Route::resource('orders', OrderController::class);

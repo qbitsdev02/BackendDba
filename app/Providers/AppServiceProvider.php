@@ -2,9 +2,13 @@
 
 namespace App\Providers;
 
+use App\Models\Beneficiary;
+use App\Models\Responsable;
 use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Role;
+use App\Observers\BeneficiaryObserver;
+use App\Observers\ResponsableObserver;
 use App\Observers\RoleObserver;
 use App\Observers\UserObserver;
 
@@ -29,5 +33,7 @@ class AppServiceProvider extends ServiceProvider
     {
         User::observe(UserObserver::class);
         Role::observe(RoleObserver::class);
+        Beneficiary::observe(BeneficiaryObserver::class);
+        Responsable::observe(ResponsableObserver::class);
     }
 }

@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             EgressTypeSeeder::class,
+            RoleSeeder::class,
+            BranchOfficeSeeder::class
             // SectionSeeder::class,
             // ModuleSeeder::class,
             // ModuleRoleSeeder::class

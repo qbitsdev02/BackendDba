@@ -16,12 +16,14 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
 
             $table->id();
+            // Responsable Field
+            $table->foreignId('beneficiary_id')
+                ->nullable()
+                ->constrained('users');
             // Field Client
             $table->string('phone_number')->nullable();
             $table->string('status')->nullable();
-            $table->string('representative')->nullable();
             $table->string('address')->nullable();
-            $table->string('document_type')->nullable();
             $table->string('document_number')->nullable();
             // --
             $table->string('name');

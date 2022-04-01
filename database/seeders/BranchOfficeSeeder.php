@@ -18,11 +18,6 @@ class BranchOfficeSeeder extends Seeder
                 'name' => 'Sucursal 1',
                 'description' => 'Sucursal 1',
                 'user_created_id' => 1
-            ],
-            [
-                'name' => 'Sucursal 2',
-                'description' => 'Sucursal 2',
-                'user_created_id' => 1
             ]
         ]);
     }

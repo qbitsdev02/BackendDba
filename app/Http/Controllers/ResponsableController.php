@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\RoleAcronym;
-use App\Models\Order;
-use App\Http\Requests\StoreOrderRequest;
-use App\Http\Requests\UpdateOrderRequest;
+use App\Models\Responsable;
+use App\Http\Requests\StoreResponsableRequest;
+use App\Http\Requests\UpdateResponsableRequest;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class ResponsableController extends Controller
 {
 
     /**
@@ -16,9 +16,9 @@ class OrderController extends Controller
       *
       * @return \Illuminate\Http\Response
       * @OA\Get(
-      *     path="/orders",
-      *     operationId="getOrder",
-      *     tags={"Order"},
+      *     path="/responsables",
+      *     operationId="getResponsable",
+      *     tags={"Responsable"},
       *     @OA\Parameter(
       *       name="paginate",
       *       in="query",
@@ -86,7 +86,7 @@ class OrderController extends Controller
       *     ),
       *     @OA\Response(
       *         response=200,
-      *         description="Show Orders all."
+      *         description="Show Responsables all."
       *     ),
       *     @OA\Response(
       *         response="default",
@@ -96,8 +96,11 @@ class OrderController extends Controller
       */
     public function index(Request $request)
     {
-        $orders = Order::filters($request->all())->search($request->all());
-        return response()->json($orders, 200);
+        $responsables = Responsable::ofType(RoleAcronym::RESPONSABLE)
+            ->filters($request->all())
+            ->search($request->all());
+
+        return response()->json($responsables, 200);
     }
 
     /**
@@ -113,24 +116,24 @@ class OrderController extends Controller
     /**
       * Store a newly created resource in storage.
       *
-      * @param  \App\Http\Requests\StoreOrderRequest  $request
+      * @param  \App\Http\Requests\StoreResponsableRequest  $request
       * @return \Illuminate\Http\Response
       * @OA\Post(
-      *   path="/orders",
-      *   summary="Creates a new Order",
-      *   description="Creates a new Order",
-      *   tags={"Order"},
+      *   path="/responsables",
+      *   summary="Creates a new Responsable",
+      *   description="Creates a new Responsable",
+      *   tags={"Responsable"},
       *   security={{"passport": {"*"}}},
       *   @OA\RequestBody(
       *       @OA\MediaType(
       *           mediaType="application/json",
-      *           @OA\Schema(ref="#/components/schemas/Order")
+      *           @OA\Schema(ref="#/components/schemas/Responsable")
       *       )
       *   ),
       *   @OA\Response(
       *       @OA\MediaType(mediaType="application/json"),
       *       response=200,
-      *       description="The Order resource created",
+      *       description="The Responsable resource created",
       *   ),
       *   @OA\Response(
       *       @OA\MediaType(mediaType="application/json"),
@@ -144,15 +147,15 @@ class OrderController extends Controller
       *   )
       * )
      */
-    public function store(StoreOrderRequest $request)
+    public function store(StoreResponsableRequest $request)
     {
-        $responsable = new Order();
-        $responsable->organization_id = $request->organization_id;
-        $responsable->egress_type_id = $request->egress_type_id;
-        $responsable->field_id = $request->field_id;
+        $responsable = new Responsable();
+        $responsable->name = $request->name;
+        $responsable->last_name = $request->last_name;
+        $responsable->document_number = $request->document_number;
+        $responsable->email = $request->email;
+        $responsable->phone_number = $request->phone_number;
         $responsable->beneficiary_id = $request->beneficiary_id;
-        $responsable->responsable_id = $request->responsable_id;
-        $responsable->contract = $request->contract;
         $responsable->user_created_id = $request->user_created_id;
         $responsable->save();
         return response()->json($responsable, 201);
@@ -161,17 +164,17 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Order  $responsable
+     * @param  \App\Models\Responsable  $responsable
      * @return \Illuminate\Http\Response
      * @OA\Get(
-     *   path="/orders/{id}",
-     *   operationId="getOrderById",
-     *   tags={"Order"},
-     *   summary="Get Order information",
-     *   description="Returns Order data",
+     *   path="/responsables/{id}",
+     *   operationId="getResponsableById",
+     *   tags={"Responsable"},
+     *   summary="Get Responsable information",
+     *   description="Returns Responsable data",
      *   @OA\Parameter(
      *      name="id",
-     *      description="Order id",
+     *      description="Responsable id",
      *      required=true,
      *      in="path",
      *          @OA\Schema(
@@ -181,7 +184,7 @@ class OrderController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/Order")
+     *          @OA\JsonContent(ref="#/components/schemas/Responsable")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -197,7 +200,7 @@ class OrderController extends Controller
      *      )
      *   )
      */
-    public function show(Order $responsable)
+    public function show(Responsable $responsable)
     {
         return response($responsable, 200);
     }
@@ -205,10 +208,10 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Order  $responsable
+     * @param  \App\Models\Responsable  $responsable
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $responsable)
+    public function edit(Responsable $responsable)
     {
         //
     }
@@ -217,18 +220,18 @@ class OrderController extends Controller
      * Update the specified resource in storage.
      *
      *
-     * @param  \App\Http\Requests\UpdateOrderRequest  $request
-     * @param  \App\Models\Order  $responsable
+     * @param  \App\Http\Requests\UpdateResponsableRequest  $request
+     * @param  \App\Models\Responsable  $responsable
      * @return \Illuminate\Http\Response
      * @OA\Put(
-     *  path="/orders/{id}",
-     *  operationId="updateOrder",
-     *  tags={"Order"},
-     *  summary="Update existing Order",
-     *  description="Returns updated Order data",
+     *  path="/responsables/{id}",
+     *  operationId="updateResponsable",
+     *  tags={"Responsable"},
+     *  summary="Update existing Responsable",
+     *  description="Returns updated Responsable data",
      *  @OA\Parameter(
      *      name="id",
-     *      description="Order id",
+     *      description="Responsable id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -237,12 +240,12 @@ class OrderController extends Controller
      *  ),
      *  @OA\RequestBody(
      *      required=true,
-     *      @OA\JsonContent(ref="#/components/schemas/Order")
+     *      @OA\JsonContent(ref="#/components/schemas/Responsable")
      *   ),
      *   @OA\Response(
      *      response=202,
      *      description="Successful operation",
-     *      @OA\JsonContent(ref="#/components/schemas/Order")
+     *      @OA\JsonContent(ref="#/components/schemas/Responsable")
      *   ),
      *   @OA\Response(
      *      response=400,
@@ -262,33 +265,33 @@ class OrderController extends Controller
      *   )
      * )
      */
-    public function update(UpdateOrderRequest $request, Order $responsable)
+    public function update(UpdateResponsableRequest $request, Responsable $responsable)
     {
-        $responsable->organization_id = $request->organization_id;
-        $responsable->egress_type_id = $request->egress_type_id;
-        $responsable->field_id = $request->field_id;
+        $responsable->name = $request->name;
+        $responsable->last_name = $request->last_name;
+        $responsable->document_number = $request->document_number;
+        $responsable->email = $request->email;
         $responsable->beneficiary_id = $request->beneficiary_id;
-        $responsable->responsable_id = $request->responsable_id;
-        $responsable->contract = $request->contract;
-        $responsable->user_created_id = $request->user_created_id;
+        $responsable->phone_number = $request->phone_number;
+        $responsable->user_updated_id = $request->user_updated_id;
         $responsable->update();
-        return response()->json($responsable, 200);
+        return response()->json($responsable, 201);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Order  $responsable
+     * @param  \App\Models\Responsable  $responsable
      * @return \Illuminate\Http\Response
      * @OA\Delete(
-     *  path="/orders/{id}",
-     *  operationId="deleteOrder",
-     *  tags={"Order"},
-     *  summary="Delete existing Order",
+     *  path="/responsables/{id}",
+     *  operationId="deleteResponsable",
+     *  tags={"Responsable"},
+     *  summary="Delete existing Responsable",
      *  description="Deletes a record and returns no content",
      *  @OA\Parameter(
      *      name="id",
-     *      description="Order id",
+     *      description="Responsable id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -314,7 +317,7 @@ class OrderController extends Controller
      *  )
      * )
      */
-    public function destroy(Order $responsable)
+    public function destroy(Responsable $responsable)
     {
         $responsable->delete();
         return response('the data was deleted successfully', 200);

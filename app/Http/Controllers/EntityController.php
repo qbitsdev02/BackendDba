@@ -261,7 +261,7 @@ class EntityController extends Controller
     {
         $entity->name = $request->name;
         $entity->description = $request->description;
-        $entity->user_created_id = $request->user_created_id;
+        $entity->user_updated_id = $request->user_updated_id;
         $entity->update();
         return response()->json($entity, 201);
     }

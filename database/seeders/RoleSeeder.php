@@ -25,13 +25,13 @@ class RoleSeeder extends Seeder
                 'user_created_id' => 1
             ],
             [
-                'name' => 'Vendedor',
-                'acronym' => 'seller',
+                'name' => 'Responsable',
+                'acronym' => 'responsable',
                 'user_created_id' => 1
             ],
             [
-                'name' => 'Cliente',
-                'acronym' => 'client',
+                'name' => 'Beneficiario',
+                'acronym' => 'bnfcr',
                 'user_created_id' => 1
             ],
             [
