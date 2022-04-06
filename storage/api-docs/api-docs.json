@@ -2643,6 +2643,22 @@
                         "type": "number",
                         "example": 1
                     },
+                    "beneficiary_id": {
+                        "description": "The Order beneficiary_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "responsable_id": {
+                        "description": "The Order responsable_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
                     "field_id": {
                         "description": "The Order field_id",
                         "required": [
