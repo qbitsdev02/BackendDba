@@ -18,186 +18,91 @@ class ModuleSeeder extends Seeder
             ->insert([
                 // 1
                 [
-                    'name' => 'newBilling',
-                    'icon' => 'receipt',
-                    'route' => 'NewBilling',
-                    'section_id' => 1,
+                    'name' => 'coin',
+                    'icon' => 'attach_money',
+                    'route' => 'Coin',
+                    'section_id' => 4,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
+                // 2
                 [
-                    'name' => 'billing',
-                    'icon' => 'receipt',
-                    'route' => 'Billing',
-                    'section_id' => 1,
+                    'name' => 'egress-types',
+                    'icon' => 'exit_to_app',
+                    'route' => 'EgressType',
+                    'section_id' => 4,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
+                // 3
                 [
-                    'name' => 'categories',
-                    'icon' => 'receipt',
-                    'route' => 'categories',
-                    'section_id' => 1,
+                    'name' => 'operation-types',
+                    'icon' => 'description',
+                    'route' => 'OperationType',
+                    'section_id' => 4,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
+                // 4
                 [
-                    'name' => 'brands',
-                    'icon' => 'receipt',
-                    'route' => 'brands',
-                    'section_id' => 1,
+                    'name' => 'entities',
+                    'icon' => 'cases',
+                    'route' => 'Entity',
+                    'section_id' => 2,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
+                // 5
                 [
-                    'name' => 'clients',
-                    'icon' => 'group',
-                    'route' => 'clients',
-                    'section_id' => 1,
+                    'name' => 'flieds',
+                    'icon' => 'grid_on',
+                    'route' => 'Field',
+                    'section_id' => 2,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
+                // 6
                 [
-                    'name' => 'products',
-                    'icon' => 'receipt',
-                    'route' => 'Product',
+                    'name' => 'organizations',
+                    'icon' => 'corporate_fare',
+                    'route' => 'Organization',
+                    'section_id' => 2,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                // 7
+                [
+                    'name' => 'beneficiaries',
+                    'icon' => 'person',
+                    'route' => 'Beneficiary',
+                    'section_id' => 3,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                // 8
+                [
+                    'name' => 'responsables',
+                    'icon' => 'perm_identity',
+                    'route' => 'Responsable',
+                    'section_id' => 3,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                // 9
+                [
+                    'name' => 'new-order',
+                    'icon' => 'playlist_add',
+                    'route' => 'NewOrder',
                     'section_id' => 1,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
+                // 10
                 [
                     'name' => 'orders',
-                    'icon' => 'receipt',
+                    'icon' => 'list_alt',
                     'route' => 'Order',
                     'section_id' => 1,
-                    'devices' => '["mobile", "desktop"]',
-                    'user_created_id' => 1
-                ],
-                [
-                    'name' => 'quotations',
-                    'icon' => 'receipt',
-                    'route' => 'Quotation',
-                    'section_id' => 1,
-                    'devices' => '["mobile", "desktop"]',
-                    'user_created_id' => 1
-                ],
-                [
-                    'name' => 'sellerCommissions',
-                    'icon' => 'receipt',
-                    'route' => 'SellerCommission',
-                    'section_id' => 1,
-                    'devices' => '["mobile", "desktop"]',
-                    'user_created_id' => 1
-                ],
-                [
-                    'name' => 'newPurchase',
-                    'icon' => 'receipt',
-                    'route' => 'NewPurchase',
-                    'section_id' => 2,
-                    'devices' => '["mobile", "desktop"]',
-                    'user_created_id' => 1
-                ],
-                [
-                    'name' => 'purchase',
-                    'icon' => 'receipt',
-                    'route' => 'Purchase',
-                    'section_id' => 2,
-                    'devices' => '["mobile", "desktop"]',
-                    'user_created_id' => 1
-                ],
-                [
-                    'name' => 'expense',
-                    'icon' => 'receipt',
-                    'route' => 'Expense',
-                    'section_id' => 2,
-                    'devices' => '["mobile", "desktop"]',
-                    'user_created_id' => 1
-                ],
-                [
-                    'name' => 'provider',
-                    'icon' => 'group',
-                    'route' => 'Provider',
-                    'section_id' => 2,
-                    'devices' => '["mobile", "desktop"]',
-                    'user_created_id' => 1
-                ],
-                [
-                    'name' => 'transfer',
-                    'icon' => 'all_inbox',
-                    'route' => 'Transfer',
-                    'section_id' => 3,
-                    'devices' => '["mobile", "desktop"]',
-                    'user_created_id' => 1
-                ],
-                [
-                    'name' => 'movements',
-                    'icon' => 'all_inbox',
-                    'route' => 'Movement',
-                    'section_id' => 3,
-                    'devices' => '["mobile", "desktop"]',
-                    'user_created_id' => 1
-                ],
-                [
-                    'name' => 'devolutions',
-                    'icon' => 'all_inbox',
-                    'route' => 'Devolution',
-                    'section_id' => 3,
-                    'devices' => '["mobile", "desktop"]',
-                    'user_created_id' => 1
-                ],
-                [
-                    'name' => 'inventory',
-                    'icon' => 'all_inbox',
-                    'route' => 'InventoryReport',
-                    'section_id' => 3,
-                    'devices' => '["mobile", "desktop"]',
-                    'user_created_id' => 1
-                ],
-                [
-                    'name' => 'kardex_valued',
-                    'icon' => 'all_inbox',
-                    'route' => 'KardexValued',
-                    'section_id' => 3,
-                    'devices' => '["mobile", "desktop"]',
-                    'user_created_id' => 1
-                ],
-                [
-                    'name' => 'kardex',
-                    'icon' => 'all_inbox',
-                    'route' => 'KardexReport',
-                    'section_id' => 3,
-                    'devices' => '["mobile", "desktop"]',
-                    'user_created_id' => 1
-                ],
-                [
-                    'name' => 'users',
-                    'icon' => 'person',
-                    'route' => 'User',
-                    'section_id' => 4,
-                    'devices' => '["mobile", "desktop"]',
-                    'user_created_id' => 1
-                ],
-                [
-                    'name' => 'roles',
-                    'icon' => 'group',
-                    'route' => 'roles',
-                    'section_id' => 4,
-                    'devices' => '["mobile", "desktop"]',
-                    'user_created_id' => 1
-                ],
-                [
-                    'name' => 'branch-offices',
-                    'icon' => 'home',
-                    'route' => 'BranchOffices',
-                    'section_id' => 4,
-                    'devices' => '["mobile", "desktop"]',
-                    'user_created_id' => 1
-                ],
-                [
-                    'name' => 'kardex-valued',
-                    'icon' => 'all_inbox',
-                    'route' => 'KardexValued',
-                    'section_id' => 3,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ]

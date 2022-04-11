@@ -55,54 +55,6 @@ class ModuleRoleSeeder extends Seeder
                 [
                     'role_id' => 1,
                     'module_id' => 10
-                ],
-                [
-                    'role_id' => 1,
-                    'module_id' => 11
-                ],
-                [
-                    'role_id' => 1,
-                    'module_id' => 12
-                ],
-                [
-                    'role_id' => 1,
-                    'module_id' => 13
-                ],
-                [
-                    'role_id' => 1,
-                    'module_id' => 14
-                ],
-                [
-                    'role_id' => 1,
-                    'module_id' => 15
-                ],
-                [
-                    'role_id' => 1,
-                    'module_id' => 16
-                ],
-                [
-                    'role_id' => 1,
-                    'module_id' => 17
-                ],
-                [
-                    'role_id' => 1,
-                    'module_id' => 18
-                ],
-                [
-                    'role_id' => 1,
-                    'module_id' => 19
-                ],
-                [
-                    'role_id' => 1,
-                    'module_id' => 20
-                ],
-                [
-                    'role_id' => 1,
-                    'module_id' => 21
-                ],
-                [
-                    'role_id' => 1,
-                    'module_id' => 22
                 ]
             ]);
     }

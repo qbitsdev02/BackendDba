@@ -19,10 +19,11 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             EgressTypeSeeder::class,
             RoleSeeder::class,
-            BranchOfficeSeeder::class
-            // SectionSeeder::class,
-            // ModuleSeeder::class,
-            // ModuleRoleSeeder::class
+            BranchOfficeSeeder::class,
+            SectionSeeder::class,
+            ModuleSeeder::class,
+            ModuleRoleSeeder::class,
+            RoleUserSeeder::class
         ]);
     }
 }

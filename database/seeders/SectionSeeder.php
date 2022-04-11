@@ -17,20 +17,20 @@ class SectionSeeder extends Seeder
         DB::table('sections')
             ->insert([
                 [
-                    'name' => 'sales',
-                    'icon' => 'account_box',
+                    'name' => 'management',
+                    'icon' => 'library_books',
                     'open' => true,
                     'user_created_id' => 1
                 ],
                 [
-                    'name' => 'purchase',
-                    'icon' => 'account_box',
+                    'name' => 'organization',
+                    'icon' => 'business',
                     'open' => true,
                     'user_created_id' => 1
                 ],
                 [
-                    'name' => 'inventory',
-                    'icon' => 'account_box',
+                    'name' => 'personal',
+                    'icon' => 'group',
                     'open' => true,
                     'user_created_id' => 1
                 ],
