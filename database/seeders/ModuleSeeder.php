@@ -54,7 +54,7 @@ class ModuleSeeder extends Seeder
                 ],
                 // 5
                 [
-                    'name' => 'flieds',
+                    'name' => 'fields',
                     'icon' => 'grid_on',
                     'route' => 'Field',
                     'section_id' => 2,
