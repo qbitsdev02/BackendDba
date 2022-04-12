@@ -27,9 +27,9 @@ class ModuleSeeder extends Seeder
                 ],
                 // 2
                 [
-                    'name' => 'egress-types',
-                    'icon' => 'exit_to_app',
-                    'route' => 'EgressType',
+                    'name' => 'concept-types',
+                    'icon' => 'sticky_note_2',
+                    'route' => 'ConceptType',
                     'section_id' => 4,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
@@ -103,6 +103,24 @@ class ModuleSeeder extends Seeder
                     'icon' => 'list_alt',
                     'route' => 'Order',
                     'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                // 11
+                [
+                    'name' => 'concepts',
+                    'icon' => 'list_alt',
+                    'route' => 'Concept',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                // 12
+                [
+                    'name' => 'field-supervisor',
+                    'icon' => 'attribution',
+                    'route' => 'FieldSupervisor',
+                    'section_id' => 3,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ]

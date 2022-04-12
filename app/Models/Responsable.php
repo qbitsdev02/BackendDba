@@ -62,4 +62,14 @@ namespace App\Models;
 class Responsable extends User
 {
     protected $table = 'users';
+
+    /**
+     * Get the beneficiary that owns the Responsable
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function beneficiary()
+    {
+        return $this->belongsTo(Beneficiary::class);
+    }
 }

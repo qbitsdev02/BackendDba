@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\EgressType;
+use App\Models\ConceptType;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class EgressTypePolicy
+class ConceptTypePolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class EgressTypePolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\EgressType  $egressType
+     * @param  \App\Models\ConceptType  $egressType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, EgressType $egressType)
+    public function view(User $user, ConceptType $egressType)
     {
         //
     }
@@ -48,10 +48,10 @@ class EgressTypePolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\EgressType  $egressType
+     * @param  \App\Models\ConceptType  $egressType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, EgressType $egressType)
+    public function update(User $user, ConceptType $egressType)
     {
         //
     }
@@ -60,10 +60,10 @@ class EgressTypePolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\EgressType  $egressType
+     * @param  \App\Models\ConceptType  $egressType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, EgressType $egressType)
+    public function delete(User $user, ConceptType $egressType)
     {
         //
     }
@@ -72,10 +72,10 @@ class EgressTypePolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\EgressType  $egressType
+     * @param  \App\Models\ConceptType  $egressType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, EgressType $egressType)
+    public function restore(User $user, ConceptType $egressType)
     {
         //
     }
@@ -84,10 +84,10 @@ class EgressTypePolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\EgressType  $egressType
+     * @param  \App\Models\ConceptType  $egressType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, EgressType $egressType)
+    public function forceDelete(User $user, ConceptType $egressType)
     {
         //
     }

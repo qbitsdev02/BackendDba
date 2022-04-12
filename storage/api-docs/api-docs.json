@@ -534,13 +534,13 @@
                 }
             }
         },
-        "/egress-types": {
+        "/concepts": {
             "get": {
                 "tags": [
-                    "EgressType"
+                    "Concept"
                 ],
                 "summary": "Display a listing of the resource.",
-                "operationId": "getEgresstype",
+                "operationId": "getConcept",
                 "parameters": [
                     {
                         "name": "paginate",
@@ -610,7 +610,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Show Egresstypes all."
+                        "description": "Show Concepttypes all."
                     },
                     "default": {
                         "description": "error."
@@ -619,23 +619,23 @@
             },
             "post": {
                 "tags": [
-                    "EgressType"
+                    "Concept"
                 ],
-                "summary": "Creates a new EgressType",
-                "description": "Creates a new EgressType",
-                "operationId": "956d6aa71690740550967bb983616f6f",
+                "summary": "Creates a new Concept",
+                "description": "Creates a new Concept",
+                "operationId": "09e550a69e398def0743b8f711f898ec",
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/EgressType"
+                                "$ref": "#/components/schemas/Concept"
                             }
                         }
                     }
                 },
                 "responses": {
                     "200": {
-                        "description": "The EgressType resource created",
+                        "description": "The Concept resource created",
                         "content": {
                             "application/json": {}
                         }
@@ -662,19 +662,19 @@
                 ]
             }
         },
-        "/egress-types/{id}": {
+        "/concepts/{id}": {
             "get": {
                 "tags": [
-                    "EgressType"
+                    "Concept"
                 ],
-                "summary": "Get EgressType information",
-                "description": "Returns EgressType data",
-                "operationId": "getEgressTypeById",
+                "summary": "Get Concept information",
+                "description": "Returns Concept data",
+                "operationId": "getConceptById",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "EgressType id",
+                        "description": "Concept id",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -687,7 +687,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/EgressType"
+                                    "$ref": "#/components/schemas/Concept"
                                 }
                             }
                         }
@@ -705,16 +705,16 @@
             },
             "put": {
                 "tags": [
-                    "EgressType"
+                    "Concept"
                 ],
-                "summary": "Update existing Egresstype",
-                "description": "Returns updated Egresstype data",
-                "operationId": "updateEgress",
+                "summary": "Update existing Concepttype",
+                "description": "Returns updated Concepttype data",
+                "operationId": "updateConcept",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "EgressType id",
+                        "description": "Concept id",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -726,7 +726,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/EgressType"
+                                "$ref": "#/components/schemas/Concept"
                             }
                         }
                     }
@@ -737,7 +737,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/EgressType"
+                                    "$ref": "#/components/schemas/Concept"
                                 }
                             }
                         }
@@ -758,16 +758,277 @@
             },
             "delete": {
                 "tags": [
-                    "EgressType"
+                    "Concept"
                 ],
-                "summary": "Delete existing EgressType",
+                "summary": "Delete existing Concept",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteConcept",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Concept id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/concept-types": {
+            "get": {
+                "tags": [
+                    "ConceptType"
+                ],
+                "summary": "Display a listing of the resource.",
+                "operationId": "getConceptType",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a curso resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show ConceptTypes all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "ConceptType"
+                ],
+                "summary": "Creates a new ConceptType",
+                "description": "Creates a new ConceptType",
+                "operationId": "0bdf6e973244afeafe95bc566e446b1a",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConceptType"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The ConceptType resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "  *"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/concept-types/{id}": {
+            "get": {
+                "tags": [
+                    "ConceptType"
+                ],
+                "summary": "Get ConceptType information",
+                "description": "Returns ConceptType data",
+                "operationId": "getConceptTypeById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ConceptType id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ConceptType"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "ConceptType"
+                ],
+                "summary": "Update existing ConceptType",
+                "description": "Returns updated ConceptType data",
+                "operationId": "updateEgress",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ConceptType id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConceptType"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ConceptType"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "ConceptType"
+                ],
+                "summary": "Delete existing ConceptType",
                 "description": "Deletes a record and returns no content",
                 "operationId": "deleteEgress",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "EgressType id",
+                        "description": "ConceptType id",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -2427,6 +2688,41 @@
                     }
                 ]
             },
+            "BranchOffice": {
+                "properties": {
+                    "name": {
+                        "description": "The Branch Office name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "Description": {
+                        "description": "The Branch Office Description",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
             "Coin": {
                 "properties": {
                     "name": {
@@ -2462,17 +2758,59 @@
                 },
                 "type": "object"
             },
-            "EgressType": {
+            "Concept": {
                 "properties": {
                     "name": {
-                        "description": "The EgressType name",
+                        "description": "The Concept name",
                         "required": [
                             "true"
                         ],
                         "type": "string"
                     },
                     "description": {
-                        "description": "The EgressType description",
+                        "description": "The Concept description",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "sign": {
+                        "description": "The Concept sign",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "ConceptType": {
+                "properties": {
+                    "name": {
+                        "description": "The ConceptType name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "The ConceptType description",
                         "required": [
                             "true"
                         ],

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-class StoreEgressTypeRequest extends FormRequest
+class UpdateConceptRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,9 +26,10 @@ class StoreEgressTypeRequest extends FormRequest
         return [
             'name' => [
                 'required',
-                Rule::unique('egress_types')
+                Rule::unique('concepts')
                     ->whereNull('deleted_at')
-            ]
+            ],
+            'concept_type_id' => 'required'
         ];
     }
 }

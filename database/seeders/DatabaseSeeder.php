@@ -4,6 +4,7 @@ namespace Database\Seeders;
 use DB;
 use Illuminate\Database\Seeder;
 use App\Helpers\RoleAcronym;
+use App\Models\Coin;
 use App\Models\Guide;
 
 class DatabaseSeeder extends Seeder
@@ -17,13 +18,18 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
-            EgressTypeSeeder::class,
             RoleSeeder::class,
             BranchOfficeSeeder::class,
             SectionSeeder::class,
             ModuleSeeder::class,
             ModuleRoleSeeder::class,
-            RoleUserSeeder::class
+            RoleUserSeeder::class,
+            EntitySeeder::class,
+            CoinSeeder::class,
+            OperationTypeSeeder::class,
+            ConceptTypeSeeder::class,
+            ConceptSeeder::class,
+            OrganizationSeeder::class
         ]);
     }
 }

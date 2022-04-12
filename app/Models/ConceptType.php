@@ -4,19 +4,19 @@ namespace App\Models;
 
 /**
  * @OA\Schema(
- *   schema="EgressType",
+ *   schema="ConceptType",
  *   type="object",
  *   @OA\Property(
  *       property="name",
  *       type="string",
  *       required={"true"},
- *       description="The EgressType name"
+ *       description="The ConceptType name"
  *   ),
  *   @OA\Property(
  *       property="description",
  *       type="string",
  *       required={"true"},
- *       description="The EgressType description"
+ *       description="The ConceptType description"
  *   ),
  *   @OA\Property(
  *       property="user_created_id",
@@ -34,7 +34,7 @@ namespace App\Models;
  *   ),
  * )
  */
-class EgressType extends Base
+class ConceptType extends Base
 {
     //
 }

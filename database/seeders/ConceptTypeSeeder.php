@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class CoinSeeder extends Seeder
+class ConceptTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,15 +14,15 @@ class CoinSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('coins')->insert([
+        DB::table('concept_types')->insert([
             [
-                'name' => 'USD',
-                'symbol' => '$',
+                'name' => 'Ingreso',
+                'sign' => '+',
                 'user_created_id' => 1
             ],
             [
-                'name' => 'Euros',
-                'symbol' => 'E',
+                'name' => 'Egreso',
+                'sign' => '-',
                 'user_created_id' => 1
             ]
         ]);

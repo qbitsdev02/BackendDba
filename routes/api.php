@@ -23,7 +23,7 @@ Route::group([
 Route::resource('users', UserController::class);
 Route::resource('roles', RoleController::class);
 Route::resource('sections', SectionController::class);
-Route::resource('egress-types', EgressTypeController::class);
+Route::resource('concept-types', ConceptTypeController::class);
 Route::resource('operation-types', OperationTypeController::class);
 Route::resource('entities', EntityController::class);
 Route::resource('fields', FieldController::class);
@@ -32,3 +32,5 @@ Route::resource('beneficiaries', BeneficiaryController::class);
 Route::resource('coins', CoinController::class);
 Route::resource('responsables', ResponsableController::class);
 Route::resource('orders', OrderController::class);
+Route::resource('concepts', ConceptController::class);
+Route::resource('fields-supervisor', FieldSupervisorController::class);

@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\RoleAcronym;
-use App\Models\Responsable;
-use App\Http\Requests\StoreResponsableRequest;
-use App\Http\Requests\UpdateResponsableRequest;
+use App\Models\Concept;
+use App\Http\Requests\StoreConceptRequest;
+use App\Http\Requests\UpdateConceptRequest;
 use Illuminate\Http\Request;
 
-class ResponsableController extends Controller
+class ConceptController extends Controller
 {
 
     /**
@@ -16,9 +15,9 @@ class ResponsableController extends Controller
       *
       * @return \Illuminate\Http\Response
       * @OA\Get(
-      *     path="/responsables",
-      *     operationId="getResponsable",
-      *     tags={"Responsable"},
+      *     path="/concepts",
+      *     operationId="getConcept",
+      *     tags={"Concept"},
       *     @OA\Parameter(
       *       name="paginate",
       *       in="query",
@@ -86,7 +85,7 @@ class ResponsableController extends Controller
       *     ),
       *     @OA\Response(
       *         response=200,
-      *         description="Show Responsables all."
+      *         description="Show Concepttypes all."
       *     ),
       *     @OA\Response(
       *         response="default",
@@ -96,12 +95,8 @@ class ResponsableController extends Controller
       */
     public function index(Request $request)
     {
-        $responsables = Responsable::ofType(RoleAcronym::RESPONSABLE)
-            ->with('beneficiary:id,name,last_name,document_number')
-            ->filters($request->all())
-            ->search($request->all());
-
-        return response()->json($responsables, 200);
+        $concepts = Concept::with('conceptType:id,name')->filters($request->all())->search($request->all());
+        return response()->json($concepts, 200);
     }
 
     /**
@@ -117,24 +112,24 @@ class ResponsableController extends Controller
     /**
       * Store a newly created resource in storage.
       *
-      * @param  \App\Http\Requests\StoreResponsableRequest  $request
+      * @param  \App\Http\Requests\StoreConceptRequest  $request
       * @return \Illuminate\Http\Response
       * @OA\Post(
-      *   path="/responsables",
-      *   summary="Creates a new Responsable",
-      *   description="Creates a new Responsable",
-      *   tags={"Responsable"},
-      *   security={{"passport": {"*"}}},
+      *   path="/concepts",
+      *   summary="Creates a new Concept",
+      *   description="Creates a new Concept",
+      *   tags={"Concept"},
+      *   security={{"passport": {"  *"}}},
       *   @OA\RequestBody(
       *       @OA\MediaType(
       *           mediaType="application/json",
-      *           @OA\Schema(ref="#/components/schemas/Responsable")
+      *           @OA\Schema(ref="#/components/schemas/Concept")
       *       )
       *   ),
       *   @OA\Response(
       *       @OA\MediaType(mediaType="application/json"),
       *       response=200,
-      *       description="The Responsable resource created",
+      *       description="The Concept resource created",
       *   ),
       *   @OA\Response(
       *       @OA\MediaType(mediaType="application/json"),
@@ -148,34 +143,31 @@ class ResponsableController extends Controller
       *   )
       * )
      */
-    public function store(StoreResponsableRequest $request)
+    public function store(StoreConceptRequest $request)
     {
-        $responsable = new Responsable();
-        $responsable->name = $request->name;
-        $responsable->last_name = $request->last_name;
-        $responsable->document_number = $request->document_number;
-        $responsable->email = $request->email;
-        $responsable->phone_number = $request->phone_number;
-        $responsable->beneficiary_id = $request->beneficiary_id;
-        $responsable->user_created_id = $request->user_created_id;
-        $responsable->save();
-        return response()->json($responsable, 201);
+        $concept = new Concept();
+        $concept->name = $request->name;
+        $concept->concept_type_id = $request->concept_type_id;
+        $concept->description = $request->description;
+        $concept->user_created_id = $request->user_created_id;
+        $concept->save();
+        return response()->json($concept, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Responsable  $responsable
+     * @param  \App\Models\Concept  $concept
      * @return \Illuminate\Http\Response
      * @OA\Get(
-     *   path="/responsables/{id}",
-     *   operationId="getResponsableById",
-     *   tags={"Responsable"},
-     *   summary="Get Responsable information",
-     *   description="Returns Responsable data",
+     *   path="/concepts/{id}",
+     *   operationId="getConceptById",
+     *   tags={"Concept"},
+     *   summary="Get Concept information",
+     *   description="Returns Concept data",
      *   @OA\Parameter(
      *      name="id",
-     *      description="Responsable id",
+     *      description="Concept id",
      *      required=true,
      *      in="path",
      *          @OA\Schema(
@@ -185,7 +177,7 @@ class ResponsableController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/Responsable")
+     *          @OA\JsonContent(ref="#/components/schemas/Concept")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -201,18 +193,18 @@ class ResponsableController extends Controller
      *      )
      *   )
      */
-    public function show(Responsable $responsable)
+    public function show(Concept $concept)
     {
-        return response($responsable, 200);
+        return response($concept, 200);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Responsable  $responsable
+     * @param  \App\Models\Concept  $concept
      * @return \Illuminate\Http\Response
      */
-    public function edit(Responsable $responsable)
+    public function edit(Concept $concept)
     {
         //
     }
@@ -221,18 +213,18 @@ class ResponsableController extends Controller
      * Update the specified resource in storage.
      *
      *
-     * @param  \App\Http\Requests\UpdateResponsableRequest  $request
-     * @param  \App\Models\Responsable  $responsable
+     * @param  \App\Http\Requests\UpdateConceptRequest  $request
+     * @param  \App\Models\Concept  $concept
      * @return \Illuminate\Http\Response
      * @OA\Put(
-     *  path="/responsables/{id}",
-     *  operationId="updateResponsable",
-     *  tags={"Responsable"},
-     *  summary="Update existing Responsable",
-     *  description="Returns updated Responsable data",
+     *  path="/concepts/{id}",
+     *  operationId="updateConcept",
+     *  tags={"Concept"},
+     *  summary="Update existing Concepttype",
+     *  description="Returns updated Concepttype data",
      *  @OA\Parameter(
      *      name="id",
-     *      description="Responsable id",
+     *      description="Concept id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -241,12 +233,12 @@ class ResponsableController extends Controller
      *  ),
      *  @OA\RequestBody(
      *      required=true,
-     *      @OA\JsonContent(ref="#/components/schemas/Responsable")
+     *      @OA\JsonContent(ref="#/components/schemas/Concept")
      *   ),
      *   @OA\Response(
      *      response=202,
      *      description="Successful operation",
-     *      @OA\JsonContent(ref="#/components/schemas/Responsable")
+     *      @OA\JsonContent(ref="#/components/schemas/Concept")
      *   ),
      *   @OA\Response(
      *      response=400,
@@ -266,33 +258,30 @@ class ResponsableController extends Controller
      *   )
      * )
      */
-    public function update(UpdateResponsableRequest $request, Responsable $responsable)
+    public function update(UpdateConceptRequest $request, Concept $concept)
     {
-        $responsable->name = $request->name;
-        $responsable->last_name = $request->last_name;
-        $responsable->document_number = $request->document_number;
-        $responsable->email = $request->email;
-        $responsable->beneficiary_id = $request->beneficiary_id;
-        $responsable->phone_number = $request->phone_number;
-        $responsable->user_updated_id = $request->user_updated_id;
-        $responsable->update();
-        return response()->json($responsable, 201);
+        $concept->name = $request->name;
+        $concept->description = $request->description;
+        $concept->concept_type_id = $request->concept_type_id;
+        $concept->user_created_id = $request->user_created_id;
+        $concept->update();
+        return response()->json($concept, 201);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Responsable  $responsable
+     * @param  \App\Models\Concept  $concept
      * @return \Illuminate\Http\Response
      * @OA\Delete(
-     *  path="/responsables/{id}",
-     *  operationId="deleteResponsable",
-     *  tags={"Responsable"},
-     *  summary="Delete existing Responsable",
+     *  path="/concepts/{id}",
+     *  operationId="deleteConcept",
+     *  tags={"Concept"},
+     *  summary="Delete existing Concept",
      *  description="Deletes a record and returns no content",
      *  @OA\Parameter(
      *      name="id",
-     *      description="Responsable id",
+     *      description="Concept id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -318,9 +307,9 @@ class ResponsableController extends Controller
      *  )
      * )
      */
-    public function destroy(Responsable $responsable)
+    public function destroy(Concept $concept)
     {
-        $responsable->delete();
+        $concept->delete();
         return response('the data was deleted successfully', 200);
     }
 }

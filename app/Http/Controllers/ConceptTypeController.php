@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EgressType;
-use App\Http\Requests\StoreEgressTypeRequest;
-use App\Http\Requests\UpdateEgressTypeRequest;
+use App\Models\ConceptType;
+use App\Http\Requests\StoreConceptTypeRequest;
+use App\Http\Requests\UpdateConceptTypeRequest;
 use Illuminate\Http\Request;
 
-class EgressTypeController extends Controller
+class ConceptTypeController extends Controller
 {
 
     /**
@@ -15,9 +15,9 @@ class EgressTypeController extends Controller
       *
       * @return \Illuminate\Http\Response
       * @OA\Get(
-      *     path="/egress-types",
-      *     operationId="getEgresstype",
-      *     tags={"EgressType"},
+      *     path="/concept-types",
+      *     operationId="getConceptType",
+      *     tags={"ConceptType"},
       *     @OA\Parameter(
       *       name="paginate",
       *       in="query",
@@ -85,7 +85,7 @@ class EgressTypeController extends Controller
       *     ),
       *     @OA\Response(
       *         response=200,
-      *         description="Show Egresstypes all."
+      *         description="Show ConceptTypes all."
       *     ),
       *     @OA\Response(
       *         response="default",
@@ -95,8 +95,8 @@ class EgressTypeController extends Controller
       */
     public function index(Request $request)
     {
-        $egressTypes = EgressType::filters($request->all())->search($request->all());
-        return response()->json($egressTypes, 200);
+        $conceptTypeTypes = ConceptType::filters($request->all())->search($request->all());
+        return response()->json($conceptTypeTypes, 200);
     }
 
     /**
@@ -112,24 +112,24 @@ class EgressTypeController extends Controller
     /**
       * Store a newly created resource in storage.
       *
-      * @param  \App\Http\Requests\StoreEgressTypeRequest  $request
+      * @param  \App\Http\Requests\StoreConceptTypeRequest  $request
       * @return \Illuminate\Http\Response
       * @OA\Post(
-      *   path="/egress-types",
-      *   summary="Creates a new EgressType",
-      *   description="Creates a new EgressType",
-      *   tags={"EgressType"},
+      *   path="/concept-types",
+      *   summary="Creates a new ConceptType",
+      *   description="Creates a new ConceptType",
+      *   tags={"ConceptType"},
       *   security={{"passport": {"  *"}}},
       *   @OA\RequestBody(
       *       @OA\MediaType(
       *           mediaType="application/json",
-      *           @OA\Schema(ref="#/components/schemas/EgressType")
+      *           @OA\Schema(ref="#/components/schemas/ConceptType")
       *       )
       *   ),
       *   @OA\Response(
       *       @OA\MediaType(mediaType="application/json"),
       *       response=200,
-      *       description="The EgressType resource created",
+      *       description="The ConceptType resource created",
       *   ),
       *   @OA\Response(
       *       @OA\MediaType(mediaType="application/json"),
@@ -143,30 +143,31 @@ class EgressTypeController extends Controller
       *   )
       * )
      */
-    public function store(StoreEgressTypeRequest $request)
+    public function store(StoreConceptTypeRequest $request)
     {
-        $egressType = new EgressType();
-        $egressType->name = $request->name;
-        $egressType->description = $request->description;
-        $egressType->user_created_id = $request->user_created_id;
-        $egressType->save();
-        return response()->json($egressType, 201);
+        $conceptType = new ConceptType();
+        $conceptType->name = $request->name;
+        $conceptType->sign = $request->sign;
+        $conceptType->description = $request->description;
+        $conceptType->user_created_id = $request->user_created_id;
+        $conceptType->save();
+        return response()->json($conceptType, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\EgressType  $egressType
+     * @param  \App\Models\ConceptType  $conceptType
      * @return \Illuminate\Http\Response
      * @OA\Get(
-     *   path="/egress-types/{id}",
-     *   operationId="getEgressTypeById",
-     *   tags={"EgressType"},
-     *   summary="Get EgressType information",
-     *   description="Returns EgressType data",
+     *   path="/concept-types/{id}",
+     *   operationId="getConceptTypeById",
+     *   tags={"ConceptType"},
+     *   summary="Get ConceptType information",
+     *   description="Returns ConceptType data",
      *   @OA\Parameter(
      *      name="id",
-     *      description="EgressType id",
+     *      description="ConceptType id",
      *      required=true,
      *      in="path",
      *          @OA\Schema(
@@ -176,7 +177,7 @@ class EgressTypeController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/EgressType")
+     *          @OA\JsonContent(ref="#/components/schemas/ConceptType")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -192,18 +193,18 @@ class EgressTypeController extends Controller
      *      )
      *   )
      */
-    public function show(EgressType $egressType)
+    public function show(ConceptType $conceptType)
     {
-        return response($egressType, 200);
+        return response($conceptType, 200);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\EgressType  $egressType
+     * @param  \App\Models\ConceptType  $conceptType
      * @return \Illuminate\Http\Response
      */
-    public function edit(EgressType $egressType)
+    public function edit(ConceptType $conceptType)
     {
         //
     }
@@ -212,18 +213,18 @@ class EgressTypeController extends Controller
      * Update the specified resource in storage.
      *
      *
-     * @param  \App\Http\Requests\UpdateEgressTypeRequest  $request
-     * @param  \App\Models\EgressType  $egressType
+     * @param  \App\Http\Requests\UpdateConceptTypeRequest  $request
+     * @param  \App\Models\ConceptType  $conceptType
      * @return \Illuminate\Http\Response
      * @OA\Put(
-     *  path="/egress-types/{id}",
+     *  path="/concept-types/{id}",
      *  operationId="updateEgress",
-     *  tags={"EgressType"},
-     *  summary="Update existing Egresstype",
-     *  description="Returns updated Egresstype data",
+     *  tags={"ConceptType"},
+     *  summary="Update existing ConceptType",
+     *  description="Returns updated ConceptType data",
      *  @OA\Parameter(
      *      name="id",
-     *      description="EgressType id",
+     *      description="ConceptType id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -232,12 +233,12 @@ class EgressTypeController extends Controller
      *  ),
      *  @OA\RequestBody(
      *      required=true,
-     *      @OA\JsonContent(ref="#/components/schemas/EgressType")
+     *      @OA\JsonContent(ref="#/components/schemas/ConceptType")
      *   ),
      *   @OA\Response(
      *      response=202,
      *      description="Successful operation",
-     *      @OA\JsonContent(ref="#/components/schemas/EgressType")
+     *      @OA\JsonContent(ref="#/components/schemas/ConceptType")
      *   ),
      *   @OA\Response(
      *      response=400,
@@ -257,29 +258,30 @@ class EgressTypeController extends Controller
      *   )
      * )
      */
-    public function update(UpdateEgressTypeRequest $request, EgressType $egressType)
+    public function update(UpdateConceptTypeRequest $request, ConceptType $conceptType)
     {
-        $egressType->name = $request->name;
-        $egressType->description = $request->description;
-        $egressType->user_created_id = $request->user_created_id;
-        $egressType->update();
-        return response()->json($egressType, 201);
+        $conceptType->name = $request->name;
+        $conceptType->description = $request->description;
+        $conceptType->sign = $request->sign;
+        $conceptType->user_created_id = $request->user_created_id;
+        $conceptType->update();
+        return response()->json($conceptType, 201);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\EgressType  $egressType
+     * @param  \App\Models\ConceptType  $conceptType
      * @return \Illuminate\Http\Response
      * @OA\Delete(
-     *  path="/egress-types/{id}",
+     *  path="/concept-types/{id}",
      *  operationId="deleteEgress",
-     *  tags={"EgressType"},
-     *  summary="Delete existing EgressType",
+     *  tags={"ConceptType"},
+     *  summary="Delete existing ConceptType",
      *  description="Deletes a record and returns no content",
      *  @OA\Parameter(
      *      name="id",
-     *      description="EgressType id",
+     *      description="ConceptType id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -305,9 +307,9 @@ class EgressTypeController extends Controller
      *  )
      * )
      */
-    public function destroy(EgressType $egressType)
+    public function destroy(ConceptType $conceptType)
     {
-        $egressType->delete();
+        $conceptType->delete();
         return response('the data was deleted successfully', 200);
     }
 }
