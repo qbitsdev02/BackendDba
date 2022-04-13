@@ -72,5 +72,13 @@ namespace App\Models;
  */
 class Order extends Base
 {
-    //
+    /**
+     * Get all of the paymentOrders for the Order
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function paymentOrders()
+    {
+        return $this->hasMany(PaymentOrder::class);
+    }
 }
