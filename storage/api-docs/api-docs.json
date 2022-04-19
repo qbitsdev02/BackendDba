@@ -2781,7 +2781,7 @@
                         ],
                         "type": "string"
                     },
-                    "user_created_id": {
+                    "conceptType_created_id": {
                         "description": "The Users crete",
                         "required": [
                             "true"
