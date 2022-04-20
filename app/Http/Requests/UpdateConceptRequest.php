@@ -24,11 +24,7 @@ class UpdateConceptRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => [
-                'required',
-                Rule::unique('concepts')
-                    ->whereNull('deleted_at')
-            ],
+            'name' => 'required',
             'concept_type_id' => 'required'
         ];
     }
