@@ -56,5 +56,23 @@ namespace App\Models;
  */
 class Field extends Base
 {
-    //
+    /**
+     * Get the organization that owns the Field
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function organization()
+    {
+        return $this->belongsTo(Organization::class);
+    }
+    /**
+     * Get the fieldSupervisor that owns the Field
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function fieldSupervisor()
+    {
+        return $this->belongsTo(FieldSupervisor::class);
+    }
+
 }

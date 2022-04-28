@@ -95,7 +95,12 @@ class FieldController extends Controller
       */
     public function index(Request $request)
     {
-        $fields = Field::filters($request->all())->search($request->all());
+        $fields = Field::with(
+                'organization:id,name',
+                'fieldSupervisor:id,name,last_name,document_number'
+            )
+            ->filters($request->all())
+            ->search($request->all());
         return response()->json($fields, 200);
     }
 

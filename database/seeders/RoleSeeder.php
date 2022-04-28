@@ -38,6 +38,11 @@ class RoleSeeder extends Seeder
                 'name' => 'Proveedor',
                 'acronym' => 'provider',
                 'user_created_id' => 1
+            ],
+            [
+                'name' => 'Supervisor de campo',
+                'acronym' => 'field_supervisor',
+                'user_created_id' => 1
             ]
         ]);
     }
