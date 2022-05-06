@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Http\Requests\StoreClientRequest;
 use App\Http\Requests\UpdateClientRequest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -95,7 +96,8 @@ class ClientController extends Controller
       */
     public function index(Request $request)
     {
-        $clients = Client::filters($request->all())
+        $clients = Client::with('states:id,name')
+            ->filters($request->all())
             ->search($request->all());
 
         return response()->json($clients, 200);
@@ -272,6 +274,7 @@ class ClientController extends Controller
         $client->email = $request->email;
         $client->phone_number = $request->phone_number;
         $client->user_updated_id = $request->user_updated_id;
+        $client->updated_at = Carbon::now();
         $client->update();
         return response()->json($client, 201);
     }

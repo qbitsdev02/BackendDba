@@ -16,9 +16,7 @@ class CreateClientStateTable extends Migration
         Schema::create('client_state', function (Blueprint $table) {
             $table->id();
             $table->foreignId('client_id')->constrained();
-            $table->foreignId('state_id')->constrained('users');
-            $table->foreignId('user_created_id')->constrained('users');
-            $table->foreignId('user_updated_id')->nullable()->constrained('users');
+            $table->foreignId('state_id')->constrained();
             $table->timestamps();
             $table->softDeletes();
         });
