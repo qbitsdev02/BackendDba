@@ -150,7 +150,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->last_name = $request->last_name;
         $user->email = $request->email;
-        $user->phone = $request->phone;
+        $user->phone_number = $request->phone;
         $user->user_created_id = $request->user_created_id;
         $user->password = Hash::make($request->password);
         $user->save();
@@ -267,7 +267,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->last_name = $request->last_name;
         $user->email = $request->email;
-        $user->phone = $request->phone;
+        $user->phone_number = $request->phone;
         $user->updated_at = \Carbon\Carbon::now();
         if ($request->password) {
             $user->password = Hash::make($request->password);
