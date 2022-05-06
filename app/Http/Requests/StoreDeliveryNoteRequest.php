@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule as ValidationRule;
 
 class StoreDeliveryNoteRequest extends FormRequest
 {
@@ -24,7 +25,11 @@ class StoreDeliveryNoteRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'guide_number' => [
+                'required',
+                ValidationRule::unique('delivery_notes')
+                    ->whereNull('deleted_at')
+            ]
         ];
     }
 }
