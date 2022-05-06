@@ -149,7 +149,9 @@ class MaterialSupplierController extends Controller
     {
         $materialSupplier = new MaterialSupplier();
         $materialSupplier->name = $request->name;
-        $materialSupplier->img = $request->img;
+        $materialSupplier->seal = $request->seal;
+        $materialSupplier->logo = $request->logo;
+        $materialSupplier->signature = $request->signature;
         $materialSupplier->document_number = $request->document_number;
         $materialSupplier->address = $request->address;
         $materialSupplier->email = $request->email;
@@ -266,8 +268,10 @@ class MaterialSupplierController extends Controller
     public function update(UpdateMaterialSupplierRequest $request, MaterialSupplier $materialSupplier)
     {
         $materialSupplier->name = $request->name;
-        $materialSupplier->img = $request->img;
+        $materialSupplier->seal = $request->seal;
+        $materialSupplier->signature = $request->signature;
         $materialSupplier->address = $request->address;
+        $materialSupplier->logo = $request->logo;
         $materialSupplier->document_number = $request->document_number;
         $materialSupplier->email = $request->email;
         $materialSupplier->phone_number = $request->phone_number;

@@ -15,7 +15,9 @@ class CreateMaterialSuppliersTable extends Migration
     {
         Schema::create('material_suppliers', function (Blueprint $table) {
             $table->id();
-            $table->text('img');
+            $table->text('seal')->nullable();
+            $table->text('logo')->nullable();
+            $table->text('signature')->nullable();
             $table->string('name');
             $table->string('document_number');
             $table->string('address')->nullable();
