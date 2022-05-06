@@ -34,3 +34,7 @@ Route::resource('responsables', ResponsableController::class);
 Route::resource('orders', OrderController::class);
 Route::resource('concepts', ConceptController::class);
 Route::resource('fields-supervisor', FieldSupervisorController::class);
+Route::resource('material-suppliers', MaterialSupplierController::class);
+Route::resource('clients', ClientController::class);
+Route::resource('delivery-notes', DeliveryNoteController::class);
+Route::resource('states', StateController::class);

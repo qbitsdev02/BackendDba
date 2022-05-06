@@ -123,6 +123,42 @@ class ModuleSeeder extends Seeder
                     'section_id' => 3,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
+                ],
+                // 13
+                [
+                    'name' => 'delivery-notes',
+                    'icon' => 'receipt',
+                    'route' => 'DeliveryNote',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                // 14
+                [
+                    'name' => 'clients',
+                    'icon' => 'group',
+                    'route' => 'Client',
+                    'section_id' => 3,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                // 15
+                [
+                    'name' => 'material-suppliers',
+                    'icon' => 'group',
+                    'route' => 'MaterialSupplier',
+                    'section_id' => 3,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                // 16
+                [
+                    'name' => 'states',
+                    'icon' => 'map',
+                    'route' => 'State',
+                    'section_id' => 4,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
                 ]
             ]);
     }

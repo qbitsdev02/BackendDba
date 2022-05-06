@@ -13,7 +13,7 @@ class StoreMaterialSupplierRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\RoleAcronym;
 use App\Models\MaterialSupplier;
 use App\Http\Requests\StoreMaterialSupplierRequest;
 use App\Http\Requests\UpdateMaterialSupplierRequest;
@@ -16,7 +15,7 @@ class MaterialSupplierController extends Controller
       *
       * @return \Illuminate\Http\Response
       * @OA\Get(
-      *     path="/material-suppliers",
+      *     path="/materialSuppliers",
       *     operationId="getMaterialSupplier",
       *     tags={"MaterialSupplier"},
       *     @OA\Parameter(
@@ -96,11 +95,10 @@ class MaterialSupplierController extends Controller
       */
     public function index(Request $request)
     {
-        $material-suppliers = MaterialSupplier::ofType(RoleAcronym::BNFCR)
-            ->filters($request->all())
+        $materialSuppliers = MaterialSupplier::filters($request->all())
             ->search($request->all());
 
-        return response()->json($material-suppliers, 200);
+        return response()->json($materialSuppliers, 200);
     }
 
     /**
@@ -119,7 +117,7 @@ class MaterialSupplierController extends Controller
       * @param  \App\Http\Requests\StoreMaterialSupplierRequest  $request
       * @return \Illuminate\Http\Response
       * @OA\Post(
-      *   path="/material-suppliers",
+      *   path="/materialSuppliers",
       *   summary="Creates a new MaterialSupplier",
       *   description="Creates a new MaterialSupplier",
       *   tags={"MaterialSupplier"},
@@ -149,24 +147,25 @@ class MaterialSupplierController extends Controller
      */
     public function store(StoreMaterialSupplierRequest $request)
     {
-        $beneficiary = new MaterialSupplier();
-        $beneficiary->name = $request->name;
-        $beneficiary->document_number = $request->document_number;
-        $beneficiary->address = $request->address;
-        $beneficiary->email = $request->email;
-        $beneficiary->phone_number = $request->phone_number;
-        $beneficiary->user_created_id = $request->user_created_id;
-        $beneficiary->save();
-        return response()->json($beneficiary, 201);
+        $materialSupplier = new MaterialSupplier();
+        $materialSupplier->name = $request->name;
+        $materialSupplier->img = $request->img;
+        $materialSupplier->document_number = $request->document_number;
+        $materialSupplier->address = $request->address;
+        $materialSupplier->email = $request->email;
+        $materialSupplier->phone_number = $request->phone_number;
+        $materialSupplier->user_created_id = $request->user_created_id;
+        $materialSupplier->save();
+        return response()->json($materialSupplier, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\MaterialSupplier  $beneficiary
+     * @param  \App\Models\MaterialSupplier  $materialSupplier
      * @return \Illuminate\Http\Response
      * @OA\Get(
-     *   path="/material-suppliers/{id}",
+     *   path="/materialSuppliers/{id}",
      *   operationId="getMaterialSupplierById",
      *   tags={"MaterialSupplier"},
      *   summary="Get MaterialSupplier information",
@@ -199,18 +198,18 @@ class MaterialSupplierController extends Controller
      *      )
      *   )
      */
-    public function show(MaterialSupplier $beneficiary)
+    public function show(MaterialSupplier $materialSupplier)
     {
-        return response($beneficiary, 200);
+        return response($materialSupplier, 200);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\MaterialSupplier  $beneficiary
+     * @param  \App\Models\MaterialSupplier  $materialSupplier
      * @return \Illuminate\Http\Response
      */
-    public function edit(MaterialSupplier $beneficiary)
+    public function edit(MaterialSupplier $materialSupplier)
     {
         //
     }
@@ -220,10 +219,10 @@ class MaterialSupplierController extends Controller
      *
      *
      * @param  \App\Http\Requests\UpdateMaterialSupplierRequest  $request
-     * @param  \App\Models\MaterialSupplier  $beneficiary
+     * @param  \App\Models\MaterialSupplier  $materialSupplier
      * @return \Illuminate\Http\Response
      * @OA\Put(
-     *  path="/material-suppliers/{id}",
+     *  path="/materialSuppliers/{id}",
      *  operationId="updateMaterialSupplier",
      *  tags={"MaterialSupplier"},
      *  summary="Update existing MaterialSupplier",
@@ -264,25 +263,26 @@ class MaterialSupplierController extends Controller
      *   )
      * )
      */
-    public function update(UpdateMaterialSupplierRequest $request, MaterialSupplier $beneficiary)
+    public function update(UpdateMaterialSupplierRequest $request, MaterialSupplier $materialSupplier)
     {
-        $beneficiary->name = $request->name;
-        $beneficiary->address = $request->address;
-        $beneficiary->document_number = $request->document_number;
-        $beneficiary->email = $request->email;
-        $beneficiary->phone_number = $request->phone_number;
-        $beneficiary->user_updated_id = $request->user_updated_id;
-        $beneficiary->update();
-        return response()->json($beneficiary, 201);
+        $materialSupplier->name = $request->name;
+        $materialSupplier->img = $request->img;
+        $materialSupplier->address = $request->address;
+        $materialSupplier->document_number = $request->document_number;
+        $materialSupplier->email = $request->email;
+        $materialSupplier->phone_number = $request->phone_number;
+        $materialSupplier->user_updated_id = $request->user_updated_id;
+        $materialSupplier->update();
+        return response()->json($materialSupplier, 201);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\MaterialSupplier  $beneficiary
+     * @param  \App\Models\MaterialSupplier  $materialSupplier
      * @return \Illuminate\Http\Response
      * @OA\Delete(
-     *  path="/material-suppliers/{id}",
+     *  path="/materialSuppliers/{id}",
      *  operationId="deleteMaterialSupplier",
      *  tags={"MaterialSupplier"},
      *  summary="Delete existing MaterialSupplier",
@@ -315,9 +315,9 @@ class MaterialSupplierController extends Controller
      *  )
      * )
      */
-    public function destroy(MaterialSupplier $beneficiary)
+    public function destroy(MaterialSupplier $materialSupplier)
     {
-        $beneficiary->delete();
+        $materialSupplier->delete();
         return response('the data was deleted successfully', 200);
     }
 }
