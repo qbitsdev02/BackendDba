@@ -151,6 +151,7 @@ class MaterialSupplierController extends Controller
         $materialSupplier->name = $request->name;
         $materialSupplier->seal = $request->seal;
         $materialSupplier->logo = $request->logo;
+        $materialSupplier->serie_number = $request->serie_number;
         $materialSupplier->signature = $request->signature;
         $materialSupplier->document_number = $request->document_number;
         $materialSupplier->address = $request->address;
@@ -274,6 +275,7 @@ class MaterialSupplierController extends Controller
         $materialSupplier->logo = $request->logo;
         $materialSupplier->document_number = $request->document_number;
         $materialSupplier->email = $request->email;
+        $materialSupplier->serie_number = $request->serie_number;
         $materialSupplier->phone_number = $request->phone_number;
         $materialSupplier->user_updated_id = $request->user_updated_id;
         $materialSupplier->update();

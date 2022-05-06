@@ -8,6 +8,7 @@ class DeliveryNote extends Base
         'client:id,name,document_number,address,email,phone_number',
         'materialSupplier:id,name,document_number,address,email,phone_number,signature,seal,logo'
     ];
+
     /**
      * Get the client that owns the DeliveryNote
      *

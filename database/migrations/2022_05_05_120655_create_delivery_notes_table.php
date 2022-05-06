@@ -20,6 +20,7 @@ class CreateDeliveryNotesTable extends Migration
             $table->string('material');
             $table->string('driver_name');
             $table->string('driver_document_number');
+            $table->integer('serie_number')->default(1);
             $table->string('vehicle_brand');
             $table->string('vehicle_model');
             $table->string('vehicle_plate');
@@ -27,6 +28,7 @@ class CreateDeliveryNotesTable extends Migration
             $table->string('trailer_model');
             $table->string('origin_address');
             $table->foreignId('client_id')->constrained();
+            $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('material_supplier_id')->constrained();
             $table->timestamps();
             $table->softDeletes();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\DeliveryNoteHelper;
 use App\Models\DeliveryNote;
 use App\Http\Requests\StoreDeliveryNoteRequest;
 use App\Http\Requests\UpdateDeliveryNoteRequest;
@@ -48,7 +49,9 @@ class DeliveryNoteController extends Controller
         $deliveryNote->trailer_plate = $request->trailer_plate;
         $deliveryNote->trailer_model = $request->trailer_model;
         $deliveryNote->origin_address = $request->origin_address;
+        $deliveryNote->serie_number = DeliveryNoteHelper::lastSerieNumber($request->serie_number, $request->material_supplier_id);
         $deliveryNote->client_id = $request->client_id;
+        $deliveryNote->user_created_id = $request->user_created_id;
         $deliveryNote->material_supplier_id = $request->material_supplier_id;
         $deliveryNote->save();
         return response()->json($deliveryNote, 201);
