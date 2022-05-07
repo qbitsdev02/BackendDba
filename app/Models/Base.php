@@ -58,7 +58,32 @@ class Base extends Model
                 }
             });
 		}
+        $this->filterEqual($q, $data);
     }
+    public function filterEqual($q, array $data = array())
+	{
+		if (!empty($data['dataEqualFilter'])) {
+            $fields = json_decode($data['dataEqualFilter'], true);
+            $fields = array_filter($fields, 'strlen');
+            $fields = Arr::except($fields, static::$filterable);
+			$q->where(function ($query) use ($fields) {
+				foreach ($fields as $field => $value) {
+					if (isset($fields[$field])) {
+						$contains = Str::of($field)->contains('.');
+						$relations = Str::of($field)->explode('.');
+						if ($contains) {
+							$query->whereHas(Str::camel($relations[0]), function ($q) use ($relations, $fields, $field) {
+								$q->where($relations[1], $fields[$field]);
+							});
+						} else {
+							$query->where($field, $fields[$field]);
+						}
+                    }
+                }
+            });
+		}
+    }
+
 
 	/**
 	 * Search function of fields in the database.

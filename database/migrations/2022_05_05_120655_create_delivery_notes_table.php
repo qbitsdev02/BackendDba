@@ -27,6 +27,8 @@ class CreateDeliveryNotesTable extends Migration
             $table->string('trailer_plate');
             $table->string('trailer_model');
             $table->string('origin_address');
+            $table->date('start_date');
+            $table->date('deadline');
             $table->foreignId('client_id')->constrained();
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('material_supplier_id')->constrained();

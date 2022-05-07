@@ -6,6 +6,7 @@ use App\Helpers\DeliveryNoteHelper;
 use App\Models\DeliveryNote;
 use App\Http\Requests\StoreDeliveryNoteRequest;
 use App\Http\Requests\UpdateDeliveryNoteRequest;
+use Illuminate\Http\Request;
 
 class DeliveryNoteController extends Controller
 {
@@ -14,9 +15,12 @@ class DeliveryNoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $deliveryNotes = DeliveryNote::filters($request->all())
+            ->search($request->all());
+
+        return response()->json($deliveryNotes, 200);
     }
 
     /**
@@ -48,6 +52,8 @@ class DeliveryNoteController extends Controller
         $deliveryNote->vehicle_plate = $request->vehicle_plate;
         $deliveryNote->trailer_plate = $request->trailer_plate;
         $deliveryNote->trailer_model = $request->trailer_model;
+        $deliveryNote->start_date = $request->start_date;
+        $deliveryNote->deadline = $request->deadline;
         $deliveryNote->origin_address = $request->origin_address;
         $deliveryNote->serie_number = DeliveryNoteHelper::lastSerieNumber($request->serie_number, $request->material_supplier_id);
         $deliveryNote->client_id = $request->client_id;
