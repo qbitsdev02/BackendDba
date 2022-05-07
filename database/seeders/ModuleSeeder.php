@@ -159,6 +159,15 @@ class ModuleSeeder extends Seeder
                     'section_id' => 4,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
+                ],
+                // 17
+                [
+                    'name' => 'roles',
+                    'icon' => 'person',
+                    'route' => 'Role',
+                    'section_id' => 4,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
                 ]
             ]);
     }
