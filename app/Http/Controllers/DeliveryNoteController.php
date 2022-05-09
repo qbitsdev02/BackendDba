@@ -94,7 +94,25 @@ class DeliveryNoteController extends Controller
      */
     public function update(UpdateDeliveryNoteRequest $request, DeliveryNote $deliveryNote)
     {
-        //
+        $deliveryNote->guide_number = $request->guide_number;
+        $deliveryNote->destination_address = $request->destination_address;
+        $deliveryNote->material = $request->material;
+        $deliveryNote->driver_name = $request->driver_name;
+        $deliveryNote->driver_document_number = $request->driver_document_number;
+        $deliveryNote->vehicle_brand = $request->vehicle_brand;
+        $deliveryNote->vehicle_model = $request->vehicle_model;
+        $deliveryNote->vehicle_plate = $request->vehicle_plate;
+        $deliveryNote->trailer_plate = $request->trailer_plate;
+        $deliveryNote->trailer_model = $request->trailer_model;
+        $deliveryNote->start_date = $request->start_date;
+        $deliveryNote->deadline = $request->deadline;
+        $deliveryNote->origin_address = $request->origin_address;
+        $deliveryNote->serie_number = DeliveryNoteHelper::lastSerieNumber($request->serie_number, $request->material_supplier_id);
+        $deliveryNote->client_id = $request->client_id;
+        $deliveryNote->user_updated_id = $request->user_updated_id;
+        $deliveryNote->material_supplier_id = $request->material_supplier_id;
+        $deliveryNote->update();
+        return response()->json($deliveryNote, 200);
     }
 
     /**

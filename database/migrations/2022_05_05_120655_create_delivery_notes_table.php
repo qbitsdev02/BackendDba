@@ -31,6 +31,7 @@ class CreateDeliveryNotesTable extends Migration
             $table->date('deadline');
             $table->foreignId('client_id')->constrained();
             $table->foreignId('user_created_id')->constrained('users');
+            $table->foreignId('user_updated_id')->constrained('users');
             $table->foreignId('material_supplier_id')->constrained();
             $table->timestamps();
             $table->softDeletes();
