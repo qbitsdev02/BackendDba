@@ -168,7 +168,52 @@ class ModuleSeeder extends Seeder
                     'section_id' => 4,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
-                ]
+                ],
+                // 18
+                [
+                    'name' => 'drivers',
+                    'icon' => 'person',
+                    'route' => 'Driver',
+                    'section_id' => 3,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                // 19
+                [
+                    'name' => 'guides',
+                    'icon' => 'receipt',
+                    'route' => 'Guide',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                // 20
+                [
+                    'name' => 'vehicle',
+                    'icon' => 'local_shipping',
+                    'route' => 'Guide',
+                    'section_id' => 2,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                // 21
+                [
+                    'name' => 'vehicle-types',
+                    'icon' => 'airport_shuttle',
+                    'route' => 'VehicleType',
+                    'section_id' => 4,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                // 21
+                [
+                    'name' => 'trailer',
+                    'icon' => 'rv_hookup',
+                    'route' => 'Trailer',
+                    'section_id' => 2,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
             ]);
     }
 }

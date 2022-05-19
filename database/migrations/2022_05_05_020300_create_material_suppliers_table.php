@@ -24,6 +24,7 @@ class CreateMaterialSuppliersTable extends Migration
             $table->string('address')->nullable();
             $table->string('email');
             $table->string('phone_number');
+            $table->foreignId('material_supplier_type_id')->constrained();
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->softDeletes();
