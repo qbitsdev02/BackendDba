@@ -269,6 +269,7 @@ class VehicleController extends Controller
         $vehicle->plate = $request->plate;
         $vehicle->ownerable_type = $request->ownerable_type;
         $vehicle->ownerable_id = $request->ownerable_id;
+        $vehicle->user_updated_id = $request->user_updated_id;
         $vehicle->update();
         return response()->json($vehicle, 201);
     }

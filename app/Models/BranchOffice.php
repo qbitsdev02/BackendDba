@@ -12,10 +12,10 @@ namespace App\Models;
  *       description="The Branch Office name"
  *   ),
  *   @OA\Property(
- *       property="Description",
+ *       property="description",
  *       type="string",
  *       required={"true"},
- *       description="The Branch Office Description"
+ *       description="The Branch Office description"
  *   ),
  *   @OA\Property(
  *       property="user_created_id",

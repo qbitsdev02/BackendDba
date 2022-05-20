@@ -189,9 +189,9 @@ class ModuleSeeder extends Seeder
                 ],
                 // 20
                 [
-                    'name' => 'vehicle',
+                    'name' => 'vehicles',
                     'icon' => 'local_shipping',
-                    'route' => 'Guide',
+                    'route' => 'Vehicle',
                     'section_id' => 2,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
@@ -207,7 +207,7 @@ class ModuleSeeder extends Seeder
                 ],
                 // 21
                 [
-                    'name' => 'trailer',
+                    'name' => 'trailers',
                     'icon' => 'rv_hookup',
                     'route' => 'Trailer',
                     'section_id' => 2,

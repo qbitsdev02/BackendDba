@@ -24,6 +24,7 @@ class CreateVehiclesTable extends Migration
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->constrained('users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
