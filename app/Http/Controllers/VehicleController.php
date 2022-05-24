@@ -95,7 +95,10 @@ class VehicleController extends Controller
       */
     public function index(Request $request)
     {
-        $vehicles = Vehicle::filters($request->all())->search($request->all());
+        $vehicles = Vehicle::with('ownerable')
+            ->filters($request->all())
+            ->search($request->all());
+        
         return response()->json($vehicles, 200);
     }
 

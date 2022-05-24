@@ -2,10 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Driver extends Model
+class Driver extends Base
 {
-    use HasFactory;
+    protected $appends = ['full_name'];
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->document_number}-{$this->name}";
+    }
+    //
+    public function ownerable()
+    {
+        return $this->morphTo();
+    }
 }

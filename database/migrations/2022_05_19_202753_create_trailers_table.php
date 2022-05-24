@@ -18,11 +18,13 @@ class CreateTrailersTable extends Migration
             $table->string('plate');
             $table->string('model');
             $table->string('color');
+            $table->string('brand')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->morphs('ownerable');
             $table->foreignId('user_created_id')->constrained('users');
-            $table->foreignId('user_updated_id')->constrained('users');
+            $table->foreignId('user_updated_id')->constrained('users')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

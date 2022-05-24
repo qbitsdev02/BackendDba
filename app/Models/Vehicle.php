@@ -60,5 +60,15 @@ namespace App\Models;
  */
 class Vehicle extends Base
 {
-    //
+    protected $appends = ['full_name'];
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->plate}-{$this->brand}";
+    }
+
+    public function ownerable()
+    {
+        return $this->morphTo();
+    }
 }

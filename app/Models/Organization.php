@@ -35,5 +35,10 @@ namespace App\Models;
  */
 class Organization extends Base
 {
-    //
+    protected $appends = ['full_name'];
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->name}";
+    }
 }

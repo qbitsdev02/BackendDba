@@ -13,7 +13,7 @@ class StoreGuideRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
