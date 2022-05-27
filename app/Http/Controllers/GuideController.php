@@ -6,6 +6,7 @@ use App\Models\Guide;
 use App\Http\Requests\StoreGuideRequest;
 use App\Http\Requests\UpdateGuideRequest;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class GuideController extends Controller
 {
@@ -95,7 +96,15 @@ class GuideController extends Controller
       */
     public function index(Request $request)
     {
-        $guides = Guide::filters($request->all())->search($request->all());
+        $guides = Guide::with(
+                'client:id,name,document_number',
+                'materialSupplier:id,name,document_number',
+                'trailer:id,plate,brand,model',
+                'vehicle:id,name,plate,brand,model',
+                'driver:id,name,document_number'
+            )
+            ->filters($request->all())
+            ->search($request->all());
         return response()->json($guides, 200);
     }
 

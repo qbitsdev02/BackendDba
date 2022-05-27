@@ -90,5 +90,49 @@ namespace App\Models;
  */
 class Guide extends Base
 {
-    //
+    /**
+     * Get the client that owns the Guide
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
+    /**
+     * Get the materialSupplier that owns the Guide
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function materialSupplier()
+    {
+        return $this->belongsTo(MaterialSupplier::class);
+    }
+    /**
+     * Get the trailer that owns the Guide
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function trailer()
+    {
+        return $this->belongsTo(Trailer::class);
+    }
+    /**
+     * Get the vehicle that owns the Guide
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function vehicle()
+    {
+        return $this->belongsTo(Vehicle::class);
+    }
+    /**
+     * Get the driver that owns the Guide
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function driver()
+    {
+        return $this->belongsTo(Driver::class);
+    }
 }

@@ -10,7 +10,7 @@ class Driver extends Base
     {
         return "{$this->document_number}-{$this->name}";
     }
-    //
+
     public function ownerable()
     {
         return $this->morphTo();

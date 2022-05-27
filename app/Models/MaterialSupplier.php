@@ -9,5 +9,5 @@ class MaterialSupplier extends Base
     public function getFullNameAttribute()
     {
         return "{$this->document_number}-{$this->name}";
-    } 
+    }
 }

@@ -29,7 +29,7 @@ class CreateGuidesTable extends Migration
             $table->foreignId('client_id')->constrained();
             $table->foreignId('driver_id')->constrained();
             $table->foreignId('user_created_id')->constrained('users');
-            $table->foreignId('user_updated_id')->constrained('users');
+            $table->foreignId('user_updated_id')->constrained('users')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
