@@ -45,7 +45,7 @@ class SwornDeclarationController extends Controller
                 Storage::disk('local')->put($filename, 'img_sworn_declarations');
                 $url = Storage::url($filename);
                 $swornDeclaration = new SwornDeclaration();
-                $swornDeclaration->imagen = env('APP_URL') . '/' . $url;
+                $swornDeclaration->imagen = $url;
                 $swornDeclaration->guide_id = $request->guide_id;
                 $swornDeclaration->user_created_id = $request->user_created_id;
                 $swornDeclaration->save();

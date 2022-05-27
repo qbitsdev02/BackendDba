@@ -15,12 +15,12 @@ class CreateDeliveryNotesTable extends Migration
     {
         Schema::create('delivery_notes', function (Blueprint $table) {
             $table->id();
-            $table->string('guide_id');
+            $table->foreignId('guide_id')->constrained();
             $table->string('guide_number');
             $table->integer('serie_number')->default(1);
             $table->foreignId('client_id')->constrained();
             $table->foreignId('user_created_id')->constrained('users');
-            $table->foreignId('user_updated_id')->constrained('users');
+            $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->timestamps();
             $table->softDeletes();
         });

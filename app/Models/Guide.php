@@ -135,4 +135,9 @@ class Guide extends Base
     {
         return $this->belongsTo(Driver::class);
     }
+
+    public function swornDeclarations()
+    {
+        return $this->hasMany(SwornDeclaration::class);
+    }
 }

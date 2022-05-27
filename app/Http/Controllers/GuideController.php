@@ -101,7 +101,8 @@ class GuideController extends Controller
                 'materialSupplier:id,name,document_number',
                 'trailer:id,plate,brand,model',
                 'vehicle:id,name,plate,brand,model',
-                'driver:id,name,document_number'
+                'driver:id,name,document_number',
+                'swornDeclarations:id,imagen,guide_id'
             )
             ->filters($request->all())
             ->search($request->all());

@@ -15,10 +15,10 @@ class CreateSwornDeclarationsTable extends Migration
     {
         Schema::create('sworn_declarations', function (Blueprint $table) {
             $table->id();
-            $table->string('guide_id');
             $table->text('imagen');
+            $table->foreignId('guide_id')->constrained();
             $table->foreignId('user_created_id')->constrained('users');
-            $table->foreignId('user_updated_id')->constrained('users')->nullable();
+            $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->timestamps();
             $table->softDeletes();
         });

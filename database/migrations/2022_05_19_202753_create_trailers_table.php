@@ -22,7 +22,7 @@ class CreateTrailersTable extends Migration
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->morphs('ownerable');
             $table->foreignId('user_created_id')->constrained('users');
-            $table->foreignId('user_updated_id')->constrained('users')->nullable();
+            $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->timestamps();
             $table->softDeletes();
         });
