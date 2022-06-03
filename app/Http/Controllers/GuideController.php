@@ -98,9 +98,9 @@ class GuideController extends Controller
     {
         $guides = Guide::with(
                 'client:id,name,document_number',
-                'materialSupplier:id,name,document_number',
-                'trailer:id,plate,brand,model',
-                'vehicle:id,name,plate,brand,model',
+                'materialSupplier:id,name,document_number,logo,signature,seal',
+                'trailer:id,plate,brand,model,color',
+                'vehicle:id,name,plate,brand,model,color',
                 'driver:id,name,document_number',
                 'swornDeclarations:id,imagen,guide_id'
             )

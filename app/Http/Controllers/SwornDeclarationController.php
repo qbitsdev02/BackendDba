@@ -37,13 +37,12 @@ class SwornDeclarationController extends Controller
      */
     public function store(StoreSwornDeclarationRequest $request)
     {
-        $files = $request->file('files');
         if($request->has('files')) {
+            $files = $request->file('files');
             for($i = 0; $i < count($files); $i++) {
                 $file = $files[$i];
                 $filename = $file->getClientOriginalName();
-                Storage::disk('local')->put($filename, 'img_sworn_declarations');
-                $url = Storage::url($filename);
+                $url = $file->storeAs('img_sworn_declarations', $filename);
                 $swornDeclaration = new SwornDeclaration();
                 $swornDeclaration->imagen = $url;
                 $swornDeclaration->guide_id = $request->guide_id;
