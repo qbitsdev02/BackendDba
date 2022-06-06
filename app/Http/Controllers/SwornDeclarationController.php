@@ -42,9 +42,13 @@ class SwornDeclarationController extends Controller
             for($i = 0; $i < count($files); $i++) {
                 $file = $files[$i];
                 $filename = $file->getClientOriginalName();
-                $url = $file->storeAs('img_sworn_declarations', $filename);
+                Storage::disk('dropbox')->putFileAs(
+                    'img_sworn_declarations', 
+                    $file,
+                    $filename
+                );
                 $swornDeclaration = new SwornDeclaration();
-                $swornDeclaration->imagen = $url;
+                $swornDeclaration->imagen = Storage::disk('dropbox')->url("img_sworn_declarations/{$filename}");
                 $swornDeclaration->guide_id = $request->guide_id;
                 $swornDeclaration->user_created_id = $request->user_created_id;
                 $swornDeclaration->save();
