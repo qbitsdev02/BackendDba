@@ -46,3 +46,4 @@ Route::resource('drivers', DriverController::class);
 Route::resource('vehicle-types', VehicleTypeController::class);
 Route::resource('sworn-declarations', SwornDeclarationController::class);
 Route::resource('trailers', TrailerController::class);
+Route::resource('unit-of-measurements', UnitOfMeasurementController::class);

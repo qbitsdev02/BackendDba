@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Guide;
-use App\Http\Requests\StoreGuideRequest;
-use App\Http\Requests\UpdateGuideRequest;
+use App\Models\UnitOfMeasurement;
+use App\Http\Requests\StoreUnitOfMeasurementRequest;
+use App\Http\Requests\UpdateUnitOfMeasurementRequest;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 
-class GuideController extends Controller
+class UnitOfMeasurementController extends Controller
 {
 
     /**
@@ -16,9 +15,9 @@ class GuideController extends Controller
       *
       * @return \Illuminate\Http\Response
       * @OA\Get(
-      *     path="/guides",
-      *     operationId="getGuide",
-      *     tags={"Guide"},
+      *     path="unit-of-measurements",
+      *     operationId="getUnitOfMeasurement",
+      *     tags={"UnitOfMeasurement"},
       *     @OA\Parameter(
       *       name="paginate",
       *       in="query",
@@ -86,7 +85,7 @@ class GuideController extends Controller
       *     ),
       *     @OA\Response(
       *         response=200,
-      *         description="Show Guides all."
+      *         description="Show UnitOfMeasurements all."
       *     ),
       *     @OA\Response(
       *         response="default",
@@ -96,17 +95,8 @@ class GuideController extends Controller
       */
     public function index(Request $request)
     {
-        $guides = Guide::with(
-                'client:id,name,document_number',
-                'materialSupplier:id,name,document_number,logo,signature,seal',
-                'trailer:id,plate,brand,model,color',
-                'vehicle:id,name,plate,brand,model,color',
-                'driver:id,name,document_number',
-                'swornDeclarations:id,imagen,guide_id'
-            )
-            ->filters($request->all())
-            ->search($request->all());
-        return response()->json($guides, 200);
+        $unitOfMeasurements = UnitOfMeasurement::filters($request->all())->search($request->all());
+        return response()->json($unitOfMeasurements, 200);
     }
 
     /**
@@ -122,24 +112,24 @@ class GuideController extends Controller
     /**
       * Store a newly created resource in storage.
       *
-      * @param  \App\Http\Requests\StoreGuideRequest  $request
+      * @param  \App\Http\Requests\StoreUnitOfMeasurementRequest  $request
       * @return \Illuminate\Http\Response
       * @OA\Post(
-      *   path="/guides",
-      *   summary="Creates a new Guide",
-      *   description="Creates a new Guide",
-      *   tags={"Guide"},
+      *   path="unit-of-measurements",
+      *   summary="Creates a new UnitOfMeasurement",
+      *   description="Creates a new UnitOfMeasurement",
+      *   tags={"UnitOfMeasurement"},
       *   security={{"passport": {"*"}}},
       *   @OA\RequestBody(
       *       @OA\MediaType(
       *           mediaType="application/json",
-      *           @OA\Schema(ref="#/components/schemas/Guide")
+      *           @OA\Schema(ref="#/components/schemas/UnitOfMeasurement")
       *       )
       *   ),
       *   @OA\Response(
       *       @OA\MediaType(mediaType="application/json"),
       *       response=200,
-      *       description="The Guide resource created",
+      *       description="The UnitOfMeasurement resource created",
       *   ),
       *   @OA\Response(
       *       @OA\MediaType(mediaType="application/json"),
@@ -153,39 +143,30 @@ class GuideController extends Controller
       *   )
       * )
      */
-    public function store(StoreGuideRequest $request)
+    public function store(StoreUnitOfMeasurementRequest $request)
     {
-        $guide = new Guide();
-        $guide->material_supplier_id = $request->material_supplier_id;
-        $guide->vehicle_id = $request->vehicle_id;
-        $guide->client_id = $request->client_id;
-        $guide->trailer_id = $request->trailer_id;
-        $guide->start_date = $request->start_date;
-        $guide->deadline = $request->deadline;
-        $guide->origin_address = $request->origin_address;
-        $guide->destination_address = $request->destination_address;
-        $guide->material = $request->material;
-        $guide->code_runpa = $request->code_runpa;
-        $guide->driver_id = $request->driver_id;
-        $guide->user_created_id = $request->user_created_id;
-        $guide->save();
-        return response()->json($guide, 201);
+        $unitOfMeasurement = new UnitOfMeasurement();
+        $unitOfMeasurement->name = $request->name;
+        $unitOfMeasurement->acronym = $request->acronym;
+        $unitOfMeasurement->user_created_id = $request->user_created_id;
+        $unitOfMeasurement->save();
+        return response()->json($unitOfMeasurement, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Guide  $guide
+     * @param  \App\Models\UnitOfMeasurement  $unitOfMeasurement
      * @return \Illuminate\Http\Response
      * @OA\Get(
-     *   path="/guides/{id}",
-     *   operationId="getGuideById",
-     *   tags={"Guide"},
-     *   summary="Get Guide information",
-     *   description="Returns Guide data",
+     *   path="unit-of-measurements/{id}",
+     *   operationId="getUnitOfMeasurementById",
+     *   tags={"UnitOfMeasurement"},
+     *   summary="Get UnitOfMeasurement information",
+     *   description="Returns UnitOfMeasurement data",
      *   @OA\Parameter(
      *      name="id",
-     *      description="Guide id",
+     *      description="UnitOfMeasurement id",
      *      required=true,
      *      in="path",
      *          @OA\Schema(
@@ -195,7 +176,7 @@ class GuideController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/Guide")
+     *          @OA\JsonContent(ref="#/components/schemas/UnitOfMeasurement")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -211,26 +192,18 @@ class GuideController extends Controller
      *      )
      *   )
      */
-    public function show($id)
+    public function show(UnitOfMeasurement $unitOfMeasurement)
     {
-        $guide = Guide::with(
-            'client:id,name,document_number',
-            'materialSupplier:id,name,document_number,logo,signature,seal',
-            'trailer:id,plate,brand,model,color',
-            'vehicle:id,name,plate,brand,model,color',
-            'driver:id,name,document_number',
-            'swornDeclarations:id,imagen,guide_id'
-        )->findOrFail($id);
-        return response($guide, 200);
+        return response($unitOfMeasurement, 200);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Guide  $guide
+     * @param  \App\Models\UnitOfMeasurement  $unitOfMeasurement
      * @return \Illuminate\Http\Response
      */
-    public function edit(Guide $guide)
+    public function edit(UnitOfMeasurement $unitOfMeasurement)
     {
         //
     }
@@ -239,18 +212,18 @@ class GuideController extends Controller
      * Update the specified resource in storage.
      *
      *
-     * @param  \App\Http\Requests\UpdateGuideRequest  $request
-     * @param  \App\Models\Guide  $guide
+     * @param  \App\Http\Requests\UpdateUnitOfMeasurementRequest  $request
+     * @param  \App\Models\UnitOfMeasurement  $unitOfMeasurement
      * @return \Illuminate\Http\Response
      * @OA\Put(
-     *  path="/guides/{id}",
-     *  operationId="updateGuide",
-     *  tags={"Guide"},
-     *  summary="Update existing Guide",
-     *  description="Returns updated Guide data",
+     *  path="unit-of-measurements/{id}",
+     *  operationId="updateUnitOfMeasurement",
+     *  tags={"UnitOfMeasurement"},
+     *  summary="Update existing UnitOfMeasurement",
+     *  description="Returns updated UnitOfMeasurement data",
      *  @OA\Parameter(
      *      name="id",
-     *      description="Guide id",
+     *      description="UnitOfMeasurement id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -259,12 +232,12 @@ class GuideController extends Controller
      *  ),
      *  @OA\RequestBody(
      *      required=true,
-     *      @OA\JsonContent(ref="#/components/schemas/Guide")
+     *      @OA\JsonContent(ref="#/components/schemas/UnitOfMeasurement")
      *   ),
      *   @OA\Response(
      *      response=202,
      *      description="Successful operation",
-     *      @OA\JsonContent(ref="#/components/schemas/Guide")
+     *      @OA\JsonContent(ref="#/components/schemas/UnitOfMeasurement")
      *   ),
      *   @OA\Response(
      *      response=400,
@@ -284,38 +257,29 @@ class GuideController extends Controller
      *   )
      * )
      */
-    public function update(UpdateGuideRequest $request, Guide $guide)
+    public function update(UpdateUnitOfMeasurementRequest $request, UnitOfMeasurement $unitOfMeasurement)
     {
-        $guide->material_supplier_id = $request->material_supplier_id;
-        $guide->vehicle_id = $request->vehicle_id;
-        $guide->client_id = $request->client_id;
-        $guide->trailer_id = $request->trailer_id;
-        $guide->start_date = $request->start_date;
-        $guide->deadline = $request->deadline;
-        $guide->origin_address = $request->origin_address;
-        $guide->destination_address = $request->destination_address;
-        $guide->material = $request->material;
-        $guide->code_runpa = $request->code_runpa;
-        $guide->driver_id = $request->driver_id;
-        $guide->user_updated_id = $request->user_updated_id;
-        $guide->update();
-        return response()->json($guide, 201);
+        $unitOfMeasurement->name = $request->name;
+        $unitOfMeasurement->acronym = $request->acronym;
+        $unitOfMeasurement->user_updated_id = $request->user_updated_id;
+        $unitOfMeasurement->update();
+        return response()->json($unitOfMeasurement, 201);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Guide  $guide
+     * @param  \App\Models\UnitOfMeasurement  $unitOfMeasurement
      * @return \Illuminate\Http\Response
      * @OA\Delete(
-     *  path="/guides/{id}",
-     *  operationId="deleteGuide",
-     *  tags={"Guide"},
-     *  summary="Delete existing Guide",
+     *  path="unit-of-measurements/{id}",
+     *  operationId="deleteUnitOfMeasurement",
+     *  tags={"UnitOfMeasurement"},
+     *  summary="Delete existing UnitOfMeasurement",
      *  description="Deletes a record and returns no content",
      *  @OA\Parameter(
      *      name="id",
-     *      description="Guide id",
+     *      description="UnitOfMeasurement id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -341,9 +305,9 @@ class GuideController extends Controller
      *  )
      * )
      */
-    public function destroy(Guide $guide)
+    public function destroy(UnitOfMeasurement $unitOfMeasurement)
     {
-        $guide->delete();
+        $unitOfMeasurement->delete();
         return response('the data was deleted successfully', 200);
     }
 }
