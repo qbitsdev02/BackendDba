@@ -102,7 +102,8 @@ class GuideController extends Controller
                 'trailer:id,plate,brand,model,color',
                 'vehicle:id,name,plate,brand,model,color',
                 'driver:id,name,document_number',
-                'swornDeclarations:id,imagen,guide_id'
+                'swornDeclarations:id,imagen,guide_id',
+                'unitOfMeasurement:id,name,acronym'
             )
             ->filters($request->all())
             ->search($request->all());
@@ -168,6 +169,8 @@ class GuideController extends Controller
         $guide->code_runpa = $request->code_runpa;
         $guide->driver_id = $request->driver_id;
         $guide->user_created_id = $request->user_created_id;
+        $guide->unit_of_measurement_id = $request->unit_of_measurement_id;
+        $guide->weight = $request->weight;
         $guide->save();
         return response()->json($guide, 201);
     }
@@ -219,7 +222,8 @@ class GuideController extends Controller
             'trailer:id,plate,brand,model,color',
             'vehicle:id,name,plate,brand,model,color',
             'driver:id,name,document_number',
-            'swornDeclarations:id,imagen,guide_id'
+            'swornDeclarations:id,imagen,guide_id',
+            'unitOfMeasurement:id,name,acronym'
         )->findOrFail($id);
         return response($guide, 200);
     }
@@ -298,6 +302,8 @@ class GuideController extends Controller
         $guide->code_runpa = $request->code_runpa;
         $guide->driver_id = $request->driver_id;
         $guide->user_updated_id = $request->user_updated_id;
+        $guide->unit_of_measurement_id = $request->unit_of_measurement_id;
+        $guide->weight = $request->weight;
         $guide->update();
         return response()->json($guide, 201);
     }

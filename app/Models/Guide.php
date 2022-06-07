@@ -140,4 +140,9 @@ class Guide extends Base
     {
         return $this->hasMany(SwornDeclaration::class);
     }
+    
+    public function unitOfMeasurement()
+    {
+        return $this->belongsTo(UnitOfMeasurement::class);
+    }
 }
