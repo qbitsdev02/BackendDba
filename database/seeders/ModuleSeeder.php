@@ -205,7 +205,7 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
-                // 21
+                // 22
                 [
                     'name' => 'trailers',
                     'icon' => 'rv_hookup',
@@ -214,6 +214,15 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
+                // 23
+                [
+                    'name' => 'users',
+                    'icon' => 'person',
+                    'route' => 'User',
+                    'section_id' => 4,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ]
             ]);
     }
 }
