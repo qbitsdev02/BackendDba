@@ -52,7 +52,6 @@ class RefreshToken extends BaseAuthResolver
     public function refreshToken(Request $request)
     {
         $credentials = $this->buildCredentials($request->all(), 'refresh_token');
-
         return $this->makeRequest($credentials);
     }
 }
