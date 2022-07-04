@@ -9,6 +9,15 @@ use Illuminate\Http\Request;
 
 class CoinController extends Controller
 {
+    /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Coin::class, 'coin');
+    }
 
     /**
       * Display a listing of the resource.

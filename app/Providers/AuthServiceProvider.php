@@ -2,9 +2,16 @@
 
 namespace App\Providers;
 
+use App\Models\Coin;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Schema;
+use App\Models\Module;
+use App\Models\Permission;
+use App\Policies\CoinPolicy;
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -13,8 +20,9 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        Coin::class => CoinPolicy::class
     ];
+
 
     /**
      * Register any authentication / authorization services.
@@ -24,6 +32,19 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+
+        if (Schema::hasTable('modules') && Schema::hasTable('permissions')) {
+            $modules = Module::all();
+            $permissions = Permission::all();
+            foreach ($modules as $module) {
+                foreach ($permissions as $permission) {
+                    $gateName = $module->name . '-' . $permission->value;
+                    Gate::define($gateName, function ($user) use ($module, $permission) {
+                        return $user->hasAccess($module->id, $permission->id);
+                    });
+                }
+            }
+        }
 
         Passport::routes();
     }
