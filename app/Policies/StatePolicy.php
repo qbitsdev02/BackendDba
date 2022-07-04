@@ -18,7 +18,7 @@ class StatePolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->can('states-viewAny');
     }
 
     /**
@@ -30,7 +30,7 @@ class StatePolicy
      */
     public function view(User $user, State $state)
     {
-        //
+        return $user->can('states-read');
     }
 
     /**
@@ -41,7 +41,7 @@ class StatePolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->can('states-create');
     }
 
     /**
@@ -53,7 +53,7 @@ class StatePolicy
      */
     public function update(User $user, State $state)
     {
-        //
+        return $user->can('states-update');
     }
 
     /**
@@ -65,7 +65,7 @@ class StatePolicy
      */
     public function delete(User $user, State $state)
     {
-        //
+        return $user->can('states-delete');
     }
 
     /**
@@ -77,7 +77,7 @@ class StatePolicy
      */
     public function restore(User $user, State $state)
     {
-        //
+        return $user->can('states-restore');
     }
 
     /**
@@ -89,6 +89,6 @@ class StatePolicy
      */
     public function forceDelete(User $user, State $state)
     {
-        //
+        return $user->can('states-forceDelete');
     }
 }
