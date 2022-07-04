@@ -207,6 +207,26 @@ class User extends Authenticatable
 		}
 	}
 
+    // Authorization
+    /**
+     * Check if the user has permission over a specific module
+     *
+     * @return User instance or null
+     */
+    public function hasAccess($moduleId, $permissionId) {
+        info($moduleId);
+        info($permissionId);
+        return $this->join('branch_office_role_user', 'users.id', 'branch_office_role_user.user_id')
+            ->join('roles', 'branch_office_role_user.role_id', 'roles.id')
+            ->join('module_role', 'roles.id', 'module_role.role_id')
+            ->where('users.id', $this->id)
+            // ->where('branch_office_role_user.branch_office_id', $schoolId)
+            ->where('module_role.module_id', $moduleId)
+            ->whereRaw('module_role.permissions like \'%"' . $permissionId . '"%\'')
+            ->first();
+    }
+
+
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'branch_office_role_user', 'user_id', 'role_id')

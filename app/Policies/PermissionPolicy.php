@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Coin;
+use App\Models\Permission;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CoinPolicy
+class PermissionPolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,19 @@ class CoinPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('coins-viewAny');
+        //
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Coin  $coin
+     * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Coin $coin)
+    public function view(User $user, Permission $permission)
     {
-        return $user->can('coins-read');
+        //
     }
 
     /**
@@ -41,54 +41,54 @@ class CoinPolicy
      */
     public function create(User $user)
     {
-        return $user->can('coins-create');
+        //
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Coin  $coin
+     * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Coin $coin)
+    public function update(User $user, Permission $permission)
     {
-        return $user->can('coins-update');
+        //
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Coin  $coin
+     * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Coin $coin)
+    public function delete(User $user, Permission $permission)
     {
-        return $user->can('coins-delete');
+        //
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Coin  $coin
+     * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Coin $coin)
+    public function restore(User $user, Permission $permission)
     {
-        return $user->can('coins-restore');
+        //
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Coin  $coin
+     * @param  \App\Models\Permission  $permission
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Coin $coin)
+    public function forceDelete(User $user, Permission $permission)
     {
-        return $user->can('coins-forceDelete');
+        //
     }
 }

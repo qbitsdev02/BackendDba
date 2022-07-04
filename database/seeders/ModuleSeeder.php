@@ -18,7 +18,7 @@ class ModuleSeeder extends Seeder
             ->insert([
                 // 1
                 [
-                    'name' => 'coin',
+                    'name' => 'coins',
                     'icon' => 'attach_money',
                     'route' => 'Coin',
                     'section_id' => 4,
@@ -117,7 +117,7 @@ class ModuleSeeder extends Seeder
                 ],
                 // 12
                 [
-                    'name' => 'field-supervisor',
+                    'name' => 'field-supervisors',
                     'icon' => 'attribution',
                     'route' => 'FieldSupervisor',
                     'section_id' => 3,

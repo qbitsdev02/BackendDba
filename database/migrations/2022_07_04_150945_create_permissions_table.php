@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateModuleRoleTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateModuleRoleTable extends Migration
      */
     public function up()
     {
-        Schema::create('module_role', function (Blueprint $table) {
+        Schema::create('permissions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('module_id')->constrained();
-            $table->foreignId('role_id')->constrained();
-            $table->string('permissions');
+            $table->string('label');
+            $table->string('value');
+            $table->foreignId('user_created_id')->constrained('users');
+            $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +31,6 @@ class CreateModuleRoleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('module_role');
+        Schema::dropIfExists('permissions');
     }
-}
+};
