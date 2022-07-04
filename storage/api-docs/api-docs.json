@@ -273,6 +273,267 @@
                 }
             }
         },
+        "/clients": {
+            "get": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Display a listing of the resource.",
+                "operationId": "getClient",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a curso resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Clients all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Creates a new Client",
+                "description": "Creates a new Client",
+                "operationId": "15981a5da120d8b4ea1b91b05a35622b",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Client"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Client resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an unexpected error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/clients/{id}": {
+            "get": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Get Client information",
+                "description": "Returns Client data",
+                "operationId": "getClientById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Client id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Client"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Update existing Client",
+                "description": "Returns updated Client data",
+                "operationId": "updateClient",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Client id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Client"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Client"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Delete existing Client",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteClient",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Client id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/coins": {
             "get": {
                 "tags": [
@@ -1056,6 +1317,267 @@
                 }
             }
         },
+        "/drivers": {
+            "get": {
+                "tags": [
+                    "Driver"
+                ],
+                "summary": "Display a listing of the resource.",
+                "operationId": "getDriver",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a curso resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Drivers all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Driver"
+                ],
+                "summary": "Creates a new Driver",
+                "description": "Creates a new Driver",
+                "operationId": "ee49d7a72113e8c63774c9eb2fa4a934",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Driver"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Driver resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/drivers/{id}": {
+            "get": {
+                "tags": [
+                    "Driver"
+                ],
+                "summary": "Get Driver information",
+                "description": "Returns Driver data",
+                "operationId": "getDriverById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Driver id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Driver"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Driver"
+                ],
+                "summary": "Update existing Driver",
+                "description": "Returns updated Driver data",
+                "operationId": "updateDriver",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Driver id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Driver"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Driver"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Driver"
+                ],
+                "summary": "Delete existing Driver",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteDriver",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Driver id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/entities": {
             "get": {
                 "tags": [
@@ -1551,6 +2073,1050 @@
                         "name": "id",
                         "in": "path",
                         "description": "Field id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/field-supervisors": {
+            "get": {
+                "tags": [
+                    "FieldSupervisor"
+                ],
+                "summary": "Display a listing of the resource.",
+                "operationId": "getFieldSupervisor",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a curso resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show FieldSupervisors all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "FieldSupervisor"
+                ],
+                "summary": "Creates a new FieldSupervisor",
+                "description": "Creates a new FieldSupervisor",
+                "operationId": "34084cceb94619b7bd5bcce3af902239",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FieldSupervisor"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The FieldSupervisor resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/field-supervisors/{id}": {
+            "get": {
+                "tags": [
+                    "FieldSupervisor"
+                ],
+                "summary": "Get FieldSupervisor information",
+                "description": "Returns FieldSupervisor data",
+                "operationId": "getFieldSupervisorById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "FieldSupervisor id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FieldSupervisor"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "FieldSupervisor"
+                ],
+                "summary": "Update existing FieldSupervisor",
+                "description": "Returns updated FieldSupervisor data",
+                "operationId": "updateFieldSupervisor",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "FieldSupervisor id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FieldSupervisor"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FieldSupervisor"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "FieldSupervisor"
+                ],
+                "summary": "Delete existing FieldSupervisor",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteFieldSupervisor",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "FieldSupervisor id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/guides": {
+            "get": {
+                "tags": [
+                    "Guide"
+                ],
+                "summary": "Display a listing of the resource.",
+                "operationId": "getGuide",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a curso resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Guides all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Guide"
+                ],
+                "summary": "Creates a new Guide",
+                "description": "Creates a new Guide",
+                "operationId": "cb0a6020d98866b6a06e08ffd696ee8a",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Guide"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Guide resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/guides/{id}": {
+            "get": {
+                "tags": [
+                    "Guide"
+                ],
+                "summary": "Get Guide information",
+                "description": "Returns Guide data",
+                "operationId": "getGuideById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Guide id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Guide"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Guide"
+                ],
+                "summary": "Update existing Guide",
+                "description": "Returns updated Guide data",
+                "operationId": "updateGuide",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Guide id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Guide"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Guide"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Guide"
+                ],
+                "summary": "Delete existing Guide",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteGuide",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Guide id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/material-suppliers": {
+            "get": {
+                "tags": [
+                    "MaterialSupplier"
+                ],
+                "summary": "Display a listing of the resource.",
+                "operationId": "getMaterialSupplier",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a curso resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show MaterialSuppliers all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "MaterialSupplier"
+                ],
+                "summary": "Creates a new MaterialSupplier",
+                "description": "Creates a new MaterialSupplier",
+                "operationId": "289eff436640fed0fd259bd3ad216470",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MaterialSupplier"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The MaterialSupplier resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/material-suppliers/{id}": {
+            "get": {
+                "tags": [
+                    "MaterialSupplier"
+                ],
+                "summary": "Get MaterialSupplier information",
+                "description": "Returns MaterialSupplier data",
+                "operationId": "getMaterialSupplierById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "MaterialSupplier id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MaterialSupplier"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "MaterialSupplier"
+                ],
+                "summary": "Update existing MaterialSupplier",
+                "description": "Returns updated MaterialSupplier data",
+                "operationId": "updateMaterialSupplier",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "MaterialSupplier id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MaterialSupplier"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MaterialSupplier"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "MaterialSupplier"
+                ],
+                "summary": "Delete existing MaterialSupplier",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteMaterialSupplier",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "MaterialSupplier id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/material-supplier-types": {
+            "get": {
+                "tags": [
+                    "MaterialSupplierType"
+                ],
+                "summary": "Display a listing of the resource.",
+                "operationId": "getMaterialSupplierType",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a curso resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show MaterialSupplierTypes all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "MaterialSupplierType"
+                ],
+                "summary": "Creates a new MaterialSupplierType",
+                "description": "Creates a new MaterialSupplierType",
+                "operationId": "c76bf4e7de87d242d1d0c79e230b93c2",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MaterialSupplierType"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The MaterialSupplierType resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/material-supplier-types/{id}": {
+            "get": {
+                "tags": [
+                    "MaterialSupplierType"
+                ],
+                "summary": "Get MaterialSupplierType information",
+                "description": "Returns MaterialSupplierType data",
+                "operationId": "getMaterialSupplierTypeById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "MaterialSupplierType id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MaterialSupplierType"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "MaterialSupplierType"
+                ],
+                "summary": "Update existing MaterialSupplierType",
+                "description": "Returns updated MaterialSupplierType data",
+                "operationId": "updateMaterialSupplierType",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "MaterialSupplierType id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/MaterialSupplierType"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MaterialSupplierType"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "MaterialSupplierType"
+                ],
+                "summary": "Delete existing MaterialSupplierType",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteMaterialSupplierType",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "MaterialSupplierType id",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -2621,6 +4187,1311 @@
                     }
                 }
             }
+        },
+        "/states": {
+            "get": {
+                "tags": [
+                    "State"
+                ],
+                "summary": "Display a listing of the resource.",
+                "operationId": "getState",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a curso resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show States all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "State"
+                ],
+                "summary": "Creates a new State",
+                "description": "Creates a new State",
+                "operationId": "3a320d9021a1c0341e6fe95fe73609c3",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/State"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The State resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/states/{id}": {
+            "get": {
+                "tags": [
+                    "State"
+                ],
+                "summary": "Get State information",
+                "description": "Returns State data",
+                "operationId": "getStateById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "State id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/State"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "State"
+                ],
+                "summary": "Update existing State",
+                "description": "Returns updated State data",
+                "operationId": "updateState",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "State id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/State"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/State"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "State"
+                ],
+                "summary": "Delete existing State",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteState",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "State id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/trailers": {
+            "get": {
+                "tags": [
+                    "Trailer"
+                ],
+                "summary": "Display a listing of the resource.",
+                "operationId": "getTrailer",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a curso resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Trailers all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Trailer"
+                ],
+                "summary": "Creates a new Trailer",
+                "description": "Creates a new Trailer",
+                "operationId": "5b23eb9a313a9f431b90dce27a29d906",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Trailer"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Trailer resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/trailers/{id}": {
+            "get": {
+                "tags": [
+                    "Trailer"
+                ],
+                "summary": "Get Trailer information",
+                "description": "Returns Trailer data",
+                "operationId": "getTrailerById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Trailer id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Trailer"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Trailer"
+                ],
+                "summary": "Update existing Trailer",
+                "description": "Returns updated Trailer data",
+                "operationId": "updateTrailer",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Trailer id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Trailer"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Trailer"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Trailer"
+                ],
+                "summary": "Delete existing Trailer",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteTrailer",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Trailer id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "unit-of-measurements": {
+            "get": {
+                "tags": [
+                    "UnitOfMeasurement"
+                ],
+                "summary": "Display a listing of the resource.",
+                "operationId": "getUnitOfMeasurement",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a curso resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show UnitOfMeasurements all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "UnitOfMeasurement"
+                ],
+                "summary": "Creates a new UnitOfMeasurement",
+                "description": "Creates a new UnitOfMeasurement",
+                "operationId": "bc7e27af1201d1ca906156ba3408ac69",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UnitOfMeasurement"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The UnitOfMeasurement resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "unit-of-measurements/{id}": {
+            "get": {
+                "tags": [
+                    "UnitOfMeasurement"
+                ],
+                "summary": "Get UnitOfMeasurement information",
+                "description": "Returns UnitOfMeasurement data",
+                "operationId": "getUnitOfMeasurementById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "UnitOfMeasurement id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UnitOfMeasurement"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "UnitOfMeasurement"
+                ],
+                "summary": "Update existing UnitOfMeasurement",
+                "description": "Returns updated UnitOfMeasurement data",
+                "operationId": "updateUnitOfMeasurement",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "UnitOfMeasurement id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UnitOfMeasurement"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UnitOfMeasurement"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "UnitOfMeasurement"
+                ],
+                "summary": "Delete existing UnitOfMeasurement",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteUnitOfMeasurement",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "UnitOfMeasurement id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/vehicles": {
+            "get": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Display a listing of the resource.",
+                "operationId": "getVehicle",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a curso resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Vehicles all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Creates a new Vehicle",
+                "description": "Creates a new Vehicle",
+                "operationId": "e19336f3d4ff20d9858a84d5113213bc",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Vehicle"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Vehicle resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/vehicles/{id}": {
+            "get": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Get Vehicle information",
+                "description": "Returns Vehicle data",
+                "operationId": "getVehicleById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Vehicle id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Vehicle"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Update existing Vehicle",
+                "description": "Returns updated Vehicle data",
+                "operationId": "updateVehicle",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Vehicle id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Vehicle"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Vehicle"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Delete existing Vehicle",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteVehicle",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Vehicle id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/vehicle-types": {
+            "get": {
+                "tags": [
+                    "VehicleType"
+                ],
+                "summary": "Display a listing of the resource.",
+                "operationId": "getVehicleType",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a curso resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show VehicleTypes all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "VehicleType"
+                ],
+                "summary": "Creates a new VehicleType",
+                "description": "Creates a new VehicleType",
+                "operationId": "c9ddf258c67f043b5614102b296699bd",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VehicleType"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The VehicleType resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/vehicle-types/{id}": {
+            "get": {
+                "tags": [
+                    "VehicleType"
+                ],
+                "summary": "Get VehicleType information",
+                "description": "Returns VehicleType data",
+                "operationId": "getVehicleTypeById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "VehicleType id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VehicleType"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "VehicleType"
+                ],
+                "summary": "Update existing VehicleType",
+                "description": "Returns updated VehicleType data",
+                "operationId": "updateVehicleType",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "VehicleType id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/VehicleType"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VehicleType"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "VehicleType"
+                ],
+                "summary": "Delete existing VehicleType",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteVehicleType",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "VehicleType id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -2697,8 +5568,8 @@
                         ],
                         "type": "string"
                     },
-                    "Description": {
-                        "description": "The Branch Office Description",
+                    "description": {
+                        "description": "The Branch Office description",
                         "required": [
                             "true"
                         ],
@@ -2714,6 +5585,84 @@
                     },
                     "user_updated_id": {
                         "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "Client": {
+                "properties": {
+                    "name": {
+                        "description": "The user name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "document_number": {
+                        "description": "The Clients document number",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The Clients email",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "address": {
+                        "description": "The Clients address",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "states": {
+                        "description": "The Clients address",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "state_id": {
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "img": {
+                        "description": "The Clients img",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "phone_number": {
+                        "description": "The Clients phone number",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "user_created_id": {
+                        "description": "The Clients crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Clients update",
                         "required": [
                             "true"
                         ],
@@ -2774,14 +5723,14 @@
                         ],
                         "type": "string"
                     },
-                    "sign": {
-                        "description": "The Concept sign",
+                    "concept_type_id": {
+                        "description": "The Concept concept_type_id",
                         "required": [
                             "true"
                         ],
-                        "type": "string"
+                        "type": "number"
                     },
-                    "conceptType_created_id": {
+                    "user_created_id": {
                         "description": "The Users crete",
                         "required": [
                             "true"
@@ -2816,6 +5765,13 @@
                         ],
                         "type": "string"
                     },
+                    "sign": {
+                        "description": "The ConceptType sign",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
                     "user_created_id": {
                         "description": "The Users crete",
                         "required": [
@@ -2826,6 +5782,77 @@
                     },
                     "user_updated_id": {
                         "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "Driver": {
+                "properties": {
+                    "name": {
+                        "description": "The user name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "description": "The Drivers password",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The Drivers email",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "document_number": {
+                        "description": "The Drivers document number",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "phone_number": {
+                        "description": "The Drivers phone number",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "ownerable_type": {
+                        "description": "The Trailer ownerable_type",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "example": "App\\Models\\MaterialSupplier"
+                    },
+                    "ownerable_id": {
+                        "description": "The Trailer ownerable_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "user_created_id": {
+                        "description": "The Drivers crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Drivers update",
                         "required": [
                             "true"
                         ],
@@ -2908,6 +5935,294 @@
                         ],
                         "type": "number",
                         "example": 1
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "FieldSupervisor": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/User"
+                    },
+                    {
+                        "properties": {
+                            "name": {
+                                "description": "The FieldSupervisor name",
+                                "required": [
+                                    "true"
+                                ],
+                                "type": "string"
+                            },
+                            "last_name": {
+                                "description": "The FieldSupervisor last_name",
+                                "required": [
+                                    "true"
+                                ],
+                                "type": "string"
+                            },
+                            "document_number": {
+                                "description": "The FieldSupervisor document_number",
+                                "required": [
+                                    "true"
+                                ],
+                                "type": "string"
+                            },
+                            "email": {
+                                "description": "The FieldSupervisor email",
+                                "required": [
+                                    "true"
+                                ],
+                                "type": "string"
+                            },
+                            "phone_number": {
+                                "description": "The FieldSupervisor phone_number",
+                                "required": [
+                                    "true"
+                                ],
+                                "type": "string"
+                            },
+                            "user_created_id": {
+                                "description": "The Users crete",
+                                "required": [
+                                    "true"
+                                ],
+                                "type": "number",
+                                "example": 1
+                            },
+                            "user_updated_id": {
+                                "description": "The Users update",
+                                "required": [
+                                    "true"
+                                ],
+                                "type": "number",
+                                "example": 1
+                            }
+                        }
+                    }
+                ]
+            },
+            "Guide": {
+                "properties": {
+                    "material_supplier_id": {
+                        "description": "The Guide material_supplier_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "client_id": {
+                        "description": "The Guide client_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "vehicle_id": {
+                        "description": "The Guide vehicle_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "trailer_id": {
+                        "description": "The Guide trailer_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "driver_id": {
+                        "description": "The Guide driver_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "start_date": {
+                        "description": "The Guide start_date",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "deadline": {
+                        "description": "The Guide deadline",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "origin_address": {
+                        "description": "The Guide origin_address",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "destination_address": {
+                        "description": "The Guide destination_address",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "material": {
+                        "description": "The Guide material",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "code_runpa": {
+                        "description": "The Guide code_runpa",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "MaterialSupplier": {
+                "properties": {
+                    "name": {
+                        "description": "The user name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "document_number": {
+                        "description": "The MaterialSuppliers document number",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "address": {
+                        "description": "The MaterialSuppliers address",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "signature": {
+                        "description": "The MaterialSuppliers signature",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "serie_number": {
+                        "description": "The MaterialSuppliers serie_number",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "logo": {
+                        "description": "The MaterialSuppliers logo",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "seal": {
+                        "description": "The MaterialSuppliers seal",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "phone_number": {
+                        "description": "The MaterialSuppliers phone number",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The MaterialSuppliers email",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "material_supplier_type_id": {
+                        "description": "The MaterialSuppliers material_supplier_type_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_created_id": {
+                        "description": "The MaterialSuppliers crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The MaterialSuppliers update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "MaterialSupplierType": {
+                "properties": {
+                    "name": {
+                        "description": "The MaterialSupplierType name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "The MaterialSupplierType description",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
                     },
                     "user_created_id": {
                         "description": "The Users crete",
@@ -3145,6 +6460,133 @@
                     }
                 ]
             },
+            "State": {
+                "properties": {
+                    "name": {
+                        "description": "The user name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "user_created_id": {
+                        "description": "The States crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The States update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "Trailer": {
+                "properties": {
+                    "name": {
+                        "description": "The Trailer name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "brand": {
+                        "description": "The Trailer brand",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "model": {
+                        "description": "The Trailer model",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "plate": {
+                        "description": "The Trailer plate",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "ownerable_type": {
+                        "description": "The Trailer ownerable_type",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "example": "App\\Models\\MaterialSupplier"
+                    },
+                    "ownerable_id": {
+                        "description": "The Trailer ownerable_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "UnitOfMeasurement": {
+                "properties": {
+                    "name": {
+                        "description": "The Unit Of Measurement name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "acronym": {
+                        "description": "The Unit Of Measurement acronym",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "user_created_id": {
+                        "description": "The UnitOfMeasurements crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The UnitOfMeasurements update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
             "User": {
                 "properties": {
                     "name": {
@@ -3211,10 +6653,106 @@
                     }
                 },
                 "type": "object"
+            },
+            "Vehicle": {
+                "properties": {
+                    "name": {
+                        "description": "The Vehicle name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "brand": {
+                        "description": "The Vehicle brand",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "model": {
+                        "description": "The Vehicle model",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "plate": {
+                        "description": "The Vehicle plate",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "ownerable_type": {
+                        "description": "The Vehicle ownerable_type",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "example": "App\\Models\\MaterialSupplier"
+                    },
+                    "ownerable_id": {
+                        "description": "The Vehicle ownerable_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "VehicleType": {
+                "properties": {
+                    "name": {
+                        "description": "The VehicleType name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "The VehicleType description",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
             }
         }
-    },
-    "security": [
-        []
-    ]
+    }
 }
