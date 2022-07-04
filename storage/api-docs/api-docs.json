@@ -543,6 +543,15 @@
                 "operationId": "getCoin",
                 "parameters": [
                     {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Authorization",
+                        "schema": {
+                            "title": "Authorization",
+                            "type": "string"
+                        }
+                    },
+                    {
                         "name": "paginate",
                         "in": "query",
                         "description": "paginate",
