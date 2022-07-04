@@ -19,6 +19,12 @@ namespace App\Models;
  *       description="The ConceptType description"
  *   ),
  *   @OA\Property(
+ *       property="sign",
+ *       type="string",
+ *       required={"true"},
+ *       description="The ConceptType sign"
+ *   ),
+ *   @OA\Property(
  *       property="user_created_id",
  *       type="number",
  *       required={"true"},

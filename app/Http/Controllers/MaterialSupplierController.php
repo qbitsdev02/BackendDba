@@ -15,7 +15,7 @@ class MaterialSupplierController extends Controller
       *
       * @return \Illuminate\Http\Response
       * @OA\Get(
-      *     path="/materialSuppliers",
+      *     path="/material-suppliers",
       *     operationId="getMaterialSupplier",
       *     tags={"MaterialSupplier"},
       *     @OA\Parameter(
@@ -117,7 +117,7 @@ class MaterialSupplierController extends Controller
       * @param  \App\Http\Requests\StoreMaterialSupplierRequest  $request
       * @return \Illuminate\Http\Response
       * @OA\Post(
-      *   path="/materialSuppliers",
+      *   path="/material-suppliers",
       *   summary="Creates a new MaterialSupplier",
       *   description="Creates a new MaterialSupplier",
       *   tags={"MaterialSupplier"},
@@ -156,6 +156,7 @@ class MaterialSupplierController extends Controller
         $materialSupplier->document_number = $request->document_number;
         $materialSupplier->address = $request->address;
         $materialSupplier->email = $request->email;
+        $materialSupplier->material_supplier_type_id = $request->material_supplier_type_id;
         $materialSupplier->phone_number = $request->phone_number;
         $materialSupplier->user_created_id = $request->user_created_id;
         $materialSupplier->save();
@@ -168,7 +169,7 @@ class MaterialSupplierController extends Controller
      * @param  \App\Models\MaterialSupplier  $materialSupplier
      * @return \Illuminate\Http\Response
      * @OA\Get(
-     *   path="/materialSuppliers/{id}",
+     *   path="/material-suppliers/{id}",
      *   operationId="getMaterialSupplierById",
      *   tags={"MaterialSupplier"},
      *   summary="Get MaterialSupplier information",
@@ -225,7 +226,7 @@ class MaterialSupplierController extends Controller
      * @param  \App\Models\MaterialSupplier  $materialSupplier
      * @return \Illuminate\Http\Response
      * @OA\Put(
-     *  path="/materialSuppliers/{id}",
+     *  path="/material-suppliers/{id}",
      *  operationId="updateMaterialSupplier",
      *  tags={"MaterialSupplier"},
      *  summary="Update existing MaterialSupplier",
@@ -277,6 +278,7 @@ class MaterialSupplierController extends Controller
         $materialSupplier->email = $request->email;
         $materialSupplier->serie_number = $request->serie_number;
         $materialSupplier->phone_number = $request->phone_number;
+        $materialSupplier->material_supplier_type_id = $request->material_supplier_type_id;
         $materialSupplier->user_updated_id = $request->user_updated_id;
         $materialSupplier->update();
         return response()->json($materialSupplier, 201);
@@ -288,7 +290,7 @@ class MaterialSupplierController extends Controller
      * @param  \App\Models\MaterialSupplier  $materialSupplier
      * @return \Illuminate\Http\Response
      * @OA\Delete(
-     *  path="/materialSuppliers/{id}",
+     *  path="/material-suppliers/{id}",
      *  operationId="deleteMaterialSupplier",
      *  tags={"MaterialSupplier"},
      *  summary="Delete existing MaterialSupplier",

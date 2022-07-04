@@ -30,10 +30,11 @@ namespace App\Models;
  *       required={"true"},
  *       description="The Vehicle plate"
  *   ),
+ *    @OA\Property(
  *       property="ownerable_type",
  *       type="string",
  *       required={"true"},
- *       example="App\Models\MaterialSupplier"
+ *       example="App\Models\MaterialSupplier",
  *       description="The Vehicle ownerable_type"
  *   ),
  *   @OA\Property(

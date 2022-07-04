@@ -22,13 +22,13 @@ use Illuminate\Database\Eloquent\Model;
  *       description="The Concept description"
  *   ),
  *   @OA\Property(
- *       property="sign",
- *       type="string",
+ *       property="concept_type_id",
+ *       type="number",
  *       required={"true"},
- *       description="The Concept sign"
+ *       description="The Concept concept_type_id"
  *   ),
  *   @OA\Property(
- *       property="conceptType_created_id",
+ *       property="user_created_id",
  *       type="number",
  *       required={"true"},
  *       example=1,
