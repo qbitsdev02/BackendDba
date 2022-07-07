@@ -15,10 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-$router->resource('providers', ProviderController::class);
-$router->resource('providers-types', ProviderTypeController::class);
-
-
 Route::group([
     'prefix' => 'authentication',
 ], function ($router) {
