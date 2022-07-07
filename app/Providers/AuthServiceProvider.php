@@ -10,8 +10,12 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Module;
 use App\Models\Permission;
+use App\Models\Provider;
+use App\Models\ProviderType;
 use App\Models\State;
 use App\Policies\CoinPolicy;
+use App\Policies\ProviderPolicy;
+use App\Policies\ProviderTypePolicy;
 use App\Policies\StatePolicy;
 
 class AuthServiceProvider extends ServiceProvider
@@ -23,7 +27,9 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Coin::class => CoinPolicy::class,
-        State::class => StatePolicy::class
+        State::class => StatePolicy::class,
+        Provider::class => ProviderPolicy::class,
+        ProviderType::class => ProviderTypePolicy::class, 
     ];
 
 

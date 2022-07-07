@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\MaterialSupplierType;
+use App\Models\ProviderType;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class MaterialSupplierTypePolicy
+class ProviderTypePolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,19 @@ class MaterialSupplierTypePolicy
      */
     public function viewAny(User $user)
     {
-        //
-    }
+        return $user->can('providerTypes-viewAny');
 
+    }
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\MaterialSupplierType  $materialSupplierType
+     * @param  \App\Models\ProviderType  $providerType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, MaterialSupplierType $materialSupplierType)
+    public function view(User $user, ProviderType $providerType)
     {
-        //
+        return $user->can('providerTypes-vie');
     }
 
     /**
@@ -41,54 +41,54 @@ class MaterialSupplierTypePolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->can('providerTypes-create');
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\MaterialSupplierType  $materialSupplierType
+     * @param  \App\Models\ProviderType   $providerType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, MaterialSupplierType $materialSupplierType)
+    public function update(User $user, ProviderType $providerType)
     {
-        //
+        return $user->can('providerTypes-update');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\MaterialSupplierType  $materialSupplierType
+     * @param  \App\Models\ProviderType  $ProviderType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, MaterialSupplierType $materialSupplierType)
+    public function delete(User $user, ProviderType $providerType)
     {
-        //
+        return $user->can('providerTypes-delete');
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\MaterialSupplierType  $materialSupplierType
+     * @param  \App\Models\ProviderType  $providerType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, MaterialSupplierType $materialSupplierType)
+    public function restore(User $user, ProviderType $providerType)
     {
-        //
+        return $user->can('providerTypes-restore');
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\MaterialSupplierType  $materialSupplierType
+     * @param  \App\Models\ProviderType $providerType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, MaterialSupplierType $materialSupplierType)
+    public function forceDelete(User $user, ProviderType $providerType)
     {
-        //
+        return $user->can('providerTypes-forceDelete');
     }
 }

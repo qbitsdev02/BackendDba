@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProvidersTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,14 @@ class CreateProvidersTable extends Migration
      */
     public function up()
     {
-        Schema::create('providers', function (Blueprint $table) {
+        Schema::create('provider_type_provider', function (Blueprint $table) {
             $table->id();
-            $table->text('seal')->nullable();
-            $table->text('logo')->nullable();
-            $table->integer('serie_number')->default(1);
-            $table->text('signature')->nullable();
-            $table->string('name');
-            $table->string('document_number');
-            $table->string('address')->nullable();
-            $table->string('email');
-            $table->string('phone_number');
             $table->foreignId('provider_type_id')->constrained();
+            $table->foreignId('provider_id')->constrained();
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -39,6 +31,6 @@ class CreateProvidersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('providers');
+        Schema::dropIfExists('provider_type_provider');
     }
-}
+};

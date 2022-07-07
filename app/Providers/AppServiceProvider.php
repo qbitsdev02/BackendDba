@@ -6,6 +6,7 @@ use App\Models\Beneficiary;
 use App\Models\Client;
 use App\Models\FieldSupervisor;
 use App\Models\Order;
+use App\Models\Provider;
 use App\Models\Responsable;
 use App\Models\User;
 use Illuminate\Support\ServiceProvider;
@@ -14,6 +15,7 @@ use App\Observers\BeneficiaryObserver;
 use App\Observers\ClientObserver;
 use App\Observers\FieldSupervisorObserver;
 use App\Observers\OrderObserver;
+use App\Observers\ProviderObserver;
 use App\Observers\ResponsableObserver;
 use App\Observers\RoleObserver;
 use App\Observers\UserObserver;
@@ -44,5 +46,6 @@ class AppServiceProvider extends ServiceProvider
         Order::observe(OrderObserver::class);
         FieldSupervisor::observe(FieldSupervisorObserver::class);
         Client::observe(ClientObserver::class);
+        Provider::observe(ProviderObserver::class);
     }
 }
