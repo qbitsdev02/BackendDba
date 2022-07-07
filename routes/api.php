@@ -43,10 +43,8 @@ Route::group([
     $router->resource('clients', ClientController::class);
     $router->resource('delivery-notes', DeliveryNoteController::class);
     $router->resource('states', StateController::class);
-    
-   //$router->resource('providers', ProviderController::class);
-  //$router->resource('providers-types', ProviderTypeController::class);
-    
+    $router->resource('providers', ProviderController::class);
+    $router->resource('providers-types', ProviderTypeController::class);
     $router->resource('guides', GuideController::class);
     $router->resource('trailers', TrailerController::class);
     $router->resource('vehicles', VehicleController::class);
