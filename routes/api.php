@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ProviderTypeController;
+use App\Http\Controllers\RateController;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-$router->resource('providers', ProviderController::class);
-$router->resource('providers-types', ProviderTypeController::class);
-
+$router->resource('rates', RateController::class);
 
 Route::group([
     'prefix' => 'authentication',
@@ -47,10 +47,8 @@ Route::group([
     $router->resource('clients', ClientController::class);
     $router->resource('delivery-notes', DeliveryNoteController::class);
     $router->resource('states', StateController::class);
-    
-   //$router->resource('providers', ProviderController::class);
-  //$router->resource('providers-types', ProviderTypeController::class);
-    
+    $router->resource('providers', ProviderController::class);
+    $router->resource('providers-types', ProviderTypeController::class);
     $router->resource('guides', GuideController::class);
     $router->resource('trailers', TrailerController::class);
     $router->resource('vehicles', VehicleController::class);

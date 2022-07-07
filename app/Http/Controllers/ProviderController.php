@@ -14,6 +14,7 @@ class ProviderController extends Controller
       * Display a listing of the resource.
       *
       * @return \Illuminate\Http\Response
+
       * @OA\Get(
       *     path="/providers",
       *     operationId="getprovider",
@@ -115,7 +116,7 @@ class ProviderController extends Controller
       *   @OA\RequestBody(
       *       @OA\MediaType(
       *           mediaType="application/json",
-      *           @OA\Schema(ref="#/components/schemas/providers")
+      *           @OA\Schema(ref="#/components/schemas/provider")
       *       )
       *   ),
       *   @OA\Response(

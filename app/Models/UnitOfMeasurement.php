@@ -41,4 +41,14 @@ class UnitOfMeasurement extends Base
     {
         return "{$this->name} ({$this->acronym})";
     }
+
+
+    /**
+     * Relations wiht many rates 
+     */
+    public function rates(){
+
+        return $this->hasMany(Rate::class);
+
+    }
 }

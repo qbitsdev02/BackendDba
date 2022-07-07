@@ -98,11 +98,21 @@ class Provider extends Base
         return "{$this->document_number}-{$this->name}";
     }
 
+
     public function providerTypes(){
 
         return $this->belongsToMany(ProviderType::class,'provider_type_provider');
     }
 
+
+    /** 
+     * Provaider has many Rates
+     */
+    public function rates(){
+
+        return $this->hasMany(Rate::class);
+
+    }
 }
 
 
