@@ -18,7 +18,7 @@ class ProviderTypeController extends Controller
      */
     public function __construct()
     {
-        $this->authorizeResource(ProviderType::class, 'providerType');
+        $this->authorizeResource(ProviderType::class, 'provider_type');
     }
 
 
