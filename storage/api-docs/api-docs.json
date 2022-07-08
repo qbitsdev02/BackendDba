@@ -3807,7 +3807,7 @@
                 ]
             }
         },
-        "/Provider-types/{id}": {
+        "/provider-types/{id}": {
             "get": {
                 "tags": [
                     "ProviderType"
@@ -3847,9 +3847,7 @@
                         "description": "Forbidden"
                     }
                 }
-            }
-        },
-        "/provider-types/{id}": {
+            },
             "put": {
                 "tags": [
                     "ProviderType"

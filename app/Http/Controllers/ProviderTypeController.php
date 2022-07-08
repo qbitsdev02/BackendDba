@@ -166,7 +166,7 @@ class ProviderTypeController extends Controller
      * @param  \App\Models\ProviderTyper ProviderType
      * @return \Illuminate\Http\Response
      * @OA\Get(
-     *   path="/Provider-types/{id}",
+     *   path="/provider-types/{id}",
      *   operationId="getProviderTypeById",
      *   tags={"ProviderType"},
      *   summary="Get ProviderType information",
