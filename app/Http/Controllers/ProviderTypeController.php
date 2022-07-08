@@ -12,13 +12,24 @@ class ProviderTypeController extends Controller
 {
 
     /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(ProviderType::class, 'providerType');
+    }
+
+
+    /**
       * Display a listing of the resource.
       *
       * @return \Illuminate\Http\Response
       * @OA\Get(
       *     path="/provider-types",
-      *     operationId="getProviderType",
-      *     tags={"Providerype"},
+      *     operationId="getProvider-type",
+      *     tags={"ProviderType"},
       *     @OA\Parameter(
       *       name="paginate",
       *       in="query",
@@ -107,8 +118,9 @@ class ProviderTypeController extends Controller
       *
       * @param  \App\Http\Requests\StoreProviderType  $request
       * @return \Illuminate\Http\Response
-      * @OA\Post(
-      *   path="/material-supplier-types",
+      * 
+      *   @OA\Post(
+      *   path="/provider-types",
       *   summary="Creates a new ProviderType",
       *   description="Creates a new ProviderType",
       *   tags={"ProviderType"},
@@ -154,7 +166,7 @@ class ProviderTypeController extends Controller
      * @param  \App\Models\ProviderTyper ProviderType
      * @return \Illuminate\Http\Response
      * @OA\Get(
-     *   path="/ProviderType/{id}",
+     *   path="/Provider-types/{id}",
      *   operationId="getProviderTypeById",
      *   tags={"ProviderType"},
      *   summary="Get ProviderType information",
@@ -187,9 +199,9 @@ class ProviderTypeController extends Controller
      *      )
      *   )
      */
-    public function show(ProviderType $providerTypes)
+    public function show(ProviderType $providerType)
     {
-        return new ProviderTypeResource($providerTypes);
+        return new ProviderTypeResource($providerType);
     }
 
     /**
@@ -197,17 +209,17 @@ class ProviderTypeController extends Controller
      *
      *
      * @param  \App\Http\Requests\UpdateProviderTypeRequest  $request
-     * @param  \App\Models\ProviderType  $ProviderType
+     * @param  \App\Models\ProviderType  $providerType
      * @return \Illuminate\Http\Response
      * @OA\Put(
      *  path="/provider-types/{id}",
-     *  operationId="updateProviderType",
-     *  tags={"MaterialSupplierType"},
-     *  summary="Update existing ProviderType,
-     *  description="Returns updatedProviderType data",
+     *  operationId="updateProvierType",
+     *  tags={"ProviderType"},
+     *  summary="Update existing ProviderType",
+     *  description="Returns updated Provider Type data",
      *  @OA\Parameter(
      *      name="id",
-     *      description="ProviderType id",
+     *      description="Provider_type _id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -249,20 +261,18 @@ class ProviderTypeController extends Controller
 
         $providerType->update();
 
-        return  new ProviderTypeResource($providerType);
+        return  response([
+            new ProviderTypeResource($providerType)
+        ],200);
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\ProviderType  $ProviderType
-     * @return \Illuminate\Http\Response
-     * @OA\Delete(
-     *  path="/provider-type/{id}",
-     *  operationId="deleteProviderType",
-     *  tags={"ProviderType"},
-     *  summary="Delete existing ProviderType",
-     *  description="Deletes a record and returns no content",
+     *  @OA\Delete(
+     *      path="/provider-types/{id}",
+     *      operationId="deleteProviderType",
+     *      tags={"ProviderType"},
+     *      summary="Delete existing ProviderType",
+     *       description="Deletes a record and returns no content",
      *  @OA\Parameter(
      *      name="id",
      *      description="ProviderType id",

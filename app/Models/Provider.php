@@ -4,13 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-
-class Provider extends Base
-{
-    use HasFactory;
-
-    
-    /**
+/**
      * @OA\Schema(
      *   schema="Provider",
      *   type="object",
@@ -69,13 +63,6 @@ class Provider extends Base
      *       description="The Provider email"
      *   ),
      *   @OA\Property(
-     *       property="Provider_type_id",
-     *       type="number",
-     *       required={"true"},
-     *       example=1,
-     *       description="The Provider Provider_type_id"
-     *   ),
-     *   @OA\Property(
      *       property="user_created_id",
      *       type="number",
      *       required={"true"},
@@ -91,12 +78,21 @@ class Provider extends Base
      *   ),
      * )
      */
+class Provider extends Base
+{
+
+    use HasFactory;
+
+
     protected $appends = ['full_name'];
+
 
     public function getFullNameAttribute()
     {
         return "{$this->document_number}-{$this->name}";
     }
+
+
 
     public function providerTypes(){
 
