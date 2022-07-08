@@ -18,7 +18,7 @@ class ProviderTypePolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('providerTypes-viewAny');
+        return $user->can('provider-types-viewAny');
 
     }
     /**
@@ -30,7 +30,7 @@ class ProviderTypePolicy
      */
     public function view(User $user, ProviderType $providerType)
     {
-        return $user->can('providerTypes-vie');
+        return $user->can('provider-types-read');
     }
 
     /**
@@ -41,7 +41,7 @@ class ProviderTypePolicy
      */
     public function create(User $user)
     {
-        return $user->can('providerTypes-create');
+        return $user->can('provider-types-create');
     }
 
     /**
@@ -53,7 +53,7 @@ class ProviderTypePolicy
      */
     public function update(User $user, ProviderType $providerType)
     {
-        return $user->can('providerTypes-update');
+        return $user->can('provider-types-update');
     }
 
     /**
@@ -65,7 +65,7 @@ class ProviderTypePolicy
      */
     public function delete(User $user, ProviderType $providerType)
     {
-        return $user->can('providerTypes-delete');
+        return $user->can('provider-types-delete');
     }
 
     /**
@@ -77,7 +77,7 @@ class ProviderTypePolicy
      */
     public function restore(User $user, ProviderType $providerType)
     {
-        return $user->can('providerTypes-restore');
+        return $user->can('provider-types-restore');
     }
 
     /**
@@ -89,6 +89,6 @@ class ProviderTypePolicy
      */
     public function forceDelete(User $user, ProviderType $providerType)
     {
-        return $user->can('providerTypes-forceDelete');
+        return $user->can('provider-types-forceDelete');
     }
 }

@@ -546,10 +546,7 @@
                         "name": "Authorization",
                         "in": "header",
                         "description": "Authorization",
-                        "schema": {
-                            "title": "Authorization",
-                            "type": "string"
-                        }
+                        "required": true
                     },
                     {
                         "name": "paginate",
@@ -566,10 +563,10 @@
                     {
                         "name": "sortBy",
                         "in": "query",
-                        "description": "turno resource name",
+                        "description": "coin resource name",
                         "required": false,
                         "schema": {
-                            "description": "The unique identifier of a turno resource",
+                            "description": "The unique identifier of a coin resource",
                             "type": "string",
                             "example": "id"
                         }
@@ -577,10 +574,10 @@
                     {
                         "name": "sortOrder",
                         "in": "query",
-                        "description": "turno resource name",
+                        "description": "coin resource name",
                         "required": false,
                         "schema": {
-                            "description": "The unique identifier of a turno resource",
+                            "description": "The unique identifier of a coin resource",
                             "type": "string",
                             "example": "desc"
                         }
@@ -599,7 +596,7 @@
                     {
                         "name": "dataSearch",
                         "in": "query",
-                        "description": "turno resource name",
+                        "description": "coin resource name",
                         "required": false,
                         "schema": {
                             "description": "Search data",
@@ -609,10 +606,10 @@
                     {
                         "name": "dataFilter",
                         "in": "query",
-                        "description": "turno resource name",
+                        "description": "coin resource name",
                         "required": false,
                         "schema": {
-                            "description": "The unique identifier of a turno resource",
+                            "description": "The unique identifier of a coin resource",
                             "type": "string"
                         }
                     }
@@ -624,7 +621,14 @@
                     "default": {
                         "description": "error."
                     }
-                }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -2631,528 +2635,6 @@
                 }
             }
         },
-        "/material-suppliers": {
-            "get": {
-                "tags": [
-                    "MaterialSupplier"
-                ],
-                "summary": "Display a listing of the resource.",
-                "operationId": "getMaterialSupplier",
-                "parameters": [
-                    {
-                        "name": "paginate",
-                        "in": "query",
-                        "description": "paginate",
-                        "required": false,
-                        "schema": {
-                            "title": "Paginate",
-                            "description": "The Paginate data",
-                            "type": "boolean",
-                            "example": "true"
-                        }
-                    },
-                    {
-                        "name": "sortBy",
-                        "in": "query",
-                        "description": "turno resource name",
-                        "required": false,
-                        "schema": {
-                            "description": "The unique identifier of a turno resource",
-                            "type": "string",
-                            "example": "id"
-                        }
-                    },
-                    {
-                        "name": "sortOrder",
-                        "in": "query",
-                        "description": "turno resource name",
-                        "required": false,
-                        "schema": {
-                            "description": "The unique identifier of a turno resource",
-                            "type": "string",
-                            "example": "desc"
-                        }
-                    },
-                    {
-                        "name": "perPage",
-                        "in": "query",
-                        "description": "Sort order field",
-                        "schema": {
-                            "title": "perPage",
-                            "description": "The unique identifier of a curso resource",
-                            "type": "number",
-                            "default": "10"
-                        }
-                    },
-                    {
-                        "name": "dataSearch",
-                        "in": "query",
-                        "description": "turno resource name",
-                        "required": false,
-                        "schema": {
-                            "description": "Search data",
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "dataFilter",
-                        "in": "query",
-                        "description": "turno resource name",
-                        "required": false,
-                        "schema": {
-                            "description": "The unique identifier of a turno resource",
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Show MaterialSuppliers all."
-                    },
-                    "default": {
-                        "description": "error."
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "MaterialSupplier"
-                ],
-                "summary": "Creates a new MaterialSupplier",
-                "description": "Creates a new MaterialSupplier",
-                "operationId": "289eff436640fed0fd259bd3ad216470",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/MaterialSupplier"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "The MaterialSupplier resource created",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated.",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "default": {
-                        "description": "an \"unexpected\" error",
-                        "content": {
-                            "application/json": {}
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "passport": [
-                            "*"
-                        ]
-                    }
-                ]
-            }
-        },
-        "/material-suppliers/{id}": {
-            "get": {
-                "tags": [
-                    "MaterialSupplier"
-                ],
-                "summary": "Get MaterialSupplier information",
-                "description": "Returns MaterialSupplier data",
-                "operationId": "getMaterialSupplierById",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "MaterialSupplier id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/MaterialSupplier"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request"
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "MaterialSupplier"
-                ],
-                "summary": "Update existing MaterialSupplier",
-                "description": "Returns updated MaterialSupplier data",
-                "operationId": "updateMaterialSupplier",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "MaterialSupplier id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/MaterialSupplier"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "202": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/MaterialSupplier"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request"
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "MaterialSupplier"
-                ],
-                "summary": "Delete existing MaterialSupplier",
-                "description": "Deletes a record and returns no content",
-                "operationId": "deleteMaterialSupplier",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "MaterialSupplier id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                }
-            }
-        },
-        "/material-supplier-types": {
-            "get": {
-                "tags": [
-                    "MaterialSupplierType"
-                ],
-                "summary": "Display a listing of the resource.",
-                "operationId": "getMaterialSupplierType",
-                "parameters": [
-                    {
-                        "name": "paginate",
-                        "in": "query",
-                        "description": "paginate",
-                        "required": false,
-                        "schema": {
-                            "title": "Paginate",
-                            "description": "The Paginate data",
-                            "type": "boolean",
-                            "example": "true"
-                        }
-                    },
-                    {
-                        "name": "sortBy",
-                        "in": "query",
-                        "description": "turno resource name",
-                        "required": false,
-                        "schema": {
-                            "description": "The unique identifier of a turno resource",
-                            "type": "string",
-                            "example": "id"
-                        }
-                    },
-                    {
-                        "name": "sortOrder",
-                        "in": "query",
-                        "description": "turno resource name",
-                        "required": false,
-                        "schema": {
-                            "description": "The unique identifier of a turno resource",
-                            "type": "string",
-                            "example": "desc"
-                        }
-                    },
-                    {
-                        "name": "perPage",
-                        "in": "query",
-                        "description": "Sort order field",
-                        "schema": {
-                            "title": "perPage",
-                            "description": "The unique identifier of a curso resource",
-                            "type": "number",
-                            "default": "10"
-                        }
-                    },
-                    {
-                        "name": "dataSearch",
-                        "in": "query",
-                        "description": "turno resource name",
-                        "required": false,
-                        "schema": {
-                            "description": "Search data",
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "dataFilter",
-                        "in": "query",
-                        "description": "turno resource name",
-                        "required": false,
-                        "schema": {
-                            "description": "The unique identifier of a turno resource",
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Show MaterialSupplierTypes all."
-                    },
-                    "default": {
-                        "description": "error."
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "MaterialSupplierType"
-                ],
-                "summary": "Creates a new MaterialSupplierType",
-                "description": "Creates a new MaterialSupplierType",
-                "operationId": "c76bf4e7de87d242d1d0c79e230b93c2",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/MaterialSupplierType"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "The MaterialSupplierType resource created",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated.",
-                        "content": {
-                            "application/json": {}
-                        }
-                    },
-                    "default": {
-                        "description": "an \"unexpected\" error",
-                        "content": {
-                            "application/json": {}
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "passport": [
-                            "*"
-                        ]
-                    }
-                ]
-            }
-        },
-        "/material-supplier-types/{id}": {
-            "get": {
-                "tags": [
-                    "MaterialSupplierType"
-                ],
-                "summary": "Get MaterialSupplierType information",
-                "description": "Returns MaterialSupplierType data",
-                "operationId": "getMaterialSupplierTypeById",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "MaterialSupplierType id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/MaterialSupplierType"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request"
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "MaterialSupplierType"
-                ],
-                "summary": "Update existing MaterialSupplierType",
-                "description": "Returns updated MaterialSupplierType data",
-                "operationId": "updateMaterialSupplierType",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "MaterialSupplierType id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "requestBody": {
-                    "required": true,
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/MaterialSupplierType"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "202": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/MaterialSupplierType"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request"
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "MaterialSupplierType"
-                ],
-                "summary": "Delete existing MaterialSupplierType",
-                "description": "Deletes a record and returns no content",
-                "operationId": "deleteMaterialSupplierType",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "MaterialSupplierType id",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {
-                                "schema": {}
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthenticated"
-                    },
-                    "403": {
-                        "description": "Forbidden"
-                    },
-                    "404": {
-                        "description": "Resource Not Found"
-                    }
-                }
-            }
-        },
         "/operation-types": {
             "get": {
                 "tags": [
@@ -3909,6 +3391,528 @@
                         "name": "id",
                         "in": "path",
                         "description": "Organization id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/providers": {
+            "get": {
+                "tags": [
+                    "Provider"
+                ],
+                "summary": "Display a listing of the resource.",
+                "operationId": "getprovider",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a curso resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Providers all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Provider"
+                ],
+                "summary": "Creates a new provider",
+                "description": "Creates a new provider",
+                "operationId": "22a88d5f1b1c596a5c71d037cfb380fb",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Provider"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Provider resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/providers/{id}": {
+            "get": {
+                "tags": [
+                    "Provider"
+                ],
+                "summary": "Get providers information",
+                "description": "Returns providers data",
+                "operationId": "getproviderById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "provider id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Provider"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Provider"
+                ],
+                "summary": "Update existing provider",
+                "description": "Returns updated provider data",
+                "operationId": "updateprovider",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "provider id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Provider"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Provider"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Provider"
+                ],
+                "summary": "Delete existing provider",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteprovider",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "provider id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/provider-types": {
+            "get": {
+                "tags": [
+                    "ProviderType"
+                ],
+                "summary": "Display a listing of the resource.",
+                "operationId": "getProvider-type",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a curso resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show MaterialSupplierTypes all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "ProviderType"
+                ],
+                "summary": "Creates a new ProviderType",
+                "description": "Creates a new ProviderType",
+                "operationId": "938571488620cb90f391f95c4a52affe",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProviderType"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The ProviderType resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/provider-types/{id}": {
+            "get": {
+                "tags": [
+                    "ProviderType"
+                ],
+                "summary": "Get ProviderType information",
+                "description": "Returns ProviderTypee data",
+                "operationId": "getProviderTypeById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ProviderType id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProviderType"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "ProviderType"
+                ],
+                "summary": "Update existing ProviderType",
+                "description": "Returns updated Provider Type data",
+                "operationId": "updateProvierType",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Provider_type _id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProviderType"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProviderType"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "ProviderType"
+                ],
+                "summary": "Delete existing ProviderType",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteProviderType",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ProviderType id",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -6125,133 +6129,6 @@
                 },
                 "type": "object"
             },
-            "MaterialSupplier": {
-                "properties": {
-                    "name": {
-                        "description": "The user name",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "document_number": {
-                        "description": "The MaterialSuppliers document number",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "address": {
-                        "description": "The MaterialSuppliers address",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "signature": {
-                        "description": "The MaterialSuppliers signature",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "serie_number": {
-                        "description": "The MaterialSuppliers serie_number",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "logo": {
-                        "description": "The MaterialSuppliers logo",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "seal": {
-                        "description": "The MaterialSuppliers seal",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "phone_number": {
-                        "description": "The MaterialSuppliers phone number",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "email": {
-                        "description": "The MaterialSuppliers email",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "material_supplier_type_id": {
-                        "description": "The MaterialSuppliers material_supplier_type_id",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "number",
-                        "example": 1
-                    },
-                    "user_created_id": {
-                        "description": "The MaterialSuppliers crete",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "number",
-                        "example": 1
-                    },
-                    "user_updated_id": {
-                        "description": "The MaterialSuppliers update",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "number",
-                        "example": 1
-                    }
-                },
-                "type": "object"
-            },
-            "MaterialSupplierType": {
-                "properties": {
-                    "name": {
-                        "description": "The MaterialSupplierType name",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "description": {
-                        "description": "The MaterialSupplierType description",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "string"
-                    },
-                    "user_created_id": {
-                        "description": "The Users crete",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "number",
-                        "example": 1
-                    },
-                    "user_updated_id": {
-                        "description": "The Users update",
-                        "required": [
-                            "true"
-                        ],
-                        "type": "number",
-                        "example": 1
-                    }
-                },
-                "type": "object"
-            },
             "OperationType": {
                 "properties": {
                     "name": {
@@ -6374,6 +6251,125 @@
                     },
                     "description": {
                         "description": "The Organization description",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "Provider": {
+                "properties": {
+                    "name": {
+                        "description": "The user name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "document_number": {
+                        "description": "The Provider document number",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "address": {
+                        "description": "The Provider address",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "signature": {
+                        "description": "The Provider signature",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "serie_number": {
+                        "description": "The Provider serie_number",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "logo": {
+                        "description": "The Provider logo",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "seal": {
+                        "description": "The Provider seal",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "phone_number": {
+                        "description": "The Provider phone number",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The Provider email",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "user_created_id": {
+                        "description": "The Provider crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Provider update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "ProviderType": {
+                "properties": {
+                    "name": {
+                        "description": "The ProviderType name",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "The ProviderType description",
                         "required": [
                             "true"
                         ],

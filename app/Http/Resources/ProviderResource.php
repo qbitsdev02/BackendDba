@@ -18,7 +18,7 @@ class ProviderResource extends JsonResource
             'id' => $this->id,
             'seal' => $this->seal,
             'logo' => $this->logo,
-            'serie_numbre' => $this->serie_number,
+            'serie_number' => $this->serie_number,
             'signature' => $this->signature,
             'name' => $this->name,
             'document_number' => $this->document_number,

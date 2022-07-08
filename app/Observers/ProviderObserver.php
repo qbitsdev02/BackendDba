@@ -14,7 +14,6 @@ class ProviderObserver
      */
     public function created(Provider $provider)
     {
-        //$user->roles()->attach(request()->role);
         $provider->providerTypes()->attach(request()->providerType);
     }
 
@@ -26,7 +25,7 @@ class ProviderObserver
      */
     public function updated(Provider $provider)
     {
-        //
+        $provider->providerTypes()->attach(request()->providerType);
     }
 
     /**
