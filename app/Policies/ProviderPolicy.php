@@ -31,7 +31,7 @@ class ProviderPolicy
      */
     public function view(User $user, Provider $provider)
     {
-        return $user->can('providers-view');
+        return $user->can('providers-read');
     }
 
     /**
