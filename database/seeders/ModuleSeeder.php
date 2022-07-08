@@ -222,6 +222,24 @@ class ModuleSeeder extends Seeder
                     'section_id' => 4,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
+                ],
+                //24
+                [
+                    'name' => 'providers',
+                    'icon' => 'person',
+                    'route' => 'Provider',
+                    'section_id' => 3,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                //25
+                [
+                    'name' => 'provider-types',
+                    'icon' => 'person',
+                    'route' => 'ProviderType',
+                    'section_id' => 4,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
                 ]
             ]);
     }

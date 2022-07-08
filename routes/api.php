@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProviderController;
+use App\Http\Controllers\ProviderTypeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 Route::group([
     'prefix' => 'authentication',
 ], function ($router) {
@@ -37,11 +40,11 @@ Route::group([
     $router->resource('orders', OrderController::class);
     $router->resource('concepts', ConceptController::class);
     $router->resource('fields-supervisor', FieldSupervisorController::class);
-    $router->resource('material-suppliers', MaterialSupplierController::class);
     $router->resource('clients', ClientController::class);
     $router->resource('delivery-notes', DeliveryNoteController::class);
     $router->resource('states', StateController::class);
-    $router->resource('material-supplier-types', MaterialSupplierTypeController::class);
+    $router->resource('providers', ProviderController::class);
+    $router->resource('provider-types', ProviderTypeController::class);
     $router->resource('guides', GuideController::class);
     $router->resource('trailers', TrailerController::class);
     $router->resource('vehicles', VehicleController::class);

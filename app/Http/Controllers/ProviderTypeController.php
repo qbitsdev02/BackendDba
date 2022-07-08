@@ -2,22 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MaterialSupplier;
-use App\Http\Requests\StoreMaterialSupplierRequest;
-use App\Http\Requests\UpdateMaterialSupplierRequest;
+use App\Http\Requests\StoreProviderTypeRequest;
+use App\Http\Requests\UpdateProviderTypeRequest;
+use App\Http\Resources\ProviderTypeResource;
+use App\Models\ProviderType;
 use Illuminate\Http\Request;
 
-class MaterialSupplierController extends Controller
+class ProviderTypeController extends Controller
 {
+
+    /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(ProviderType::class, 'provider_type');
+    }
+
 
     /**
       * Display a listing of the resource.
       *
       * @return \Illuminate\Http\Response
       * @OA\Get(
-      *     path="/material-suppliers",
-      *     operationId="getMaterialSupplier",
-      *     tags={"MaterialSupplier"},
+      *     path="/provider-types",
+      *     operationId="getProvider-type",
+      *     tags={"ProviderType"},
       *     @OA\Parameter(
       *       name="paginate",
       *       in="query",
@@ -85,7 +97,7 @@ class MaterialSupplierController extends Controller
       *     ),
       *     @OA\Response(
       *         response=200,
-      *         description="Show MaterialSuppliers all."
+      *         description="Show MaterialSupplierTypes all."
       *     ),
       *     @OA\Response(
       *         response="default",
@@ -95,43 +107,35 @@ class MaterialSupplierController extends Controller
       */
     public function index(Request $request)
     {
-        $materialSuppliers = MaterialSupplier::filters($request->all())
+        $providerTypes = ProviderType::filters($request->all())
             ->search($request->all());
-
-        return response()->json($materialSuppliers, 200);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+            
+        return (ProviderTypeResource::collection($providerTypes))
+            ->additional(['message:' => 'successfully response.']);
     }
 
     /**
       * Store a newly created resource in storage.
       *
-      * @param  \App\Http\Requests\StoreMaterialSupplierRequest  $request
+      * @param  \App\Http\Requests\StoreProviderType  $request
       * @return \Illuminate\Http\Response
-      * @OA\Post(
-      *   path="/material-suppliers",
-      *   summary="Creates a new MaterialSupplier",
-      *   description="Creates a new MaterialSupplier",
-      *   tags={"MaterialSupplier"},
+      * 
+      *   @OA\Post(
+      *   path="/provider-types",
+      *   summary="Creates a new ProviderType",
+      *   description="Creates a new ProviderType",
+      *   tags={"ProviderType"},
       *   security={{"passport": {"*"}}},
       *   @OA\RequestBody(
       *       @OA\MediaType(
       *           mediaType="application/json",
-      *           @OA\Schema(ref="#/components/schemas/MaterialSupplier")
+      *           @OA\Schema(ref="#/components/schemas/ProviderType")
       *       )
       *   ),
       *   @OA\Response(
       *       @OA\MediaType(mediaType="application/json"),
       *       response=200,
-      *       description="The MaterialSupplier resource created",
+      *       description="The ProviderType resource created",
       *   ),
       *   @OA\Response(
       *       @OA\MediaType(mediaType="application/json"),
@@ -145,38 +149,33 @@ class MaterialSupplierController extends Controller
       *   )
       * )
      */
-    public function store(StoreMaterialSupplierRequest $request)
+    public function store(StoreProviderTypeRequest $request)
     {
-        $materialSupplier = new MaterialSupplier();
-        $materialSupplier->name = $request->name;
-        $materialSupplier->seal = $request->seal;
-        $materialSupplier->logo = $request->logo;
-        $materialSupplier->serie_number = $request->serie_number;
-        $materialSupplier->signature = $request->signature;
-        $materialSupplier->document_number = $request->document_number;
-        $materialSupplier->address = $request->address;
-        $materialSupplier->email = $request->email;
-        $materialSupplier->material_supplier_type_id = $request->material_supplier_type_id;
-        $materialSupplier->phone_number = $request->phone_number;
-        $materialSupplier->user_created_id = $request->user_created_id;
-        $materialSupplier->save();
-        return response()->json($materialSupplier, 201);
+        $providerType = new ProviderType();
+        $providerType->name = $request->name;
+        $providerType->description = $request->description;
+        $providerType->user_created_id = $request->user_created_id;
+      
+        $providerType->save();
+
+        return  (new ProviderTypeResource($providerType))
+            ->additional(['message:' => 'successfully registered provider type.']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\MaterialSupplier  $materialSupplier
+     * @param  \App\Models\ProviderTyper ProviderType
      * @return \Illuminate\Http\Response
      * @OA\Get(
-     *   path="/material-suppliers/{id}",
-     *   operationId="getMaterialSupplierById",
-     *   tags={"MaterialSupplier"},
-     *   summary="Get MaterialSupplier information",
-     *   description="Returns MaterialSupplier data",
+     *   path="/provider-types/{id}",
+     *   operationId="getProviderTypeById",
+     *   tags={"ProviderType"},
+     *   summary="Get ProviderType information",
+     *   description="Returns ProviderTypee data",
      *   @OA\Parameter(
      *      name="id",
-     *      description="MaterialSupplier id",
+     *      description="ProviderType id",
      *      required=true,
      *      in="path",
      *          @OA\Schema(
@@ -186,7 +185,7 @@ class MaterialSupplierController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/MaterialSupplier")
+     *          @OA\JsonContent(ref="#/components/schemas/ProviderType")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -202,38 +201,28 @@ class MaterialSupplierController extends Controller
      *      )
      *   )
      */
-    public function show(MaterialSupplier $materialSupplier)
+    public function show(ProviderType $providerType)
     {
-        return response($materialSupplier, 200);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\MaterialSupplier  $materialSupplier
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(MaterialSupplier $materialSupplier)
-    {
-        //
+        return (new ProviderTypeResource($providerType))
+            ->additional(['message:' => 'successfully response.']);
     }
 
     /**
      * Update the specified resource in storage.
      *
      *
-     * @param  \App\Http\Requests\UpdateMaterialSupplierRequest  $request
-     * @param  \App\Models\MaterialSupplier  $materialSupplier
+     * @param  \App\Http\Requests\UpdateProviderTypeRequest  $request
+     * @param  \App\Models\ProviderType  $providerType
      * @return \Illuminate\Http\Response
      * @OA\Put(
-     *  path="/material-suppliers/{id}",
-     *  operationId="updateMaterialSupplier",
-     *  tags={"MaterialSupplier"},
-     *  summary="Update existing MaterialSupplier",
-     *  description="Returns updated MaterialSupplier data",
+     *  path="/provider-types/{id}",
+     *  operationId="updateProvierType",
+     *  tags={"ProviderType"},
+     *  summary="Update existing ProviderType",
+     *  description="Returns updated Provider Type data",
      *  @OA\Parameter(
      *      name="id",
-     *      description="MaterialSupplier id",
+     *      description="Provider_type _id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -242,12 +231,12 @@ class MaterialSupplierController extends Controller
      *  ),
      *  @OA\RequestBody(
      *      required=true,
-     *      @OA\JsonContent(ref="#/components/schemas/MaterialSupplier")
+     *      @OA\JsonContent(ref="#/components/schemas/ProviderType")
      *   ),
      *   @OA\Response(
      *      response=202,
      *      description="Successful operation",
-     *      @OA\JsonContent(ref="#/components/schemas/MaterialSupplier")
+     *      @OA\JsonContent(ref="#/components/schemas/ProviderType")
      *   ),
      *   @OA\Response(
      *      response=400,
@@ -267,37 +256,28 @@ class MaterialSupplierController extends Controller
      *   )
      * )
      */
-    public function update(UpdateMaterialSupplierRequest $request, MaterialSupplier $materialSupplier)
+    public function update(UpdateProviderTypeRequest $request, ProviderType $providerType)
     {
-        $materialSupplier->name = $request->name;
-        $materialSupplier->seal = $request->seal;
-        $materialSupplier->signature = $request->signature;
-        $materialSupplier->address = $request->address;
-        $materialSupplier->logo = $request->logo;
-        $materialSupplier->document_number = $request->document_number;
-        $materialSupplier->email = $request->email;
-        $materialSupplier->serie_number = $request->serie_number;
-        $materialSupplier->phone_number = $request->phone_number;
-        $materialSupplier->material_supplier_type_id = $request->material_supplier_type_id;
-        $materialSupplier->user_updated_id = $request->user_updated_id;
-        $materialSupplier->update();
-        return response()->json($materialSupplier, 201);
+        $providerType->name = $request->name;
+        $providerType->description = $request->description;
+        $providerType->user_created_id = $request->user_created_id;
+
+        $providerType->update();
+
+        return  response((new ProviderTypeResource($providerType))
+            ->additional(['message:' => 'successfully updated provider.']),200);
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\MaterialSupplier  $materialSupplier
-     * @return \Illuminate\Http\Response
-     * @OA\Delete(
-     *  path="/material-suppliers/{id}",
-     *  operationId="deleteMaterialSupplier",
-     *  tags={"MaterialSupplier"},
-     *  summary="Delete existing MaterialSupplier",
-     *  description="Deletes a record and returns no content",
+     *  @OA\Delete(
+     *      path="/provider-types/{id}",
+     *      operationId="deleteProviderType",
+     *      tags={"ProviderType"},
+     *      summary="Delete existing ProviderType",
+     *       description="Deletes a record and returns no content",
      *  @OA\Parameter(
      *      name="id",
-     *      description="MaterialSupplier id",
+     *      description="ProviderType id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -323,9 +303,13 @@ class MaterialSupplierController extends Controller
      *  )
      * )
      */
-    public function destroy(MaterialSupplier $materialSupplier)
+    public function destroy(ProviderType $providerType)
     {
-        $materialSupplier->delete();
-        return response('the data was deleted successfully', 200);
+        $providerType->delete();
+        return response()->json(
+            [
+                'message' => 'the data was deleted successfully'
+            ],200
+        );
     }
 }

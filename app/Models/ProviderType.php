@@ -4,19 +4,19 @@ namespace App\Models;
 
 /**
  * @OA\Schema(
- *   schema="MaterialSupplierType",
+ *   schema="ProviderType",
  *   type="object",
  *   @OA\Property(
  *       property="name",
  *       type="string",
  *       required={"true"},
- *       description="The MaterialSupplierType name"
+ *       description="The ProviderType name"
  *   ),
  *   @OA\Property(
  *       property="description",
  *       type="string",
  *       required={"true"},
- *       description="The MaterialSupplierType description"
+ *       description="The ProviderType description"
  *   ),
  *   @OA\Property(
  *       property="user_created_id",
@@ -34,7 +34,7 @@ namespace App\Models;
  *   ),
  * )
  */
-class MaterialSupplierType extends Base
+class ProviderType extends Base
 {
     //
 }
