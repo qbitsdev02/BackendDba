@@ -29,7 +29,9 @@ class DatabaseSeeder extends Seeder
             OperationTypeSeeder::class,
             ConceptTypeSeeder::class,
             ConceptSeeder::class,
-            OrganizationSeeder::class
+            OrganizationSeeder::class,
+            PermissionSeeder::class,
+            ProviderTypeSeeder::class
         ]);
     }
 }

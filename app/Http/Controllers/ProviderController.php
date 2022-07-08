@@ -111,7 +111,8 @@ class ProviderController extends Controller
         $providers = Provider::filters($request->all())
             ->search($request->all());
             
-        return  ProviderResource::collection($providers);
+        return  (ProviderResource::collection($providers))
+            ->additional(['message:' => 'successfully response.']);
     }
 
     /**
@@ -164,10 +165,9 @@ class ProviderController extends Controller
         
         $provider->save();
 
-        return response([
-            'provider' => new ProviderResource($provider),
-            'message' => 'Provider registered successfully.'
-        ],201);
+        return response(
+            (new ProviderResource($provider))
+            ->additional(['message:' => 'successfully registered provider.']),200);
     }
 
     /**
@@ -211,10 +211,8 @@ class ProviderController extends Controller
      */
     public function show(Provider $provider)
     {
-        return response([
-            new ProviderResource($provider)
-
-        ],200);
+        return response((new ProviderResource($provider))
+            ->additional(['message:' => 'successfully response.']),200);
     }
 
    /**
@@ -281,9 +279,8 @@ class ProviderController extends Controller
 
         $provider->update();
 
-        return response([
-            new ProviderResource($provider),
-        ],200);
+        return response((new ProviderResource($provider))
+            ->additional(['message:' => 'successfully updated provider.']),200);
     }
 
     /**
