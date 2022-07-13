@@ -75,4 +75,18 @@ class Field extends Base
         return $this->belongsTo(FieldSupervisor::class);
     }
 
+    /**
+     * Relationship ticket
+     * A field has many tickect
+     * 
+     * Get the tickets associated to field that owns the attributes.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     * 
+     */
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
+
 }

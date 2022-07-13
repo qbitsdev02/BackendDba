@@ -145,4 +145,17 @@ class Guide extends Base
     {
         return $this->belongsTo(UnitOfMeasurement::class);
     }
+
+
+    /**
+     * Relationship ticket
+     * A guide has many ticket
+     * 
+     * Get the ticket associated to the guide
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
 }

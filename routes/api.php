@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ProviderTypeController;
 use App\Http\Controllers\RateController;
+use App\Http\Controllers\TicketController;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+$router->resource('tickets', TicketController::class);
 
 Route::group([
     'prefix' => 'authentication',

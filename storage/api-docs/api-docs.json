@@ -4723,6 +4723,90 @@
                 }
             }
         },
+        "/tickets": {
+            "get": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "Display a listing of the resource.",
+                "operationId": "getticket",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "type": "boolean",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a curso resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ticket all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            }
+        },
         "/trailers": {
             "get": {
                 "tags": [
@@ -6795,6 +6879,116 @@
                     },
                     "user_updated_id": {
                         "description": "The States update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "Ticket": {
+                "properties": {
+                    "provider_id": {
+                        "description": "The ticket provider_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "foreignId"
+                    },
+                    "field_id": {
+                        "description": "The ticket field_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "foreignId"
+                    },
+                    "guide_id": {
+                        "description": "The ticket guide_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "foreignId"
+                    },
+                    "tare_weight": {
+                        "description": "The ticket tare weight",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "gross_weight": {
+                        "description": "The ticket gross_weight",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "tare": {
+                        "description": "The ticket tare",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "vehicle_number": {
+                        "description": "The ticket vehicle_number",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "certificate": {
+                        "description": "The ticket certificate",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "start_date": {
+                        "description": "The ticket start_date",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "final_date": {
+                        "description": "The ticket final_date",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "checkweighing": {
+                        "description": "The ticket checkweighing",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "client_id": {
+                        "description": "The ticket client_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "foreignId"
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
                         "required": [
                             "true"
                         ],

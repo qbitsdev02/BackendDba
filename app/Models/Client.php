@@ -85,4 +85,16 @@ class Client extends Base
         return $this->belongsToMany(State::class)
           ->using(ClientState::class);
     }
+
+    /**
+     * Relationship ticket
+     * A client has many tickets 
+     * 
+     * Get the tickets associated to the client 
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     */
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
 }
