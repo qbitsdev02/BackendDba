@@ -18,9 +18,10 @@ return new class extends Migration
             $table->float('rate');
             $table->text('description');
             $table->foreignId('provider_id')->constrained();
-            $table->foreignId('unit_of_measurements_id')->constrained();
+            $table->foreignId('unit_of_measurement_id')->constrained();
+            $table->foreignId('coin_id')->nullable()->constrained();
             $table->foreignId('user_created_id')->constrained('users');
-            $table->foreignId('user_update_id')->constrained('users');
+            $table->foreignId('user_update_id')->nullable()->constrained('users');
             $table->softDeletes();
             $table->timestamps();
             

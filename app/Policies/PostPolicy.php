@@ -6,7 +6,7 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Models\Rate;
 use App\Models\User;
 
-class RatePolicy
+class PostPolicy
 {
     use HandlesAuthorization;
 
@@ -18,7 +18,7 @@ class RatePolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('rates-viewAny');
+        //
     }
 
     /**
@@ -30,7 +30,7 @@ class RatePolicy
      */
     public function view(User $user, Rate $rate)
     {
-        return $user->can('rates-read');
+        //
     }
 
     /**
@@ -41,7 +41,7 @@ class RatePolicy
      */
     public function create(User $user)
     {
-        return $user->can('rates-create');
+        //
     }
 
     /**
@@ -53,7 +53,7 @@ class RatePolicy
      */
     public function update(User $user, Rate $rate)
     {
-        return $user->can('rates-update');
+        //
     }
 
     /**
@@ -65,7 +65,7 @@ class RatePolicy
      */
     public function delete(User $user, Rate $rate)
     {
-        return $user->can('rates-delete');
+        //
     }
 
     /**
@@ -77,7 +77,7 @@ class RatePolicy
      */
     public function restore(User $user, Rate $rate)
     {
-        return $user->can('rates-restore');
+        //
     }
 
     /**
@@ -89,6 +89,6 @@ class RatePolicy
      */
     public function forceDelete(User $user, Rate $rate)
     {
-        return $user->can('rates-forceDelete');
+        //
     }
 }

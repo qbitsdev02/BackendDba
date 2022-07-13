@@ -17,8 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-$router->resource('rates', RateController::class);
-
 Route::group([
     'prefix' => 'authentication',
 ], function ($router) {
@@ -57,4 +55,5 @@ Route::group([
     $router->resource('sworn-declarations', SwornDeclarationController::class);
     $router->resource('trailers', TrailerController::class);
     $router->resource('unit-of-measurements', UnitOfMeasurementController::class);
+    $router->resource('rates', RateController::class);
 });

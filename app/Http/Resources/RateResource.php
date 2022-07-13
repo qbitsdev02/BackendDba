@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Coin;
+use App\Models\Provider;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class RateResource extends JsonResource
@@ -18,8 +20,17 @@ class RateResource extends JsonResource
             'id' => $this->id,
             'rate' => $this->rate,
             'description' => $this->description,
-            'provider_id' => '',
-            'unit_of_measurements_id' => '',
+            'provider' => [
+                'name' => $this->provider->name 
+            ], 
+            'coin' => [
+                'name' => $this->coin->name,
+                'symbol' => $this->coin->symbol
+            ],
+            'unit_of_measurement' => [
+                'name' => $this->unitOfMeasurement->name,
+                'acronym' => $this->unitOfMeasurement->acronym
+            ],
         ];
     }
 }

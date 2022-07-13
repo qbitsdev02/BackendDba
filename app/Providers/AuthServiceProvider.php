@@ -12,10 +12,12 @@ use App\Models\Module;
 use App\Models\Permission;
 use App\Models\Provider;
 use App\Models\ProviderType;
+use App\Models\Rate;
 use App\Models\State;
 use App\Policies\CoinPolicy;
 use App\Policies\ProviderPolicy;
 use App\Policies\ProviderTypePolicy;
+use App\Policies\RatePolicy;
 use App\Policies\StatePolicy;
 
 class AuthServiceProvider extends ServiceProvider
@@ -30,6 +32,7 @@ class AuthServiceProvider extends ServiceProvider
         State::class => StatePolicy::class,
         Provider::class => ProviderPolicy::class,
         ProviderType::class => ProviderTypePolicy::class, 
+        Rate::class => RatePolicy::class
     ];
 
 

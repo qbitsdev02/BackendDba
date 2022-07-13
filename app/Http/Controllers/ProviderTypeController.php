@@ -110,8 +110,11 @@ class ProviderTypeController extends Controller
         $providerTypes = ProviderType::filters($request->all())
             ->search($request->all());
             
-        return (ProviderTypeResource::collection($providerTypes))
-            ->additional(['message:' => 'successfully response.']);
+        return (ProviderTypeResource::collection($providerTypes))->additional(
+            [
+                'message:' => 'successfully response'
+            ],200
+        );
     }
 
     /**
@@ -158,8 +161,11 @@ class ProviderTypeController extends Controller
       
         $providerType->save();
 
-        return  (new ProviderTypeResource($providerType))
-            ->additional(['message:' => 'successfully registered provider type.']);
+        return  (new ProviderTypeResource($providerType))->additional(
+            [
+                'message:' => 'successfully registered provider type'
+            ],200
+        );
     }
 
     /**
@@ -203,8 +209,11 @@ class ProviderTypeController extends Controller
      */
     public function show(ProviderType $providerType)
     {
-        return (new ProviderTypeResource($providerType))
-            ->additional(['message:' => 'successfully response.']);
+        return (new ProviderTypeResource($providerType))->additional(
+            [
+                'message:' => 'successfully response'
+            ],200
+        );
     }
 
     /**
@@ -264,8 +273,11 @@ class ProviderTypeController extends Controller
 
         $providerType->update();
 
-        return  response((new ProviderTypeResource($providerType))
-            ->additional(['message:' => 'successfully updated provider.']),200);
+        return  (new ProviderTypeResource($providerType))->additional(
+            [
+                'message:' => 'successfully updated provider'
+            ],200
+        );
     }
 
     /**
@@ -306,6 +318,7 @@ class ProviderTypeController extends Controller
     public function destroy(ProviderType $providerType)
     {
         $providerType->delete();
+
         return response()->json(
             [
                 'message' => 'the data was deleted successfully'

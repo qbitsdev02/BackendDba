@@ -111,8 +111,11 @@ class ProviderController extends Controller
         $providers = Provider::filters($request->all())
             ->search($request->all());
             
-        return  (ProviderResource::collection($providers))
-            ->additional(['message:' => 'successfully response.']);
+        return  (ProviderResource::collection($providers))->additional(
+            [
+                'message:' => 'successfully response'
+            ],200
+        );
     }
 
     /**
@@ -165,9 +168,11 @@ class ProviderController extends Controller
         
         $provider->save();
 
-        return response(
-            (new ProviderResource($provider))
-            ->additional(['message:' => 'successfully registered provider.']),200);
+        return (new ProviderResource($provider))->additional(
+            [
+            'message:' => 'successfully registered provider'
+            ],200
+        );
     }
 
     /**
@@ -211,8 +216,11 @@ class ProviderController extends Controller
      */
     public function show(Provider $provider)
     {
-        return response((new ProviderResource($provider))
-            ->additional(['message:' => 'successfully response.']),200);
+        return (new ProviderResource($provider))->additional(
+            [
+                'message:' => 'successfully response'
+            ],200
+        );
     }
 
    /**
@@ -279,8 +287,11 @@ class ProviderController extends Controller
 
         $provider->update();
 
-        return response((new ProviderResource($provider))
-            ->additional(['message:' => 'successfully updated provider.']),200);
+        return (new ProviderResource($provider))->additional(
+            [
+                'message:' => 'successfully updated provider'
+            ],200
+        );
     }
 
     /**
@@ -326,8 +337,10 @@ class ProviderController extends Controller
     public function destroy( Provider $provider)
     {
         $provider->delete();
-        return response([
-            'message' => 'the data was deleted successfully'
-        ],200);
+        return response(
+            [
+                'message' => 'the data was deleted successfully'
+            ],200
+        );
     }
 }
