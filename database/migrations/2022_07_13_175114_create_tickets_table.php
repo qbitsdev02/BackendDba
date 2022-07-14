@@ -23,8 +23,8 @@ return new class extends Migration
             $table->float('tare');
             $table->string('vehicle_number');
             $table->string('certificate');
-            $table->date('start_date');
-            $table->date('final_date');
+            $table->timestamp('start_date');
+            $table->timestamp('final_date');
             $table->string('checkweighing');
             $table->foreignId('client_id')->constrained();
             $table->foreignId('user_created_id')->constrained('users');
