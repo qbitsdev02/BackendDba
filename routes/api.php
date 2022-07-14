@@ -28,6 +28,9 @@ Route::group([
 Route::group([
     'middleware' => 'auth:api',
 ], function ($router) {
+    $router->group(['prefix' => 'plaid'], function ($router) {
+        $router->get('transactions', 'PlaidController@transactions')->name('transactions');
+    });
     $router->resource('users', UserController::class);
     $router->resource('roles', RoleController::class);
     $router->resource('sections', SectionController::class);
