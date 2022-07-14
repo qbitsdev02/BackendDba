@@ -111,16 +111,6 @@ class TicketController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreTicketRequest  $request
@@ -134,24 +124,51 @@ class TicketController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Ticket  $ticket
+     * @param  \App\Models\Tickect  rate
      * @return \Illuminate\Http\Response
+     * 
+     * 
+     * @OA\Get(
+     *      path="/tickets/{id}",
+     *      operationId="getticketId",
+     *      tags={"Ticket"},
+     *      summary="Get ticket information",
+     *      description="Returns ticket data",
+     *   @OA\Parameter(
+     *          name="id",
+     *          description="rate id",
+     *          required=true,
+     *          in="path",
+     *             @OA\Schema(type="integer")
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\JsonContent(ref="#/components/schemas/Ticket")
+     *       ),
+     *      @OA\Response(
+     *          response=400,
+     *          description="Bad Request"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *   )
      */
     public function show(Ticket $ticket)
     {
-        //
+        return (new TicketRosource($ticket))->additional(
+            [
+                "message" => "successfully response"
+            ],200
+        );
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Ticket  $ticket
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Ticket $ticket)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

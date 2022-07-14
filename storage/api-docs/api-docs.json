@@ -4807,6 +4807,48 @@
                 }
             }
         },
+        "/tickets/{id}": {
+            "get": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "Get ticket information",
+                "description": "Returns ticket data",
+                "operationId": "getticketId",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "rate id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Ticket"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
         "/trailers": {
             "get": {
                 "tags": [
@@ -6895,45 +6937,42 @@
                         "required": [
                             "true"
                         ],
-                        "type": "foreignId"
+                        "type": "number"
                     },
                     "field_id": {
                         "description": "The ticket field_id",
                         "required": [
                             "true"
                         ],
-                        "type": "foreignId"
+                        "type": "number"
                     },
                     "guide_id": {
                         "description": "The ticket guide_id",
                         "required": [
                             "true"
                         ],
-                        "type": "foreignId"
+                        "type": "number"
                     },
                     "tare_weight": {
                         "description": "The ticket tare weight",
                         "required": [
                             "true"
                         ],
-                        "type": "number",
-                        "format": "float"
+                        "type": "number"
                     },
                     "gross_weight": {
                         "description": "The ticket gross_weight",
                         "required": [
                             "true"
                         ],
-                        "type": "number",
-                        "format": "float"
+                        "type": "number"
                     },
                     "tare": {
                         "description": "The ticket tare",
                         "required": [
                             "true"
                         ],
-                        "type": "number",
-                        "format": "float"
+                        "type": "number"
                     },
                     "vehicle_number": {
                         "description": "The ticket vehicle_number",
@@ -6954,16 +6993,14 @@
                         "required": [
                             "true"
                         ],
-                        "type": "string",
-                        "format": "date"
+                        "type": "string"
                     },
                     "final_date": {
                         "description": "The ticket final_date",
                         "required": [
                             "true"
                         ],
-                        "type": "string",
-                        "format": "date"
+                        "type": "string"
                     },
                     "checkweighing": {
                         "description": "The ticket checkweighing",
@@ -6977,7 +7014,7 @@
                         "required": [
                             "true"
                         ],
-                        "type": "foreignId"
+                        "type": "number"
                     },
                     "user_created_id": {
                         "description": "The Users crete",

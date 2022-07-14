@@ -13,37 +13,37 @@ use Illuminate\Database\Eloquent\Model;
  *   type="object",
  *   @OA\Property(
  *       property="provider_id",
- *       type="foreignId",
+ *       type="number",
  *       required={"true"},
  *       description="The ticket provider_id"
  *   ),
  *   @OA\Property(
  *       property="field_id",
- *       type="foreignId",
+ *       type="number",
  *       required={"true"},
  *       description="The ticket field_id"
  *   ),
  *   @OA\Property(
  *       property="guide_id",
- *       type="foreignId",
+ *       type="number",
  *       required={"true"},
  *       description="The ticket guide_id"
  *   ),
  *   @OA\Property(
  *       property="tare_weight",
- *       type="float",
+ *       type="number",
  *       required={"true"},
  *       description="The ticket tare weight"
  *   ),
  *   @OA\Property(
  *       property="gross_weight",
- *       type="float",
+ *       type="number",
  *       required={"true"},
  *       description="The ticket gross_weight"
  *   ),
  *   @OA\Property(
  *       property="tare",
- *       type="float",
+ *       type="number",
  *       required={"true"},
  *       description="The ticket tare"
  *   ),
@@ -61,13 +61,13 @@ use Illuminate\Database\Eloquent\Model;
  *   ),
  *   @OA\Property(
  *       property="start_date",
- *       type="date",
+ *       type="string",
  *       required={"true"},
  *       description="The ticket start_date"
  *   ),
  *   @OA\Property(
  *       property="final_date",
- *       type="date",
+ *       type="string",
  *       required={"true"},
  *       description="The ticket final_date"
  *   ),
@@ -80,7 +80,7 @@ use Illuminate\Database\Eloquent\Model;
  *   ), 
  *   @OA\Property(
  *       property="client_id",
- *       type="foreignId",
+ *       type="number",
  *       required={"true"},
  *       description="The ticket client_id"
  * 
