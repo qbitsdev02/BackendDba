@@ -111,11 +111,8 @@ class ProviderController extends Controller
         $providers = Provider::filters($request->all())
             ->search($request->all());
             
-        return  (ProviderResource::collection($providers))->additional(
-            [
-                'message:' => 'successfully response'
-            ],200
-        );
+        return  (ProviderResource::collection($providers));
+        
     }
 
     /**

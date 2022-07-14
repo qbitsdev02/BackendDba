@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ProviderTypeController;
 use App\Http\Controllers\RateController;
+use App\Http\Controllers\TicketController;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
@@ -56,4 +57,5 @@ Route::group([
     $router->resource('trailers', TrailerController::class);
     $router->resource('unit-of-measurements', UnitOfMeasurementController::class);
     $router->resource('rates', RateController::class);
+    $router->resource('tickets', TicketController::class);
 });
