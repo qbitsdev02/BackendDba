@@ -8,7 +8,7 @@ use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
 use App\Http\Resources\TicketRosource;
 use App\Policies\TicketPolicy;
-use Illuminate\Http\Request as HttpRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Js;
 
 class TicketController extends Controller
@@ -20,8 +20,8 @@ class TicketController extends Controller
      * You may make use of the (authorizeResource) method in your controller's constructor. 
      * This method will attach the appropriate can middleware definitions to the resource controller's methods.
      */
-    public function __construct(){
-        $this->authorizeResource(Ticket::class, 'ticket');   
+     public function __construct(){
+         $this->authorizeResource(Ticket::class, 'ticket');   
     }
 
     
@@ -109,7 +109,7 @@ class TicketController extends Controller
       *     )
       *  )
       */
-    public function index(HttpRequest $request)
+    public function index(Request $request)
     {
         $tickets = Ticket::filters($request->all())
             ->search($request->all());
@@ -159,7 +159,10 @@ class TicketController extends Controller
     * )
     */
     public function store(StoreTicketRequest $request)
-    {
+    {   
+
+        info($request->all());
+
         $ticket = new Ticket();
         $ticket->provider_id = $request->provider_id;
         $ticket->field_id = $request->field_id;
