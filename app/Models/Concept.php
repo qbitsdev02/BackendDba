@@ -50,5 +50,9 @@ class Concept extends Base
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+    public function conceptType()
+    {
+        return $this->belongsTo(ConceptType::class);
+    }
 
 }

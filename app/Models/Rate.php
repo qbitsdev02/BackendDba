@@ -12,25 +12,25 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
      *   type="object",
      *   @OA\Property(
      *       property="rate",
-     *       type="float",
+     *       type="number",
      *       required={"true"},
      *       description="The rate"
      *   ),
      *   @OA\Property(
      *       property="description",
-     *       type="text",
+     *       type="string",
      *       required={"true"},
      *       description="Description of rate"
      *   ),
      *   @OA\Property(
      *       property="provider_id",
-     *       type="foreignId",
+     *       type="number",
      *       required={"true"},
      *       description="The relational field with provider"
      *   ),
      *   @OA\Property(
      *       property="unit_of_measurement_id",
-     *       type="foreignId",
+     *       type="number",
      *       required={"true"},
      *       description="The relational field with unit measurement"
      *   ),
