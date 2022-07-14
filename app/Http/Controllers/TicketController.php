@@ -7,10 +7,23 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
 use App\Http\Resources\TicketRosource;
+use App\Policies\TicketPolicy;
 use Illuminate\Http\Request as HttpRequest;
+use Illuminate\Support\Js;
 
 class TicketController extends Controller
 {
+
+      /**
+     * Create the controller instance to Authorizing Resource Controller.
+     *  
+     * You may make use of the (authorizeResource) method in your controller's constructor. 
+     * This method will attach the appropriate can middleware definitions to the resource controller's methods.
+     */
+    public function __construct(){
+        $this->authorizeResource(Ticket::class, 'ticket');   
+    }
+
     
     /**
       * Display a listing of the resource.
@@ -115,10 +128,61 @@ class TicketController extends Controller
      *
      * @param  \App\Http\Requests\StoreTicketRequest  $request
      * @return \Illuminate\Http\Response
-     */
+     * 
+     * @OA\Post(
+     *   path="/tickets",
+     *   summary="Creates a new ticket",
+     *   description="Creates a new ticket",
+     *   tags={"Ticket"},
+     *   security={{"passport": {"*"}}},
+     *   @OA\RequestBody(
+     *       @OA\MediaType(
+     *           mediaType="application/json",
+     *           @OA\Schema(ref="#/components/schemas/Ticket")
+     *       )
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response=200,
+     *       description="The Provider resource created",
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response=401,
+     *       description="Unauthenticated."
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response="default",
+     *       description="an ""unexpected"" error",
+     *   )
+    * )
+    */
     public function store(StoreTicketRequest $request)
     {
-        //
+        $ticket = new Ticket();
+        $ticket->provider_id = $request->provider_id;
+        $ticket->field_id = $request->field_id;
+        $ticket->guide_id = $request->guide_id;
+        $ticket->tare_weight = $request->tare_weight;
+        $ticket->gross_weight = $request->gross_weight;
+        $ticket->tare = $request->tare;
+        $ticket->vehicle_number = $request->vehicle_number;
+        $ticket->certificate = $request->certificate;
+        $ticket->start_date = $request->start_date;
+        $ticket->final_date = $request->final_date;
+        $ticket->checkweighing = $request->checkweighing;
+        $ticket->client_id = $request->client_id;
+        $ticket->user_created_id = $request->user_created_id;
+
+        $ticket->save();
+        
+        return (new TicketRosource($ticket))->additional(
+            [
+                "message" => " successfully registerd ticket "
+            ],200
+        ); 
+
     }
 
     /**
@@ -179,7 +243,28 @@ class TicketController extends Controller
      */
     public function update(UpdateTicketRequest $request, Ticket $ticket)
     {
-        //
+        $ticket->provider_id = $request->provider_id;
+        $ticket->field_id = $request->field_id;
+        $ticket->guide_id = $request->guide_id;
+        $ticket->tare_weight = $request->tare_weight;
+        $ticket->gross_weight = $request->gross_weight;
+        $ticket->tare = $request->tare;
+        $ticket->vehicle_number = $request->vehicle_number;
+        $ticket->certificate = $request->certificate;
+        $ticket->start_date = $request->start_date;
+        $ticket->final_date = $request->final_date;
+        $ticket->checkweighing = $request->checkweighing;
+        $ticket->client_id = $request->client_id;
+        $ticket->user_created_id = $request->user_created_id;
+
+        $ticket->update();
+
+        return (new TicketRosource($ticket))->additional(
+            [
+                "message" => "successfully updated ticket"
+            ],200
+        );
+
     }
 
     /**
@@ -187,9 +272,52 @@ class TicketController extends Controller
      *
      * @param  \App\Models\Ticket  $ticket
      * @return \Illuminate\Http\Response
+     * 
+     *Remove the specified resource from storage.
+     * 
+     * @OA\Delete(
+     *  path="/tickets/{id}",
+     *  operationId="deleteticket",
+     *  tags={"Ticket"},
+     *  summary="Delete existing provider",
+     *  description="Deletes a record and returns no content",
+     *  @OA\Parameter(
+     *      name="id",
+     *      description="ticket id",
+     *      required=true,
+     *      in="path",
+     *      @OA\Schema(
+     *          type="integer"
+     *      )
+     *  ),
+     *  @OA\Response(
+     *      response=204,
+     *      description="Successful operation",
+     *      @OA\JsonContent()
+     *  ),
+     *  @OA\Response(
+     *      response=401,
+     *      description="Unauthenticated",
+     *  ),
+     *  @OA\Response(
+     *      response=403,
+     *      description="Forbidden"
+     *  ),
+     *  @OA\Response(
+     *      response=404,
+     *      description="Resource Not Found"
+     *  )
+     * )
+     * 
      */
     public function destroy(Ticket $ticket)
     {
-        //
+        $ticket->delete();
+
+        return response()->json(
+            [
+                "messasge" => "data was delete successfully"
+            ],200
+        );
     }
 }

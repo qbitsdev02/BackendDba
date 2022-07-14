@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use App\Models\Ticket;
+use App\Models\Personal;
 use App\Models\User;
 
-class TicketPolicy
+class PersonalPolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,19 @@ class TicketPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('tickets-viewAny');
+        //
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Ticket  $ticket
+     * @param  \App\Models\Personal  $personal
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Ticket $ticket)
+    public function view(User $user, Personal $personal)
     {
-        return $user->can('tickets-read');
+        //
     }
 
     /**
@@ -41,54 +41,54 @@ class TicketPolicy
      */
     public function create(User $user)
     {
-        return $user->can('tickets-create');
+        //
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Ticket  $ticket
+     * @param  \App\Models\Personal  $personal
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Ticket $ticket)
+    public function update(User $user, Personal $personal)
     {
-        return $user->can('tickets-update');
+        //
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Ticket  $ticket
+     * @param  \App\Models\Personal  $personal
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Ticket $ticket)
+    public function delete(User $user, Personal $personal)
     {
-        return $user->can('tickets-delete');
+        //
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Ticket  $ticket
+     * @param  \App\Models\Personal  $personal
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Ticket $ticket)
+    public function restore(User $user, Personal $personal)
     {
-        return $user->can('tickets-restore');
+        //
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Ticket  $ticket
+     * @param  \App\Models\Personal  $personal
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Ticket $ticket)
+    public function forceDelete(User $user, Personal $personal)
     {
-        return $user->can('tickets-forceDelete');
+        //
     }
 }

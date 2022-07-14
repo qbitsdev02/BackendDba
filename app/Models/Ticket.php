@@ -75,9 +75,19 @@ use Illuminate\Database\Eloquent\Model;
  *       property="checkweighing",
  *       type="string",
  *       required={"true"},
- *       description="The ticket checkweighing"
- *      
+ *       description="The ticket checkweighing"   
  *   ), 
+ *  @OA\Property(
+ *       property="actives",
+ *       type="array",
+ *       required={"false"},
+ *       @OA\Items(
+ *           @OA\Property(property="personal_id", type="number"),
+ *           @OA\Property(property="active_id", type="number"),
+ *           @OA\Property(property="user_created_id", type="number")
+ *       ),
+ *       description="The Product attribute_types"
+ *   ),
  *   @OA\Property(
  *       property="client_id",
  *       type="number",
@@ -158,5 +168,36 @@ class Ticket extends Base
     {
         return $this->belongsTo(Client::class);
     }
-     
+
+    /**
+     * Relationship Active
+     * A ticket only has associated to one personal
+     * 
+     * Get the active associated to the ticket.
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function actives()
+    {
+        return $this->belongsToMany(Active::class, 'active_personal_ticket');
+    }
+
+    /**
+     * Relationship personal 
+     * A ticket only has associated to one personal
+     * 
+     * Get the personal associated to the ticket
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function personals()
+    {
+        return $this->belongsToMany(Personal::class, 'active_personal_ticket');
+    }
+
+    /**
+     * Relationship activePersonalTicket. 
+     */
+    public function activePersonalTickes()
+    {
+        return $this->hasMany(ActivePersonalTicket::class);
+    }
 }

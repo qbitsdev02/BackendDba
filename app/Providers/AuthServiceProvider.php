@@ -14,11 +14,13 @@ use App\Models\Provider;
 use App\Models\ProviderType;
 use App\Models\Rate;
 use App\Models\State;
+use App\Models\Ticket;
 use App\Policies\CoinPolicy;
 use App\Policies\ProviderPolicy;
 use App\Policies\ProviderTypePolicy;
 use App\Policies\RatePolicy;
 use App\Policies\StatePolicy;
+use App\Policies\TicketPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -32,7 +34,8 @@ class AuthServiceProvider extends ServiceProvider
         State::class => StatePolicy::class,
         Provider::class => ProviderPolicy::class,
         ProviderType::class => ProviderTypePolicy::class, 
-        Rate::class => RatePolicy::class
+        Rate::class => RatePolicy::class,
+        Ticket::class => TicketPolicy::class,
     ];
 
 

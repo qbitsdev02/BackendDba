@@ -4805,6 +4805,50 @@
                         "description": "error."
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "Creates a new ticket",
+                "description": "Creates a new ticket",
+                "operationId": "f9282cd452389d3cc5d06f0cf782b672",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Ticket"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Provider resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
             }
         },
         "/tickets/{id}": {
@@ -4845,6 +4889,97 @@
                     },
                     "403": {
                         "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "Update existing ticket",
+                "description": "Returns updated ticket data",
+                "operationId": "updateticket",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ticket id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Ticket"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Ticket"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "Delete existing provider",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deleteticket",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ticket id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
                     }
                 }
             }
@@ -6788,29 +6923,28 @@
                         "required": [
                             "true"
                         ],
-                        "type": "number",
-                        "format": "float"
+                        "type": "number"
                     },
                     "description": {
                         "description": "Description of rate",
                         "required": [
                             "true"
                         ],
-                        "type": "text"
+                        "type": "string"
                     },
                     "provider_id": {
                         "description": "The relational field with provider",
                         "required": [
                             "true"
                         ],
-                        "type": "foreignId"
+                        "type": "number"
                     },
                     "unit_of_measurement_id": {
                         "description": "The relational field with unit measurement",
                         "required": [
                             "true"
                         ],
-                        "type": "foreignId"
+                        "type": "number"
                     },
                     "user_created_id": {
                         "description": "The Provider crete",
@@ -7008,6 +7142,27 @@
                             "true"
                         ],
                         "type": "string"
+                    },
+                    "actives": {
+                        "description": "The Product attribute_types",
+                        "required": [
+                            "false"
+                        ],
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "personal_id": {
+                                    "type": "number"
+                                },
+                                "active_id": {
+                                    "type": "number"
+                                },
+                                "user_created_id": {
+                                    "type": "number"
+                                }
+                            },
+                            "type": "object"
+                        }
                     },
                     "client_id": {
                         "description": "The ticket client_id",

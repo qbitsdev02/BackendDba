@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Active;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 use function Ramsey\Uuid\v1;
@@ -26,6 +27,10 @@ class TicketRosource extends JsonResource
             "guide_id" => [
                 "number guide" => $this->guide->serie_number
             ],
+            
+            "detalles" => ActivePersonalTicketResource::collection
+                ($this->activePersonalTickes),
+                
             "tare_weight" => $this->tare_weight,
             "gross_weight" => $this->gross_weight,
             "tare" => $this->tare,
