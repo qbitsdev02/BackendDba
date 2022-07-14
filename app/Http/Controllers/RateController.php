@@ -2,35 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreProviderRequest;
-use App\Http\Requests\UpdateProviderRequest;
-use App\Http\Resources\ProviderResource;
-use App\Models\Provider;
+use App\Models\Rate;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreRateRequest;
+use App\Http\Requests\UpdateRateRequest;
+use App\Http\Resources\RateResource;
 use Illuminate\Http\Request;
 
-class ProviderController extends Controller
+class RateController extends Controller
 {
 
     /**
-     * Create the controller instance.
-     *
-     * @return void
+     * Create the controller instance to Authorizing Resource Controller.
+     *  
+     * You may make use of the (authorizeResource) method in your controller's constructor. 
+     * This method will attach the appropriate can middleware definitions to the resource controller's methods.
      */
-    public function __construct()
-    {
-        $this->authorizeResource(Provider::class, 'provider');
+    public function __construct(){
+        $this->authorizeResource(Rate::class, 'rate');
     }
 
 
-      /**
-      * Display a listing of the resource.
-      *
-      * @return \Illuminate\Http\Response
-      *
-      * @OA\Get(
-      *     path="/providers",
-      *     operationId="getprovider",
-      *     tags={"Provider"},
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     * 
+     * @OA\Get(
+      *     path="/rates",
+      *     operationId="getrate",
+      *     tags={"Rate"},
       *     @OA\Parameter(
       *       name="paginate",
       *       in="query",
@@ -98,79 +99,76 @@ class ProviderController extends Controller
       *     ),
       *     @OA\Response(
       *         response=200,
-      *         description="Providers all."
+      *         description="rate all."
       *     ),
       *     @OA\Response(
       *         response="default",
       *         description="error."
       *     )
       *  )
-      */
+     */
     public function index(Request $request)
     {
-        $providers = Provider::filters($request->all())
+        $rates = Rate::filters($request->all())
             ->search($request->all());
-            
-        return  (ProviderResource::collection($providers))->additional(
+
+        return (RateResource::collection($rates)->additional(
             [
-                'message:' => 'successfully response'
-            ],200
-        );
+                'message' => 'successully response'
+            ],200)
+        ); 
     }
 
     /**
-      * Store a newly created resource in storage.
-      *
-      * @param  \App\Http\Requests\StoreCoinRequest  $request
-      * @return \Illuminate\Http\Response
-      * @OA\Post(
-      *   path="/providers",
-      *   summary="Creates a new provider",
-      *   description="Creates a new provider",
-      *   tags={"Provider"},
-      *   security={{"passport": {"*"}}},
-      *   @OA\RequestBody(
-      *       @OA\MediaType(
-      *           mediaType="application/json",
-      *           @OA\Schema(ref="#/components/schemas/Provider")
-      *       )
-      *   ),
-      *   @OA\Response(
-      *       @OA\MediaType(mediaType="application/json"),
-      *       response=200,
-      *       description="The Provider resource created",
-      *   ),
-      *   @OA\Response(
-      *       @OA\MediaType(mediaType="application/json"),
-      *       response=401,
-      *       description="Unauthenticated."
-      *   ),
-      *   @OA\Response(
-      *       @OA\MediaType(mediaType="application/json"),
-      *       response="default",
-      *       description="an ""unexpected"" error",
-      *   )
-      * )
-     */
-    public function store(StoreProviderRequest $request)
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\StoreRateRequest  $request
+     * @return \Illuminate\Http\Response
+     * 
+     * @OA\Post(
+     *   path="/rates",
+     *   summary="Creates a new rate",
+     *   description="Creates a new rate",
+     *   tags={"Rate"},
+     *   security={{"passport": {"*"}}},
+     *   @OA\RequestBody(
+     *       @OA\MediaType(
+     *           mediaType="application/json",
+     *           @OA\Schema(ref="#/components/schemas/Rate")
+     *       )
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response=200,
+     *       description="The Provider resource created",
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response=401,
+     *       description="Unauthenticated."
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response="default",
+     *       description="an ""unexpected"" error",
+     *   )
+    * )
+    */
+    public function store(StoreRateRequest $request)
     {
-        $provider = new Provider();
-        $provider->name = $request->name;
-        $provider->seal = $request->seal;
-        $provider->logo = $request->logo;
-        $provider->serie_number = $request->serie_number;
-        $provider->signature = $request->signature;
-        $provider->document_number = $request->document_number;
-        $provider->address = $request->address;
-        $provider->email = $request->email;
-        $provider->phone_number = $request->phone_number;
-        $provider->user_created_id = $request->user_created_id;
-        
-        $provider->save();
+        $rate = new Rate();
+        $rate->rate = $request->rate;
+        $rate->description = $request->description;
+        $rate->provider_id = $request->provider_id;
+        $rate->coin_id = $request->coin_id;
+        $rate->unit_of_measurement_id = $request->unit_of_measurement_id;
+        $rate->user_created_id = $request->user_created_id;
 
-        return (new ProviderResource($provider))->additional(
+        $rate->save();
+
+        return (new RateResource($rate))->additional(
             [
-            'message:' => 'successfully registered provider'
+            "message" => "successfully registerd rate"
             ],200
         );
     }
@@ -178,19 +176,19 @@ class ProviderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\MaterialSupplier  $materialSupplier
+     * @param  \App\Models\Rate  rate
      * @return \Illuminate\Http\Response
      * 
      * 
      * @OA\Get(
-     *      path="/providers/{id}",
-     *      operationId="getproviderById",
-     *      tags={"Provider"},
-     *      summary="Get providers information",
+     *      path="/rates/{id}",
+     *      operationId="getrateId",
+     *      tags={"Rate"},
+     *      summary="Get rate information",
      *      description="Returns providers data",
      *   @OA\Parameter(
      *          name="id",
-     *          description="provider id",
+     *          description="rate id",
      *          required=true,
      *          in="path",
      *             @OA\Schema(type="integer")
@@ -198,7 +196,7 @@ class ProviderController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/Provider")
+     *          @OA\JsonContent(ref="#/components/schemas/Rate")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -214,16 +212,22 @@ class ProviderController extends Controller
      *      )
      *   )
      */
-    public function show(Provider $provider)
-    {
-        return (new ProviderResource($provider))->additional(
-            [
-                'message:' => 'successfully response'
-            ],200
-        );
+    public function show(Rate $rate)
+    {   
+        return (new RateResource($rate))->additional(
+                [
+                    'message:' => 'successfully response.'
+                ],200
+            );
     }
 
-   /**
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\UpdateRateRequest  $request
+     * @param  \App\Models\Rate  $rate
+     * @return \Illuminate\Http\Response
+     * 
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -231,14 +235,14 @@ class ProviderController extends Controller
      * @return \Illuminate\Http\Response
      *
      * @OA\Put(
-     *      path="/providers/{id}",
-     *      operationId="updateprovider",
-     *      tags={"Provider"},
-     *      summary="Update existing provider",
-     *      description="Returns updated provider data",
+     *      path="/rates/{id}",
+     *      operationId="updaterate",
+     *      tags={"Rate"},
+     *      summary="Update existing rate",
+     *      description="Returns updated rate data",
      *  @OA\Parameter(
      *      name="id",
-     *      description="provider id",
+     *      description="rate id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -247,12 +251,12 @@ class ProviderController extends Controller
      *  ),
      *  @OA\RequestBody(
      *      required=true,
-     *      @OA\JsonContent(ref="#/components/schemas/Provider")
+     *      @OA\JsonContent(ref="#/components/schemas/Rate")
      *   ),
      *   @OA\Response(
      *      response=200,
      *      description="Successful operation",
-     *      @OA\JsonContent(ref="#/components/schemas/Provider")
+     *      @OA\JsonContent(ref="#/components/schemas/Rate")
      *   ),
      *   @OA\Response(
      *      response=400,
@@ -272,43 +276,41 @@ class ProviderController extends Controller
      *   )
      * )
      */
-    public function update(UpdateProviderRequest $request, Provider $provider)
+    public function update(UpdateRateRequest $request, Rate $rate)
     {
-        $provider->name = $request->name;
-        $provider->seal = $request->seal;
-        $provider->signature = $request->signature;
-        $provider->address = $request->address;
-        $provider->logo = $request->logo;
-        $provider->document_number = $request->document_number;
-        $provider->email = $request->email;
-        $provider->serie_number = $request->serie_number;
-        $provider->phone_number = $request->phone_number;
-        $provider->user_updated_id = $request->user_updated_id;
+        $rate->rate = $request->rate;
+        $rate->description = $request->description;
+        $rate->provider_id = $request->provider_id;
+        $rate->unit_of_measurement_id = $request->unit_of_measurement_id;
+        $rate->user_created_id = $request->user_created_id;
+        
+        $rate->update();
 
-        $provider->update();
-
-        return (new ProviderResource($provider))->additional(
+        return (new RateResource($rate))->additional(
             [
-                'message:' => 'successfully updated provider'
+                "message" => "successfully updated rate"
             ],200
         );
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Provider  $provider
+     * @param  \App\Models\Rate  $rate
      * @return \Illuminate\Http\Response
      * 
+     *Remove the specified resource from storage.
+     * 
      * @OA\Delete(
-     *  path="/providers/{id}",
-     *  operationId="deleteprovider",
-     *  tags={"Provider"},
+     *  path="/rates/{id}",
+     *  operationId="deleterate",
+     *  tags={"Rate"},
      *  summary="Delete existing provider",
      *  description="Deletes a record and returns no content",
      *  @OA\Parameter(
      *      name="id",
-     *      description="provider id",
+     *      description="rate id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -333,13 +335,15 @@ class ProviderController extends Controller
      *      description="Resource Not Found"
      *  )
      * )
+     * 
      */
-    public function destroy( Provider $provider)
+    public function destroy(Rate $rate)
     {
-        $provider->delete();
-        return response(
+        $rate->delete();
+
+        return response()->json(
             [
-                'message' => 'the data was deleted successfully'
+                'message' => 'the data was delete successfully'
             ],200
         );
     }

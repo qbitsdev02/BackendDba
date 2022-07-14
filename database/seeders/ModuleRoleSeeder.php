@@ -88,11 +88,6 @@ class ModuleRoleSeeder extends Seeder
                 ],
                 [
                     'role_id' => 1,
-                    'module_id' => 15,
-                    'permissions' => '["1", "2", "3", "4", "5", "6", "7"]'
-                ],
-                [
-                    'role_id' => 1,
                     'module_id' => 16,
                     'permissions' => '["1", "2", "3", "4", "5", "6", "7"]'
                 ],
@@ -109,6 +104,11 @@ class ModuleRoleSeeder extends Seeder
                 [
                     'role_id' => 1,
                     'module_id' => 25,
+                    'permissions' => '["1", "2", "3", "4", "5", "6", "7"]'
+                ],
+                [
+                    'role_id' => 1,
+                    'module_id' => 26,
                     'permissions' => '["1", "2", "3", "4", "5", "6", "7"]'
                 ]
             ]);

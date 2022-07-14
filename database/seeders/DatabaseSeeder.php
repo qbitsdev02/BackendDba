@@ -31,7 +31,12 @@ class DatabaseSeeder extends Seeder
             ConceptSeeder::class,
             OrganizationSeeder::class,
             PermissionSeeder::class,
-            ProviderTypeSeeder::class
+            ProviderTypeSeeder::class,
+            ProviderSeeder::class,
+            ProviderTypeProviderSeeder::class,
+            UnitOfMeasurementSeeder::class,
+            RateSeeder::class,
+         
         ]);
     }
 }
