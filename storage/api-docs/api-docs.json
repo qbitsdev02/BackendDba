@@ -4949,7 +4949,7 @@
                 "tags": [
                     "Ticket"
                 ],
-                "summary": "Delete existing provider",
+                "summary": "Delete existing ticket",
                 "description": "Deletes a record and returns no content",
                 "operationId": "deleteticket",
                 "parameters": [

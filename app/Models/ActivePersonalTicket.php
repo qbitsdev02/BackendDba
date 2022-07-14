@@ -37,7 +37,7 @@ class ActivePersonalTicket extends Pivot
      */
     public function tickets()
     {
-        return $this->hasMany(Ticket::class);
+        return $this->belongsTo(Ticket::class);
     }
 
 }

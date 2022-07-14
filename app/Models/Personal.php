@@ -30,7 +30,7 @@ class Personal extends Model
      */
     public function activePersonalTickets()
     {
-        return $this->hasMany(ActivePersonalTicket::class);
+        return $this->belongsTo(ActivePersonalTicket::class);
     }
 
 

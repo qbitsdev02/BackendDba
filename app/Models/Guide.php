@@ -156,6 +156,6 @@ class Guide extends Base
      */
     public function tickets()
     {
-        return $this->hasMany(Ticket::class);
+        return $this->belongsTo(Ticket::class);
     }
 }
