@@ -279,7 +279,7 @@ class TicketController extends Controller
      *  path="/tickets/{id}",
      *  operationId="deleteticket",
      *  tags={"Ticket"},
-     *  summary="Delete existing provider",
+     *  summary="Delete existing ticket",
      *  description="Deletes a record and returns no content",
      *  @OA\Parameter(
      *      name="id",
