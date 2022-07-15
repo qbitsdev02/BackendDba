@@ -36,4 +36,13 @@ namespace App\Models;
 class Coin extends Base
 {
 
+    /**
+     * Relationship payment orden
+     * Get the payment orden associated to the coin
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     */
+    public function paymentOrders()
+    {
+        return $this->hasMany(PaymentOrder::class);
+    }
 }

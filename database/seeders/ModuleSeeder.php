@@ -146,7 +146,7 @@ class ModuleSeeder extends Seeder
                 [
                     'name' => 'tickets',
                     'icon' => 'person',
-                    'route' => 'ticket',
+                    'route' => 'Ticket',
                     'section_id' => 1,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
@@ -247,6 +247,15 @@ class ModuleSeeder extends Seeder
                     'icon' => 'person',
                     'route' => 'Rate',
                     'section_id' => 4,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                 //27
+                 [
+                    'name' => 'payment-orders',
+                    'icon' => 'person',
+                    'route' => 'PaymentOrder',
+                    'section_id' => 1,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],

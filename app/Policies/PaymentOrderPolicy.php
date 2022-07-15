@@ -18,7 +18,7 @@ class PaymentOrderPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->can('payment-orders-viewAny');
     }
 
     /**
@@ -30,7 +30,7 @@ class PaymentOrderPolicy
      */
     public function view(User $user, PaymentOrder $paymentOrder)
     {
-        //
+        return $user->can('payment-orders-read');
     }
 
     /**
@@ -41,7 +41,7 @@ class PaymentOrderPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->can('payment-orders-create');
     }
 
     /**
@@ -53,7 +53,7 @@ class PaymentOrderPolicy
      */
     public function update(User $user, PaymentOrder $paymentOrder)
     {
-        //
+        return $user->can('payment-orders-update');
     }
 
     /**
@@ -65,7 +65,7 @@ class PaymentOrderPolicy
      */
     public function delete(User $user, PaymentOrder $paymentOrder)
     {
-        //
+        return $user->can('payment-orders-delete');
     }
 
     /**
@@ -77,7 +77,7 @@ class PaymentOrderPolicy
      */
     public function restore(User $user, PaymentOrder $paymentOrder)
     {
-        //
+        return $user->can('payment-orders-restore');
     }
 
     /**
@@ -89,6 +89,6 @@ class PaymentOrderPolicy
      */
     public function forceDelete(User $user, PaymentOrder $paymentOrder)
     {
-        //
+        return $user->can('payment-orders-forceDelete');
     }
 }

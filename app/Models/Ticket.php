@@ -200,4 +200,15 @@ class Ticket extends Base
     {
         return $this->hasMany(ActivePersonalTicket::class);
     }
+    
+    /**
+     * Relationship payment orden
+     * Get the payment orden associated to the ticket
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     */
+    public function paymentOrders()
+    {
+        return $this->hasMany(PaymentOrder::class);
+    }
+
 }

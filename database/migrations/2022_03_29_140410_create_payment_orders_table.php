@@ -15,12 +15,13 @@ class CreatePaymentOrdersTable extends Migration
     {
         Schema::create('payment_orders', function (Blueprint $table) {
             $table->id();
-            $table->string('reference')->nullable();
+            $table->string('description')->nullable();
             $table->float('amount');
             $table->foreignId('operation_type_id')->constrained();
-            $table->foreignId('order_id')->constrained();
+            $table->foreignId('ticket_id')->nullable()->constrained();
             $table->foreignId('entity_id')->constrained();
             $table->foreignId('coin_id')->constrained();
+            $table->date('payment_date')->nullable()->constrained();
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->timestamps();

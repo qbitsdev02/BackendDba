@@ -36,5 +36,13 @@ namespace App\Models;
  */
 class OperationType extends Base
 {
-    //
+    /**
+    * Relationship payment order
+    * Get the operations order associated to the operation type
+    * @return \Illuminate\Database\Eloquent\Relations\hasMany 
+    */
+    public function operationOrders()
+    {
+        return $this->hasMany(PaymentOrder::class);
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PaymentOrderController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ProviderTypeController;
 use App\Http\Controllers\RateController;
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 Route::group([
     'prefix' => 'authentication',
 ], function ($router) {
@@ -57,4 +59,5 @@ Route::group([
     $router->resource('unit-of-measurements', UnitOfMeasurementController::class);
     $router->resource('rates', RateController::class);
     $router->resource('tickets', TicketController::class);
+    $router->resource('payment-orders', PaymentOrderController::class);
 });
