@@ -142,6 +142,15 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
+                //15
+                [
+                    'name' => 'tickets',
+                    'icon' => 'person',
+                    'route' => 'ticket',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
                 // 16
                 [
                     'name' => 'states',
@@ -240,7 +249,9 @@ class ModuleSeeder extends Seeder
                     'section_id' => 4,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
-                ]
+                ],
+                                
+                
             ]);
     }
 }

@@ -21,7 +21,7 @@ class RateSeeder extends Seeder
                 'rate' => '25.00',
                 'description' => 'Pago por Horas.',
                 'provider_id' => 1,
-                'unit_of_measurements_id' => 4,
+                'unit_of_measurement_id' => 4,
                 'coin_id' => 1,
                 'user_created_id' => 1,     
             ]
