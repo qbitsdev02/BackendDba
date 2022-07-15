@@ -22,11 +22,11 @@ class PaymentOrderResource extends JsonResource
                 'id' => $this->operationType->id,
                 'name' =>$this->operationType->name,
              ],
-            'ticket' => [
+            'ticket' =>  $this->ticket_id ? [
                 'id' => $this->ticket_id,
                 'tare weight' => $this->ticket->tare_weight,
                 'gross weight' => $this->ticket->gross_weight,
-            ],
+            ] : null,
              'entity' => [
                 'id' => $this->entity->id,
                 'name' =>$this->entity->name,
