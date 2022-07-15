@@ -11,12 +11,6 @@ use Illuminate\Database\Eloquent\Model;
  *   schema="PaymentOrder",
  *   type="object",
  *   @OA\Property(
- *       property="reference",
- *       type="string",
- *       required={"true"},
- *       description="The reference to payment order"
- *   ),
- *   @OA\Property(
  *       property="description",
  *       type="string",
  *       required={"true"},
@@ -24,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  *   ),
  *   @OA\Property(
  *       property="amount",
- *       type="string",
+ *       type="number",
  *       required={"true"},
  *       description="The amount to payment order"
  *   ),

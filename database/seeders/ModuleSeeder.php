@@ -250,6 +250,15 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
+                 //27
+                 [
+                    'name' => 'payment-orders',
+                    'icon' => 'person',
+                    'route' => 'PaymentOrder',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
                                 
                 
             ]);

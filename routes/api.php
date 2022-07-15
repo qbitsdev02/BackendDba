@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-$router->resource('payment-orders', PaymentOrderController::class);
 
 Route::group([
     'prefix' => 'authentication',
@@ -60,4 +59,5 @@ Route::group([
     $router->resource('unit-of-measurements', UnitOfMeasurementController::class);
     $router->resource('rates', RateController::class);
     $router->resource('tickets', TicketController::class);
+    $router->resource('payment-orders', PaymentOrderController::class);
 });
