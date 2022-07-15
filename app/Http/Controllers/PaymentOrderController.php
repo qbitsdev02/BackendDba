@@ -19,7 +19,7 @@ class PaymentOrderController extends Controller
      */
     public function __construct()
     {
-        $this->authorizeResource(PaymentOrder::class, 'paymentOrder');
+        $this->authorizeResource(PaymentOrder::class, 'payment_order');
     }
 
     /**
