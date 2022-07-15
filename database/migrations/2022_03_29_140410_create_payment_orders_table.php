@@ -18,7 +18,7 @@ class CreatePaymentOrdersTable extends Migration
             $table->string('description')->nullable();
             $table->float('amount');
             $table->foreignId('operation_type_id')->constrained();
-            $table->foreignId('ticket_id')->constrained();
+            $table->foreignId('ticket_id')->nullable()->constrained();
             $table->foreignId('entity_id')->constrained();
             $table->foreignId('coin_id')->constrained();
             $table->date('payment_date')->nullable()->constrained();
