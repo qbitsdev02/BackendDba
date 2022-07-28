@@ -15,6 +15,7 @@ use App\Models\Port;
 use App\Models\Provider;
 use App\Models\ProviderType;
 use App\Models\Rate;
+use App\Models\StaffType;
 use App\Models\State;
 use App\Models\Ticket;
 use App\Policies\CoinPolicy;
@@ -23,6 +24,7 @@ use App\Policies\PortPolicy;
 use App\Policies\ProviderPolicy;
 use App\Policies\ProviderTypePolicy;
 use App\Policies\RatePolicy;
+use App\Policies\StaffTypePolicy;
 use App\Policies\StatePolicy;
 use App\Policies\TicketPolicy;
 
@@ -41,7 +43,8 @@ class AuthServiceProvider extends ServiceProvider
         Rate::class => RatePolicy::class,
         Ticket::class => TicketPolicy::class,
         PaymentOrder::class => PaymentOrderPolicy::class,
-        Port::class =>PortPolicy::class
+        Port::class =>PortPolicy::class,
+        StaffType::class => StaffTypePolicy::class,
     ];
 
 
