@@ -89,4 +89,18 @@ class Field extends Base
         return $this->hasMany(Ticket::class);
     }
 
+
+    /**
+     * Relationship port
+     * A field belong to port
+     * 
+     * Get the port associated to field that owns the attributes.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\belongTo
+     * 
+     */
+    public function port()
+    {
+        return $this->belongsTo(Port::class);
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PaymentOrderController;
+use App\Http\Controllers\PortController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ProviderTypeController;
 use App\Http\Controllers\RateController;
@@ -60,4 +61,5 @@ Route::group([
     $router->resource('rates', RateController::class);
     $router->resource('tickets', TicketController::class);
     $router->resource('payment-orders', PaymentOrderController::class);
+    $router->resource('ports', PortController::class);
 });

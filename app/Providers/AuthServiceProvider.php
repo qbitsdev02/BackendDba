@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\Module;
 use App\Models\PaymentOrder;
 use App\Models\Permission;
+use App\Models\Port;
 use App\Models\Provider;
 use App\Models\ProviderType;
 use App\Models\Rate;
@@ -18,6 +19,7 @@ use App\Models\State;
 use App\Models\Ticket;
 use App\Policies\CoinPolicy;
 use App\Policies\PaymentOrderPolicy;
+use App\Policies\PortPolicy;
 use App\Policies\ProviderPolicy;
 use App\Policies\ProviderTypePolicy;
 use App\Policies\RatePolicy;
@@ -38,7 +40,8 @@ class AuthServiceProvider extends ServiceProvider
         ProviderType::class => ProviderTypePolicy::class, 
         Rate::class => RatePolicy::class,
         Ticket::class => TicketPolicy::class,
-        PaymentOrder::class => PaymentOrderPolicy::class
+        PaymentOrder::class => PaymentOrderPolicy::class,
+        Port::class =>PortPolicy::class
     ];
 
 

@@ -18,6 +18,7 @@ class CreateFieldsTable extends Migration
             $table->string('denomination');
             $table->string('acronym');
             $table->string('address');
+            $table->foreignId('port_id')->nullable()->constrained();
             $table->foreignId('organization_id')->constrained();
             $table->foreignId('field_supervisor_id')->constrained('users');
             $table->foreignId('user_created_id')->constrained('users');

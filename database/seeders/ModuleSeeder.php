@@ -259,6 +259,15 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
+                 //28
+                 [
+                    'name' => 'ports',
+                    'icon' => 'person',
+                    'route' => 'Port',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
                                 
                 
             ]);
