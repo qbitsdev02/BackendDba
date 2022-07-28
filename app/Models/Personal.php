@@ -33,5 +33,13 @@ class Personal extends Model
         return $this->belongsTo(ActivePersonalTicket::class);
     }
 
+    /**
+     * Relationship to staff_type
+     */
+    public function staffType()
+    {
+        $this->hasMany(StaffType::class);
+    }
+
 
 }

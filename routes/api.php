@@ -5,6 +5,7 @@ use App\Http\Controllers\PortController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ProviderTypeController;
 use App\Http\Controllers\RateController;
+use App\Http\Controllers\StaffTypeController;
 use App\Http\Controllers\TicketController;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
@@ -62,4 +63,5 @@ Route::group([
     $router->resource('tickets', TicketController::class);
     $router->resource('payment-orders', PaymentOrderController::class);
     $router->resource('ports', PortController::class);
+    $router->resource('staff-types', StaffTypeController::class);
 });
