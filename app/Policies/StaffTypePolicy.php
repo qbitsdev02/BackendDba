@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use App\Models\Personal;
+use App\Models\StaffType;
 use App\Models\User;
 
-class PersonalPolicy
+class StaffTypePolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,19 @@ class PersonalPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('personals-viewAny');
+        return $user->can('staff-types-viewAny');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Personal  $personal
+     * @param  \App\Models\StaffType  $staffType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Personal $personal)
+    public function view(User $user, StaffType $staffType)
     {
-        return $user->can('personals-read');
+        return $user->can('staff-types-read');
     }
 
     /**
@@ -41,54 +41,54 @@ class PersonalPolicy
      */
     public function create(User $user)
     {
-        return $user->can('personals-create');
+        return $user->can('staff-types-create');
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Personal  $personal
+     * @param  \App\Models\StaffType  $staffType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Personal $personal)
+    public function update(User $user, StaffType $staffType)
     {
-        return $user->can('personals-update');
+        return $user->can('staff-types-update');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Personal  $personal
+     * @param  \App\Models\StaffType  $staffType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Personal $personal)
+    public function delete(User $user, StaffType $staffType)
     {
-        return $user->can('personals-delete');
+        return $user->can('staff-types-delete');
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Personal  $personal
+     * @param  \App\Models\StaffType  $staffType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Personal $personal)
+    public function restore(User $user, StaffType $staffType)
     {
-        return $user->can('personals-restore');
+        return $user->can('staff-types-restore');
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Personal  $personal
+     * @param  \App\Models\StaffType  $staffType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Personal $personal)
+    public function forceDelete(User $user, StaffType $staffType)
     {
-        return $user->can('personals-forceDelete');
+        return $user->can('staff-types-forceDelete');
     }
 }

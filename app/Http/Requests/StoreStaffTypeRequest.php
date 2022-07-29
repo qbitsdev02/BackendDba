@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use phpDocumentor\Reflection\PseudoTypes\True_;
 
-class UpdatePersonalRequest extends FormRequest
+class StoreStaffTypeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

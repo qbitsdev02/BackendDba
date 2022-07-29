@@ -21,8 +21,9 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('email')->nullable();
             $table->string('phone_number')->nullable();
+            $table->morphs('ownerable');
+            $table->foreignId('staff_type_id')->constrained();
             $table->foreignId('user_id')->nullable()->constrained();
-            $table->foreignId('provider_id')->constrained();
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_update_id')->nullable()->constrained('users');
             $table->softDeletes();

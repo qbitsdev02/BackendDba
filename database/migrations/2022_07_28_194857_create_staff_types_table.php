@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePortsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreatePortsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ports', function (Blueprint $table) {
+        Schema::create('staff_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('rif');
-            $table->string('city')->nullable();
-            $table->string('state')->nullable();
+            $table->string('description')->nullable();
             $table->foreignId('user_created_id')->constrained('users');
-            $table->foreignId('user_updated_id')->nullable()->constrained('users');
+            $table->foreignId('user_update_id')->nullable()->constrained('users');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -33,6 +31,6 @@ class CreatePortsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ports');
+        Schema::dropIfExists('staff_types');
     }
-}
+};

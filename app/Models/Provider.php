@@ -119,7 +119,14 @@ class Provider extends Base
         return $this->hasMany(Ticket::class);
 
     }
-    
+
+    /**
+     * Relationship to personal
+     */
+    public function personals()
+    {
+        return $this->hasMany(Personal::class);
+    }
 }
 
 

@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use App\Models\Personal;
+use App\Models\Port;
 use App\Models\User;
 
-class PersonalPolicy
+class PortPolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,19 @@ class PersonalPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('personals-viewAny');
+        return $user->can('ports-viewAny');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Personal  $personal
+     * @param  \App\Models\Port  $port
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Personal $personal)
+    public function view(User $user, Port $port)
     {
-        return $user->can('personals-read');
+        return $user->can('ports-read');
     }
 
     /**
@@ -41,54 +41,54 @@ class PersonalPolicy
      */
     public function create(User $user)
     {
-        return $user->can('personals-create');
+        return $user->can('ports-create');
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Personal  $personal
+     * @param  \App\Models\Port  $port
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Personal $personal)
+    public function update(User $user, Port $port)
     {
-        return $user->can('personals-update');
+        return $user->can('ports-update');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Personal  $personal
+     * @param  \App\Models\Port  $port
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Personal $personal)
+    public function delete(User $user, Port $port)
     {
-        return $user->can('personals-delete');
+        return $user->can('ports-delete');
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Personal  $personal
+     * @param  \App\Models\Port  $port
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Personal $personal)
+    public function restore(User $user, Port $port)
     {
-        return $user->can('personals-restore');
+        return $user->can('ports-restore');
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Personal  $personal
+     * @param  \App\Models\Port  $port
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Personal $personal)
+    public function forceDelete(User $user, Port $port)
     {
-        return $user->can('personals-forceDelete');
+        return $user->can('ports-forceDelete');
     }
 }

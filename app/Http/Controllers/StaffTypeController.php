@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Personal;
+use App\Models\StaffType;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StorePersonalRequest;
-use App\Http\Requests\UpdatePersonalRequest;
-use App\Http\Resources\PersonalResource;
+use App\Http\Requests\StoreStaffTypeRequest;
+use App\Http\Requests\UpdateStaffTypeRequest;
+use App\Http\Resources\StaffTypeResource;
 use Illuminate\Http\Request;
 
-class PersonalController extends Controller
+class StaffTypeController extends Controller
 {
 
         /**
@@ -19,9 +19,8 @@ class PersonalController extends Controller
      * This method will attach the appropriate can middleware definitions to the resource controller's methods.
      */
     public function __construct(){
-        $this->authorizeResource(Personal::class, 'personal');
+        $this->authorizeResource(StaffType::class, 'staff_type');
     }
-
 
     /**
      * Display a listing of the resource.
@@ -29,9 +28,9 @@ class PersonalController extends Controller
      * @return \Illuminate\Http\Response
      * 
       * @OA\Get(
-      *     path="/personals",
-      *     operationId="getpersonal",
-      *     tags={"Personal"},
+      *     path="/staff-types",
+      *     operationId="getstaffType",
+      *     tags={"StaffType"},
       *     @OA\Parameter(
       *       name="paginate",
       *       in="query",
@@ -99,7 +98,7 @@ class PersonalController extends Controller
       *     ),
       *     @OA\Response(
       *         response=200,
-      *         description="personal all."
+      *         description="Staff type all."
       *     ),
       *     @OA\Response(
       *         response="default",
@@ -109,12 +108,12 @@ class PersonalController extends Controller
      */
     public function index(Request $request)
     {
-        $personals = Personal::filters($request->all())
+        $staffTypes = StaffType::filters($request->all())
             ->search($request->all());
-        
-        return (PersonalResource::collection($personals))->additional(
+
+        return (StaffTypeResource::collection($staffTypes))->additional(
             [
-                'message:' => 'Successfully response'
+                "message" => "successfully response"
             ],200
         );
     }
@@ -122,77 +121,69 @@ class PersonalController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePersonalRequest  $request
+     * @param  \App\Http\Requests\StoreStaffTypeRequest  $request
      * @return \Illuminate\Http\Response
      * 
-    * @OA\Post(
-    *   path="/personals",
-    *   summary="Creates a new personal",
-    *   description="Creates a new personal",
-    *   tags={"Personal"},
-    *   security={{"passport": {"*"}}},
-    *   @OA\RequestBody(
-    *       @OA\MediaType(
-    *           mediaType="application/json",
-    *           @OA\Schema(ref="#/components/schemas/Personal")
-    *       )
-    *   ),
-    *   @OA\Response(
-    *       @OA\MediaType(mediaType="application/json"),
-    *       response=200,
-    *       description="The personal resource created",
-    *   ),
-    *   @OA\Response(
-    *       @OA\MediaType(mediaType="application/json"),
-    *       response=401,
-    *       description="Unauthenticated."
-    *   ),
-    *   @OA\Response(
-    *       @OA\MediaType(mediaType="application/json"),
-    *       response="default",
-    *       description="an ""unexpected"" error",
-    *   )
+     * @OA\Post(
+     *   path="/staff-types",
+     *   summary="Creates a new staff type",
+     *   description="Creates a new staff type",
+     *   tags={"StaffType"},
+     *   security={{"passport": {"*"}}},
+     *   @OA\RequestBody(
+     *       @OA\MediaType(
+     *           mediaType="application/json",
+     *           @OA\Schema(ref="#/components/schemas/StaffType")
+     *       )
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response=200,
+     *       description="The Provider resource created",
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response=401,
+     *       description="Unauthenticated."
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response="default",
+     *       description="an ""unexpected"" error",
+     *   )
     * )
-    */
-    public function store(StorePersonalRequest $request)
+     */
+    public function store(StoreStaffTypeRequest $request)
     {
-        $personal = new Personal();
-        $personal->name = $request->name;
-        $personal->last_name = $request->last_name;
-        $personal->document_number = $request->document_number;
-        $personal->address = $request->address;
-        $personal->phone_number = $request->phone_number;
-        $personal->ownerable_type = $request->ownerable_type;
-        $personal->ownerable_id = $request->ownerable_id;
-        $personal->staff_type_id = $request->staff_type_id;
-        $personal->user_id = $request->user_id;
-        $personal->user_created_id = $request->user_created_id;
+        $staffType = new StaffType();
+        $staffType->name = $request->name;
+        $staffType->description = $request->description;
+        $staffType->user_created_id =$request->user_created_id;
 
-        $personal->save();
+        $staffType->save();
 
-        return (new PersonalResource($personal))->additional(
+        return (new StaffTypeResource($staffType))->additional(
             [
-                'message:' => 'successfully registered personal'
+                "message" => " successfully registerd staff  type"
             ],201
         );
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Personal  $personal
+     * @param  \App\Models\StaffType  $staffType
      * @return \Illuminate\Http\Response
      * 
      * @OA\Get(
-     *      path="/personals/{id}",
-     *      operationId="getpersonalById",
-     *      tags={"Personal"},
-     *      summary="Get personal information",
-     *      description="Returns personal data",
+     *      path="/staff-types/{id}",
+     *      operationId="getstaffTypeId",
+     *      tags={"StaffType"},
+     *      summary="Get Staff type information",
+     *      description="Returns Staff type data",
      *   @OA\Parameter(
      *          name="id",
-     *          description="personal id",
+     *          description="Staff type id",
      *          required=true,
      *          in="path",
      *             @OA\Schema(type="integer")
@@ -200,7 +191,7 @@ class PersonalController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/Personal")
+     *          @OA\JsonContent(ref="#/components/schemas/StaffType")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -216,11 +207,11 @@ class PersonalController extends Controller
      *      )
      *   )
      */
-    public function show(Personal $personal)
+    public function show(StaffType $staffType)
     {
-        return (new PersonalResource($personal))->additional(
+        return (new StaffTypeResource($staffType))->additional(
             [
-                'message:' => 'successfully response'
+                "message" => "successfully response"
             ],200
         );
     }
@@ -228,19 +219,19 @@ class PersonalController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePersonalRequest  $request
-     * @param  \App\Models\Personal  $personal
+     * @param  \App\Http\Requests\UpdateStaffTypeRequest  $request
+     * @param  \App\Models\StaffType  $staffType
      * @return \Illuminate\Http\Response
      * 
      * @OA\Put(
-     *      path="/personals/{id}",
-     *      operationId="updatepersonal",
-     *      tags={"Personal"},
-     *      summary="Update existing personal",
-     *      description="Returns updated personal data",
+     *      path="/staff-types/{id}",
+     *      operationId="updatestaffType",
+     *      tags={"StaffType"},
+     *      summary="Update existing staff type",
+     *      description="Returns updated rate data",
      *  @OA\Parameter(
      *      name="id",
-     *      description="personal id",
+     *      description="staff type id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -249,12 +240,12 @@ class PersonalController extends Controller
      *  ),
      *  @OA\RequestBody(
      *      required=true,
-     *      @OA\JsonContent(ref="#/components/schemas/Personal")
+     *      @OA\JsonContent(ref="#/components/schemas/StaffType")
      *   ),
      *   @OA\Response(
      *      response=200,
      *      description="Successful operation",
-     *      @OA\JsonContent(ref="#/components/schemas/Personal")
+     *      @OA\JsonContent(ref="#/components/schemas/StaffType")
      *   ),
      *   @OA\Response(
      *      response=400,
@@ -274,44 +265,36 @@ class PersonalController extends Controller
      *   )
      * )
      */
-    public function update(UpdatePersonalRequest $request, Personal $personal)
+    public function update(UpdateStaffTypeRequest $request, StaffType $staffType)
     {
-        $personal->name = $request->name;
-        $personal->last_name = $request->last_name;
-        $personal->document_number = $request->document_number;
-        $personal->address = $request->address;
-        $personal->phone_number = $request->phone_number;
-        $personal->ownerable_type = $request->ownerable_type;
-        $personal->ownerable_id = $request->ownerable_id;
-        $personal->staff_type_id = $request->staff_type_id;
-        $personal->user_id = $request->user_id;
-        $personal->user_created_id = $request->user_created_id;
+        $staffType->name = $request->name;
+        $staffType->description = $request->description;
+        $staffType->user_update_id = $request->user_update_id;
 
-        $personal->update();
+        $staffType->update();
 
-        return (new PersonalResource($personal))->additional(
+        return (new StaffTypeResource($staffType))->additional(
             [
-                'message:' => 'successfully updated personal'
+                "message" => "successfully updated staff type"
             ],200
         );
-
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Personal  $personal
+     * @param  \App\Models\StaffType  $staffType
      * @return \Illuminate\Http\Response
      * 
      * @OA\Delete(
-     *  path="/personals/{id}",
-     *  operationId="deletepersonal",
-     *  tags={"Personal"},
-     *  summary="Delete existing personal",
+     *  path="/staff-types/{id}",
+     *  operationId="deletestaffType",
+     *  tags={"StaffType"},
+     *  summary="Delete existing staff type",
      *  description="Deletes a record and returns no content",
      *  @OA\Parameter(
      *      name="id",
-     *      description="personal id",
+     *      description="staff type id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -337,12 +320,12 @@ class PersonalController extends Controller
      *  )
      * )
      */
-    public function destroy(Personal $personal)
+    public function destroy(StaffType $staffType)
     {
-        $personal->delete();
+        $staffType->delete();
         return response()->json(
             [
-                'message' => 'the data was deleted successfully'
+                "messasge" => "data was delete successfully"
             ],200
         );
     }
