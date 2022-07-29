@@ -19,7 +19,7 @@ class StaffTypeController extends Controller
      * This method will attach the appropriate can middleware definitions to the resource controller's methods.
      */
     public function __construct(){
-        $this->authorizeResource(StaffType::class, 'staff-type');
+        $this->authorizeResource(StaffType::class, 'staff_type');
     }
 
     /**
