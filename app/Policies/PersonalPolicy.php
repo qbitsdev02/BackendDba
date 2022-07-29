@@ -41,7 +41,7 @@ class PersonalPolicy
      */
     public function create(User $user)
     {
-        return $user->can('personals-crear');
+        return $user->can('personals-create');
     }
 
     /**

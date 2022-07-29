@@ -16,7 +16,7 @@ class PortController extends Controller
      * This method will attach the appropriate can middleware definitions to the resource controller's methods.
      */
     public function __construct(){
-        $this->authorizeResource(Rate::class, 'port');
+        $this->authorizeResource(Port::class, 'port');
     }
 
     /**

@@ -19,7 +19,7 @@ class PersonalController extends Controller
      * This method will attach the appropriate can middleware definitions to the resource controller's methods.
      */
     public function __construct(){
-        $this->authorizeResource(Rate::class, 'personal');
+        $this->authorizeResource(Personal::class, 'personal');
     }
 
 
