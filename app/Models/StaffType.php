@@ -48,6 +48,6 @@ class StaffType extends Base
      */
     public function personal()
     {
-        $this->belongsTo(Personal::class);
+        $this->hasMany(Personal::class);
     }
 }

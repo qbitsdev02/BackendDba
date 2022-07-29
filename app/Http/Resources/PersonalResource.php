@@ -19,7 +19,13 @@ class PersonalResource extends JsonResource
             "name" => $this->name, 
             "last_name" => $this->last_name,
             "document_number" => $this->document_number,
-            "personal_type" => "",
+            "ownerable" => [
+                'name' => $this->ownerable->name,
+                'email' => $this->ownerable->email,
+                'document_number' => $this->ownerable->document_number,
+                'phone_number' => $this->ownerable->phone_number,
+            ],
+            "staff_type_id" => new StaffTypeResource($this->staffType),
             "user_id" => $this->user_id,
         ];
     }

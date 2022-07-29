@@ -21,21 +21,27 @@ class PersonalSeeder extends Seeder
                     "name" => "Pedro",
                     "last_name" => "Correa",
                     "document_number" => "15987654",
-                    "provider_id" => 1,
+                    "ownerable_type" => 'App\\Models\\Provider',
+                    "ownerable_id" => 1,
+                    "staff_type_id" => 2,
                     "user_created_id" => 1
                     ],
                 [
                     "name" => "Alejandro",
                     "last_name" => "perez",
                     "document_number" => "14859741",
-                    "provider_id" => 1,
+                    "ownerable_type" => 'App\\Models\\Provider',
+                    "ownerable_id" => 1,
+                    "staff_type_id" => 2,
                     "user_created_id" => 1
                 ],
                 [
                     "name" => "Hugo",
                     "last_name" => "Contreras",
                     "document_number" => "8965321",
-                    "provider_id" => 1,
+                    "staff_type_id" => 3,
+                    "ownerable_type" => 'App\\Models\\Provider',
+                    "ownerable_id" => 1,
                     "user_created_id" => 1
                 ]
                  

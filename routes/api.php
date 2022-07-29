@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PaymentOrderController;
+use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\PortController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ProviderTypeController;
@@ -20,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+$router->resource('personals', PersonalController::class);
 
 Route::group([
     'prefix' => 'authentication',
