@@ -22,8 +22,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-$router->resource('personals', PersonalController::class);
-
 Route::group([
     'prefix' => 'authentication',
 ], function ($router) {
@@ -67,4 +65,5 @@ Route::group([
     $router->resource('payment-orders', PaymentOrderController::class);
     $router->resource('ports', PortController::class);
     $router->resource('staff-types', StaffTypeController::class);
+    $router->resource('personals', PersonalController::class);
 });

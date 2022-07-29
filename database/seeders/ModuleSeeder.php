@@ -268,12 +268,21 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
-                 //28
+                 //29
                  [
                     'name' => 'staff-types',
                     'icon' => 'person',
                     'route' => 'StaffType',
                     'section_id' => 4,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                //30
+                [
+                    'name' => 'personals',
+                    'icon' => 'person',
+                    'route' => 'Personal',
+                    'section_id' => 1,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],

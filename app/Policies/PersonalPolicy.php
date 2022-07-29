@@ -18,7 +18,7 @@ class PersonalPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->can('personals-viewAny');
     }
 
     /**
@@ -30,7 +30,7 @@ class PersonalPolicy
      */
     public function view(User $user, Personal $personal)
     {
-        //
+        return $user->can('personals-read');
     }
 
     /**
@@ -41,7 +41,7 @@ class PersonalPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->can('personals-crear');
     }
 
     /**
@@ -53,7 +53,7 @@ class PersonalPolicy
      */
     public function update(User $user, Personal $personal)
     {
-        //
+        return $user->can('personals-update');
     }
 
     /**
@@ -65,7 +65,7 @@ class PersonalPolicy
      */
     public function delete(User $user, Personal $personal)
     {
-        //
+        return $user->can('personals-delete');
     }
 
     /**
@@ -77,7 +77,7 @@ class PersonalPolicy
      */
     public function restore(User $user, Personal $personal)
     {
-        //
+        return $user->can('personals-restore');
     }
 
     /**
@@ -89,6 +89,6 @@ class PersonalPolicy
      */
     public function forceDelete(User $user, Personal $personal)
     {
-        //
+        return $user->can('personals-forceDelete');
     }
 }

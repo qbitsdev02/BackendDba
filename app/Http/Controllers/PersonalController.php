@@ -11,6 +11,18 @@ use Illuminate\Http\Request;
 
 class PersonalController extends Controller
 {
+
+        /**
+     * Create the controller instance to Authorizing Resource Controller.
+     *  
+     * You may make use of the (authorizeResource) method in your controller's constructor. 
+     * This method will attach the appropriate can middleware definitions to the resource controller's methods.
+     */
+    public function __construct(){
+        $this->authorizeResource(Rate::class, 'personal');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
