@@ -107,6 +107,26 @@ class Provider extends Base
         return $this->hasMany(Rate::class);
 
     }
+
+    /**
+     * Relationship Ticket. 
+     * 
+     * A provider has many ticket.
+     * 
+     */
+    public function tickets(){
+
+        return $this->hasMany(Ticket::class);
+
+    }
+
+    /**
+     * Relationship to personal
+     */
+    public function personals()
+    {
+        return $this->hasMany(Personal::class);
+    }
 }
 
 

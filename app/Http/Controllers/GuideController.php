@@ -98,9 +98,9 @@ class GuideController extends Controller
     {
         $guides = Guide::with(
                 'client:id,name,document_number',
-                'materialSupplier:id,name,document_number,logo,signature,seal',
+                'provider:id,name,document_number,logo,signature,seal',
                 'trailer:id,plate,brand,model,color',
-                'vehicle:id,name,plate,brand,model,color',
+                'vehicle:id,name,plate,brand,model',
                 'driver:id,name,document_number',
                 'swornDeclarations:id,imagen,guide_id',
                 'unitOfMeasurement:id,name,acronym'
@@ -157,7 +157,7 @@ class GuideController extends Controller
     public function store(StoreGuideRequest $request)
     {
         $guide = new Guide();
-        $guide->material_supplier_id = $request->material_supplier_id;
+        $guide->provider_id = $request->provider_id;
         $guide->vehicle_id = $request->vehicle_id;
         $guide->client_id = $request->client_id;
         $guide->trailer_id = $request->trailer_id;
@@ -290,7 +290,7 @@ class GuideController extends Controller
      */
     public function update(UpdateGuideRequest $request, Guide $guide)
     {
-        $guide->material_supplier_id = $request->material_supplier_id;
+        $guide->provider_id = $request->provider_id;
         $guide->vehicle_id = $request->vehicle_id;
         $guide->client_id = $request->client_id;
         $guide->trailer_id = $request->trailer_id;

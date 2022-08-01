@@ -142,6 +142,15 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
+                //15
+                [
+                    'name' => 'tickets',
+                    'icon' => 'person',
+                    'route' => 'Ticket',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
                 // 16
                 [
                     'name' => 'states',
@@ -240,7 +249,45 @@ class ModuleSeeder extends Seeder
                     'section_id' => 4,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
-                ]
+                ],
+                 //27
+                 [
+                    'name' => 'payment-orders',
+                    'icon' => 'person',
+                    'route' => 'PaymentOrder',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                 //28
+                 [
+                    'name' => 'ports',
+                    'icon' => 'person',
+                    'route' => 'Port',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                 //29
+                 [
+                    'name' => 'staff-types',
+                    'icon' => 'person',
+                    'route' => 'StaffType',
+                    'section_id' => 4,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                //30
+                [
+                    'name' => 'personals',
+                    'icon' => 'person',
+                    'route' => 'Personal',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                                
+                
             ]);
     }
 }

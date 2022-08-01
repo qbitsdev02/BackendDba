@@ -9,16 +9,26 @@ use Laravel\Passport\Passport;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Module;
+use App\Models\PaymentOrder;
 use App\Models\Permission;
+use App\Models\Personal;
+use App\Models\Port;
 use App\Models\Provider;
 use App\Models\ProviderType;
 use App\Models\Rate;
+use App\Models\StaffType;
 use App\Models\State;
+use App\Models\Ticket;
 use App\Policies\CoinPolicy;
+use App\Policies\PaymentOrderPolicy;
+use App\Policies\PersonalPolicy;
+use App\Policies\PortPolicy;
 use App\Policies\ProviderPolicy;
 use App\Policies\ProviderTypePolicy;
 use App\Policies\RatePolicy;
+use App\Policies\StaffTypePolicy;
 use App\Policies\StatePolicy;
+use App\Policies\TicketPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -32,7 +42,12 @@ class AuthServiceProvider extends ServiceProvider
         State::class => StatePolicy::class,
         Provider::class => ProviderPolicy::class,
         ProviderType::class => ProviderTypePolicy::class, 
-        Rate::class => RatePolicy::class
+        Rate::class => RatePolicy::class,
+        Ticket::class => TicketPolicy::class,
+        PaymentOrder::class => PaymentOrderPolicy::class,
+        Port::class =>PortPolicy::class,
+        StaffType::class => StaffTypePolicy::class,
+        Personal::class => PersonalPolicy::class,
     ];
 
 

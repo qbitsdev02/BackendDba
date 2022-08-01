@@ -21,13 +21,16 @@ class RateResource extends JsonResource
             'rate' => $this->rate,
             'description' => $this->description,
             'provider' => [
+                'id' => $this->provider->id,
                 'name' => $this->provider->name 
             ], 
             'coin' => [
+                'id' => $this->coin->id,
                 'name' => $this->coin->name,
                 'symbol' => $this->coin->symbol
             ],
             'unit_of_measurement' => [
+                'id' => $this->unitOfMeasurement->id,
                 'name' => $this->unitOfMeasurement->name,
                 'acronym' => $this->unitOfMeasurement->acronym
             ],

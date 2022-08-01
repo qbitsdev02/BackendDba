@@ -90,6 +90,12 @@ namespace App\Models;
  */
 class Guide extends Base
 {
+    protected $appends = ['full_name'];
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->code_runpa}-{$this->material}";
+    }
     /**
      * Get the client that owns the Guide
      *
@@ -100,13 +106,13 @@ class Guide extends Base
         return $this->belongsTo(Client::class);
     }
     /**
-     * Get the materialSupplier that owns the Guide
+     * Get the provider that owns the Guide
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function materialSupplier()
+    public function provider()
     {
-        return $this->belongsTo(MaterialSupplier::class);
+        return $this->belongsTo(Provider::class);
     }
     /**
      * Get the trailer that owns the Guide
@@ -140,9 +146,22 @@ class Guide extends Base
     {
         return $this->hasMany(SwornDeclaration::class);
     }
-    
+
     public function unitOfMeasurement()
     {
         return $this->belongsTo(UnitOfMeasurement::class);
+    }
+
+
+    /**
+     * Relationship ticket
+     * A guide has many ticket
+     *
+     * Get the ticket associated to the guide
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function tickets()
+    {
+        return $this->belongsTo(Ticket::class);
     }
 }

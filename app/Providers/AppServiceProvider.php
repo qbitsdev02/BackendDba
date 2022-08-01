@@ -12,6 +12,7 @@ use App\Models\Responsable;
 use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Role;
+use App\Models\Ticket;
 use App\Observers\BeneficiaryObserver;
 use App\Observers\ClientObserver;
 use App\Observers\FieldSupervisorObserver;
@@ -20,6 +21,7 @@ use App\Observers\ProviderObserver;
 use App\Observers\RateObserver;
 use App\Observers\ResponsableObserver;
 use App\Observers\RoleObserver;
+use App\Observers\TicketObserver;
 use App\Observers\UserObserver;
 
 class AppServiceProvider extends ServiceProvider
@@ -49,5 +51,6 @@ class AppServiceProvider extends ServiceProvider
         FieldSupervisor::observe(FieldSupervisorObserver::class);
         Client::observe(ClientObserver::class);
         Provider::observe(ProviderObserver::class);
+        Ticket::observe(TicketObserver::class);
     }
 }

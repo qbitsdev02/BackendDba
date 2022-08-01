@@ -36,5 +36,13 @@ namespace App\Models;
  */
 class Entity extends Base
 {
-    //
+    /**
+    * Relationship payment order
+    * Get the operations order associated to the entity
+    * @return \Illuminate\Database\Eloquent\Relations\hasMany 
+    */
+    public function operationOrders()
+    {
+        return $this->hasMany(PaymentOrder::class);
+    }
 }
