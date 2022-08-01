@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Active;
 use App\Models\Coin;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -19,6 +20,8 @@ use App\Models\Rate;
 use App\Models\StaffType;
 use App\Models\State;
 use App\Models\Ticket;
+use App\Policies\ActivePolicy;
+use App\Policies\AttributePolicy;
 use App\Policies\CoinPolicy;
 use App\Policies\PaymentOrderPolicy;
 use App\Policies\PersonalPolicy;
@@ -29,6 +32,7 @@ use App\Policies\RatePolicy;
 use App\Policies\StaffTypePolicy;
 use App\Policies\StatePolicy;
 use App\Policies\TicketPolicy;
+use Attribute;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -48,6 +52,8 @@ class AuthServiceProvider extends ServiceProvider
         Port::class =>PortPolicy::class,
         StaffType::class => StaffTypePolicy::class,
         Personal::class => PersonalPolicy::class,
+        Active::class=>ActivePolicy::class,
+        Attribute::class=>AttributePolicy::class,
     ];
 
 

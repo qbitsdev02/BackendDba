@@ -21,7 +21,8 @@ class ActiveSeeder extends Seeder
                     "name" => "Camion",
                     "status" => "active",
                     "description" => "Camion 6 ejes",
-                    "provider_id" => 1,
+                    "ownerable_type" => 'App\\Models\\Provider',
+                    "ownerable_id" => 1,
                     "user_created_id" => 1
                     
                 ],
@@ -29,7 +30,8 @@ class ActiveSeeder extends Seeder
                     "name" => "Grua",
                     "status" => "active",
                     "description" => "Grua",
-                    "provider_id" => 1,
+                    "ownerable_type" => 'App\\Models\\Provider',
+                    "ownerable_id" => 1,
                     "user_created_id" => 1
                     
                 ],
@@ -37,10 +39,20 @@ class ActiveSeeder extends Seeder
                     "name" => "maquina para soldar ",
                     "status" => "active",
                     "description" => "maquina para soldar",
-                    "provider_id" => 1,
+                    "ownerable_type" => 'App\\Models\\Provider',
+                    "ownerable_id" => 1,
                     "user_created_id" => 1
                     
-                ]
+                ],
+                [
+                    "name" => "Only one ",
+                    "status" => "active",
+                    "description" => "computador",
+                    "ownerable_type" => 'App\\Models\\Entity',
+                    "ownerable_id" => 1,
+                    "user_created_id" => 1
+                    
+                ],
             ]
         );
     }
