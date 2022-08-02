@@ -17,16 +17,13 @@ class PaymentOrderResource extends JsonResource
         return [
             'id' => $this->id,
             'description' => $this->description,
+            'status' => $this->status,
             'amount' => $this->amount,
              'operation_type' => [
                 'id' => $this->operationType->id,
                 'name' =>$this->operationType->name,
              ],
-            'ticket' =>  $this->ticket_id ? [
-                'id' => $this->ticket_id,
-                'tare weight' => $this->ticket->tare_weight,
-                'gross weight' => $this->ticket->gross_weight,
-            ] : null,
+            'ownerable' =>$this->ownerable,
              'entity' => [
                 'id' => $this->entity->id,
                 'name' =>$this->entity->name,
