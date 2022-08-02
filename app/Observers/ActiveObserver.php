@@ -14,7 +14,7 @@ class ActiveObserver
      */
     public function created(Active $active)
     {
-        $active->attributes()->sync(request()['attributes']);
+        $active->attributes()->attach(request()['attributes']);
     }
 
     /**
