@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Active;
 use App\Models\Beneficiary;
 use App\Models\Client;
 use App\Models\FieldSupervisor;
@@ -13,6 +14,7 @@ use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Role;
 use App\Models\Ticket;
+use App\Observers\ActiveObserver;
 use App\Observers\BeneficiaryObserver;
 use App\Observers\ClientObserver;
 use App\Observers\FieldSupervisorObserver;
@@ -52,5 +54,6 @@ class AppServiceProvider extends ServiceProvider
         Client::observe(ClientObserver::class);
         Provider::observe(ProviderObserver::class);
         Ticket::observe(TicketObserver::class);
+        Active::observe(ActiveObserver::class);
     }
 }

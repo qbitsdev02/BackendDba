@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ActiveController;
+use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\PaymentOrderController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\PortController;
@@ -66,4 +68,6 @@ Route::group([
     $router->resource('ports', PortController::class);
     $router->resource('staff-types', StaffTypeController::class);
     $router->resource('personals', PersonalController::class);
+    $router->resource('actives', ActiveController::class);
+    $router->resource('attributes', AttributeController::class);
 });

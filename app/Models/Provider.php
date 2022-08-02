@@ -127,6 +127,13 @@ class Provider extends Base
     {
         return $this->hasMany(Personal::class);
     }
+    /**
+     * 
+     */
+    public function ownerable()
+    {
+        return $this->morphTo();
+    }
 }
 
 
