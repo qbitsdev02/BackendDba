@@ -14,7 +14,7 @@ class ConceptSeeder extends Seeder
      */
     public function run()
     {
-        $jsonFile = file_get_contents('App\Data\TiposDeEgresosMaster.json');
+        $jsonFile = file_get_contents(app_path('Data/TiposDeEgresosMaster.json'));
         $conceptType = json_decode($jsonFile);
         foreach($conceptType as $egressType)
         {
