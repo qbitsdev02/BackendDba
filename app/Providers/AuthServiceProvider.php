@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Active;
 use App\Models\Coin;
+use App\Models\Company;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
@@ -23,6 +24,7 @@ use App\Models\Ticket;
 use App\Policies\ActivePolicy;
 use App\Policies\AttributePolicy;
 use App\Policies\CoinPolicy;
+use App\Policies\CompanyPolicy;
 use App\Policies\PaymentOrderPolicy;
 use App\Policies\PersonalPolicy;
 use App\Policies\PortPolicy;
@@ -54,6 +56,7 @@ class AuthServiceProvider extends ServiceProvider
         Personal::class => PersonalPolicy::class,
         Active::class=>ActivePolicy::class,
         Attribute::class=>AttributePolicy::class,
+        Company::class=>CompanyPolicy::class,
     ];
 
 
