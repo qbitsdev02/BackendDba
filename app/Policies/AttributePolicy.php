@@ -18,7 +18,7 @@ class AttributePolicy
      */
     public function viewAny(User $user)
     {
-        $user->can('attribute-viewAny');
+        $user->can('attributes-viewAny');
     }
 
     /**
@@ -30,7 +30,7 @@ class AttributePolicy
      */
     public function view(User $user, Attribute $attribute)
     {
-        $user->can('attribute-read');
+        $user->can('attributes-read');
     }
 
     /**
@@ -41,7 +41,7 @@ class AttributePolicy
      */
     public function create(User $user)
     {
-        $user->can('attribute-create');
+        $user->can('attributes-create');
     }
 
     /**
@@ -53,7 +53,7 @@ class AttributePolicy
      */
     public function update(User $user, Attribute $attribute)
     {
-        $user->can('attribute-update');
+        $user->can('attributes-update');
     }
 
     /**
@@ -65,7 +65,7 @@ class AttributePolicy
      */
     public function delete(User $user, Attribute $attribute)
     {
-        $user->can('attribute-delete');
+        $user->can('attributes-delete');
     }
 
     /**
@@ -77,7 +77,7 @@ class AttributePolicy
      */
     public function restore(User $user, Attribute $attribute)
     {
-        $user->can('attribute-restore');
+        $user->can('attributes-restore');
     }
 
     /**
@@ -89,6 +89,6 @@ class AttributePolicy
      */
     public function forceDelete(User $user, Attribute $attribute)
     {
-        $user->can('attribute-forceDelete');
+        $user->can('attributes-forceDelete');
     }
 }
