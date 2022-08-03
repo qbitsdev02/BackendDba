@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use App\Models\Active;
+use App\Models\Company;
 use App\Models\User;
 
-class ActivePolicy
+class CompanyPolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,19 @@ class ActivePolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('actives-viewAny');
+        return $user->can('companies-viewAny');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Active  $active
+     * @param  \App\Models\Company  $company
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Active $active)
+    public function view(User $user, Company $company)
     {
-        return $user->can('actives-read');
+        return $user->can('companies-read');
     }
 
     /**
@@ -41,54 +41,54 @@ class ActivePolicy
      */
     public function create(User $user)
     {
-        return $user->can('actives-create');
+        return $user->can('companies-create');
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Active  $active
+     * @param  \App\Models\Company  $company
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Active $active)
+    public function update(User $user, Company $company)
     {
-        return $user->can('actives-update');
+        return $user->can('companies-update');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Active  $active
+     * @param  \App\Models\Company  $company
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Active $active)
+    public function delete(User $user, Company $company)
     {
-        return $user->can('actives-delete');
+        return $user->can('companies-delete');
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Active  $active
+     * @param  \App\Models\Company  $company
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Active $active)
+    public function restore(User $user, Company $company)
     {
-        return $user->can('actives-restore');
+        return $user->can('companies-restore');
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Active  $active
+     * @param  \App\Models\Company  $company
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Active $active)
+    public function forceDelete(User $user, Company $company)
     {
-        return $user->can('actives-forceDelete');
+        return $user->can('companies-forceDelete');
     }
 }

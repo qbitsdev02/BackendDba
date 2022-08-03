@@ -13,16 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('actives', function (Blueprint $table) {
+        Schema::create('active_attribute', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->enum('status', ['active', 'inactive'])->default('active');
-            $table->string('description')->nullable();
-            $table->morphs('ownerable');
+            $table->foreignId('active_id')->constrained();
+            $table->foreignId('attribute_id')->constrained();
+            $table->string('valor');
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
-            $table->timestamps();
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('actives');
+        Schema::dropIfExists('active_attribute');
     }
 };

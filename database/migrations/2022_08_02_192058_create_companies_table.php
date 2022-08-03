@@ -13,16 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('actives', function (Blueprint $table) {
+        Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->string('document_number');
             $table->string('description')->nullable();
-            $table->morphs('ownerable');
+            $table->string('phone_number')->nullable();
+            $table->string('email')->nullable();
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
-            $table->timestamps();
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('actives');
+        Schema::dropIfExists('companies');
     }
 };

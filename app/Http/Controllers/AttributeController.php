@@ -2,32 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Active;
+use App\Models\Attribute;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreActiveRequest;
-use App\Http\Requests\UpdateActiveRequest;
+use App\Http\Requests\StoreAttributeRequest;
+use App\Http\Requests\UpdateAttributeRequest;
 use App\Http\Resources\ActiveResource;
+use App\Http\Resources\AttributeResource;
+use App\Models\Active;
 use Illuminate\Http\Request;
 
-class ActiveController extends Controller
+class AttributeController extends Controller
 {
 
     /**
-      * 
-      */
-     function __construct()
-     {
-         $this->authorizeResource(Active::class,'active');
-     }
-
+     * 
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Attribute::class, 'attribute');
+    }
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * 
+     *
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
       * @OA\Get(
-      *     path="/actives",
-      *     operationId="getactive",
-      *     tags={"Active"},
+      *     path="/attributes",
+      *     operationId="getattributes",
+      *     tags={"Attribute"},
       *     @OA\Parameter(
       *       name="paginate",
       *       in="query",
@@ -95,7 +102,7 @@ class ActiveController extends Controller
       *     ),
       *     @OA\Response(
       *         response=200,
-      *         description="active all."
+      *         description="attributes all."
       *     ),
       *     @OA\Response(
       *         response="default",
@@ -105,10 +112,10 @@ class ActiveController extends Controller
      */
     public function index(Request $request)
     {
-        $actives = Active::filters($request->all())
-        ->search($request->all());
-    
-        return (ActiveResource::collection($actives))->additional(
+        $attribute = Attribute::filters($request->all())
+            ->search($request->all());
+        
+        return (AttributeResource::collection($attribute))->additional(
             [
                 'message:' => 'Successfully response'
             ],200
@@ -118,19 +125,19 @@ class ActiveController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreActiveRequest  $request
+     * @param  \App\Http\Requests\StoreAttributeRequest  $request
      * @return \Illuminate\Http\Response
-     * 
+     *
     * @OA\Post(
-    *   path="/actives",
-    *   summary="Creates a new active",
-    *   description="Creates a new active",
-    *   tags={"Active"},
+    *   path="/attributes",
+    *   summary="Creates a new attributes",
+    *   description="Creates a new attribute",
+    *   tags={"Attribute"},
     *   security={{"passport": {"*"}}},
     *   @OA\RequestBody(
     *       @OA\MediaType(
     *           mediaType="application/json",
-    *           @OA\Schema(ref="#/components/schemas/Active")
+    *           @OA\Schema(ref="#/components/schemas/Attribute")
     *       )
     *   ),
     *   @OA\Response(
@@ -150,41 +157,35 @@ class ActiveController extends Controller
     *   )
     * )
      */
-    public function store(StoreActiveRequest $request)
-    {   
- 
-        $active = new Active();
-        $active->name = $request->name;
-        $active->status = $request->status;
-        $active->description = $request->description;
-        $active->ownerable_type = $request->ownerable_type;
-        $active->ownerable_id = $request->ownerable_id;
-        $active->user_created_id = $request->user_created_id;
-        $active->save();
+    public function store(StoreAttributeRequest $request)
+    {
+        $attribute = new Attribute();
+        $attribute->name = $request->name;
+        $attribute->description = $request->description;
+        $attribute->user_created_id = $request->user_created_id;
 
-        return (new ActiveResource($active))->additional(
+        $attribute->save();
+        return (new AttributeResource($attribute))->additional(
             [
-                'message:' => 'successfully registered active'
-            ],201
-        );
-
+                'message:' => 'successfully registered attribute'
+            ],201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Active  $active
+     * @param  \App\Models\Attribute  $attribute
      * @return \Illuminate\Http\Response
      * 
      * @OA\Get(
-     *      path="/actives/{id}",
-     *      operationId="getactivesById",
-     *      tags={"Active"},
-     *      summary="Get active information",
-     *      description="Returns Port data",
+     *      path="/attributes/{id}",
+     *      operationId="getattributeById",
+     *      tags={"Attribute"},
+     *      summary="Get attribute information",
+     *      description="Returns attribute data",
      *   @OA\Parameter(
      *          name="id",
-     *          description="Active id",
+     *          description="attribute id",
      *          required=true,
      *          in="path",
      *             @OA\Schema(type="integer")
@@ -192,7 +193,7 @@ class ActiveController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/Active")
+     *          @OA\JsonContent(ref="#/components/schemas/Attribute")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -208,31 +209,31 @@ class ActiveController extends Controller
      *      )
      *   )
      */
-    public function show(Active $active)
+    public function show(Attribute $attribute)
     {
-        return (new ActiveResource($active))->additional(
+        return ( new AttributeResource($attribute))->additional(
             [
                 'message:' => 'successfully response'
-            ],200
+            ],201
         );
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateActiveRequest  $request
-     * @param  \App\Models\Active  $active
+     * @param  \App\Http\Requests\UpdateAttributeRequest  $request
+     * @param  \App\Models\Attribute  $attribute
      * @return \Illuminate\Http\Response
      * 
      * @OA\Put(
-     *      path="/actives/{id}",
-     *      operationId="updateactive",
-     *      tags={"Active"},
-     *      summary="Update existing Active",
+     *      path="/attributes/{id}",
+     *      operationId="updateattribute",
+     *      tags={"Attribute"},
+     *      summary="Update existing Attribute",
      *      description="Returns updated port data",
      *  @OA\Parameter(
      *      name="id",
-     *      description="Active id",
+     *      description="Attribute id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -241,12 +242,12 @@ class ActiveController extends Controller
      *  ),
      *  @OA\RequestBody(
      *      required=true,
-     *      @OA\JsonContent(ref="#/components/schemas/Active")
+     *      @OA\JsonContent(ref="#/components/schemas/Attribute")
      *   ),
      *   @OA\Response(
      *      response=200,
      *      description="Successful operation",
-     *      @OA\JsonContent(ref="#/components/schemas/Active")
+     *      @OA\JsonContent(ref="#/components/schemas/Attribute")
      *   ),
      *   @OA\Response(
      *      response=400,
@@ -266,19 +267,16 @@ class ActiveController extends Controller
      *   )
      * )
      */
-    public function update(UpdateActiveRequest $request, Active $active)
+    public function update(UpdateAttributeRequest $request, Attribute $attribute)
     {
-        $active->name = $request->name;
-        $active->status = $request->status;
-        $active->description = $request->description;
-        $active->ownerable_type = $request->ownerable_type;
-        $active->ownerable_id = $request->ownerable_id;
-        $active->user_created_id = $request->user_created_id;
+        $attribute->name = $request->name;
+        $attribute->description = $request->description;
+        $attribute->user_created_id = $request->user_created_id;
 
-        $active->update();
-        return (new ActiveResource($active))->additional(
+        $attribute->update();
+        return (new AttributeResource($attribute))->additional(
             [
-                'message:' => 'successfully updated active'
+                'message:' => 'successfully updated attribute'
             ],200
         );
     }
@@ -286,18 +284,18 @@ class ActiveController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Active  $active
+     * @param  \App\Models\Attribute  $attribute
      * @return \Illuminate\Http\Response
      * 
      * @OA\Delete(
-     *  path="/actives/{id}",
-     *  operationId="deleteactive",
-     *  tags={"Active"},
-     *  summary="Delete existing active",
+     *  path="/attributes/{id}",
+     *  operationId="deleteattribute",
+     *  tags={"Attribute"},
+     *  summary="Delete existing attribute",
      *  description="Deletes a record and returns no content",
      *  @OA\Parameter(
      *      name="id",
-     *      description="active id",
+     *      description="Attribute id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -323,13 +321,12 @@ class ActiveController extends Controller
      *  )
      * )
      */
-    public function destroy(Active $active)
+    public function destroy(Attribute $attribute)
     {
-        $active->delete();
+        $attribute->delete();
         return response()->json(
             [
                 'message' => 'the data was deleted successfully'
-            ],200
-        );
+            ],200);
     }
 }

@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use App\Models\Active;
+use App\Models\Attribute;
 use App\Models\User;
 
-class ActivePolicy
+class AttributePolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,19 @@ class ActivePolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('actives-viewAny');
+        $user->can('attributes-viewAny');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Active  $active
+     * @param  \App\Models\Attribute  $attribute
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Active $active)
+    public function view(User $user, Attribute $attribute)
     {
-        return $user->can('actives-read');
+        $user->can('attributes-read');
     }
 
     /**
@@ -41,54 +41,54 @@ class ActivePolicy
      */
     public function create(User $user)
     {
-        return $user->can('actives-create');
+        $user->can('attributes-create');
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Active  $active
+     * @param  \App\Models\Attribute  $attribute
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Active $active)
+    public function update(User $user, Attribute $attribute)
     {
-        return $user->can('actives-update');
+        $user->can('attributes-update');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Active  $active
+     * @param  \App\Models\Attribute  $attribute
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Active $active)
+    public function delete(User $user, Attribute $attribute)
     {
-        return $user->can('actives-delete');
+        $user->can('attributes-delete');
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Active  $active
+     * @param  \App\Models\Attribute  $attribute
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Active $active)
+    public function restore(User $user, Attribute $attribute)
     {
-        return $user->can('actives-restore');
+        $user->can('attributes-restore');
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Active  $active
+     * @param  \App\Models\Attribute  $attribute
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Active $active)
+    public function forceDelete(User $user, Attribute $attribute)
     {
-        return $user->can('actives-forceDelete');
+        $user->can('attributes-forceDelete');
     }
 }

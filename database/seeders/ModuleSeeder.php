@@ -286,8 +286,34 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
-
-
+                //31
+                [
+                    'name' => 'actives',
+                    'icon' => 'person',
+                    'route' => 'Active',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                 //32
+                 [
+                    'name' => 'attributes',
+                    'icon' => 'person',
+                    'route' => 'Attribute',
+                    'section_id' => 4,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                //33
+                [
+                    'name' => 'companies',
+                    'icon' => 'person',
+                    'route' => 'Company',
+                    'section_id' => 4,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+   
             ]);
     }
 }
