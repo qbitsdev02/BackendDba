@@ -16,7 +16,7 @@ class TransactionController extends Controller
      */
     public function __construct()
     {
-        $this->authorizeResource(Transaction::class, 'transasctions');
+        $this->authorizeResource(Transaction::class, 'transaction');
     }
 
     /**
@@ -107,6 +107,7 @@ class TransactionController extends Controller
     {
         $transactions = Transaction::filters($request->all())
             ->search($request->all());
+            
         
         return (TransactionResource::collection($transactions))->additional(
             [

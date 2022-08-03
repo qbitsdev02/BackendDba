@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->float('amount');
             $table->string('description');
-            $table->string('date');
+            $table->date('date');
             $table->foreignId('payment_order_id')->constrained();
             $table->float('reference');
             $table->foreignId('user_created_id')->constrained('users');
