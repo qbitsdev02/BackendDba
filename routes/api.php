@@ -71,4 +71,5 @@ Route::group([
     $router->resource('ports', PortController::class);
     $router->resource('staff-types', StaffTypeController::class);
     $router->resource('personals', PersonalController::class);
+    $router->resource('banks', BankController::class);
 });

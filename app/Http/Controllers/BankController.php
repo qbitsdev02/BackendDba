@@ -36,7 +36,11 @@ class BankController extends Controller
      */
     public function store(StoreBankRequest $request)
     {
-        //
+        $bank = Bank::updateOrCreate(
+            ['institution_id' => $request->institution_id, 'name' => $request->name],
+            $request->all()
+        );
+        return response()->json($bank, 201);
     }
 
     /**

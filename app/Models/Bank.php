@@ -2,10 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Bank extends Model
+class Bank extends Base
 {
-    use HasFactory;
+    protected $fillable = [
+        'institution_id',
+        'name',
+        'link_session_id',
+        'public_token',
+        'status',
+        'transfer_status',
+        'accounts',
+        'user_created_id',
+        'user_updated_id'
+    ];
 }
