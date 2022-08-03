@@ -11,6 +11,7 @@ use App\Http\Controllers\ProviderTypeController;
 use App\Http\Controllers\RateController;
 use App\Http\Controllers\StaffTypeController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Resources\CompanyResource;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
@@ -73,5 +74,6 @@ Route::group([
     $router->resource('actives', ActiveController::class);
     $router->resource('attributes', AttributeController::class);
     $router->resource('companies', CompanyController::class);
+    $router->resource('transactions', TransactionController::class);
 
 });

@@ -21,6 +21,7 @@ use App\Models\Rate;
 use App\Models\StaffType;
 use App\Models\State;
 use App\Models\Ticket;
+use App\Models\Transaction;
 use App\Policies\ActivePolicy;
 use App\Policies\AttributePolicy;
 use App\Policies\CoinPolicy;
@@ -34,6 +35,7 @@ use App\Policies\RatePolicy;
 use App\Policies\StaffTypePolicy;
 use App\Policies\StatePolicy;
 use App\Policies\TicketPolicy;
+use App\Policies\TransactionPolicy;
 use Attribute;
 
 class AuthServiceProvider extends ServiceProvider
@@ -57,6 +59,7 @@ class AuthServiceProvider extends ServiceProvider
         Active::class=>ActivePolicy::class,
         Attribute::class=>AttributePolicy::class,
         Company::class=>CompanyPolicy::class,
+        Transaction::class=>TransactionPolicy::class,
     ];
 
 
