@@ -19,7 +19,17 @@ class PaymentOrderSeeder extends Seeder
                 [
                     'amount' => 1500,
                     'operation_type_id' => 3,
-                    'ticket_id' => 1,
+                    'ownerable_id' =>1,
+                    'ownerable_type' => 'App\\Models\\Provider',
+                    'entity_id' => 1,
+                    'coin_id' => 2,
+                    'user_created_id' => 1,        
+                ],
+                [
+                    'amount' => 2500,
+                    'operation_type_id' => 3,
+                    'ownerable_id' =>1,
+                    'ownerable_type' => 'App\\Models\\Provider',
                     'entity_id' => 1,
                     'coin_id' => 2,
                     'user_created_id' => 1,        

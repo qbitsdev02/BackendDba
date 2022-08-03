@@ -17,6 +17,13 @@ use Illuminate\Database\Eloquent\Model;
  *       description="The description to payment order"
  *   ),
  *   @OA\Property(
+ *       property="status",
+ *       type="string",
+ *       required={"true"},
+ *       default="pending_approval",
+ *       description="The status active"
+ *   ),
+ *   @OA\Property(
  *       property="amount",
  *       type="number",
  *       required={"true"},
@@ -29,10 +36,17 @@ use Illuminate\Database\Eloquent\Model;
  *       description="The operation type to payment order"
  *   ),
  *   @OA\Property(
- *       property="ticket_id",
+ *       property="ownerable_id",
  *       type="number",
  *       required={"true"},
- *       description="The ticket_id to payment order"
+ *       description="The ownerable_id to payment order"
+ *   ),
+ *  @OA\Property(
+ *       property="ownerable_type",
+ *       type="string",
+ *       required={"true"},
+ *      example = "App\Model\Name",
+ *       description="The ownerable_type to payment order"
  *   ),
  *   @OA\Property(
  *       property="entity_id",
@@ -114,5 +128,13 @@ class PaymentOrder extends Base
     public function operationType()
     {
         return $this->belongsTo(OperationType::class);
+    }
+
+    /**
+     * 
+     */
+    public function ownerable()
+    {
+        return $this->morphTo();
     }
 }   

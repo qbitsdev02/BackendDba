@@ -12,13 +12,13 @@ use Illuminate\Http\Request;
 class ActiveController extends Controller
 {
 
-    // /**
-    //  * 
-    //  */
-    // function __construct()
-    // {
-    //     $this->authorizeResource(Active::class,'active');
-    // }
+    /**
+      * 
+      */
+     function __construct()
+     {
+         $this->authorizeResource(Active::class,'active');
+     }
 
     /**
      * Display a listing of the resource.

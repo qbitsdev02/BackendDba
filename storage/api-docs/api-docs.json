@@ -8448,6 +8448,14 @@
                         ],
                         "type": "string"
                     },
+                    "status": {
+                        "description": "The status active",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "default": "pending_approval"
+                    },
                     "amount": {
                         "description": "The amount to payment order",
                         "required": [
@@ -8462,12 +8470,20 @@
                         ],
                         "type": "number"
                     },
-                    "ticket_id": {
-                        "description": "The ticket_id to payment order",
+                    "ownerable_id": {
+                        "description": "The ownerable_id to payment order",
                         "required": [
                             "true"
                         ],
                         "type": "number"
+                    },
+                    "ownerable_type": {
+                        "description": "The ownerable_type to payment order",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "example": "App\\Model\\Name"
                     },
                     "entity_id": {
                         "description": "The entity_id to payment order",
