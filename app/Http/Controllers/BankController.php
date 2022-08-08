@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bank;
 use App\Http\Requests\StoreBankRequest;
 use App\Http\Requests\UpdateBankRequest;
+use Illuminate\Http\Request;
 
 class BankController extends Controller
 {
@@ -13,9 +14,10 @@ class BankController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $banks = Bank::filters($request->all())->search($request->all());
+        return response()->json($banks, 200);
     }
 
     /**
