@@ -21,6 +21,7 @@ class CreateBanksTable extends Migration
             $table->string('public_token')->nullable();
             $table->string('status')->nullable();
             $table->string('transfer_status')->nullable();
+            $table->string('access_token')->nullable();
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->softDeletes();

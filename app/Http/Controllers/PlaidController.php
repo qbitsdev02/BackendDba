@@ -16,8 +16,8 @@ class PlaidController extends Controller
     {
         $this->plaid = new Plaid(
             '62e7f32c11f7a000134b9436',
-            'a54f79aeb585040097b45078172aed',
-            'sandbox'
+            '3ef77ce5c3226d04a52406057802ab',
+            'development'
         );
     }
 
