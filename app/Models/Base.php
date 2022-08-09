@@ -83,8 +83,6 @@ class Base extends Model
             });
 		}
     }
-
-
 	/**
 	 * Search function of fields in the database.
 	 *
