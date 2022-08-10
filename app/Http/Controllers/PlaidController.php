@@ -27,6 +27,12 @@ class PlaidController extends Controller
         return response()->json($token, 200);
     }
 
+    public function getCategories()
+    {
+        $categories = $this->plaid->categories->list();
+        return response()->json($categories, 200);
+    }
+
     public function exchangeToken(Request $request)
     {
         $access_token = $this->plaid->items->exchangeToken($request->public_token);
