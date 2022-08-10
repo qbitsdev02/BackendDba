@@ -38,6 +38,11 @@ Route::group([
 Route::group([
     'middleware' => 'auth:api',
 ], function ($router) {
+    $router->group(['prefix' => 'plaid'], function ($router) {
+        $router->post('create-token', 'PlaidController@createToken')->name('createToken');
+        $router->get('transactions', 'PlaidController@transactions')->name('transactions');
+        $router->post('exchange-token', 'PlaidController@exchangeToken')->name('exchangeToken');
+    });
     $router->resource('users', UserController::class);
     $router->resource('roles', RoleController::class);
     $router->resource('sections', SectionController::class);
@@ -75,5 +80,5 @@ Route::group([
     $router->resource('attributes', AttributeController::class);
     $router->resource('companies', CompanyController::class);
     $router->resource('transactions', TransactionController::class);
-
+    $router->resource('banks', BankController::class);
 });

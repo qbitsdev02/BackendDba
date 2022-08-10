@@ -99,9 +99,9 @@ class ModuleSeeder extends Seeder
                 ],
                 // 10
                 [
-                    'name' => 'orders',
-                    'icon' => 'list_alt',
-                    'route' => 'Order',
+                    'name' => 'banks',
+                    'icon' => 'account_balance',
+                    'route' => 'Bank',
                     'section_id' => 1,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
