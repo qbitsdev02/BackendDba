@@ -23,6 +23,7 @@ class ActiveResource extends JsonResource
                 'id' => $this->ownerable->id,
                 'name' => $this->ownerable->name,
             ],
+            "ownerable_type" => $this->ownerable_type,
             "attribute" => ActiveAttributeResource::collection($this->attributes),
         ];
     }
