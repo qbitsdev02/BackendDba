@@ -54,4 +54,12 @@ class Concept extends Base
     {
         return $this->belongsTo(ConceptType::class);
     }
+
+    /**
+     * relationship
+     */
+    public function transactios()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

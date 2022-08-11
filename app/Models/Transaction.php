@@ -41,20 +41,20 @@ use Illuminate\Database\Eloquent\Model;
  *       example=1,
  *       description="The payment_order_id "
  *   ),
+ *  @OA\Property(
+ *       property="concept_id",
+ *       type="number",
+ *       required={"true"},
+ *       example=1,
+ *       description="The concept_id"
  *   ),
+ * 
  *   @OA\Property(
  *       property="user_created_id",
  *       type="number",
  *       required={"true"},
  *       example=1,
  *       description="The Users crete"
- *   ),
- *    @OA\Property(
- *       property="user_updated_id",
- *       type="number",
- *       required={"true"},
- *       example=1,
- *       description="The Users update"
  *   ),
  * )
  */
@@ -69,5 +69,13 @@ class Transaction extends Base
     public function paymentOrder()
     {
         return $this->belongsTo(PaymentOrder::class);
+    }
+
+    /**
+     * Relationship 
+     */
+    public function concept()
+    {
+        return $this->belongsTo(Concept::class);
     }
 }

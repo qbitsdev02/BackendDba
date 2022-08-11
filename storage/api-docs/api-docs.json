@@ -10061,18 +10061,16 @@
                         "type": "number",
                         "example": 1
                     },
-                    "user_created_id": {
-                        "schema": "Transaction",
-                        "description": "The Users crete",
+                    "concept_id": {
+                        "description": "The concept_id",
                         "required": [
                             "true"
                         ],
                         "type": "number",
                         "example": 1
                     },
-                    "user_updated_id": {
-                        "schema": "Transaction",
-                        "description": "The Users update",
+                    "user_created_id": {
+                        "description": "The Users crete",
                         "required": [
                             "true"
                         ],
