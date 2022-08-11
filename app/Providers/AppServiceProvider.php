@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Active;
 use App\Models\Beneficiary;
 use App\Models\Client;
+use App\Models\FieldCashFlow;
 use App\Models\FieldSupervisor;
 use App\Models\Order;
 use App\Models\Provider;
@@ -17,6 +18,7 @@ use App\Models\Ticket;
 use App\Observers\ActiveObserver;
 use App\Observers\BeneficiaryObserver;
 use App\Observers\ClientObserver;
+use App\Observers\FieldCashFlowObserver;
 use App\Observers\FieldSupervisorObserver;
 use App\Observers\OrderObserver;
 use App\Observers\ProviderObserver;
@@ -55,5 +57,6 @@ class AppServiceProvider extends ServiceProvider
         Provider::observe(ProviderObserver::class);
         Ticket::observe(TicketObserver::class);
         Active::observe(ActiveObserver::class);
+        FieldCashFlow::observe(FieldCashFlowObserver::class);
     }
 }
