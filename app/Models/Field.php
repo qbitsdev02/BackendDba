@@ -109,4 +109,12 @@ class Field extends Base
     {
         return $this->belongsTo(Port::class);
     }
+
+    /**
+     * 
+     */
+    public function fieldCashFlows()
+    {
+        return $this->hasMany(FieldCashFlow::class);
+    }
 }

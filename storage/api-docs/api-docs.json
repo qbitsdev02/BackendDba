@@ -2894,6 +2894,266 @@
                 }
             }
         },
+        "/field-cash-flows": {
+            "get": {
+                "tags": [
+                    "FieldCashFlow"
+                ],
+                "summary": "Display a listing of the resource.",
+                "operationId": "getfieldCashFlow",
+                "parameters": [
+                    {
+                        "name": "paginate",
+                        "in": "query",
+                        "description": "paginate",
+                        "required": false,
+                        "schema": {
+                            "title": "Paginate",
+                            "description": "The Paginate data",
+                            "example": "true"
+                        }
+                    },
+                    {
+                        "name": "sortBy",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "id"
+                        }
+                    },
+                    {
+                        "name": "sortOrder",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string",
+                            "example": "desc"
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "description": "Sort order field",
+                        "schema": {
+                            "title": "perPage",
+                            "description": "The unique identifier of a curso resource",
+                            "type": "number",
+                            "default": "10"
+                        }
+                    },
+                    {
+                        "name": "dataSearch",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "Search data",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dataFilter",
+                        "in": "query",
+                        "description": "turno resource name",
+                        "required": false,
+                        "schema": {
+                            "description": "The unique identifier of a turno resource",
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Field cash flow all."
+                    },
+                    "default": {
+                        "description": "error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "FieldCashFlow"
+                ],
+                "summary": "Creates a new field cash flow",
+                "description": "Creates a new field cash flow",
+                "operationId": "b74bc3c433171504fb783c150681cd55",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FieldCashFlow"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "The Provider resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": [
+                            "*"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/field-cash-flows/{id}": {
+            "get": {
+                "tags": [
+                    "FieldCashFlow"
+                ],
+                "summary": "Get active information",
+                "description": "Returns  data",
+                "operationId": "getfieldCashFlowById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "fiel cash flow id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FieldCashFlow"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "FieldCashFlow"
+                ],
+                "summary": "Update existing data",
+                "description": "Returns updated  data",
+                "operationId": "updatefieldCashFlow",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "field cash flow id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FieldCashFlow"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FieldCashFlow"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "FieldCashFlow"
+                ],
+                "summary": "Delete existing data",
+                "description": "Deletes a record and returns no content",
+                "operationId": "deletefieldCashFlows",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "field cash flow id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
         "/fields": {
             "get": {
                 "tags": [
@@ -8978,6 +9238,83 @@
                     },
                     "field_supervisor_id": {
                         "description": "The Field field_supervisor_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_created_id": {
+                        "description": "The Users crete",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "user_updated_id": {
+                        "description": "The Users update",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "FieldCashFlow": {
+                "properties": {
+                    "amount": {
+                        "description": "The amount",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "format": "float",
+                        "example": 1000
+                    },
+                    "description": {
+                        "description": "description active",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
+                    "concept_id": {
+                        "description": "The concept",
+                        "required": [
+                            "false"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "field_id": {
+                        "description": "The field_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "status": {
+                        "description": "The status active",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "default": "approved"
+                    },
+                    "beneficiary_id": {
+                        "description": "The beneficiary_id",
+                        "required": [
+                            "false"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "balance": {
+                        "description": "The balance",
                         "required": [
                             "true"
                         ],

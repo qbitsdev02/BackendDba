@@ -4,6 +4,7 @@ use App\Http\Controllers\ActiveController;
 use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\FieldCashFlowController;
 use App\Http\Controllers\PaymentOrderController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\PortController;
@@ -84,4 +85,5 @@ Route::group([
     $router->resource('transactions', TransactionController::class);
     $router->resource('banks', BankController::class);
     $router->resource('categories', CategoryController::class);
+    $router->resource('field-cash-flows', FieldCashFlowController::class);
 });
