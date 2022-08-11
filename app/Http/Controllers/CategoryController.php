@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transaction;
+use App\Models\Category;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreTransactionRequest;
-use App\Http\Requests\UpdateTransactionRequest;
-use App\Http\Resources\TransactionResource;
+use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
+use App\Http\Resources\CategoryResource;
 use Illuminate\Http\Request;
 
-class TransactionController extends Controller
+class CategoryController extends Controller
 {
-    /**
-     * 
-     */
+
+
     public function __construct()
     {
-        $this->authorizeResource(Transaction::class, 'transaction');
+        $this->authorizeResource(Category::class, 'category');
     }
 
     /**
@@ -24,10 +23,10 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      * 
-      * @OA\Get(
-      *     path="/transactions",
-      *     operationId="gettransaction",
-      *     tags={"Transaction"},
+     * @OA\Get(
+      *     path="/categories",
+      *     operationId="getcategories",
+      *     tags={"Category"},
       *     @OA\Parameter(
       *       name="paginate",
       *       in="query",
@@ -35,8 +34,7 @@ class TransactionController extends Controller
       *       required=false,
       *       @OA\Schema(
       *           title="Paginate",
-      *           example="true",
-      *           type="boolean",
+      *           example="true", 
       *           description="The Paginate data"
       *       )
       *     ),
@@ -95,7 +93,7 @@ class TransactionController extends Controller
       *     ),
       *     @OA\Response(
       *         response=200,
-      *         description="transaction all."
+      *         description="category all."
       *     ),
       *     @OA\Response(
       *         response="default",
@@ -105,13 +103,12 @@ class TransactionController extends Controller
      */
     public function index(Request $request)
     {
-        $transactions = Transaction::filters($request->all())
+        $categories = Category::filters($request->all())
             ->search($request->all());
-
-
-        return (TransactionResource::collection($transactions))->additional(
+        
+        return (CategoryResource::collection($categories))->additional(
             [
-                'message:' => 'Successfully response'
+                'message:' => 'successfully response'
             ],200
         );
     }
@@ -119,19 +116,19 @@ class TransactionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTransactionRequest  $request
+     * @param  \App\Http\Requests\StoreCategoryRequest  $request
      * @return \Illuminate\Http\Response
-     *
-    *  @OA\Post(
-    *   path="/transactions",
-    *   summary="Creates a new transaction",
-    *   description="Creates a new transaction",
-    *   tags={"Transaction"},
+     * 
+     * @OA\Post(
+    *   path="/categories",
+    *   summary="Creates a new category",
+    *   description="Creates a new category",
+    *   tags={"Category"},
     *   security={{"passport": {"*"}}},
     *   @OA\RequestBody(
     *       @OA\MediaType(
     *           mediaType="application/json",
-    *           @OA\Schema(ref="#/components/schemas/Transaction")
+    *           @OA\Schema(ref="#/components/schemas/Category")
     *       )
     *   ),
     *   @OA\Response(
@@ -151,21 +148,17 @@ class TransactionController extends Controller
     *   )
     * )
      */
-    public function store(StoreTransactionRequest $request)
+    public function store(StoreCategoryRequest $request)
     {
-        $transaction = new Transaction();
-        $transaction->amount = $request->amount;
-        $transaction->description = $request->description;
-        $transaction->date = $request->date;
-        $transaction->concept_id = $request->concept_id;
-        $transaction->payment_order_id = $request->payment_order_id;
-        $transaction->reference = $request->reference;
-        $transaction->user_created_id = $request->user_created_id;
+        $category = new Category();
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->user_created_id = $request->user_created_id;
+        $category->save();
 
-        $transaction->save();
-        return (new TransactionResource($transaction))->additional(
+        return ( new CategoryResource($category))->additional(
             [
-                'message:' => 'successfully registered data'
+                'message' => 'successfully registered data'
             ],201
         );
     }
@@ -173,18 +166,18 @@ class TransactionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Transaction  $transaction
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
-     *
+     * 
      * @OA\Get(
-     *      path="/transactions/{id}",
-     *      operationId="gettransactionById",
-     *      tags={"Transaction"},
-     *      summary="Get transaction information",
-     *      description="Returns transaction data",
+     *      path="/categories/{id}",
+     *      operationId="getcategoriesById",
+     *      tags={"Category"},
+     *      summary="Get category information",
+     *      description="Returns category data",
      *   @OA\Parameter(
      *          name="id",
-     *          description="transaction id",
+     *          description="Category id",
      *          required=true,
      *          in="path",
      *             @OA\Schema(type="integer")
@@ -192,7 +185,7 @@ class TransactionController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/Transaction")
+     *          @OA\JsonContent(ref="#/components/schemas/Category")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -208,9 +201,9 @@ class TransactionController extends Controller
      *      )
      *   )
      */
-    public function show(Transaction $transaction)
+    public function show(Category $category)
     {
-        return ( new TransactionResource($transaction))->additional(
+        return (new CategoryResource($category))->additional(
             [
                 'message:' => 'successfully response'
             ],200
@@ -220,19 +213,19 @@ class TransactionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTransactionRequest  $request
-     * @param  \App\Models\Transaction  $transaction
+     * @param  \App\Http\Requests\UpdateCategoryRequest  $request
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
-     *
+     * 
      * @OA\Put(
-     *      path="/transactions/{id}",
-     *      operationId="updatetransaction",
-     *      tags={"Transaction"},
-     *      summary="Update existing transaction",
+     *      path="/categories/{id}",
+     *      operationId="updatecategories",
+     *      tags={"Category"},
+    *      summary="Update existing Category",
      *      description="Returns updated port data",
      *  @OA\Parameter(
      *      name="id",
-     *      description="transaction id",
+     *      description="Category id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -241,12 +234,12 @@ class TransactionController extends Controller
      *  ),
      *  @OA\RequestBody(
      *      required=true,
-     *      @OA\JsonContent(ref="#/components/schemas/Transaction")
+     *      @OA\JsonContent(ref="#/components/schemas/Category")
      *   ),
      *   @OA\Response(
      *      response=200,
      *      description="Successful operation",
-     *      @OA\JsonContent(ref="#/components/schemas/Transaction")
+     *      @OA\JsonContent(ref="#/components/schemas/Category")
      *   ),
      *   @OA\Response(
      *      response=400,
@@ -266,18 +259,14 @@ class TransactionController extends Controller
      *   )
      * )
      */
-    public function update(UpdateTransactionRequest $request, Transaction $transaction)
+    public function update(UpdateCategoryRequest $request, Category $category)
     {
-        $transaction->amount = $request->amount;
-        $transaction->description = $request->description;
-        $transaction->date = $request->date;
-        $transaction->concept_id = $request->concept_id;
-        $transaction->payment_order_id = $request->payment_order_id;
-        $transaction->reference = $request->reference;
-        $transaction->user_created_id = $request->user_created_id;
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->user_created_id = $request->user_created_id;
+        $category->update();
 
-        $transaction->update();
-        return (new TransactionResource($transaction))->additional(
+        return (new CategoryResource($category))->additional(
             [
                 'message:' => 'successfully updated data'
             ],200
@@ -287,18 +276,18 @@ class TransactionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Transaction  $transaction
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
-     *
+     * 
      * @OA\Delete(
-     *  path="/transactions/{id}",
-     *  operationId="deletetransaction",
-     *  tags={"Transaction"},
-     *  summary="Delete existing transaction",
+     *  path="/categories/{id}",
+     *  operationId="deletecategory",
+     *  tags={"Category"},
+     *  summary="Delete existing Category",
      *  description="Deletes a record and returns no content",
      *  @OA\Parameter(
      *      name="id",
-     *      description="transaction id",
+     *      description="Category id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -324,9 +313,9 @@ class TransactionController extends Controller
      *  )
      * )
      */
-    public function destroy(Transaction $transaction)
+    public function destroy(Category $category)
     {
-        $transaction->delete();
+        $category->delete();    
         return response()->json(
             [
                 'message' => 'the data was deleted successfully'

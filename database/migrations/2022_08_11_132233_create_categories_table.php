@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFieldsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,12 @@ class CreateFieldsTable extends Migration
      */
     public function up()
     {
-        Schema::create('fields', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('contract_number');
-            $table->string('denomination');
-            $table->string('acronym');
-            $table->string('address');
-            $table->foreignId('port_id')->nullable()->constrained();
-            $table->foreignId('organization_id')->constrained();
-            $table->foreignId('field_supervisor_id')->constrained('users');
+            $table->string('name');
+            $table->string('description')->nullable();
             $table->foreignId('user_created_id')->constrained('users');
+            $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -35,6 +31,6 @@ class CreateFieldsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fields');
+        Schema::dropIfExists('categories');
     }
-}
+};

@@ -36,7 +36,6 @@ class ActiveController extends Controller
       *       @OA\Schema(
       *           title="Paginate",
       *           example="true",
-      *           type="boolean",
       *           description="The Paginate data"
       *       )
       *     ),
@@ -106,7 +105,7 @@ class ActiveController extends Controller
     public function index(Request $request)
     {
         $actives = Active::filters($request->all())
-        ->search($request->all());
+            ->search($request->all());
     
         return (ActiveResource::collection($actives))->additional(
             [
@@ -161,7 +160,7 @@ class ActiveController extends Controller
         $active->ownerable_id = $request->ownerable_id;
         $active->user_created_id = $request->user_created_id;
         $active->save();
-
+        
         return (new ActiveResource($active))->additional(
             [
                 'message:' => 'successfully registered active'
