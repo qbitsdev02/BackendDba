@@ -2,22 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Field;
-use App\Http\Requests\StoreFieldRequest;
-use App\Http\Requests\UpdateFieldRequest;
+use App\Models\Category;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
+use App\Http\Resources\CategoryResource;
 use Illuminate\Http\Request;
 
-class FieldController extends Controller
+class CategoryController extends Controller
 {
 
+
+    public function __construct()
+    {
+        $this->authorizeResource(Category::class, 'category');
+    }
+
     /**
-      * Display a listing of the resource.
-      *
-      * @return \Illuminate\Http\Response
-      * @OA\Get(
-      *     path="/fields",
-      *     operationId="getField",
-      *     tags={"Field"},
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     * 
+     * @OA\Get(
+      *     path="/categories",
+      *     operationId="getcategories",
+      *     tags={"Category"},
       *     @OA\Parameter(
       *       name="paginate",
       *       in="query",
@@ -25,8 +34,7 @@ class FieldController extends Controller
       *       required=false,
       *       @OA\Schema(
       *           title="Paginate",
-      *           example="true",
-      *           type="boolean",
+      *           example="true", 
       *           description="The Paginate data"
       *       )
       *     ),
@@ -85,97 +93,99 @@ class FieldController extends Controller
       *     ),
       *     @OA\Response(
       *         response=200,
-      *         description="Show Fields all."
+      *         description="category all."
       *     ),
       *     @OA\Response(
       *         response="default",
       *         description="error."
       *     )
       *  )
-      */
+     */
     public function index(Request $request)
     {
-        $fields = Field::with(
-                'organization:id,name',
-                'fieldSupervisor:id,name,last_name,document_number'
-            )
-            ->filters($request->all())
+        $categories = Category::filters($request->all())
             ->search($request->all());
-        return response()->json($fields, 200);
+        
+        return (CategoryResource::collection($categories))->additional(
+            [
+                'message:' => 'successfully response'
+            ],200
+        );
     }
 
     /**
-      * Store a newly created resource in storage.
-      *
-      * @param  \App\Http\Requests\StoreFieldRequest  $request
-      * @return \Illuminate\Http\Response
-      * @OA\Post(
-      *   path="/fields",
-      *   summary="Creates a new Field",
-      *   description="Creates a new Field",
-      *   tags={"Field"},
-      *   security={{"passport": {"*"}}},
-      *   @OA\RequestBody(
-      *       @OA\MediaType(
-      *           mediaType="application/json",
-      *           @OA\Schema(ref="#/components/schemas/Field")
-      *       )
-      *   ),
-      *   @OA\Response(
-      *       @OA\MediaType(mediaType="application/json"),
-      *       response=200,
-      *       description="The Field resource created",
-      *   ),
-      *   @OA\Response(
-      *       @OA\MediaType(mediaType="application/json"),
-      *       response=401,
-      *       description="Unauthenticated."
-      *   ),
-      *   @OA\Response(
-      *       @OA\MediaType(mediaType="application/json"),
-      *       response="default",
-      *       description="an ""unexpected"" error",
-      *   )
-      * )
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\StoreCategoryRequest  $request
+     * @return \Illuminate\Http\Response
+     * 
+     * @OA\Post(
+    *   path="/categories",
+    *   summary="Creates a new category",
+    *   description="Creates a new category",
+    *   tags={"Category"},
+    *   security={{"passport": {"*"}}},
+    *   @OA\RequestBody(
+    *       @OA\MediaType(
+    *           mediaType="application/json",
+    *           @OA\Schema(ref="#/components/schemas/Category")
+    *       )
+    *   ),
+    *   @OA\Response(
+    *       @OA\MediaType(mediaType="application/json"),
+    *       response=200,
+    *       description="The Provider resource created",
+    *   ),
+    *   @OA\Response(
+    *       @OA\MediaType(mediaType="application/json"),
+    *       response=401,
+    *       description="Unauthenticated."
+    *   ),
+    *   @OA\Response(
+    *       @OA\MediaType(mediaType="application/json"),
+    *       response="default",
+    *       description="an ""unexpected"" error",
+    *   )
+    * )
      */
-    public function store(StoreFieldRequest $request)
+    public function store(StoreCategoryRequest $request)
     {
-        $field = new Field();
-        $field->contract_number = $request->contract_number;
-        $field->denomination = $request->denomination;
-        $field->acronym = $request->acronym;
-        $field->address = $request->address;
-        $field->organization_id = $request->organization_id;
-        $field->field_supervisor_id = $request->field_supervisor_id;
-        $field->user_created_id = $request->user_created_id;
-        $field->save();
-        return response()->json($field, 201);
+        $category = new Category();
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->user_created_id = $request->user_created_id;
+        $category->save();
+
+        return ( new CategoryResource($category))->additional(
+            [
+                'message' => 'successfully registered data'
+            ],201
+        );
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Field  $field
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
+     * 
      * @OA\Get(
-     *   path="/fields/{id}",
-     *   operationId="getFieldById",
-     *   tags={"Field"},
-     *   summary="Get Field information",
-     *   description="Returns Field data",
+     *      path="/categories/{id}",
+     *      operationId="getcategoriesById",
+     *      tags={"Category"},
+     *      summary="Get category information",
+     *      description="Returns category data",
      *   @OA\Parameter(
-     *      name="id",
-     *      description="Field id",
-     *      required=true,
-     *      in="path",
-     *          @OA\Schema(
-     *              type="integer"
-     *          )
+     *          name="id",
+     *          description="Category id",
+     *          required=true,
+     *          in="path",
+     *             @OA\Schema(type="integer")
      *      ),
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/Field")
+     *          @OA\JsonContent(ref="#/components/schemas/Category")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -191,27 +201,31 @@ class FieldController extends Controller
      *      )
      *   )
      */
-    public function show(Field $field)
+    public function show(Category $category)
     {
-        return response($field, 200);
+        return (new CategoryResource($category))->additional(
+            [
+                'message:' => 'successfully response'
+            ],200
+        );
     }
 
     /**
      * Update the specified resource in storage.
      *
-     *
-     * @param  \App\Http\Requests\UpdateFieldRequest  $request
-     * @param  \App\Models\Field  $field
+     * @param  \App\Http\Requests\UpdateCategoryRequest  $request
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
+     * 
      * @OA\Put(
-     *  path="/fields/{id}",
-     *  operationId="updateField",
-     *  tags={"Field"},
-     *  summary="Update existing Field",
-     *  description="Returns updated Field data",
+     *      path="/categories/{id}",
+     *      operationId="updatecategories",
+     *      tags={"Category"},
+    *      summary="Update existing Category",
+     *      description="Returns updated port data",
      *  @OA\Parameter(
      *      name="id",
-     *      description="Field id",
+     *      description="Category id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -220,12 +234,12 @@ class FieldController extends Controller
      *  ),
      *  @OA\RequestBody(
      *      required=true,
-     *      @OA\JsonContent(ref="#/components/schemas/Field")
+     *      @OA\JsonContent(ref="#/components/schemas/Category")
      *   ),
      *   @OA\Response(
-     *      response=202,
+     *      response=200,
      *      description="Successful operation",
-     *      @OA\JsonContent(ref="#/components/schemas/Field")
+     *      @OA\JsonContent(ref="#/components/schemas/Category")
      *   ),
      *   @OA\Response(
      *      response=400,
@@ -245,33 +259,35 @@ class FieldController extends Controller
      *   )
      * )
      */
-    public function update(UpdateFieldRequest $request, Field $field)
+    public function update(UpdateCategoryRequest $request, Category $category)
     {
-        $field->contract_number = $request->contract_number;
-        $field->denomination = $request->denomination;
-        $field->acronym = $request->acronym;
-        $field->address = $request->address;
-        $field->organization_id = $request->organization_id;
-        $field->field_supervisor_id = $request->field_supervisor_id;
-        $field->user_created_id = $request->user_created_id;
-        $field->update();
-        return response()->json($field, 201);
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->user_created_id = $request->user_created_id;
+        $category->update();
+
+        return (new CategoryResource($category))->additional(
+            [
+                'message:' => 'successfully updated data'
+            ],200
+        );
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Field  $field
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
+     * 
      * @OA\Delete(
-     *  path="/fields/{id}",
-     *  operationId="deleteField",
-     *  tags={"Field"},
-     *  summary="Delete existing Field",
+     *  path="/categories/{id}",
+     *  operationId="deletecategory",
+     *  tags={"Category"},
+     *  summary="Delete existing Category",
      *  description="Deletes a record and returns no content",
      *  @OA\Parameter(
      *      name="id",
-     *      description="Field id",
+     *      description="Category id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -297,9 +313,13 @@ class FieldController extends Controller
      *  )
      * )
      */
-    public function destroy(Field $field)
+    public function destroy(Category $category)
     {
-        $field->delete();
-        return response('the data was deleted successfully', 200);
+        $category->delete();    
+        return response()->json(
+            [
+                'message' => 'the data was deleted successfully'
+            ],200
+        );
     }
 }
