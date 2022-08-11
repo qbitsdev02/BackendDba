@@ -14,7 +14,7 @@ class FieldCashFlowObserver
      */
     public function created(FieldCashFlow $fieldCashFlow)
     {
-        $fieldCashFlow->images()->createMany(request()->image);
+        $fieldCashFlow->images()->createMany(request()->images);
     }
 
     /**

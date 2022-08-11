@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->float('amount');
             $table->foreignId('concept_id')->nullable()->constrained();
-            $table->enum('status', ['pending_approval', 'approved','canceled'])->default('pending_approval');
+            $table->enum('status', ['pending_approval', 'approved','canceled'])->default('approved');
             $table->string('description')->nullable();
             $table->foreignId('field_id')->constrained();
             $table->float('balance');
