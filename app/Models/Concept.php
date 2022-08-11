@@ -62,4 +62,12 @@ class Concept extends Base
     {
         return $this->hasMany(Transaction::class);
     }
+
+    /**
+     * 
+     */
+    public function fieldCashFlows()
+    {
+        return $this->hasMany(FieldCashFlow::class);
+    }
 }

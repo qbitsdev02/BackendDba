@@ -6,6 +6,7 @@ use App\Models\Active;
 use App\Models\Category;
 use App\Models\Coin;
 use App\Models\Company;
+use App\Models\FieldCashFlow;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
@@ -28,6 +29,7 @@ use App\Policies\AttributePolicy;
 use App\Policies\CategoryPolicy;
 use App\Policies\CoinPolicy;
 use App\Policies\CompanyPolicy;
+use App\Policies\FieldCashFlowPolicy;
 use App\Policies\PaymentOrderPolicy;
 use App\Policies\PersonalPolicy;
 use App\Policies\PortPolicy;
@@ -63,6 +65,7 @@ class AuthServiceProvider extends ServiceProvider
         Company::class=>CompanyPolicy::class,
         Transaction::class=>TransactionPolicy::class,
         Category::class=>CategoryPolicy::class,
+        FieldCashFlow::class=>FieldCashFlowPolicy::class,
     ];
 
 

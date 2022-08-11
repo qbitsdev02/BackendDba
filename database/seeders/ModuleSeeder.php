@@ -331,6 +331,15 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
+                //36
+                [
+                'name' => 'fiel-cash-flows',
+                'icon' => 'person',
+                'route' => 'FieldCashFlow',
+                'section_id' => 4,
+                'devices' => '["mobile", "desktop"]',
+                'user_created_id' => 1
+            ],
    
             ]);
     }
