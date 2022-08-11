@@ -322,6 +322,15 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
+                 //35
+                 [
+                    'name' => 'categories',
+                    'icon' => 'person',
+                    'route' => 'Category',
+                    'section_id' => 4,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
    
             ]);
     }

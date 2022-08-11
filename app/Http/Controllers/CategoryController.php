@@ -2,32 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Active;
+use App\Models\Category;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreActiveRequest;
-use App\Http\Requests\UpdateActiveRequest;
-use App\Http\Resources\ActiveResource;
+use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
+use App\Http\Resources\CategoryResource;
 use Illuminate\Http\Request;
 
-class ActiveController extends Controller
+class CategoryController extends Controller
 {
 
-    /**
-      * 
-      */
-     function __construct()
-     {
-         $this->authorizeResource(Active::class,'active');
-     }
+
+    public function __construct()
+    {
+        $this->authorizeResource(Category::class, 'category');
+    }
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-      * @OA\Get(
-      *     path="/actives",
-      *     operationId="getactive",
-      *     tags={"Active"},
+     * 
+     * @OA\Get(
+      *     path="/categories",
+      *     operationId="getcategories",
+      *     tags={"Category"},
       *     @OA\Parameter(
       *       name="paginate",
       *       in="query",
@@ -35,7 +34,7 @@ class ActiveController extends Controller
       *       required=false,
       *       @OA\Schema(
       *           title="Paginate",
-      *           example="true",
+      *           example="true", 
       *           description="The Paginate data"
       *       )
       *     ),
@@ -94,7 +93,7 @@ class ActiveController extends Controller
       *     ),
       *     @OA\Response(
       *         response=200,
-      *         description="active all."
+      *         description="category all."
       *     ),
       *     @OA\Response(
       *         response="default",
@@ -104,12 +103,12 @@ class ActiveController extends Controller
      */
     public function index(Request $request)
     {
-        $actives = Active::filters($request->all())
+        $categories = Category::filters($request->all())
             ->search($request->all());
-    
-        return (ActiveResource::collection($actives))->additional(
+        
+        return (CategoryResource::collection($categories))->additional(
             [
-                'message:' => 'Successfully response'
+                'message:' => 'successfully response'
             ],200
         );
     }
@@ -117,19 +116,19 @@ class ActiveController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreActiveRequest  $request
+     * @param  \App\Http\Requests\StoreCategoryRequest  $request
      * @return \Illuminate\Http\Response
      * 
-    * @OA\Post(
-    *   path="/actives",
-    *   summary="Creates a new active",
-    *   description="Creates a new active",
-    *   tags={"Active"},
+     * @OA\Post(
+    *   path="/categories",
+    *   summary="Creates a new category",
+    *   description="Creates a new category",
+    *   tags={"Category"},
     *   security={{"passport": {"*"}}},
     *   @OA\RequestBody(
     *       @OA\MediaType(
     *           mediaType="application/json",
-    *           @OA\Schema(ref="#/components/schemas/Active")
+    *           @OA\Schema(ref="#/components/schemas/Category")
     *       )
     *   ),
     *   @OA\Response(
@@ -149,41 +148,36 @@ class ActiveController extends Controller
     *   )
     * )
      */
-    public function store(StoreActiveRequest $request)
-    {   
- 
-        $active = new Active();
-        $active->name = $request->name;
-        $active->status = $request->status;
-        $active->description = $request->description;
-        $active->ownerable_type = $request->ownerable_type;
-        $active->ownerable_id = $request->ownerable_id;
-        $active->user_created_id = $request->user_created_id;
-        $active->save();
-        
-        return (new ActiveResource($active))->additional(
+    public function store(StoreCategoryRequest $request)
+    {
+        $category = new Category();
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->user_created_id = $request->user_created_id;
+        $category->save();
+
+        return ( new CategoryResource($category))->additional(
             [
-                'message:' => 'successfully registered active'
+                'message' => 'successfully registered data'
             ],201
         );
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Active  $active
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      * 
      * @OA\Get(
-     *      path="/actives/{id}",
-     *      operationId="getactivesById",
-     *      tags={"Active"},
-     *      summary="Get active information",
-     *      description="Returns Port data",
+     *      path="/categories/{id}",
+     *      operationId="getcategoriesById",
+     *      tags={"Category"},
+     *      summary="Get category information",
+     *      description="Returns category data",
      *   @OA\Parameter(
      *          name="id",
-     *          description="Active id",
+     *          description="Category id",
      *          required=true,
      *          in="path",
      *             @OA\Schema(type="integer")
@@ -191,7 +185,7 @@ class ActiveController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/Active")
+     *          @OA\JsonContent(ref="#/components/schemas/Category")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -207,9 +201,9 @@ class ActiveController extends Controller
      *      )
      *   )
      */
-    public function show(Active $active)
+    public function show(Category $category)
     {
-        return (new ActiveResource($active))->additional(
+        return (new CategoryResource($category))->additional(
             [
                 'message:' => 'successfully response'
             ],200
@@ -219,19 +213,19 @@ class ActiveController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateActiveRequest  $request
-     * @param  \App\Models\Active  $active
+     * @param  \App\Http\Requests\UpdateCategoryRequest  $request
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      * 
      * @OA\Put(
-     *      path="/actives/{id}",
-     *      operationId="updateactive",
-     *      tags={"Active"},
-     *      summary="Update existing Active",
+     *      path="/categories/{id}",
+     *      operationId="updatecategories",
+     *      tags={"Category"},
+    *      summary="Update existing Category",
      *      description="Returns updated port data",
      *  @OA\Parameter(
      *      name="id",
-     *      description="Active id",
+     *      description="Category id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -240,12 +234,12 @@ class ActiveController extends Controller
      *  ),
      *  @OA\RequestBody(
      *      required=true,
-     *      @OA\JsonContent(ref="#/components/schemas/Active")
+     *      @OA\JsonContent(ref="#/components/schemas/Category")
      *   ),
      *   @OA\Response(
      *      response=200,
      *      description="Successful operation",
-     *      @OA\JsonContent(ref="#/components/schemas/Active")
+     *      @OA\JsonContent(ref="#/components/schemas/Category")
      *   ),
      *   @OA\Response(
      *      response=400,
@@ -265,19 +259,16 @@ class ActiveController extends Controller
      *   )
      * )
      */
-    public function update(UpdateActiveRequest $request, Active $active)
+    public function update(UpdateCategoryRequest $request, Category $category)
     {
-        $active->name = $request->name;
-        $active->status = $request->status;
-        $active->description = $request->description;
-        $active->ownerable_type = $request->ownerable_type;
-        $active->ownerable_id = $request->ownerable_id;
-        $active->user_created_id = $request->user_created_id;
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->user_created_id = $request->user_created_id;
+        $category->update();
 
-        $active->update();
-        return (new ActiveResource($active))->additional(
+        return (new CategoryResource($category))->additional(
             [
-                'message:' => 'successfully updated active'
+                'message:' => 'successfully updated data'
             ],200
         );
     }
@@ -285,18 +276,18 @@ class ActiveController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Active  $active
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      * 
      * @OA\Delete(
-     *  path="/actives/{id}",
-     *  operationId="deleteactive",
-     *  tags={"Active"},
-     *  summary="Delete existing active",
+     *  path="/categories/{id}",
+     *  operationId="deletecategory",
+     *  tags={"Category"},
+     *  summary="Delete existing Category",
      *  description="Deletes a record and returns no content",
      *  @OA\Parameter(
      *      name="id",
-     *      description="active id",
+     *      description="Category id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -322,9 +313,9 @@ class ActiveController extends Controller
      *  )
      * )
      */
-    public function destroy(Active $active)
+    public function destroy(Category $category)
     {
-        $active->delete();
+        $category->delete();    
         return response()->json(
             [
                 'message' => 'the data was deleted successfully'

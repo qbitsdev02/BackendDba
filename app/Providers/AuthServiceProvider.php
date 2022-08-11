@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Active;
+use App\Models\Category;
 use App\Models\Coin;
 use App\Models\Company;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -24,6 +25,7 @@ use App\Models\Ticket;
 use App\Models\Transaction;
 use App\Policies\ActivePolicy;
 use App\Policies\AttributePolicy;
+use App\Policies\CategoryPolicy;
 use App\Policies\CoinPolicy;
 use App\Policies\CompanyPolicy;
 use App\Policies\PaymentOrderPolicy;
@@ -60,6 +62,7 @@ class AuthServiceProvider extends ServiceProvider
         Attribute::class=>AttributePolicy::class,
         Company::class=>CompanyPolicy::class,
         Transaction::class=>TransactionPolicy::class,
+        Category::class=>CategoryPolicy::class,
     ];
 
 

@@ -54,5 +54,4 @@ class Concept extends Base
     {
         return $this->belongsTo(ConceptType::class);
     }
-
 }
