@@ -8940,6 +8940,13 @@
             },
             "Field": {
                 "properties": {
+                    "contract_number": {
+                        "description": "The contract_number",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string"
+                    },
                     "denomination": {
                         "description": "The Field denomination",
                         "required": [

@@ -105,16 +105,6 @@ class FieldController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
       * Store a newly created resource in storage.
       *
       * @param  \App\Http\Requests\StoreFieldRequest  $request
@@ -151,6 +141,7 @@ class FieldController extends Controller
     public function store(StoreFieldRequest $request)
     {
         $field = new Field();
+        $field->contract_number = $request->contract_number;
         $field->denomination = $request->denomination;
         $field->acronym = $request->acronym;
         $field->address = $request->address;
@@ -206,17 +197,6 @@ class FieldController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Field  $field
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Field $field)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      *
@@ -267,6 +247,7 @@ class FieldController extends Controller
      */
     public function update(UpdateFieldRequest $request, Field $field)
     {
+        $field->contract_number = $request->contract_number;
         $field->denomination = $request->denomination;
         $field->acronym = $request->acronym;
         $field->address = $request->address;

@@ -17,6 +17,7 @@ class FieldSeeder extends Seeder
         DB::table('fields')->insert(
         [
             [   
+                'contract_number' => 'n° 58964',
                 'denomination'=>'BL:BP-OCK#21b-j000082271',
                 'acronym'=>'BP-OCK#21B',
                 'address' => 'Guanta',

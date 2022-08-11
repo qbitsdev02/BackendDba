@@ -6,6 +6,12 @@ namespace App\Models;
  * @OA\Schema(
  *   schema="Field",
  *   type="object",
+ * @OA\Property(
+ *       property="contract_number",
+ *       type="string",
+ *       required={"true"},
+ *       description="The contract_number"
+ *   ),
  *   @OA\Property(
  *       property="denomination",
  *       type="string",
