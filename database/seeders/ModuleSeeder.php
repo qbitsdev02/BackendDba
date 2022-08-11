@@ -306,9 +306,18 @@ class ModuleSeeder extends Seeder
                 ],
                 //33
                 [
-                    'name' => 'companies',
+                'name' => 'companies',
+                'icon' => 'person',
+                'route' => 'Company',
+                'section_id' => 4,
+                'devices' => '["mobile", "desktop"]',
+                'user_created_id' => 1
+                ],
+                //34
+                [
+                    'name' => 'transactions',
                     'icon' => 'person',
-                    'route' => 'Company',
+                    'route' => 'Transaction',
                     'section_id' => 4,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1

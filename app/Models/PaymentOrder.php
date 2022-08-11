@@ -137,4 +137,12 @@ class PaymentOrder extends Base
     {
         return $this->morphTo();
     }
+
+    /**
+     * Relationship transaction
+     */
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }   

@@ -28,6 +28,7 @@ class PaymentOrderResource extends JsonResource
                 'id' => $this->entity->id,
                 'name' =>$this->entity->name,
             ],
+            'ownerable_type' =>$this->ownerable_type,
             'coin' => [
                 'id' =>$this->coin->id,
                 'name' =>$this->coin->name,
