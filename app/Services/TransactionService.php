@@ -19,7 +19,7 @@ class TransactionService
     {
         switch ($this->transaction->paymentOrder->ownerable_type) {
             case 'App\\Models\\Field':
-                $this->saveFieldCashFlow();
+                $this->saveFieldCashFlow($request);
                 break;
             default:
                 break;
@@ -30,11 +30,14 @@ class TransactionService
     {
         $fieldCashFlow = new FieldCashFlow();
         $fieldCashFlow->amount = $this->transaction->amount;
-        // $fieldCashFlow->concept_id = $this->transaction->concept_id;
+        $fieldCashFlow->concept_id = $this->transaction->concept_id;
+        $fieldCashFlow->transaction_id = $this->transaction->id;
+        $fieldCashFlow->status = 'pending_approval';
         $fieldCashFlow->description = $this->transaction->description;
-        $fieldCashFlow->field_id =$this->transaction->paymentOrder->ownerable_id;
+        $fieldCashFlow->field_id = $this->transaction->paymentOrder->ownerable_id;
         $fieldCashFlow->beneficiary_id = $this->transaction->beneficiary_id;
         $fieldCashFlow->user_created_id = $this->transaction->user_created_id;
         $fieldCashFlow->save();
+        return $this;
     }
 }

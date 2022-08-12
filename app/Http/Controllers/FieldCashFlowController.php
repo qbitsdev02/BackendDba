@@ -11,14 +11,19 @@ use Illuminate\Http\Request;
 
 class FieldCashFlowController extends Controller
 {
+    protected $fieldCashFlowLast = null;
 
     /**
      *
      */
-    // public function __construct()
-    // {
-    //     $this->authorizeResource(FieldCashFlow::class,'field_cash_flow');
-    // }
+    public function __construct()
+    {
+        // $this->authorizeResource(FieldCashFlow::class,'field_cash_flow');
+        $this->fieldCashFlowLast = FieldCashFlow::where('status', 'approved')
+            ->orderBy('updated_at', 'desc')
+            ->get('balance')
+            ->first();
+    }
 
 
     /**
@@ -109,11 +114,29 @@ class FieldCashFlowController extends Controller
         $cash_flows = FieldCashFlow::filters($request->all())
             ->search($request->all());
 
-            return ( FieldCashFlowResource::collection($cash_flows))->additional(
+            return (FieldCashFlowResource::collection($cash_flows))->additional(
                 [
                     'message:' => 'succesfully response'
                 ],200
             );
+    }
+
+    public function balance()
+    {
+        $cashFlowsEgress = FieldCashFlow::selectRaw('SUM(amount) as amount, transaction_id, status')
+            ->whereNull('transaction_id')
+            ->orderBy('status', 'asc')
+            ->orderBy('transaction_id', 'asc')
+            ->groupBy('status');
+
+        $cashFlows = FieldCashFlow::selectRaw('SUM(amount) as amount, transaction_id, status')
+            ->whereNotNull('transaction_id')
+            ->union($cashFlowsEgress)
+            ->orderBy('status', 'asc')
+            ->orderBy('transaction_id', 'asc')
+            ->get();
+
+        return response()->json($cashFlows, 200);
     }
 
     /**
@@ -160,7 +183,7 @@ class FieldCashFlowController extends Controller
         $field_cash_flow->description = $request->description;
         $field_cash_flow->field_id = $request->field_id;
         $field_cash_flow->transaction_id = $request->transaction_id;
-        //$field_cash_flow->balance = $request->balance;
+        $field_cash_flow->balance = $this->fieldCashFlowLast->balance - $request->amount;
         $field_cash_flow->beneficiary_id = $request->beneficiary_id;
         $field_cash_flow->user_created_id = $request->user_created_id;
         $field_cash_flow->save();
@@ -280,6 +303,7 @@ class FieldCashFlowController extends Controller
         $field_cash_flow->balance = $request->balance;
         $field_cash_flow->beneficiary_id = $request->beneficiary_id;
         $field_cash_flow->user_created_id = $request->user_created_id;
+        $field_cash_flow->balance =  $this->fieldCashFlowLast ? $field_cash_flow->amount + $this->fieldCashFlowLast->balance : $field_cash_flow->amount;
         $field_cash_flow->update();
 
         return ( new FieldCashFlowResource($field_cash_flow))->additional(

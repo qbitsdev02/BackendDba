@@ -85,5 +85,6 @@ Route::group([
     $router->resource('transactions', TransactionController::class);
     $router->resource('banks', BankController::class);
     $router->resource('categories', CategoryController::class);
+    $router->get('balance', 'FieldCashFlowController@balance')->name('balance');
     $router->resource('field-cash-flows', FieldCashFlowController::class);
 });
