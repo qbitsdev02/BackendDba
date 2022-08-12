@@ -20,6 +20,7 @@ class TransactionResource extends JsonResource
             'description' => $this->description,
             'date' => $this->date,
             'reference' => $this->reference,
+            'beneficiary_id'=>$this->beneficiary_id,
             'concept' => [
                 'id' =>$this->concept->id,
                 'name' => $this->concept->name

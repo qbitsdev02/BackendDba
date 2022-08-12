@@ -20,10 +20,11 @@ class FieldCashFlowSeeder extends Seeder
             [
                 [
                     'amount' => 1200,
-                    'concept_id' => NULL,
+                    'concept_id' => 1,
                     'description' => 'pago',
                     'status'=>'approved',
                     'balance' => 2563,
+                    'transaction_id'=>4,
                     'field_id' => 1,
                     'beneficiary_id' => NULL,
                     'user_created_id' => 1,
@@ -35,6 +36,7 @@ class FieldCashFlowSeeder extends Seeder
                     'description' => 'pago',
                     'status'=>'pending_approval',
                     'balance' => 56,
+                    'transaction_id'=>4,
                     'field_id' => 1,
                     'beneficiary_id' => 1,
                     'user_created_id' => 1,

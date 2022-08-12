@@ -156,6 +156,7 @@ class TransactionController extends Controller
         $transaction = new Transaction();
         $transaction->amount = $request->amount;
         $transaction->description = $request->description;
+        $transaction->beneficiary_id = $request->beneficiary_id;
         $transaction->date = $request->date;
         $transaction->concept_id = $request->concept_id;
         $transaction->payment_order_id = $request->payment_order_id;
@@ -271,6 +272,7 @@ class TransactionController extends Controller
         $transaction->amount = $request->amount;
         $transaction->description = $request->description;
         $transaction->date = $request->date;
+        $transaction->beneficiary_id = $request->beneficiary_id;
         $transaction->concept_id = $request->concept_id;
         $transaction->payment_order_id = $request->payment_order_id;
         $transaction->reference = $request->reference;

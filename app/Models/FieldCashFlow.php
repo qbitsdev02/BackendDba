@@ -37,6 +37,13 @@ use Illuminate\Database\Eloquent\Model;
  *       description="The field_id"
  *   ),
  *  @OA\Property(
+ *       property="transaction_id",
+ *       type="number",
+ *       required={"true"},
+ *       example=1,
+ *       description="The transaction_id"
+ *   ),
+ *  @OA\Property(
  *       property="status",
  *       type="string",
  *       required={"true"},
@@ -99,6 +106,14 @@ class FieldCashFlow extends Base
     public function concept()
     {
         return $this->belongsTo(Concept::class);
+    }
+
+    /**
+     * 
+     */
+    public function transaction()
+    {
+        return $this->belongsTo(Transaction::class);
     }
     /**
      *

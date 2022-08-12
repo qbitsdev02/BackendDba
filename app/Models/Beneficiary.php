@@ -55,4 +55,13 @@ namespace App\Models;
 class Beneficiary extends User {
 
     protected $table = 'users';
+
+
+    /**
+     * 
+     */
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

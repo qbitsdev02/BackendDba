@@ -21,12 +21,13 @@ class TransactionSeeder extends Seeder
                     'amount' => 2500,
                     'description' => 'pago provedor',
                     'date' => '25/09/2022',
+                    'beneficiary_id'=>1,
                     'concept_id' => 13,
-                    'payment_order_id' => 7,
+                    'payment_order_id' => 12,
                     'reference' => 000001,
-                    'user_created_id' => 1 
+                    'user_created_id' => 1
                 ],
- 
+
             ]
         );
     }
