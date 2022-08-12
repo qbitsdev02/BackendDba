@@ -17,11 +17,17 @@ class FieldCashFlowResource extends JsonResource
         return [
             'id' => $this->id,
             'amount' => $this->amount,
-            'concept_id' => $this->concept_id ? [
+            'concept_id' => $this->concept_id,
+            'beneficiary_id' => $this->beneficiary_id,
+            'field_id' => $this->field_id,
+            'description' => $this->description,
+            'status'=>$this->status,
+            'balance' =>$this->balance,
+            'user_created_id' => $this->user_created_id,
+            'concept' => $this->concept_id ? [
                 'id' => $this->concept->id,
                 'name' => $this->concept->name
-            ] : NULL, 
-            'description' => $this->description,
+            ] : NULL,
             'field' => [
                 'id' => $this->field->id,
                 'acronym' => $this->field->acronym,
@@ -32,14 +38,14 @@ class FieldCashFlowResource extends JsonResource
                     'name'=>$this->field->fieldSupervisor->name,
                     'last_name'=>$this->field->fieldSupervisor->last_name,
                     'document_number'=>$this->field->fieldSupervisor->document_number,
-                ],   
+                ],
             ],
-            'status'=>$this->status,
-            'balance' =>$this->balance,
-            'beneficiary_id' => $this->beneficiary_id ?[
-                    $this->user_created_id
-                ] : NULL ,
-            'user_created_id' => $this->user_created_id,
+            'beneficiary' => $this->beneficiary_id ? [
+                'id' => $this->beneficiary->id,
+                'name'=>$this->beneficiary->name,
+                'last_name'=>$this->beneficiary->last_name,
+                'document_number'=>$this->beneficiary->document_number,
+            ] : NULL
         ];
     }
 }

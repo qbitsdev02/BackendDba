@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 /**
- * 
+ *
  * @OA\Schema(
  *   schema="FieldCashFlow",
  *   type="object",
@@ -94,11 +94,17 @@ class FieldCashFlow extends Base
     }
 
     /**
-     * 
+     *
      */
     public function concept()
     {
         return $this->belongsTo(Concept::class);
     }
-
+    /**
+     *
+     */
+    public function beneficiary()
+    {
+        return $this->belongsTo(Beneficiary::class);
+    }
 }
