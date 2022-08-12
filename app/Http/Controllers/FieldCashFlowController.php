@@ -13,19 +13,19 @@ class FieldCashFlowController extends Controller
 {
 
     /**
-     * 
+     *
      */
-    public function __construct()
-    {
-        $this->authorizeResource(FieldCashFlow::class,'field_cash_flow');
-    }
-    
+    // public function __construct()
+    // {
+    //     $this->authorizeResource(FieldCashFlow::class,'field_cash_flow');
+    // }
+
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Get(
       *     path="/field-cash-flows",
       *     operationId="getfieldCashFlow",
@@ -108,7 +108,7 @@ class FieldCashFlowController extends Controller
     {
         $cash_flows = FieldCashFlow::filters($request->all())
             ->search($request->all());
-        
+
             return ( FieldCashFlowResource::collection($cash_flows))->additional(
                 [
                     'message:' => 'succesfully response'
@@ -121,7 +121,7 @@ class FieldCashFlowController extends Controller
      *
      * @param  \App\Http\Requests\StoreFieldCashFlowRequest  $request
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Post(
     *   path="/field-cash-flows",
     *   summary="Creates a new field cash flow",
@@ -176,7 +176,7 @@ class FieldCashFlowController extends Controller
      *
      * @param  \App\Models\FieldCashFlow  $fieldCashFlow
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Get(
      *      path="/field-cash-flows/{id}",
      *      operationId="getfieldCashFlowById",
@@ -225,7 +225,7 @@ class FieldCashFlowController extends Controller
      * @param  \App\Http\Requests\UpdateFieldCashFlowRequest  $request
      * @param  \App\Models\FieldCashFlow  $fieldCashFlow
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Put(
      *      path="/field-cash-flows/{id}",
      *      operationId="updatefieldCashFlow",
@@ -292,7 +292,7 @@ class FieldCashFlowController extends Controller
      *
      * @param  \App\Models\FieldCashFlow  $fieldCashFlow
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Delete(
      *  path="/field-cash-flows/{id}",
      *  operationId="deletefieldCashFlows",
