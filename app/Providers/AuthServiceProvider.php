@@ -63,7 +63,7 @@ class AuthServiceProvider extends ServiceProvider
         Active::class=>ActivePolicy::class,
         Attribute::class=>AttributePolicy::class,
         Company::class=>CompanyPolicy::class,
-        Transaction::class=>TransactionPolicy::class,
+       // Transaction::class=>TransactionPolicy::class,
         Category::class=>CategoryPolicy::class,
         FieldCashFlow::class=>FieldCashFlowPolicy::class,
     ];

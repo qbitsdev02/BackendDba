@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('field_cash_flows', function (Blueprint $table) {
             $table->id();
             $table->float('amount');
-            $table->foreignId('concept_id')->nullable()->constrained();
+            $table->foreignId('concept_id')->constrained();
             $table->enum('status', ['pending_approval', 'approved','canceled'])->default('approved');
+            $table->foreignId('transaction_id')->nullable()->constrained();
             $table->string('description')->nullable();
             $table->foreignId('field_id')->constrained();
             $table->float('balance');

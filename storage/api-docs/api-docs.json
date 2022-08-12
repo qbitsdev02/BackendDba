@@ -9297,6 +9297,14 @@
                         "type": "number",
                         "example": 1
                     },
+                    "transaction_id": {
+                        "description": "The transaction_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
                     "status": {
                         "description": "The status active",
                         "required": [
@@ -10389,6 +10397,14 @@
                             "true"
                         ],
                         "type": "string"
+                    },
+                    "beneficiary_id": {
+                        "description": "The beneficiary_id ",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
                     },
                     "payment_order_id": {
                         "description": "The payment_order_id ",

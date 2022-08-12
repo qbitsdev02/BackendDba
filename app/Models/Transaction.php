@@ -34,6 +34,13 @@ use Illuminate\Database\Eloquent\Model;
  *       required={"true"},
  *       description="reference transaction"
  *   ),
+ *  *   @OA\Property(
+ *       property="beneficiary_id",
+ *       type="number",
+ *       required={"true"},
+ *       example=1,
+ *       description="The beneficiary_id "
+ *   ),
  *   @OA\Property(
  *       property="payment_order_id",
  *       type="number",
@@ -78,4 +85,21 @@ class Transaction extends Base
     {
         return $this->belongsTo(Concept::class);
     }
+
+    /***
+     * 
+    */
+    public function beneficiary()
+    {
+        return $this->belongsTo(Beneficiary::class);
+    }
+
+    /**
+     * 
+     */
+    public function fieldCashFlow()
+    {
+        return $this->belongsTo(FieldCashFlow::class);
+    }
 }
+
