@@ -107,8 +107,8 @@ class TransactionController extends Controller
     {
         $transactions = Transaction::filters($request->all())
             ->search($request->all());
-            
-        
+
+
         return (TransactionResource::collection($transactions))->additional(
             [
                 'message:' => 'Successfully response'
@@ -121,7 +121,7 @@ class TransactionController extends Controller
      *
      * @param  \App\Http\Requests\StoreTransactionRequest  $request
      * @return \Illuminate\Http\Response
-     * 
+     *
     *  @OA\Post(
     *   path="/transactions",
     *   summary="Creates a new transaction",
@@ -175,7 +175,7 @@ class TransactionController extends Controller
      *
      * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Get(
      *      path="/transactions/{id}",
      *      operationId="gettransactionById",
@@ -223,7 +223,7 @@ class TransactionController extends Controller
      * @param  \App\Http\Requests\UpdateTransactionRequest  $request
      * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Put(
      *      path="/transactions/{id}",
      *      operationId="updatetransaction",
@@ -289,7 +289,7 @@ class TransactionController extends Controller
      *
      * @param  \App\Models\Transaction  $transaction
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Delete(
      *  path="/transactions/{id}",
      *  operationId="deletetransaction",
