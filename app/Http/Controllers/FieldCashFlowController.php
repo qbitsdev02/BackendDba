@@ -112,6 +112,7 @@ class FieldCashFlowController extends Controller
     public function index(Request $request)
     {
         $cash_flows = FieldCashFlow::filters($request->all())
+            ->typeCash($request->egress)
             ->search($request->all());
 
             return (FieldCashFlowResource::collection($cash_flows))->additional(
@@ -123,20 +124,24 @@ class FieldCashFlowController extends Controller
 
     public function balance()
     {
-        $cashFlowsEgress = FieldCashFlow::selectRaw('SUM(amount) as amount, transaction_id, status')
+        $cashFlowsEgress = FieldCashFlow::selectRaw('SUM(amount) as amount, transaction_id, status, balance')
             ->whereNull('transaction_id')
-            ->orderBy('status', 'asc')
-            ->orderBy('transaction_id', 'asc')
-            ->groupBy('status');
+            ->orderBy('transaction_id', 'desc');
 
-        $cashFlows = FieldCashFlow::selectRaw('SUM(amount) as amount, transaction_id, status')
+
+        $cashFlows = FieldCashFlow::selectRaw('SUM(amount) as amount, transaction_id, status, balance')
             ->whereNotNull('transaction_id')
             ->union($cashFlowsEgress)
             ->orderBy('status', 'asc')
-            ->orderBy('transaction_id', 'asc')
+            ->orderBy('transaction_id', 'desc')
+            ->groupBy('status')
             ->get();
 
-        return response()->json($cashFlows, 200);
+        $response = [
+            'balance' => $this->fieldCashFlowLast->balance,
+            'accounts' => $cashFlows
+        ];
+        return response()->json($response, 200);
     }
 
     /**

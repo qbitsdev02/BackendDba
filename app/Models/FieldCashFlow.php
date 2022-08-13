@@ -84,6 +84,15 @@ class FieldCashFlow extends Base
 {
     use HasFactory;
 
+    public function scopeTypeCash($query, $egress)
+    {
+        if (isset($egress) && !empty($egress)) {
+            if ($egress === true)
+                return $query->whereNull('transaction_id');
+            return $query->whereNotNull('transaction_id');
+        }
+    }
+
     /**
      * Relationship
      */
@@ -109,7 +118,7 @@ class FieldCashFlow extends Base
     }
 
     /**
-     * 
+     *
      */
     public function transaction()
     {
