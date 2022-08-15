@@ -36,4 +36,12 @@ class Category extends Base
 {
     use HasFactory;
 
+    /**
+    * 
+    */
+    public function concepts()
+    {
+        return $this->hasMany(Concept::class);
+    }
+
 }

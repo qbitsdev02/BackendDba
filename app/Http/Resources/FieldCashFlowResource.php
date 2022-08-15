@@ -21,6 +21,10 @@ class FieldCashFlowResource extends JsonResource
                 'id' => $this->concept->id,
                 'name' => $this->concept->name
             ] : NULL, 
+            'guide' => [
+                'id'=> $this->guide_id,
+                'N° guide' => $this->guide->code_runpa,
+            ],
             'description' => $this->description,
             'field' => [
                 'id' => $this->field->id,

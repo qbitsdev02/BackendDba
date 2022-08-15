@@ -157,6 +157,7 @@ class FieldCashFlowController extends Controller
         $field_cash_flow = new FieldCashFlow();
         $field_cash_flow->amount = $request->amount;
         $field_cash_flow->concept_id = $request->concept_id;
+        $field_cash_flow->guide_id = $request->guide_id;
         $field_cash_flow->description = $request->description;
         $field_cash_flow->field_id = $request->field_id;
         $field_cash_flow->transaction_id = $request->transaction_id;
@@ -274,6 +275,7 @@ class FieldCashFlowController extends Controller
         $field_cash_flow->amount = $request->amount;
         $field_cash_flow->concept_id = $request->concept_id;
         $field_cash_flow->status = $request->status;
+        $field_cash_flow->guide_id = $request->guide_id;
         $field_cash_flow->transaction_id = $request->transaction_id;
         $field_cash_flow->description = $request->description;
         $field_cash_flow->field_id = $request->field_id;
