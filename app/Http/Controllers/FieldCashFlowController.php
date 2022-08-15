@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFieldCashFlowRequest;
 use App\Http\Requests\UpdateFieldCashFlowRequest;
 use App\Http\Resources\FieldCashFlowResource;
+use App\Models\Field;
 use Illuminate\Http\Request;
 
 class FieldCashFlowController extends Controller
@@ -19,10 +20,26 @@ class FieldCashFlowController extends Controller
     public function __construct()
     {
         // $this->authorizeResource(FieldCashFlow::class,'field_cash_flow');
-        $this->fieldCashFlowLast = FieldCashFlow::where('status', 'approved')
-            ->orderBy('updated_at', 'desc')
-            ->get('balance')
+        $this->getBalance();
+    }
+
+    public function getBalance()
+    {
+        $cashFlowsEgress = FieldCashFlow::selectRaw('SUM(amount) as amount')
+            ->whereNull('transaction_id')
+            ->where('status', 'approved')
             ->first();
+
+        $cashFlowsEntry = FieldCashFlow::selectRaw('SUM(amount) as amount')
+            ->whereNotNull('transaction_id')
+            ->where('status', 'approved')
+            ->first();
+
+        $this->fieldCashFlowLast = [
+            'egress' => $cashFlowsEgress->amount,
+            'entry' => $cashFlowsEntry->amount,
+            'balance' => $cashFlowsEntry->amount - $cashFlowsEgress->amount
+        ];
     }
 
 
@@ -122,6 +139,22 @@ class FieldCashFlowController extends Controller
             );
     }
 
+    public function changeStatus(Request $request)
+    {
+        collect($request->data)
+            ->map(function($fieldCashFlow) {
+                $this->getBalance();
+                $fieldCashFlow = FieldCashFlow::find($fieldCashFlow['id']);
+                $fieldCashFlow->balance = $this->fieldCashFlowLast ? $fieldCashFlow->amount + $this->fieldCashFlowLast['balance'] : $fieldCashFlow->amount;
+                $fieldCashFlow->status = 'approved';
+                $fieldCashFlow->update();
+                sleep(1);
+            });
+        return response()->json([
+            'message' => 'status updated success'
+        ]);
+    }
+
     public function balance()
     {
         $cashFlowsEgress = FieldCashFlow::selectRaw('SUM(amount) as amount, transaction_id, status, balance')
@@ -138,7 +171,7 @@ class FieldCashFlowController extends Controller
             ->get();
 
         $response = [
-            'balance' => $this->fieldCashFlowLast->balance,
+            'balance' => $this->fieldCashFlowLast['balance'],
             'accounts' => $cashFlows
         ];
         return response()->json($response, 200);
@@ -181,19 +214,18 @@ class FieldCashFlowController extends Controller
      */
     public function store(StoreFieldCashFlowRequest $request)
     {
-
         $field_cash_flow = new FieldCashFlow();
         $field_cash_flow->amount = $request->amount;
         $field_cash_flow->concept_id = $request->concept_id;
         $field_cash_flow->description = $request->description;
         $field_cash_flow->field_id = $request->field_id;
         $field_cash_flow->transaction_id = $request->transaction_id;
-        $field_cash_flow->balance = $this->fieldCashFlowLast->balance - $request->amount;
+        $field_cash_flow->balance = $this->fieldCashFlowLast['balance'] - $request->amount;
         $field_cash_flow->beneficiary_id = $request->beneficiary_id;
         $field_cash_flow->user_created_id = $request->user_created_id;
         $field_cash_flow->save();
 
-        return ( new FieldCashFlowResource($field_cash_flow))->additional(
+        return (new FieldCashFlowResource($field_cash_flow))->additional(
             [
                 'message:' => 'successfully registered data'
             ],201
@@ -308,7 +340,7 @@ class FieldCashFlowController extends Controller
         $field_cash_flow->balance = $request->balance;
         $field_cash_flow->beneficiary_id = $request->beneficiary_id;
         $field_cash_flow->user_created_id = $request->user_created_id;
-        $field_cash_flow->balance =  $this->fieldCashFlowLast ? $field_cash_flow->amount + $this->fieldCashFlowLast->balance : $field_cash_flow->amount;
+        $field_cash_flow->balance =  $this->fieldCashFlowLast ? $field_cash_flow->amount + $this->fieldCashFlowLast['balance'] : $field_cash_flow->amount;
         $field_cash_flow->update();
 
         return ( new FieldCashFlowResource($field_cash_flow))->additional(

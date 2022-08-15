@@ -86,5 +86,6 @@ Route::group([
     $router->resource('banks', BankController::class);
     $router->resource('categories', CategoryController::class);
     $router->get('balance', 'FieldCashFlowController@balance')->name('balance');
+    $router->post('change-status', 'FieldCashFlowController@changeStatus')->name('changeStatus');
     $router->resource('field-cash-flows', FieldCashFlowController::class);
 });
