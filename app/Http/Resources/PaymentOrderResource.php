@@ -36,6 +36,7 @@ class PaymentOrderResource extends JsonResource
             ],
             'payment_date' => $this->payment_date,
             'user_created' => $this->user_created_id,
+            'pending' => $this->pending,
         ];
     }
 }
