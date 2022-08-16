@@ -158,8 +158,6 @@ class TransactionController extends Controller
     public function store(StoreTransactionRequest $request)
     {   
 
-        info(auth()->user());
-
         $transaction = new Transaction();
         $transaction->amount = $request->amount;
         $transaction->description = $request->description;
