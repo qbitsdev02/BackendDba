@@ -20,28 +20,7 @@ class FieldCashFlowController extends Controller
     public function __construct()
     {
         // $this->authorizeResource(FieldCashFlow::class,'fieldCashFlow');
-        $this->getBalance();
     }
-
-    public function getBalance()
-    {
-        $cashFlowsEgress = FieldCashFlow::selectRaw('SUM(amount) as amount')
-            ->whereNull('transaction_id')
-            ->where('status', 'approved')
-            ->first();
-
-        $cashFlowsEntry = FieldCashFlow::selectRaw('SUM(amount) as amount')
-            ->whereNotNull('transaction_id')
-            ->where('status', 'approved')
-            ->first();
-
-        $this->fieldCashFlowLast = [
-            'egress' => $cashFlowsEgress->amount,
-            'entry' => $cashFlowsEntry->amount,
-            'balance' => $cashFlowsEntry->amount - $cashFlowsEgress->amount
-        ];
-    }
-
 
     /**
      * Display a listing of the resource.
@@ -146,7 +125,7 @@ class FieldCashFlowController extends Controller
                 $this->getBalance();
                 info($this->fieldCashFlowLast);
                 $fieldCashFlow = FieldCashFlow::find($fieldCashFlowRequest['id']);
-                $fieldCashFlow->balance = $this->fieldCashFlowLast['balance'] + $fieldCashFlowRequest['amount'];
+                $fieldCashFlow->balance = $this->fieldCashFlowRequest->balance;
                 $fieldCashFlow->status = 'approved';
                 $fieldCashFlow->update();
                 sleep(1);
@@ -221,7 +200,7 @@ class FieldCashFlowController extends Controller
         $fieldCashFlow->description = $request->description;
         $fieldCashFlow->field_id = $request->field_id;
         $fieldCashFlow->transaction_id = $request->transaction_id;
-        $fieldCashFlow->balance = $this->fieldCashFlowLast['balance'] - $request->amount;
+        $fieldCashFlow->balance = $request->balance;
         $fieldCashFlow->beneficiary_id = $request->beneficiary_id;
         $fieldCashFlow->user_created_id = $request->user_created_id;
         $fieldCashFlow->save();
@@ -341,7 +320,7 @@ class FieldCashFlowController extends Controller
         $fieldCashFlow->balance = $request->balance;
         $fieldCashFlow->beneficiary_id = $request->beneficiary_id;
         $fieldCashFlow->user_created_id = $request->user_created_id;
-        $fieldCashFlow->balance =  $this->fieldCashFlowLast ? $fieldCashFlow->amount + $this->fieldCashFlowLast['balance'] : $fieldCashFlow->amount;
+        $fieldCashFlow->balance = $this->balance;
         $fieldCashFlow->update();
 
         return ( new FieldCashFlowResource($fieldCashFlow))->additional(
