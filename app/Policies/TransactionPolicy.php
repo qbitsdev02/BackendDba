@@ -18,7 +18,7 @@ class TransactionPolicy
      */
     public function viewAny(User $user)
     {
-        $user->can('transactions-viewAny');
+       return $user->can('transactions-viewAny');
     }
 
     /**
@@ -30,7 +30,7 @@ class TransactionPolicy
      */
     public function view(User $user, Transaction $transaction)
     {
-        $user->can('transactions-read');
+        return $user->can('transactions-read');
     }
 
     /**
@@ -41,7 +41,7 @@ class TransactionPolicy
      */
     public function create(User $user)
     {
-        $user->can('transactions-create');
+        return $user->can('transactions-create');
     }
 
     /**
@@ -53,7 +53,7 @@ class TransactionPolicy
      */
     public function update(User $user, Transaction $transaction)
     {
-        $user->can('transactions-update');
+        return $user->can('transactions-update');
     }
 
     /**
@@ -65,7 +65,7 @@ class TransactionPolicy
      */
     public function delete(User $user, Transaction $transaction)
     {
-        $user->can('transactions-delete');
+        return $user->can('transactions-delete');
     }
 
     /**
@@ -77,7 +77,7 @@ class TransactionPolicy
      */
     public function restore(User $user, Transaction $transaction)
     {
-        $user->can('transactions-restore');
+        return $user->can('transactions-restore');
     }
 
     /**
@@ -89,6 +89,6 @@ class TransactionPolicy
      */
     public function forceDelete(User $user, Transaction $transaction)
     {
-        $user->can('transactions-forceDelete');
+        return $user->can('transactions-forceDelete');
     }
 }

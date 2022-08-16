@@ -7,7 +7,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
 use App\Http\Resources\TransactionResource;
+use App\Models\User;
+use App\Notifications\TransactionNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class TransactionController extends Controller
 {
@@ -152,7 +156,10 @@ class TransactionController extends Controller
     * )
      */
     public function store(StoreTransactionRequest $request)
-    {
+    {   
+
+        info(auth()->user());
+
         $transaction = new Transaction();
         $transaction->amount = $request->amount;
         $transaction->description = $request->description;
@@ -164,12 +171,15 @@ class TransactionController extends Controller
         $transaction->user_created_id = $request->user_created_id;
 
         $transaction->save();
+        
+        auth()->user()->notify(new TransactionNotification($transaction));
+
         return (new TransactionResource($transaction))->additional(
             [
                 'message:' => 'successfully registered data'
             ],201
         );
-    }
+    } 
 
     /**
      * Display the specified resource.

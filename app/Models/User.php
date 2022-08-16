@@ -67,7 +67,7 @@ use Illuminate\Support\Str;
  */
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasApiTokens, SoftDeletes;
+    use HasFactory, Notifiable, HasApiTokens, SoftDeletes; use Notifiable;
     /**
      * Create a new controller instance.
      *
