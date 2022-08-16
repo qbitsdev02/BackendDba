@@ -144,8 +144,9 @@ class FieldCashFlowController extends Controller
         collect($request->data)
             ->map(function($fieldCashFlowRequest) {
                 $this->getBalance();
+                info($this->fieldCashFlowLast);
                 $fieldCashFlow = FieldCashFlow::find($fieldCashFlowRequest['id']);
-                $fieldCashFlow->balance = $this->fieldCashFlowLast ? $fieldCashFlowRequest['amount'] + $this->fieldCashFlowLast['balance'] : $fieldCashFlowRequest['amount'];
+                $fieldCashFlow->balance = $this->fieldCashFlowLast['balance'] + $fieldCashFlowRequest['amount'];
                 $fieldCashFlow->status = 'approved';
                 $fieldCashFlow->update();
                 sleep(1);
