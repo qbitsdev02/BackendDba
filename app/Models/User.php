@@ -214,8 +214,6 @@ class User extends Authenticatable
      * @return User instance or null
      */
     public function hasAccess($moduleId, $permissionId) {
-        info($moduleId);
-        info($permissionId);
         return $this->join('branch_office_role_user', 'users.id', 'branch_office_role_user.user_id')
             ->join('roles', 'branch_office_role_user.role_id', 'roles.id')
             ->join('module_role', 'roles.id', 'module_role.role_id')
