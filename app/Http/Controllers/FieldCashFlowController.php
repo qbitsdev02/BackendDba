@@ -19,7 +19,7 @@ class FieldCashFlowController extends Controller
      */
     public function __construct()
     {
-        // $this->authorizeResource(FieldCashFlow::class,'fieldCashFlow');
+         $this->authorizeResource(FieldCashFlow::class,'fieldCashFlow');
     }
 
     /**

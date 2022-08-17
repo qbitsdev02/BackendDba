@@ -37,6 +37,13 @@ use Illuminate\Database\Eloquent\Model;
  *       description="The field_id"
  *   ),
  *  @OA\Property(
+ *       property="guide_id",
+ *       type="number",
+ *       required={"true"},
+ *       example=1,
+ *       description="The guide_id"
+ *   ),
+ *  @OA\Property(
  *       property="transaction_id",
  *       type="number",
  *       required={"true"},
@@ -123,6 +130,14 @@ class FieldCashFlow extends Base
     public function transaction()
     {
         return $this->belongsTo(Transaction::class);
+    }
+
+    /**
+     * 
+     */
+    public function guide()
+    {
+        return $this->belongsTo(Guide::class);
     }
     /**
      *

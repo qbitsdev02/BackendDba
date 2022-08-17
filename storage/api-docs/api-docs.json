@@ -9031,6 +9031,13 @@
                         ],
                         "type": "number"
                     },
+                    "category_id": {
+                        "description": "The category_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
+                    },
                     "user_created_id": {
                         "description": "The Users crete",
                         "required": [
@@ -9291,6 +9298,14 @@
                     },
                     "field_id": {
                         "description": "The field_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number",
+                        "example": 1
+                    },
+                    "guide_id": {
+                        "description": "The guide_id",
                         "required": [
                             "true"
                         ],

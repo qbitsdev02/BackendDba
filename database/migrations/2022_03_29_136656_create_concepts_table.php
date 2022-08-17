@@ -17,6 +17,7 @@ class CreateConceptsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description')->nullable();
+            $table->foreignId('category_id')->constrained();
             $table->foreignId('concept_type_id')->constrained();
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');

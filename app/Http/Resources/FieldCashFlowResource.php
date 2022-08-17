@@ -29,8 +29,13 @@ class FieldCashFlowResource extends JsonResource
             'created_at' => Carbon::parse($this->created_at)->format('d-m-Y'),
             'concept' => [
                 'id' => $this->concept->id,
-                'name' => $this->concept->name
+                'name' => $this->concept->name,
+            ], 
+            'guide' => [
+                'id'=> $this->guide_id,
+                'N° guide' => $this->guide->code_runpa,
             ],
+            'description' => $this->description,
             'field' => [
                 'id' => $this->field->id,
                 'acronym' => $this->field->acronym,

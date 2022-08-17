@@ -107,7 +107,8 @@ class PaymentOrderController extends Controller
     *  )
     */
     public function index(Request $request)
-    {
+    {   
+     
         $payment_order = PaymentOrder::filters($request->all())
             ->search($request->all());
 

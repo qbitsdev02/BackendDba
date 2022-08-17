@@ -26,10 +26,10 @@ class CreateGuidesTable extends Migration
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->foreignId('provider_id')->constrained();
             $table->foreignId('unit_of_measurement_id')->constrained();
-            $table->foreignId('vehicle_id')->constrained();
-            $table->foreignId('trailer_id')->constrained();
+            $table->foreignId('vehicle_id')->constrained('actives');
+            $table->foreignId('trailer_id')->constrained('actives');
             $table->foreignId('client_id')->constrained();
-            $table->foreignId('driver_id')->constrained();
+            $table->foreignId('driver_id')->constrained('personals');
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->timestamps();
