@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFieldCashFlowRequest;
 use App\Http\Requests\UpdateFieldCashFlowRequest;
 use App\Http\Resources\FieldCashFlowResource;
-use App\Models\Field;
 use Illuminate\Http\Request;
 
 class FieldCashFlowController extends Controller

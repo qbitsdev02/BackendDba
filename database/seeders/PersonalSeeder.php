@@ -39,12 +39,12 @@ class PersonalSeeder extends Seeder
                     "name" => "Hugo",
                     "last_name" => "Contreras",
                     "document_number" => "8965321",
-                    "staff_type_id" => 3,
+                    "staff_type_id" => 2,
                     "ownerable_type" => 'App\\Models\\Provider',
                     "ownerable_id" => 1,
                     "user_created_id" => 1
                 ]
-                 
+
             ]
         );
     }
