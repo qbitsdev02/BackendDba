@@ -164,4 +164,12 @@ class Guide extends Base
     {
         return $this->belongsTo(Ticket::class);
     }
+
+    /**
+     * 
+     */
+    public function fieldCashFlows()
+    {
+        return $this->hasMany(FieldCashFlow::class);
+    }
 }

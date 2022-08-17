@@ -145,4 +145,14 @@ class PaymentOrder extends Base
     {
         return $this->hasMany(Transaction::class);
     }
+
+    /**
+     * 
+     */
+    public function getPendingAttribute()
+    {
+        return $this->amount - $this->transactions->sum('amount'); 
+        
+    }
+
 }   

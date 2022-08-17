@@ -27,6 +27,12 @@ use Illuminate\Database\Eloquent\Model;
  *       required={"true"},
  *       description="The Concept concept_type_id"
  *   ),
+ *  @OA\Property(
+ *       property="category_id",
+ *       type="number",
+ *       required={"true"},
+ *       description="The category_id"
+ *   ),
  *   @OA\Property(
  *       property="user_created_id",
  *       type="number",
@@ -69,5 +75,13 @@ class Concept extends Base
     public function fieldCashFlows()
     {
         return $this->hasMany(FieldCashFlow::class);
+    }
+
+    /**
+     * 
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }
