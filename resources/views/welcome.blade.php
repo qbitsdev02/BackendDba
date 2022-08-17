@@ -128,5 +128,10 @@
                 </div>
             </div>
         </div>
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script>
+            Echo.channel('transaction')
+                .listen('TransactionEvent', (e) => console.log('TransactionEvent: ' + e.message));
+        </script>
     </body>
 </html>

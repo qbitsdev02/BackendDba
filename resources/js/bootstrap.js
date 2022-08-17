@@ -26,25 +26,28 @@ window.Echo = new Echo({
     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
     forceTLS: true,
     wsHost: window.location.hostname,
+   // wssPort: 6001,
     wsPort: 6001,
-    forceTLS: true,
+    forceTLS: false,
     disableStats: true,
-    enabledTransports: ['ws', 'wss']
+    //enabledTransports: ['ws', 'wss']
 });
 
-Echo.channel('test')
-    .listen('.test', (e) => {
-console.log('Received test event');
-    console.log(e);
-});
+//console.log(window.Echo); 
 
-Echo.channel('events')
-    .listen('.events', (e) => {
-console.log('Received events');
-    console.log(e);
-});
-Echo.channel('transaction')
-    .listen('.transaction', (e) => {
+// window.Echo.channel('test')
+//     .listen('.test', (e) => {
+// console.log('Received test event');
+//     console.log(e);
+// });
+
+// window.Echo.channel('events')
+//     .listen('.events', (e) => {
+// console.log('Received events');
+//     console.log(e);
+// });
+window.Echo.channel('transaction')
+    .listen('TransactionEvent', (e) => {
 console.log('Received transaction event');
     console.log(e);
 });

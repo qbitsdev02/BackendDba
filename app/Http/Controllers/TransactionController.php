@@ -172,10 +172,8 @@ class TransactionController extends Controller
 
         $transaction->save();
        
-        event(new Test());
         event(new TransactionEvent($transaction));
-        event(new RealTimeMessage('hola mundo'));
-         
+        
         //auth()->user()->notify(new TransactionNotification($transaction));
 
         return (new TransactionResource($transaction))->additional(

@@ -36,8 +36,4 @@ class TransactionEvent implements ShouldBroadcast
         return new Channel('transaction');
     }
 
-    public function broadcastAs()
-    {
-        return 'transaction';
-    }
 }
