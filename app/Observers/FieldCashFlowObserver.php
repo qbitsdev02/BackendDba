@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Helpers\ImageHelper;
 use App\Models\FieldCashFlow;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -15,17 +16,16 @@ class FieldCashFlowObserver
      */
     public function created(FieldCashFlow $fieldCashFlow)
     {
-        if(request()->has('files')) {
-            $files = request()->file('files');
-            for($i = 0; $i < count($files); $i++) {
-                $file = $files[$i];
-                $filename = Str::random(40) . '.' . $file->getClientOriginalExtension();
-                Storage::disk('dropbox')->putFileAs('field_cash_flow', $file, $filename);
-                $fieldCashFlow->images()->create([
-                    'img' => "field_cash_flow/{$filename}",
-                    'user_created_id' => $fieldCashFlow->user_created_id
-                ]);
-            }
+        if(request()->has('images')) {
+            $imgModel = collect(request()->images)
+                ->map(function($image)use ($fieldCashFlow) {
+                    return [
+                        'img' => ImageHelper::convertFormat($image['img'], 'field_cash_flows'),
+                        'user_created_id' => $fieldCashFlow->user_created_id
+                    ];
+                });
+
+            $fieldCashFlow->images()->createMany($imgModel);
         }
     }
 

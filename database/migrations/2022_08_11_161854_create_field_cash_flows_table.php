@@ -25,6 +25,7 @@ return new class extends Migration
             $table->foreignId('beneficiary_id')->nullable()->constrained('users');
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
+            $table->timestamp('date');
             $table->softDeletes();
             $table->timestamps();
         });

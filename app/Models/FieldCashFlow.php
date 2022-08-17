@@ -84,6 +84,8 @@ class FieldCashFlow extends Base
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function scopeTypeCash($query, $egress)
     {
         if (isset($egress) && !empty($egress)) {
