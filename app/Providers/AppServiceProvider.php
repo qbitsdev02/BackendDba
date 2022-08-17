@@ -15,6 +15,7 @@ use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Role;
 use App\Models\Ticket;
+use App\Models\Transaction;
 use App\Observers\ActiveObserver;
 use App\Observers\BeneficiaryObserver;
 use App\Observers\ClientObserver;
@@ -26,6 +27,7 @@ use App\Observers\RateObserver;
 use App\Observers\ResponsableObserver;
 use App\Observers\RoleObserver;
 use App\Observers\TicketObserver;
+use App\Observers\TransactionObserver;
 use App\Observers\UserObserver;
 
 class AppServiceProvider extends ServiceProvider
@@ -58,5 +60,6 @@ class AppServiceProvider extends ServiceProvider
         Ticket::observe(TicketObserver::class);
         Active::observe(ActiveObserver::class);
         FieldCashFlow::observe(FieldCashFlowObserver::class);
+        Transaction::observe(TransactionObserver::class);
     }
 }

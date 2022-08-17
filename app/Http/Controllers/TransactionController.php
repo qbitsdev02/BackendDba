@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RealTimeMessage;
+use App\Events\Test;
+use App\Events\TransactionEvent;
 use App\Models\Transaction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTransactionRequest;
@@ -112,7 +115,6 @@ class TransactionController extends Controller
         $transactions = Transaction::filters($request->all())
             ->search($request->all());
 
-
         return (TransactionResource::collection($transactions))->additional(
             [
                 'message:' => 'Successfully response'
@@ -169,8 +171,12 @@ class TransactionController extends Controller
         $transaction->user_created_id = $request->user_created_id;
 
         $transaction->save();
-        
-        auth()->user()->notify(new TransactionNotification($transaction));
+       
+        event(new Test());
+        event(new TransactionEvent($transaction));
+        event(new RealTimeMessage('hola mundo'));
+         
+        //auth()->user()->notify(new TransactionNotification($transaction));
 
         return (new TransactionResource($transaction))->additional(
             [

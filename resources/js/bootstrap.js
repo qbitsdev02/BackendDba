@@ -31,3 +31,35 @@ window.Echo = new Echo({
     disableStats: true,
     enabledTransports: ['ws', 'wss']
 });
+
+Echo.channel('test')
+    .listen('.test', (e) => {
+console.log('Received test event');
+    console.log(e);
+});
+
+Echo.channel('events')
+    .listen('.events', (e) => {
+console.log('Received events');
+    console.log(e);
+});
+Echo.channel('transaction')
+    .listen('.transaction', (e) => {
+console.log('Received transaction event');
+    console.log(e);
+});
+
+
+// Echo.channel('events')
+//         .listen('RealTimeMessage', (e) => console.log('RealTimeMessage: ' + e.message));
+
+// Echo.private(`order.${orderId}`)
+//     .listen('ShippingStatusUpdated', (e) => {
+//         console.log(e.update);
+//     });
+
+
+// Echo.private(`App.User.${userId}`)
+//     .notification((notification) => {
+//         console.log(notification.type);
+//     });
