@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 /**
- * 
+ *
  * @OA\Schema(
  *   schema="FieldCashFlow",
  *   type="object",
@@ -91,6 +91,15 @@ class FieldCashFlow extends Base
 {
     use HasFactory;
 
+    public function scopeTypeCash($query, $egress)
+    {
+        if (isset($egress) && !empty($egress)) {
+            if ($egress === true)
+                return $query->whereNull('transaction_id');
+            return $query->whereNotNull('transaction_id');
+        }
+    }
+
     /**
      * Relationship
      */
@@ -108,7 +117,7 @@ class FieldCashFlow extends Base
     }
 
     /**
-     * 
+     *
      */
     public function concept()
     {
@@ -116,7 +125,7 @@ class FieldCashFlow extends Base
     }
 
     /**
-     * 
+     *
      */
     public function transaction()
     {
@@ -129,5 +138,12 @@ class FieldCashFlow extends Base
     public function guide()
     {
         return $this->belongsTo(Guide::class);
+    }
+    /**
+     *
+     */
+    public function beneficiary()
+    {
+        return $this->belongsTo(Beneficiary::class);
     }
 }
