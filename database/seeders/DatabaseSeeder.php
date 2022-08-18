@@ -3,9 +3,6 @@
 namespace Database\Seeders;
 use DB;
 use Illuminate\Database\Seeder;
-use App\Helpers\RoleAcronym;
-use App\Models\Coin;
-use App\Models\Guide;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,17 +23,27 @@ class DatabaseSeeder extends Seeder
             RoleUserSeeder::class,
             EntitySeeder::class,
             CoinSeeder::class,
+            StaffTypeSeeder::class,
+            PortSeeder::class,
             OperationTypeSeeder::class,
             ConceptTypeSeeder::class,
+            CategorySeeder::class,
+            ActiveSeeder::class,
+            AttributeSeeder::class,
+            ActiveAttributeSeeder::class,
             ConceptSeeder::class,
+            PersonalSeeder::class,
             OrganizationSeeder::class,
             PermissionSeeder::class,
             ProviderTypeSeeder::class,
             ProviderSeeder::class,
             ProviderTypeProviderSeeder::class,
             UnitOfMeasurementSeeder::class,
+            ClientSeeder::class,
             RateSeeder::class,
-         
+            GuideSeeder::class,
+            FieldSeeder::class,
+            OrderSeeder::class
         ]);
     }
 }

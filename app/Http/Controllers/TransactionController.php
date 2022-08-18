@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Notification;
 class TransactionController extends Controller
 {
     /**
-     * 
+     *
      */
     public function __construct()
     {
@@ -30,7 +30,7 @@ class TransactionController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     * 
+     *
       * @OA\Get(
       *     path="/transactions",
       *     operationId="gettransaction",
@@ -118,7 +118,7 @@ class TransactionController extends Controller
         return (TransactionResource::collection($transactions))->additional(
             [
                 'message:' => 'Successfully response'
-            ],200
+            ], 200
         );
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\ImageHelper;
 use App\Models\FieldCashFlow;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFieldCashFlowRequest;
@@ -11,21 +12,22 @@ use Illuminate\Http\Request;
 
 class FieldCashFlowController extends Controller
 {
+    protected $fieldCashFlowLast = null;
 
     /**
-     * 
+     *
      */
     public function __construct()
     {
         $this->authorizeResource(FieldCashFlow::class,'field_cash_flow');
+        $this->getBalance(request()->field_id);
     }
-    
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Get(
       *     path="/field-cash-flows",
       *     operationId="getfieldCashFlow",
@@ -107,13 +109,105 @@ class FieldCashFlowController extends Controller
     public function index(Request $request)
     {
         $cash_flows = FieldCashFlow::filters($request->all())
+            ->typeCash($request->egress)
             ->search($request->all());
-        
-            return ( FieldCashFlowResource::collection($cash_flows))->additional(
+
+            return (FieldCashFlowResource::collection($cash_flows))->additional(
                 [
                     'message:' => 'succesfully response'
                 ],200
             );
+    }
+
+    public function getBalance($fieldId)
+    {
+        $cashFlowsEgress = FieldCashFlow::selectRaw('SUM(amount) as amount')
+            ->whereNull('transaction_id')
+            ->where('status', 'approved')
+            ->where('field_id', $fieldId)
+            ->first();
+
+        $cashFlowsEntry = FieldCashFlow::selectRaw('SUM(amount) as amount')
+            ->whereNotNull('transaction_id')
+            ->where('status', 'approved')
+            ->where('field_id', $fieldId)
+            ->first();
+
+        $this->fieldCashFlowLast = [
+            'egress' => $cashFlowsEgress->amount,
+            'entry' => $cashFlowsEntry->amount,
+            'balance' => $cashFlowsEntry->amount - $cashFlowsEgress->amount
+        ];
+    }
+
+    public function changeStatus(Request $request)
+    {
+        collect($request->data)
+            ->map(function($fieldCashFlowRequest) {
+                $this->getBalance($fieldCashFlowRequest['field_id']);
+                $balance = (isset($fieldCashFlowRequest['transaction_id']) &&
+                    $fieldCashFlowRequest['transaction_id'])
+                    ? $this->fieldCashFlowLast['balance'] + $fieldCashFlowRequest['amount'] :
+                    $this->fieldCashFlowLast['balance'] - $fieldCashFlowRequest['amount'];
+
+
+                $fieldCashFlow = FieldCashFlow::updateOrCreate(
+                    [
+                        'id' => isset($fieldCashFlowRequest['id']) ? $fieldCashFlowRequest['id'] : null
+                    ],
+                    [
+                        'amount' => $fieldCashFlowRequest['amount'],
+                        'concept_id' => $fieldCashFlowRequest['concept_id'],
+                        'description' => $fieldCashFlowRequest['description'],
+                        'field_id' => $fieldCashFlowRequest['field_id'],
+                        'status' => 'approved',
+                        'transaction_id' => isset($fieldCashFlowRequest['transaction_id']) ? $fieldCashFlowRequest['transaction_id'] : null,
+                        'balance' => $balance,
+                        'beneficiary_id' => $fieldCashFlowRequest['beneficiary_id'],
+                        'user_created_id' => $fieldCashFlowRequest['user_created_id'],
+                        'date' => $fieldCashFlowRequest['date']
+                    ]
+                );
+
+                if (isset($fieldCashFlowRequest['images']) && $fieldCashFlowRequest['images'])
+                {
+                    $imgModel = collect($fieldCashFlowRequest['images'])
+                        ->map(function($image)use ($fieldCashFlow) {
+                            return [
+                                'img' => ImageHelper::convertFormat($image['img'], 'field_cash_flows'),
+                                'user_created_id' => $fieldCashFlow->user_created_id
+                            ];
+                        });
+                    $fieldCashFlow->images()->createMany($imgModel);
+                }
+            });
+        return response()->json([
+            'message' => 'status updated success'
+        ]);
+    }
+
+
+    public function balance(Request $request)
+    {
+        $cashFlowsEgress = FieldCashFlow::selectRaw('SUM(amount) as amount, transaction_id, status, balance')
+            ->whereNull('transaction_id')
+            ->where('field_id', $request->field_id)
+            ->orderBy('transaction_id', 'desc');
+
+
+        $cashFlows = FieldCashFlow::selectRaw('SUM(amount) as amount, transaction_id, status, balance')
+            ->whereNotNull('transaction_id')
+            ->where('field_id', $request->field_id)
+            ->union($cashFlowsEgress)
+            ->orderBy('status', 'asc')
+            ->orderBy('transaction_id', 'desc')
+            ->groupBy('status')
+            ->get();
+        $response = [
+            'balance' => $this->fieldCashFlowLast['balance'],
+            'accounts' => $cashFlows
+        ];
+        return response()->json($response, 200);
     }
 
     /**
@@ -121,7 +215,7 @@ class FieldCashFlowController extends Controller
      *
      * @param  \App\Http\Requests\StoreFieldCashFlowRequest  $request
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Post(
     *   path="/field-cash-flows",
     *   summary="Creates a new field cash flow",
@@ -153,20 +247,20 @@ class FieldCashFlowController extends Controller
      */
     public function store(StoreFieldCashFlowRequest $request)
     {
+        info($this->fieldCashFlowLast);
+        $fieldCashFlow = new FieldCashFlow();
+        $fieldCashFlow->amount = $request->amount;
+        $fieldCashFlow->concept_id = $request->concept_id;
+        $fieldCashFlow->description = $request->description;
+        $fieldCashFlow->field_id = $request->field_id;
+        $fieldCashFlow->transaction_id = $request->transaction_id;
+        $fieldCashFlow->balance = $this->fieldCashFlowLast['balance'] - $request->amount;
+        $fieldCashFlow->beneficiary_id = $request->beneficiary_id;
+        $fieldCashFlow->user_created_id = $request->user_created_id;
+        $fieldCashFlow->date = $request->date;
+        $fieldCashFlow->save();
 
-        $field_cash_flow = new FieldCashFlow();
-        $field_cash_flow->amount = $request->amount;
-        $field_cash_flow->concept_id = $request->concept_id;
-        $field_cash_flow->guide_id = $request->guide_id;
-        $field_cash_flow->description = $request->description;
-        $field_cash_flow->field_id = $request->field_id;
-        $field_cash_flow->transaction_id = $request->transaction_id;
-        //$field_cash_flow->balance = $request->balance;
-        $field_cash_flow->beneficiary_id = $request->beneficiary_id;
-        $field_cash_flow->user_created_id = $request->user_created_id;
-        $field_cash_flow->save();
-
-        return ( new FieldCashFlowResource($field_cash_flow))->additional(
+        return (new FieldCashFlowResource($fieldCashFlow))->additional(
             [
                 'message:' => 'successfully registered data'
             ],201
@@ -178,7 +272,7 @@ class FieldCashFlowController extends Controller
      *
      * @param  \App\Models\FieldCashFlow  $fieldCashFlow
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Get(
      *      path="/field-cash-flows/{id}",
      *      operationId="getfieldCashFlowById",
@@ -227,7 +321,7 @@ class FieldCashFlowController extends Controller
      * @param  \App\Http\Requests\UpdateFieldCashFlowRequest  $request
      * @param  \App\Models\FieldCashFlow  $fieldCashFlow
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Put(
      *      path="/field-cash-flows/{id}",
      *      operationId="updatefieldCashFlow",
@@ -270,21 +364,21 @@ class FieldCashFlowController extends Controller
      *   )
      * )
      */
-    public function update(UpdateFieldCashFlowRequest $request, FieldCashFlow $field_cash_flow)
+    public function update(UpdateFieldCashFlowRequest $request, FieldCashFlow $fieldCashFlow)
     {
-        $field_cash_flow->amount = $request->amount;
-        $field_cash_flow->concept_id = $request->concept_id;
-        $field_cash_flow->status = $request->status;
-        $field_cash_flow->guide_id = $request->guide_id;
-        $field_cash_flow->transaction_id = $request->transaction_id;
-        $field_cash_flow->description = $request->description;
-        $field_cash_flow->field_id = $request->field_id;
-        $field_cash_flow->balance = $request->balance;
-        $field_cash_flow->beneficiary_id = $request->beneficiary_id;
-        $field_cash_flow->user_created_id = $request->user_created_id;
-        $field_cash_flow->update();
+        $fieldCashFlow->amount = $request->amount;
+        $fieldCashFlow->concept_id = $request->concept_id;
+        $fieldCashFlow->status = $request->status;
+        $fieldCashFlow->transaction_id = $request->transaction_id;
+        $fieldCashFlow->description = $request->description;
+        $fieldCashFlow->field_id = $request->field_id;
+        $fieldCashFlow->balance = $this->fieldCashFlowLast ? $fieldCashFlow->amount + $this->fieldCashFlowLast['balance'] : $fieldCashFlow->amount;
+        $fieldCashFlow->beneficiary_id = $request->beneficiary_id;
+        $fieldCashFlow->user_created_id = $request->user_created_id;
+        $fieldCashFlow->date = $request->date;
+        $fieldCashFlow->update();
 
-        return ( new FieldCashFlowResource($field_cash_flow))->additional(
+        return ( new FieldCashFlowResource($fieldCashFlow))->additional(
             [
                 'message:' => 'successfully updated data'
             ],200
@@ -296,7 +390,7 @@ class FieldCashFlowController extends Controller
      *
      * @param  \App\Models\FieldCashFlow  $fieldCashFlow
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Delete(
      *  path="/field-cash-flows/{id}",
      *  operationId="deletefieldCashFlows",

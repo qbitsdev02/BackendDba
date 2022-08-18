@@ -31,7 +31,7 @@ class GuideSeeder extends Seeder
                     'vehicle_id'=>1,
                     'trailer_id'=>1,
                     'client_id'=>1,
-                    'driver_id'=>4,
+                    'driver_id'=>1,
                     'user_created_id'=>1,
                 ],
             ]

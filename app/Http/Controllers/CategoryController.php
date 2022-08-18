@@ -22,7 +22,7 @@ class CategoryController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Get(
       *     path="/categories",
       *     operationId="getcategories",
@@ -34,7 +34,7 @@ class CategoryController extends Controller
       *       required=false,
       *       @OA\Schema(
       *           title="Paginate",
-      *           example="true", 
+      *           example="true",
       *           description="The Paginate data"
       *       )
       *     ),
@@ -105,11 +105,11 @@ class CategoryController extends Controller
     {
         $categories = Category::filters($request->all())
             ->search($request->all());
-        
+
         return (CategoryResource::collection($categories))->additional(
             [
                 'message:' => 'successfully response'
-            ],200
+            ], 200
         );
     }
 
@@ -118,7 +118,7 @@ class CategoryController extends Controller
      *
      * @param  \App\Http\Requests\StoreCategoryRequest  $request
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Post(
     *   path="/categories",
     *   summary="Creates a new category",
@@ -168,7 +168,7 @@ class CategoryController extends Controller
      *
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Get(
      *      path="/categories/{id}",
      *      operationId="getcategoriesById",
@@ -216,7 +216,7 @@ class CategoryController extends Controller
      * @param  \App\Http\Requests\UpdateCategoryRequest  $request
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Put(
      *      path="/categories/{id}",
      *      operationId="updatecategories",
@@ -278,7 +278,7 @@ class CategoryController extends Controller
      *
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Delete(
      *  path="/categories/{id}",
      *  operationId="deletecategory",
@@ -315,7 +315,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $category->delete();    
+        $category->delete();
         return response()->json(
             [
                 'message' => 'the data was deleted successfully'

@@ -25,6 +25,7 @@ class ConceptSeeder extends Seeder
             $conceptTypeModel->concept_type_id = 2;
             $conceptTypeModel->user_created_id = 1;
             $conceptTypeModel->category_id = 1;
+            $conceptTypeModel->category_id = 1;
             $conceptTypeModel->save();
         }
 

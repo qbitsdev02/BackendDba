@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class FieldCashFlowResource extends JsonResource
@@ -17,14 +18,23 @@ class FieldCashFlowResource extends JsonResource
         return [
             'id' => $this->id,
             'amount' => $this->amount,
-            'concept_id' => $this->concept_id ? [
+            'concept_id' => $this->concept_id,
+            'beneficiary_id' => $this->beneficiary_id,
+            'transaction_id' => $this->transaction_id,
+            'field_id' => $this->field_id,
+            'description' => $this->description,
+            'status'=>$this->status,
+            'balance' =>$this->balance,
+            'user_created_id' => $this->user_created_id,
+            'created_at' => Carbon::parse($this->created_at)->format('d-m-Y'),
+            'concept' => [
                 'id' => $this->concept->id,
-                'name' => $this->concept->name
-            ] : NULL, 
-            'guide' => [
+                'name' => $this->concept->name,
+            ],
+            'guide' => $this->guide_id ? [
                 'id'=> $this->guide_id,
                 'N° guide' => $this->guide->code_runpa,
-            ],
+            ] : null,
             'description' => $this->description,
             'field' => [
                 'id' => $this->field->id,
@@ -36,14 +46,14 @@ class FieldCashFlowResource extends JsonResource
                     'name'=>$this->field->fieldSupervisor->name,
                     'last_name'=>$this->field->fieldSupervisor->last_name,
                     'document_number'=>$this->field->fieldSupervisor->document_number,
-                ],   
+                ],
             ],
-            'status'=>$this->status,
-            'balance' =>$this->balance,
-            'beneficiary_id' => $this->beneficiary_id ?[
-                    $this->user_created_id
-                ] : NULL ,
-            'user_created_id' => $this->user_created_id,
+            'beneficiary' => [
+                'id' => $this->beneficiary->id,
+                'name'=>$this->beneficiary->name,
+                'last_name'=>$this->beneficiary->last_name,
+                'document_number'=>$this->beneficiary->document_number,
+            ]
         ];
     }
 }

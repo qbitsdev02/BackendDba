@@ -2,10 +2,10 @@
 
 namespace App\Observers;
 
-use App\Events\eventTiempoReal;
 use App\Events\TransactionEvent;
 use App\Models\Transaction;
 use App\Notifications\TransactionNotification;
+
 
 class TransactionObserver
 {
