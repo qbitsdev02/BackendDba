@@ -264,7 +264,7 @@ class ModuleSeeder extends Seeder
                     'name' => 'ports',
                     'icon' => 'person',
                     'route' => 'Port',
-                    'section_id' => 1,
+                    'section_id' => 2,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
@@ -282,7 +282,7 @@ class ModuleSeeder extends Seeder
                     'name' => 'personals',
                     'icon' => 'person',
                     'route' => 'Personal',
-                    'section_id' => 1,
+                    'section_id' => 3,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
@@ -291,7 +291,7 @@ class ModuleSeeder extends Seeder
                     'name' => 'actives',
                     'icon' => 'person',
                     'route' => 'Active',
-                    'section_id' => 1,
+                    'section_id' => 2,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
@@ -318,7 +318,7 @@ class ModuleSeeder extends Seeder
                     'name' => 'transactions',
                     'icon' => 'person',
                     'route' => 'Transaction',
-                    'section_id' => 4,
+                    'section_id' => 1,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
@@ -333,14 +333,13 @@ class ModuleSeeder extends Seeder
                 ],
                 //36
                 [
-                'name' => 'fiel-cash-flows',
+                'name' => 'field-cash-flows',
                 'icon' => 'person',
                 'route' => 'FieldCashFlow',
-                'section_id' => 4,
+                'section_id' => 1,
                 'devices' => '["mobile", "desktop"]',
                 'user_created_id' => 1
-            ],
-   
-            ]);
+            ]
+        ]);
     }
 }
