@@ -2114,7 +2114,7 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]((_Echo = 
 //     console.log(e);
 // });
 
-window.Echo.channel('transaction').listen('TransactionEvent', function (e) {
+window.Echo["private"]('transaction').listen('TransactionEvent', function (e) {
   console.log('Received transaction event');
   console.log(e);
 }); // Echo.channel('events')

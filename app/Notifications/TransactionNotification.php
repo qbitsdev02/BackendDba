@@ -34,7 +34,7 @@ class TransactionNotification extends Notification implements ShouldQueue, Shoul
     public function via($notifiable)
     {
          return ['database', 'broadcast'];
-        //return ['broadcast'];
+        
     }
 
     /**

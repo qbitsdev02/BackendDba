@@ -33,7 +33,7 @@ class TransactionEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('transaction');
+        return new PrivateChannel('transaction');
     }
 
 }

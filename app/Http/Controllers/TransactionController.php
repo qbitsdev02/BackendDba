@@ -171,11 +171,6 @@ class TransactionController extends Controller
         $transaction->user_created_id = $request->user_created_id;
 
         $transaction->save();
-       
-        event(new TransactionEvent($transaction));
-        
-        //auth()->user()->notify(new TransactionNotification($transaction));
-
         return (new TransactionResource($transaction))->additional(
             [
                 'message:' => 'successfully registered data'

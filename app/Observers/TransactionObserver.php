@@ -3,7 +3,9 @@
 namespace App\Observers;
 
 use App\Events\eventTiempoReal;
+use App\Events\TransactionEvent;
 use App\Models\Transaction;
+use App\Notifications\TransactionNotification;
 
 class TransactionObserver
 {
@@ -15,7 +17,8 @@ class TransactionObserver
      */
     public function created(Transaction $transaction)
     {
-      
+        event(new TransactionEvent($transaction));
+        auth()->user()->notify(new TransactionNotification($transaction));
     }
 
     /**
