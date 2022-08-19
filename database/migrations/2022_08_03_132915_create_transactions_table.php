@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('date');
             $table->foreignId('payment_order_id')->constrained();
             $table->float('reference');
-            $table->foreignId('beneficiary_id')->constrained('users');
+            $table->foreignId('beneficiary_idy');
             $table->foreignId('concept_id')->constrained();
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
