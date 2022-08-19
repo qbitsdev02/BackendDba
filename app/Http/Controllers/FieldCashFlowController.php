@@ -110,6 +110,7 @@ class FieldCashFlowController extends Controller
     {
         $cash_flows = FieldCashFlow::filters($request->all())
             ->typeCash($request->egress)
+            ->betweenDate($request->all())
             ->search($request->all());
 
             return (FieldCashFlowResource::collection($cash_flows))->additional(
@@ -247,7 +248,6 @@ class FieldCashFlowController extends Controller
      */
     public function store(StoreFieldCashFlowRequest $request)
     {
-        info($this->fieldCashFlowLast);
         $fieldCashFlow = new FieldCashFlow();
         $fieldCashFlow->amount = $request->amount;
         $fieldCashFlow->concept_id = $request->concept_id;

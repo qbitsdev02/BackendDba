@@ -135,7 +135,7 @@ class FieldCashFlow extends Base
     }
 
     /**
-     * 
+     *
      */
     public function guide()
     {
