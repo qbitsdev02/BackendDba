@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RealTimeMessage;
+use App\Events\Test;
+use App\Events\TransactionEvent;
 use App\Models\Transaction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
 use App\Http\Resources\TransactionResource;
+use App\Models\User;
+use App\Notifications\TransactionNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class TransactionController extends Controller
 {
@@ -108,7 +115,6 @@ class TransactionController extends Controller
         $transactions = Transaction::filters($request->all())
             ->search($request->all());
 
-
         return (TransactionResource::collection($transactions))->additional(
             [
                 'message:' => 'Successfully response'
@@ -152,7 +158,8 @@ class TransactionController extends Controller
     * )
      */
     public function store(StoreTransactionRequest $request)
-    {
+    {   
+
         $transaction = new Transaction();
         $transaction->amount = $request->amount;
         $transaction->description = $request->description;
@@ -169,7 +176,7 @@ class TransactionController extends Controller
                 'message:' => 'successfully registered data'
             ],201
         );
-    }
+    } 
 
     /**
      * Display the specified resource.
