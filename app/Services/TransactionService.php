@@ -30,7 +30,7 @@ class TransactionService
     {
         $fieldCashFlow = new FieldCashFlow();
         $fieldCashFlow->amount = $this->transaction->amount;
-        $fieldCashFlow->concept_id = $this->transaction->concept_id;
+        $fieldCashFlow->concept_id = $this->transaction->paymentOrder->concept_id;
         $fieldCashFlow->transaction_id = $this->transaction->id;
         $fieldCashFlow->status = 'pending_approval';
         $fieldCashFlow->description = $this->transaction->description;

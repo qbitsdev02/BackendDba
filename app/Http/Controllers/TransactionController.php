@@ -158,14 +158,13 @@ class TransactionController extends Controller
     * )
      */
     public function store(StoreTransactionRequest $request)
-    {   
+    {
 
         $transaction = new Transaction();
         $transaction->amount = $request->amount;
         $transaction->description = $request->description;
         $transaction->beneficiary_id = $request->beneficiary_id;
         $transaction->date = $request->date;
-        $transaction->concept_id = $request->concept_id;
         $transaction->payment_order_id = $request->payment_order_id;
         $transaction->reference = $request->reference;
         $transaction->user_created_id = $request->user_created_id;
@@ -176,7 +175,7 @@ class TransactionController extends Controller
                 'message:' => 'successfully registered data'
             ],201
         );
-    } 
+    }
 
     /**
      * Display the specified resource.
@@ -280,7 +279,6 @@ class TransactionController extends Controller
         $transaction->description = $request->description;
         $transaction->date = $request->date;
         $transaction->beneficiary_id = $request->beneficiary_id;
-        $transaction->concept_id = $request->concept_id;
         $transaction->payment_order_id = $request->payment_order_id;
         $transaction->reference = $request->reference;
         $transaction->user_created_id = $request->user_created_id;

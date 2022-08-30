@@ -139,7 +139,6 @@ class ConceptController extends Controller
         $concept = new Concept();
         $concept->name = $request->name;
         $concept->concept_type_id = $request->concept_type_id;
-        $concept->category_id = $request->category_id;
         $concept->description = $request->description;
         $concept->user_created_id = $request->user_created_id;
         $concept->save();
@@ -243,7 +242,6 @@ class ConceptController extends Controller
     {
         $concept->name = $request->name;
         $concept->description = $request->description;
-        $concept->category_id = $request->category_id;
         $concept->concept_type_id = $request->concept_type_id;
         $concept->user_created_id = $request->user_created_id;
         $concept->update();

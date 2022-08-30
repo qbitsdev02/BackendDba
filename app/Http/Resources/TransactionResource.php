@@ -21,13 +21,7 @@ class TransactionResource extends JsonResource
             'date' => $this->date,
             'reference' => $this->reference,
             'beneficiary_id'=>$this->beneficiary_id,
-            'concept' => [
-                'id' =>$this->concept->id,
-                'name' => $this->concept->name
-            ],
-            'payment_order_id' => new PaymentOrderResource($this->paymentOrder),
-            
-
+            'payment_order_id' => new PaymentOrderResource($this->paymentOrder)
         ];
     }
 }

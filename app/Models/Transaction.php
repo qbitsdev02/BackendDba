@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 /**
- * 
+ *
  * @OA\Schema(
  *   schema="Transaction",
  *   type="object",
@@ -55,7 +55,7 @@ use Illuminate\Database\Eloquent\Model;
  *       example=1,
  *       description="The concept_id"
  *   ),
- * 
+ *
  *   @OA\Property(
  *       property="user_created_id",
  *       type="number",
@@ -78,16 +78,8 @@ class Transaction extends Base
         return $this->belongsTo(PaymentOrder::class);
     }
 
-    /**
-     * Relationship 
-     */
-    public function concept()
-    {
-        return $this->belongsTo(Concept::class);
-    }
-
     /***
-     * 
+     *
     */
     public function beneficiary()
     {
@@ -95,7 +87,7 @@ class Transaction extends Base
     }
 
     /**
-     * 
+     *
      */
     public function fieldCashFlow()
     {

@@ -19,9 +19,12 @@ class CreatePaymentOrdersTable extends Migration
             $table->enum('status', ['pending_approval', 'approved','canceled'])->default('pending_approval');
             $table->float('amount');
             $table->foreignId('operation_type_id')->constrained();
+            $table->foreignId('organization_id')->constrained();
             $table->morphs('ownerable');
             $table->foreignId('entity_id')->constrained();
             $table->foreignId('coin_id')->constrained();
+            $table->foreignId('concept_id')->constrained();
+            $table->foreignId('country_id')->constrained();
             $table->date('payment_date')->nullable()->constrained();
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');

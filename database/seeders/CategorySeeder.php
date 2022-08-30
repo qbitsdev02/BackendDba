@@ -18,20 +18,59 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert(
             [
                 [
-                    'name' => 'Gestión social',
-                    'description' => '',
+                    'name' => 'Ventas',
+                    'description' => 'Ventas',
+                    'transaction_type' => 'entry',
                     'user_created_id' => 1,
                 ],
                 [
-                    'name' => 'Gastos operacionales',
+                    'name' => 'Costos',
                     'description' => '',
+                    'transaction_type' => 'egress',
                     'user_created_id' => 1,
                 ],
                 [
-                    'name' => 'Costo',
+                    'name' => 'Gastos Operacionales',
                     'description' => '',
+                    'transaction_type' => 'egress',
                     'user_created_id' => 1,
                 ],
+                [
+                    'name' => 'Gastos Administrativos',
+                    'description' => '',
+                    'transaction_type' => 'egress',
+                    'user_created_id' => 1,
+                ],
+                [
+                    'name' => 'Gestión Social',
+                    'description' => '',
+                    'transaction_type' => 'egress',
+                    'user_created_id' => 1,
+                ],
+                [
+                    'name' => 'Donaciones',
+                    'description' => '',
+                    'transaction_type' => 'egress',
+                    'user_created_id' => 1,
+                ],
+                [
+                    'name' => 'Inversiones',
+                    'description' => '',
+                    'transaction_type' => 'egress',
+                    'user_created_id' => 1,
+                ],
+                [
+                    'name' => 'Financiamientos',
+                    'description' => '',
+                    'transaction_type' => 'egress',
+                    'user_created_id' => 1,
+                ],
+                [
+                    'name' => 'Anticipo utilidad socio',
+                    'description' => '',
+                    'transaction_type' => 'egress',
+                    'user_created_id' => 1,
+                ]
             ]
         );
     }

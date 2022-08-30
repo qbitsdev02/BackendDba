@@ -5,7 +5,7 @@ namespace App\Observers;
 use App\Events\TransactionEvent;
 use App\Models\Transaction;
 use App\Notifications\TransactionNotification;
-
+use App\Services\TransactionService;
 
 class TransactionObserver
 {
@@ -19,6 +19,8 @@ class TransactionObserver
     {
         event(new TransactionEvent($transaction));
         auth()->user()->notify(new TransactionNotification($transaction));
+        $transactionServices = new TransactionService($transaction);
+        $transactionServices->aditionalProcess(request());
     }
 
     /**

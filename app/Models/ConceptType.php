@@ -42,5 +42,5 @@ namespace App\Models;
  */
 class ConceptType extends Base
 {
-    //
+    protected $guarded = [];
 }

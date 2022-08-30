@@ -13,8 +13,8 @@ class PaymentOrderController extends Controller
 
     /**
      * Create the controller instance to Authorizing Resource Controller.
-     *  
-     * You may make use of the (authorizeResource) method in your controller's constructor. 
+     *
+     * You may make use of the (authorizeResource) method in your controller's constructor.
      * This method will attach the appropriate can middleware definitions to the resource controller's methods.
      */
     public function __construct()
@@ -107,8 +107,8 @@ class PaymentOrderController extends Controller
     *  )
     */
     public function index(Request $request)
-    {   
-     
+    {
+
         $payment_order = PaymentOrder::filters($request->all())
             ->search($request->all());
 
@@ -125,7 +125,7 @@ class PaymentOrderController extends Controller
      *
      * @param  \App\Http\Requests\StorePaymentOrderRequest  $request
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Post(
      *   path="/payment-orders",
      *   summary="Creates a new Payment-order",
@@ -162,6 +162,9 @@ class PaymentOrderController extends Controller
         $payment_order->status = $request->status;
         $payment_order->amount = $request->amount;
         $payment_order->operation_type_id = $request->operation_type_id;
+        $payment_order->organization_id = 1;
+        $payment_order->country_id = 1;
+        $payment_order->concept_id = $request->concept_id;
         $payment_order->ownerable_id = $request->ownerable_id;
         $payment_order->ownerable_type = $request->ownerable_type;
         $payment_order->entity_id = $request->entity_id;
@@ -170,12 +173,12 @@ class PaymentOrderController extends Controller
         $payment_order->user_created_id = $request->user_created_id;
 
         $payment_order->save();
-        
+
         return (new PaymentOrderResource($payment_order))->additional(
             [
                 "message" => "successfully registerd payment order"
             ],200
-        ); 
+        );
     }
 
     /**
@@ -247,6 +250,7 @@ class PaymentOrderController extends Controller
         $payment_order->status = $request->status;
         $payment_order->amount = $request->amount;
         $payment_order->operation_type_id = $request->operation_type_id;
+        $payment_order->concept_id = $request->concept_id;
         $payment_order->ownerable_id = $request->ownerable_id;
         $payment_order->ownerable_type = $request->ownerable_type;
         $payment_order->entity_id = $request->entity_id;
@@ -268,9 +272,9 @@ class PaymentOrderController extends Controller
      *
      * @param  \App\Models\PaymentOrder  $PaymentOrder
      * @return \Illuminate\Http\Response
-     * 
+     *
      *Remove the specified resource from storage.
-     * 
+     *
      * @OA\Delete(
      *  path="/payment-orders/{id}",
      *  operationId="deletepaymentOrder",
@@ -304,7 +308,7 @@ class PaymentOrderController extends Controller
      *      description="Resource Not Found"
      *  )
      * )
-     * 
+     *
      */
     public function destroy(PaymentOrder $paymentOrder)
     {
