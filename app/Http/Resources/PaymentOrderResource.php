@@ -19,24 +19,28 @@ class PaymentOrderResource extends JsonResource
             'description' => $this->description,
             'status' => $this->status,
             'amount' => $this->amount,
-             'operation_type' => [
+            'ownerable_type' =>$this->ownerable_type,
+            'ownerable' =>$this->ownerable,
+            'payment_date' => $this->payment_date,
+            'user_created' => $this->user_created_id,
+            'pending' => $this->pending,
+            'operation_type' => [
                 'id' => $this->operationType->id,
                 'name' =>$this->operationType->name,
              ],
-            'ownerable' =>$this->ownerable,
-             'entity' => [
+            'concept' => [
+                'id' => $this->concept->id,
+                'name' =>$this->concept->name,
+             ],
+            'entity' => [
                 'id' => $this->entity->id,
                 'name' =>$this->entity->name,
             ],
-            'ownerable_type' =>$this->ownerable_type,
             'coin' => [
                 'id' =>$this->coin->id,
                 'name' =>$this->coin->name,
                 'symbol' =>$this->coin->symbol
             ],
-            'payment_date' => $this->payment_date,
-            'user_created' => $this->user_created_id,
-            'pending' => $this->pending,
         ];
     }
 }

@@ -49,6 +49,13 @@ class BranchOffice extends Base
     ];
 
     public static $filterable = [];
+
+    protected $appends = ['full_name'];
+
+    public function getFullNameAttribute()
+    {
+        return $this->name;
+    }
     /**
      * Get all of the billElectronics for the BranchOffice
      *

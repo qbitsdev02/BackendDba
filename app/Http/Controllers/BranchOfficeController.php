@@ -95,8 +95,7 @@ class BranchOfficeController extends Controller
      */
     public function index(Request $request)
     {
-        $branchOffices = BranchOffice::with('series.voucherType')
-            ->filters($request->all())
+        $branchOffices = BranchOffice::filters($request->all())
             ->search($request->all());
         return response()->json($branchOffices, 200);
     }

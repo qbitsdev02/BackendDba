@@ -62,6 +62,12 @@ namespace App\Models;
  */
 class Field extends Base
 {
+    protected $appends = ['full_name'];
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->denomination} - {$this->contract_number}";
+    }
     /**
      * Get the organization that owns the Field
      *
@@ -84,11 +90,11 @@ class Field extends Base
     /**
      * Relationship ticket
      * A field has many tickect
-     * 
+     *
      * Get the tickets associated to field that owns the attributes.
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\hasMany
-     * 
+     *
      */
     public function tickets()
     {
@@ -99,11 +105,11 @@ class Field extends Base
     /**
      * Relationship port
      * A field belong to port
-     * 
+     *
      * Get the port associated to field that owns the attributes.
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\belongTo
-     * 
+     *
      */
     public function port()
     {
@@ -111,7 +117,7 @@ class Field extends Base
     }
 
     /**
-     * 
+     *
      */
     public function fieldCashFlows()
     {

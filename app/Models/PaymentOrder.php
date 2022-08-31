@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 
 /**
- * 
+ *
  * @OA\Schema(
  *   schema="PaymentOrder",
  *   type="object",
@@ -131,7 +131,7 @@ class PaymentOrder extends Base
     }
 
     /**
-     * 
+     *
      */
     public function ownerable()
     {
@@ -145,14 +145,21 @@ class PaymentOrder extends Base
     {
         return $this->hasMany(Transaction::class);
     }
+    /**
+     * Relationship transaction
+     */
+    public function concept()
+    {
+        return $this->belongsTo(Concept::class);
+    }
 
     /**
-     * 
+     *
      */
     public function getPendingAttribute()
     {
-        return $this->amount - $this->transactions->sum('amount'); 
-        
+        return $this->amount - $this->transactions->sum('amount');
+
     }
 
-}   
+}
