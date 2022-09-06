@@ -247,7 +247,6 @@ class PaymentOrderController extends Controller
     public function update(UpdatePaymentOrderRequest $request, PaymentOrder $payment_order)
     {
         $payment_order->description = $request->description;
-        $payment_order->status = $request->status;
         $payment_order->amount = $request->amount;
         $payment_order->operation_type_id = $request->operation_type_id;
         $payment_order->concept_id = $request->concept_id;
@@ -256,7 +255,7 @@ class PaymentOrderController extends Controller
         $payment_order->entity_id = $request->entity_id;
         $payment_order->coin_id = $request->coin_id;
         $payment_order->payment_date = $request->payment_date;
-        $payment_order->user_created_id = $request->user_created_id;
+        $payment_order->user_updated_id = $request->user_updated_id;
 
         $payment_order->update();
 
