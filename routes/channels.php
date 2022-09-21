@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Broadcast;
 //     return (int) $user->id === (int) $id;
 // });
 
-    Broadcast::channel('transaction', function ($user) {
-        return true;
-    });
+    // Broadcast::channel('transaction', function ($user) {
+    //     return true;
+    // });
 
 
 // Broadcast::channel('order.{orderId}', function ($user, $orderId) {
