@@ -17,8 +17,8 @@ class TransactionObserver
      */
     public function created(Transaction $transaction)
     {
-        event(new TransactionEvent($transaction));
-        auth()->user()->notify(new TransactionNotification($transaction));
+        // event(new TransactionEvent($transaction));
+        // auth()->user()->notify(new TransactionNotification($transaction));
         $transactionServices = new TransactionService($transaction);
         $transactionServices->aditionalProcess(request());
     }
