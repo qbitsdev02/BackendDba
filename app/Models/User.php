@@ -127,7 +127,7 @@ class User extends Authenticatable
 
     public function getFullNameAttribute()
     {
-        return "{$this->document_number} - {$this->name}";
+        return "{$this->name} {$this->last_name}";
     }
 
     public static $filterable = [];

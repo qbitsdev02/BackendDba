@@ -19,7 +19,7 @@ class FieldCashFlowController extends Controller
      */
     public function __construct()
     {
-        $this->authorizeResource(FieldCashFlow::class,'field_cash_flow');
+        // $this->authorizeResource(FieldCashFlow::class,'field_cash_flow');
         $this->getBalance(request()->field_id);
     }
 
@@ -159,7 +159,6 @@ class FieldCashFlowController extends Controller
                     [
                         'amount' => $fieldCashFlowRequest['amount'],
                         'concept_id' => $fieldCashFlowRequest['concept_id'],
-                        'description' => $fieldCashFlowRequest['description'],
                         'field_id' => $fieldCashFlowRequest['field_id'],
                         'status' => 'approved',
                         'transaction_id' => isset($fieldCashFlowRequest['transaction_id']) ? $fieldCashFlowRequest['transaction_id'] : null,
