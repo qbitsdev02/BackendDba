@@ -33,8 +33,7 @@ class TransactionNotification extends Notification implements ShouldQueue, Shoul
      */
     public function via($notifiable)
     {
-         return ['database', 'broadcast'];
-        
+        return ['database', 'broadcast'];
     }
 
     /**
@@ -46,9 +45,9 @@ class TransactionNotification extends Notification implements ShouldQueue, Shoul
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->line('The introduction to the notification.')
+            ->action('Notification Action', url('/'))
+            ->line('Thank you for using our application!');
     }
 
     /**
@@ -60,9 +59,14 @@ class TransactionNotification extends Notification implements ShouldQueue, Shoul
     public function toArray($notifiable)
     {
         return [
+            'title' => 'Transacción',
             'transaccion_id' => $this->transaction->id,
             'transaccion_amount' => $this->transaction->amount,
             'transaccion_payment_order_id' => $this->transaction->payment_order_id,
+            'description' => $this->transaction->paymentOrder->concept->conceptType->category->name . ',' .
+                $this->transaction->paymentOrder->concept->conceptType->name . ',' .
+                $this->transaction->paymentOrder->concept->name
+
         ];
     }
 
@@ -76,9 +80,13 @@ class TransactionNotification extends Notification implements ShouldQueue, Shoul
     public function toBroadcast($notifiable)
     {
         return new BroadcastMessage([
+            'title' => 'Transacción',
             'transaccion_id' => $this->transaction->id,
             'transaccion_amount' => $this->transaction->amount,
             'transaccion_payment_order_id' => $this->transaction->payment_order_id,
+            'description' => $this->transaction->paymentOrder->concept->conceptType->category->name . ',' .
+                $this->transaction->paymentOrder->concept->conceptType->name . ',' .
+                $this->transaction->paymentOrder->concept->name
         ]);
     }
 }
