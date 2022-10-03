@@ -101,30 +101,30 @@ class PaymentOrder extends Base
 
 
     /**
-    * Relationship coin
-    * Get the coin associated to the payment orden
-    * @return \Illuminate\Database\Eloquent\Relations\belongsTo
-    */
+     * Relationship coin
+     * Get the coin associated to the payment orden
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
+     */
     public function coin()
     {
         return $this->belongsTo(Coin::class);
     }
 
     /**
-    * Relationship entity
-    * Get the entity associated to the payment orden
-    * @return \Illuminate\Database\Eloquent\Relations\belongsTo
-    */
+     * Relationship entity
+     * Get the entity associated to the payment orden
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
+     */
     public function entity()
     {
         return $this->belongsTo(Entity::class);
     }
 
     /**
-    * Relationship entity
-    * Get the operation type associated to the payment orden
-    * @return \Illuminate\Database\Eloquent\Relations\belongsTo
-    */
+     * Relationship entity
+     * Get the operation type associated to the payment orden
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
+     */
     public function operationType()
     {
         return $this->belongsTo(OperationType::class);
@@ -159,7 +159,15 @@ class PaymentOrder extends Base
     public function getPendingAttribute()
     {
         return $this->amount - $this->transactions->sum('amount');
-
     }
 
+    /**
+     * Get the concept that owns the PaymentOrder
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function concept()
+    {
+        return $this->belongsTo(Concept::class);
+    }
 }

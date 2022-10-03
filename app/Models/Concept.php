@@ -70,7 +70,7 @@ class Concept extends Base
     }
 
     /**
-     * 
+     *
      */
     public function fieldCashFlows()
     {
@@ -78,10 +78,20 @@ class Concept extends Base
     }
 
     /**
-     * 
+     *
      */
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * Get all of the paymentOrders for the Concept
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function paymentOrders()
+    {
+        return $this->hasMany(PaymentOrder::class);
     }
 }
