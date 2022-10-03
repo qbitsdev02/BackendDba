@@ -59,13 +59,11 @@ class TransactionNotification extends Notification implements ShouldQueue, Shoul
     public function toArray($notifiable)
     {
         return [
-            'title' => 'Transacción',
-            'transaccion_id' => $this->transaction->id,
-            'transaccion_amount' => $this->transaction->amount,
-            'transaccion_payment_order_id' => $this->transaction->payment_order_id,
-            'description' => $this->transaction->paymentOrder->concept->conceptType->category->name . ',' .
-                $this->transaction->paymentOrder->concept->conceptType->name . ',' .
-                $this->transaction->paymentOrder->concept->name
+            'title' => 'Transacción' . ' por ' . $this->transaction->amount
+                . $this->transaction->paymentOrder->coin->symbol,
+            'id' => $this->transaction->id,
+            'route' => 'transactions',
+            'description' => $this->full_description
 
         ];
     }
@@ -80,13 +78,11 @@ class TransactionNotification extends Notification implements ShouldQueue, Shoul
     public function toBroadcast($notifiable)
     {
         return new BroadcastMessage([
-            'title' => 'Transacción',
-            'transaccion_id' => $this->transaction->id,
-            'transaccion_amount' => $this->transaction->amount,
-            'transaccion_payment_order_id' => $this->transaction->payment_order_id,
-            'description' => $this->transaction->paymentOrder->concept->conceptType->category->name . ',' .
-                $this->transaction->paymentOrder->concept->conceptType->name . ',' .
-                $this->transaction->paymentOrder->concept->name
+            'title' => 'Transacción' . ' por ' . $this->transaction->amount
+                . $this->transaction->paymentOrder->coin->symbol,
+            'id' => $this->transaction->id,
+            'route' => 'transactions',
+            'description' => $this->full_description
         ]);
     }
 }
