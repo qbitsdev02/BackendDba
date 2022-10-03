@@ -160,14 +160,4 @@ class PaymentOrder extends Base
     {
         return $this->amount - $this->transactions->sum('amount');
     }
-
-    /**
-     * Get the concept that owns the PaymentOrder
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function concept()
-    {
-        return $this->belongsTo(Concept::class);
-    }
 }
