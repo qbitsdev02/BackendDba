@@ -61,5 +61,6 @@ class AppServiceProvider extends ServiceProvider
         Active::observe(ActiveObserver::class);
         FieldCashFlow::observe(FieldCashFlowObserver::class);
         Transaction::observe(TransactionObserver::class);
+
     }
 }

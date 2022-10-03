@@ -17,6 +17,7 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Resources\CompanyResource;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
