@@ -4,6 +4,8 @@ namespace App\Services;
 use App\Models\FieldCashFlow;
 use App\Models\Product;
 use App\Models\Transaction;
+use App\Models\User;
+use App\Notifications\TransactionNotification;
 use Illuminate\Http\Request;
 
 class TransactionService
@@ -19,7 +21,7 @@ class TransactionService
     {
         switch ($this->transaction->paymentOrder->ownerable_type) {
             case 'App\\Models\\Field':
-                $this->saveFieldCashFlow($request);
+                $this->saveFieldCashFlow();
                 break;
             default:
                 break;
@@ -38,6 +40,13 @@ class TransactionService
         $fieldCashFlow->beneficiary_id = $this->transaction->beneficiary_id;
         $fieldCashFlow->user_created_id = $this->transaction->user_created_id;
         $fieldCashFlow->save();
+        $this->notify($fieldCashFlow->field->field_supervisor_id);
         return $this;
+    }
+
+    protected function notify($userId)
+    {
+        User::find($userId)
+            ->notify(new TransactionNotification($this->transaction));
     }
 }

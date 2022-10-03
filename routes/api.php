@@ -5,6 +5,7 @@ use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\FieldCashFlowController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PaymentOrderController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\PortController;
@@ -90,4 +91,5 @@ Route::group([
     $router->post('change-status', 'FieldCashFlowController@changeStatus')->name('changeStatus');
     $router->resource('field-cash-flows', FieldCashFlowController::class);
     $router->resource('branch-offices', BranchOfficeController::class);
+    $router->get('notifications', [NotificationController::class, 'getAll'])->name('getAll');
 });
