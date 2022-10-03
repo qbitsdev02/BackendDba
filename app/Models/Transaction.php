@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 /**
  * 
  * @OA\Schema(
@@ -88,7 +89,7 @@ class Transaction extends Base
 
     /***
      * 
-    */
+     */
     public function beneficiary()
     {
         return $this->belongsTo(Beneficiary::class);
@@ -101,5 +102,11 @@ class Transaction extends Base
     {
         return $this->belongsTo(FieldCashFlow::class);
     }
-}
 
+    public function getFullDescriptionAttribute()
+    {
+        return $this->paymentOrder->concept->conceptType->category->name . ', ' .
+            $this->paymentOrder->concept->conceptType->name . ', ' .
+            $this->paymentOrder->concept->name . ', ' . $this->description;
+    }
+}
