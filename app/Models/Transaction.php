@@ -70,7 +70,7 @@ class Transaction extends Base
 {
     use HasFactory;
 
-
+    protected $appends = ['full_description'];
     /**
      * Relationship payment order
      */

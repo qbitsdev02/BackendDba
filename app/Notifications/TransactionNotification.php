@@ -63,7 +63,7 @@ class TransactionNotification extends Notification implements ShouldQueue, Shoul
                 . $this->transaction->paymentOrder->coin->symbol,
             'id' => $this->transaction->id,
             'route' => 'transactions',
-            'description' => $this->full_description
+            'description' => $this->transaction->full_description
 
         ];
     }
@@ -82,7 +82,7 @@ class TransactionNotification extends Notification implements ShouldQueue, Shoul
                 . $this->transaction->paymentOrder->coin->symbol,
             'id' => $this->transaction->id,
             'route' => 'transactions',
-            'description' => $this->full_description
+            'description' => $this->transaction->full_description
         ]);
     }
 }
