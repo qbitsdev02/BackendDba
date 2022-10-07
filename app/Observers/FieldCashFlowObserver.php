@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Helpers\ImageHelper;
+use App\Jobs\FieldImageJob;
 use App\Models\FieldCashFlow;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -17,15 +18,7 @@ class FieldCashFlowObserver
     public function created(FieldCashFlow $fieldCashFlow)
     {
         if(request()->has('images')) {
-            $imgModel = collect(request()->images)
-                ->map(function($image)use ($fieldCashFlow) {
-                    return [
-                        'img' => ImageHelper::convertFormat($image['img'], 'field_cash_flows'),
-                        'user_created_id' => $fieldCashFlow->user_created_id
-                    ];
-                });
-
-            $fieldCashFlow->images()->createMany($imgModel);
+            FieldImageJob::dispatch($fieldCashFlow, request()->images);
         }
     }
 

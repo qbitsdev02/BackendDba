@@ -254,6 +254,7 @@ class PaymentOrderController extends Controller
         $payment_order->ownerable_type = $request->ownerable_type;
         $payment_order->entity_id = $request->entity_id;
         $payment_order->coin_id = $request->coin_id;
+        $payment_order->status = $request->status;
         $payment_order->payment_date = $request->payment_date;
         $payment_order->user_updated_id = $request->user_updated_id;
 

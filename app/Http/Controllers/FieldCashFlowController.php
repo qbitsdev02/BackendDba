@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFieldCashFlowRequest;
 use App\Http\Requests\UpdateFieldCashFlowRequest;
 use App\Http\Resources\FieldCashFlowResource;
+use App\Jobs\FieldImageJob;
 use Illuminate\Http\Request;
 
 class FieldCashFlowController extends Controller
@@ -171,14 +172,7 @@ class FieldCashFlowController extends Controller
 
                 if (isset($fieldCashFlowRequest['images']) && $fieldCashFlowRequest['images'])
                 {
-                    $imgModel = collect($fieldCashFlowRequest['images'])
-                        ->map(function($image)use ($fieldCashFlow) {
-                            return [
-                                'img' => ImageHelper::convertFormat($image['img'], 'field_cash_flows'),
-                                'user_created_id' => $fieldCashFlow->user_created_id
-                            ];
-                        });
-                    $fieldCashFlow->images()->createMany($imgModel);
+                    FieldImageJob::dispatch($fieldCashFlow, $fieldCashFlowRequest['images']);
                 }
             });
         return response()->json([

@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->date('date');
             $table->foreignId('payment_order_id')->constrained();
-            $table->float('reference');
-            $table->foreignId('beneficiary_id');
+            $table->string('reference');
+            $table->foreignId('responsable_id');
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->timestamps();
