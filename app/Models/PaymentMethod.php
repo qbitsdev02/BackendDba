@@ -4,7 +4,7 @@ namespace App\Models;
 
 /**
  * @OA\Schema(
- *   schema="OperationType",
+ *   schema="PaymentMethod",
  *   type="object",
  *   @OA\Property(
  *       property="name",
@@ -34,13 +34,13 @@ namespace App\Models;
  *   ),
  * )
  */
-class OperationType extends Base
+class  PaymentMethod extends Base
 {
     /**
-    * Relationship payment order
-    * Get the operations order associated to the operation type
-    * @return \Illuminate\Database\Eloquent\Relations\hasMany 
-    */
+     * Relationship payment order
+     * Get the operations order associated to the operation type
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany 
+     */
     public function operationOrders()
     {
         return $this->hasMany(PaymentOrder::class);

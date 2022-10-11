@@ -3,10 +3,11 @@
 namespace App\Policies;
 
 use App\Models\OperationType;
+use App\Models\PaymentMethod;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class OperationTypePolicy
+class PaymentMethodPolicy
 {
     use HandlesAuthorization;
 
@@ -28,7 +29,7 @@ class OperationTypePolicy
      * @param  \App\Models\OperationType  $operationType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, OperationType $operationType)
+    public function view(User $user, PaymentMethod $operationType)
     {
         //
     }
@@ -51,7 +52,7 @@ class OperationTypePolicy
      * @param  \App\Models\OperationType  $operationType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, OperationType $operationType)
+    public function update(User $user, PaymentMethod $operationType)
     {
         //
     }
@@ -63,7 +64,7 @@ class OperationTypePolicy
      * @param  \App\Models\OperationType  $operationType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, OperationType $operationType)
+    public function delete(User $user, PaymentMethod $operationType)
     {
         //
     }
@@ -75,7 +76,7 @@ class OperationTypePolicy
      * @param  \App\Models\OperationType  $operationType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, OperationType $operationType)
+    public function restore(User $user, PaymentMethod $operationType)
     {
         //
     }
@@ -87,7 +88,7 @@ class OperationTypePolicy
      * @param  \App\Models\OperationType  $operationType
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, OperationType $operationType)
+    public function forceDelete(User $user, PaymentMethod $operationType)
     {
         //
     }

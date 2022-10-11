@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOperationTypesTable extends Migration
+class CreatePaymentMethodsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateOperationTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('operation_types', function (Blueprint $table) {
+        Schema::create('payment-methods', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('description')->nullable();

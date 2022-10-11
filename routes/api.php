@@ -7,6 +7,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DisbursementController;
 use App\Http\Controllers\FieldCashFlowController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\PaymentOrderController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\PortController;
@@ -54,7 +55,7 @@ Route::group([
     $router->resource('roles', RoleController::class);
     $router->resource('sections', SectionController::class);
     $router->resource('concept-types', ConceptTypeController::class);
-    $router->resource('operation-types', OperationTypeController::class);
+    $router->resource('payment-methods', PaymentMethodController::class);
     $router->resource('entities', EntityController::class);
     $router->resource('fields', FieldController::class);
     $router->resource('organizations', OrganizationController::class);
