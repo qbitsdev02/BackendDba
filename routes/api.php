@@ -4,6 +4,7 @@ use App\Http\Controllers\ActiveController;
 use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\DisbursementController;
 use App\Http\Controllers\FieldCashFlowController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PaymentOrderController;
@@ -92,4 +93,5 @@ Route::group([
     $router->resource('field-cash-flows', FieldCashFlowController::class);
     $router->resource('branch-offices', BranchOfficeController::class);
     $router->get('notifications', [NotificationController::class, 'getAll'])->name('getAll');
+    $router->resource('disbursements', DisbursementController::class);
 });

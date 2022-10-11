@@ -6,6 +6,7 @@ use App\Models\Active;
 use App\Models\Category;
 use App\Models\Coin;
 use App\Models\Company;
+use App\Models\Disbursement;
 use App\Models\FieldCashFlow;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -57,7 +58,7 @@ class AuthServiceProvider extends ServiceProvider
         Rate::class => RatePolicy::class,
         Ticket::class => TicketPolicy::class,
         PaymentOrder::class => PaymentOrderPolicy::class,
-        Port::class =>PortPolicy::class,
+        Port::class => PortPolicy::class,
         StaffType::class => StaffTypePolicy::class,
         Personal::class => PersonalPolicy::class,
         Active::class => ActivePolicy::class,
@@ -66,6 +67,7 @@ class AuthServiceProvider extends ServiceProvider
         Transaction::class => TransactionPolicy::class,
         Category::class => CategoryPolicy::class,
         FieldCashFlow::class => FieldCashFlowPolicy::class,
+        Disbursement::class => DisbursementPolicy::class,
     ];
 
 
