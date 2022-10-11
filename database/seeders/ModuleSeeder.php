@@ -349,6 +349,15 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
+                //38
+                [
+                    'name' => 'voucher-types',
+                    'icon' => 'person',
+                    'route' => 'VoucherType',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
             ]);
     }
 }

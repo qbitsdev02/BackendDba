@@ -25,6 +25,7 @@ use App\Models\StaffType;
 use App\Models\State;
 use App\Models\Ticket;
 use App\Models\Transaction;
+use App\Models\VoucherType;
 use App\Policies\ActivePolicy;
 use App\Policies\AttributePolicy;
 use App\Policies\CategoryPolicy;
@@ -68,6 +69,7 @@ class AuthServiceProvider extends ServiceProvider
         Category::class => CategoryPolicy::class,
         FieldCashFlow::class => FieldCashFlowPolicy::class,
         Disbursement::class => DisbursementPolicy::class,
+        VoucherType::class => VoucherTypePolicy::class,
     ];
 
 
