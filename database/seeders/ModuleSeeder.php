@@ -358,6 +358,15 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
+                //39
+                [
+                    'name' => 'contracts',
+                    'icon' => 'person',
+                    'route' => 'Contract',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
             ]);
     }
 }

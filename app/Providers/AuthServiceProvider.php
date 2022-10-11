@@ -6,6 +6,7 @@ use App\Models\Active;
 use App\Models\Category;
 use App\Models\Coin;
 use App\Models\Company;
+use App\Models\Contract;
 use App\Models\Disbursement;
 use App\Models\FieldCashFlow;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -70,6 +71,7 @@ class AuthServiceProvider extends ServiceProvider
         FieldCashFlow::class => FieldCashFlowPolicy::class,
         Disbursement::class => DisbursementPolicy::class,
         VoucherType::class => VoucherTypePolicy::class,
+        Contract::class => ContractPolicy::class,
     ];
 
 

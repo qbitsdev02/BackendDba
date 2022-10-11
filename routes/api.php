@@ -4,6 +4,7 @@ use App\Http\Controllers\ActiveController;
 use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ContractController;
 use App\Http\Controllers\DisbursementController;
 use App\Http\Controllers\FieldCashFlowController;
 use App\Http\Controllers\NotificationController;
@@ -97,4 +98,5 @@ Route::group([
     $router->get('notifications', [NotificationController::class, 'getAll'])->name('getAll');
     $router->resource('disbursements', DisbursementController::class);
     $router->resource('voucher-types', VoucherTypeController::class);
+    $router->resource('contracts', ContractController::class);
 });
