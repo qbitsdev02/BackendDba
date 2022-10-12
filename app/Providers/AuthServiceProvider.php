@@ -22,6 +22,7 @@ use App\Models\Port;
 use App\Models\Provider;
 use App\Models\ProviderType;
 use App\Models\Rate;
+use App\Models\Service;
 use App\Models\StaffType;
 use App\Models\State;
 use App\Models\Ticket;
@@ -72,6 +73,7 @@ class AuthServiceProvider extends ServiceProvider
         Disbursement::class => DisbursementPolicy::class,
         VoucherType::class => VoucherTypePolicy::class,
         Contract::class => ContractPolicy::class,
+        Service::class => ServicePolicy::class,
     ];
 
 

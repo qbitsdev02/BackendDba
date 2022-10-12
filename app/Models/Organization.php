@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 /**
  * @OA\Schema(
  *   schema="Organization",
@@ -40,5 +41,15 @@ class Organization extends Base
     public function getFullNameAttribute()
     {
         return "{$this->name}";
+    }
+
+    /**
+     * Get all of the services f Organization
+     *
+     * @return \Illuminate\Database\Eloquent\Servins\HasMany
+     */
+    public function services()
+    {
+        return $this->hasMany(Service::class);
     }
 }

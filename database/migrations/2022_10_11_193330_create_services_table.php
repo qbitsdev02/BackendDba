@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePaymentMethodsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,19 @@ class CreatePaymentMethodsTable extends Migration
      */
     public function up()
     {
-        Schema::create('payment_methods', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('description')->nullable();
+            $table->float('amount');
+            $table->foreignId('payment_method_id')->constrained('payment_methods');
+            $table->foreignId('organization_id')->constrained();
+            $table->foreignId('voucher_type_id')->constrained();
+            $table->string('reference')->nullable();
+            $table->foreignId('provider_id')->constrained();
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
-            $table->timestamps();
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 
@@ -31,6 +36,6 @@ class CreatePaymentMethodsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('operation_types');
+        Schema::dropIfExists('services');
     }
-}
+};

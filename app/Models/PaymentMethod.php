@@ -45,4 +45,14 @@ class  PaymentMethod extends Base
     {
         return $this->hasMany(PaymentOrder::class);
     }
+
+    /**
+     * Get all of the services for the PaymentMethod
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
 }

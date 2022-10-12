@@ -49,4 +49,14 @@ use Illuminate\Database\Eloquent\Model;
 class VoucherType extends Base
 {
     use HasFactory;
+
+    /**
+     * Get all of the services for the VoucherType
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
 }

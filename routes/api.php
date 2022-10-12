@@ -15,6 +15,7 @@ use App\Http\Controllers\PortController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ProviderTypeController;
 use App\Http\Controllers\RateController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\StaffTypeController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TransactionController;
@@ -99,4 +100,5 @@ Route::group([
     $router->resource('disbursements', DisbursementController::class);
     $router->resource('voucher-types', VoucherTypeController::class);
     $router->resource('contracts', ContractController::class);
+    $router->resource('services', ServiceController::class);
 });
