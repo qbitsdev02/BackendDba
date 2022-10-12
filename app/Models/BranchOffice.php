@@ -86,4 +86,14 @@ class BranchOffice extends Base
     {
         return $this->hasMany(Disbursement::class);
     }
+
+    /**
+     * Get all of the disbursementRequests for the BranchOffice
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function disbursementRequests()
+    {
+        return $this->hasMany(DisbursementRequest::class);
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 /**
  * @OA\Schema(
  *   schema="Coin",
@@ -44,5 +45,15 @@ class Coin extends Base
     public function paymentOrders()
     {
         return $this->hasMany(PaymentOrder::class);
+    }
+
+    /**
+     * Get all of the disbursementRequests for the Coin
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function disbursementRequests()
+    {
+        return $this->hasMany(DisbursementRequest::class);
     }
 }

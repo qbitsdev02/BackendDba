@@ -376,6 +376,15 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
+                //41
+                [
+                    'name' => 'disbursement-requests',
+                    'icon' => 'person',
+                    'route' => 'Service',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
             ]);
     }
 }

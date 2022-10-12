@@ -2,32 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Active;
+use App\Models\DisbursementRequest;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreActiveRequest;
-use App\Http\Requests\UpdateActiveRequest;
-use App\Http\Resources\ActiveResource;
+use App\Http\Requests\StoreDisbursementRequestRequest;
+use App\Http\Requests\UpdateDisbursementRequestRequest;
+use App\Http\Resources\DisbursementRequestResource;
 use Illuminate\Http\Request;
 
-class ActiveController extends Controller
+class DisbursementRequestController extends Controller
 {
 
-    /**
-     *
-     */
-    function __construct()
+    public function __construct()
     {
-        $this->authorizeResource(Active::class, 'active');
+        $this->authorizeResource(DisbursementRequest::class, 'disbursement_request');
     }
+
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
      * @OA\Get(
-     *     path="/actives",
-     *     operationId="getactive",
-     *     tags={"Active"},
+     *     path="/disbursement-requests",
+     *     operationId="getdisbursementRequest",
+     *     tags={"DisbursementRequest"},
      *     @OA\Parameter(
      *       name="paginate",
      *       in="query",
@@ -94,7 +93,7 @@ class ActiveController extends Controller
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="active all."
+     *         description="data all."
      *     ),
      *     @OA\Response(
      *         response="default",
@@ -104,12 +103,12 @@ class ActiveController extends Controller
      */
     public function index(Request $request)
     {
-        $actives = Active::filters($request->all())
+        $disbursementRequests = DisbursementRequest::filters($request->all())
             ->search($request->all());
 
-        return (ActiveResource::collection($actives))->additional(
+        return (DisbursementRequestResource::collection($disbursementRequests))->additional(
             [
-                'message:' => 'Successfully response'
+                'message' => 'successfully response'
             ],
             200
         );
@@ -118,19 +117,19 @@ class ActiveController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreActiveRequest  $request
+     * @param  \App\Http\Requests\StoreDisbursementRequestRequest  $request
      * @return \Illuminate\Http\Response
      *
      * @OA\Post(
-     *   path="/actives",
-     *   summary="Creates a new active",
-     *   description="Creates a new active",
-     *   tags={"Active"},
+     *   path="/disbursement-requests",
+     *   summary="Creates a new register",
+     *   description="Creates a new register",
+     *   tags={"DisbursementRequest"},
      *   security={{"passport": {"*"}}},
      *   @OA\RequestBody(
      *       @OA\MediaType(
      *           mediaType="application/json",
-     *           @OA\Schema(ref="#/components/schemas/Active")
+     *           @OA\Schema(ref="#/components/schemas/DisbursementRequest")
      *       )
      *   ),
      *   @OA\Response(
@@ -150,21 +149,18 @@ class ActiveController extends Controller
      *   )
      * )
      */
-    public function store(StoreActiveRequest $request)
+    public function store(StoreDisbursementRequestRequest $request)
     {
+        $disbursementRequest = new DisbursementRequest();
+        $disbursementRequest->coin_id = $request->coin_id;
+        $disbursementRequest->request_branch_office_id = $request->request_branch_office_id;
+        $disbursementRequest->amount = $request->amount;
+        $disbursementRequest->user_created_id = $request->user_created_id;
+        $disbursementRequest->save();
 
-        $active = new Active();
-        $active->name = $request->name;
-        $active->status = $request->status;
-        $active->description = $request->description;
-        $active->ownerable_type = $request->ownerable_type;
-        $active->ownerable_id = $request->ownerable_id;
-        $active->user_created_id = $request->user_created_id;
-        $active->save();
-
-        return (new ActiveResource($active))->additional(
+        return (new DisbursementRequestResource($disbursementRequest))->additional(
             [
-                'message:' => 'successfully registered active'
+                'message:' => 'successfully registered data'
             ],
             201
         );
@@ -173,18 +169,18 @@ class ActiveController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Active  $active
+     * @param  \App\Models\DisbursementRequest  $disbursementRequest
      * @return \Illuminate\Http\Response
      * 
      * @OA\Get(
-     *      path="/actives/{id}",
-     *      operationId="getactivesById",
-     *      tags={"Active"},
-     *      summary="Get active information",
+     *      path="/disbursement-requests/{id}",
+     *      operationId="getdisbursementRequestById",
+     *      tags={"DisbursementRequest"},
+     *      summary="Get register information",
      *      description="Returns Port data",
      *   @OA\Parameter(
      *          name="id",
-     *          description="Active id",
+     *          description="Register id",
      *          required=true,
      *          in="path",
      *             @OA\Schema(type="integer")
@@ -192,7 +188,7 @@ class ActiveController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/Active")
+     *          @OA\JsonContent(ref="#/components/schemas/DisbursementRequest")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -208,11 +204,11 @@ class ActiveController extends Controller
      *      )
      *   )
      */
-    public function show(Active $active)
+    public function show(DisbursementRequest $disbursementRequest)
     {
-        return (new ActiveResource($active))->additional(
+        return (new DisbursementRequestResource($disbursementRequest))->additional(
             [
-                'message:' => 'successfully response'
+                'message:' => 'Successfully response'
             ],
             200
         );
@@ -221,19 +217,19 @@ class ActiveController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateActiveRequest  $request
-     * @param  \App\Models\Active  $active
+     * @param  \App\Http\Requests\UpdateDisbursementRequestRequest  $request
+     * @param  \App\Models\DisbursementRequest  $disbursementRequest
      * @return \Illuminate\Http\Response
      * 
-     * @OA\Put(
-     *      path="/actives/{id}",
-     *      operationId="updateactive",
-     *      tags={"Active"},
-     *      summary="Update existing Active",
+     *  @OA\Put(
+     *      path="/disbursement-requests/{id}",
+     *      operationId="updatedisbursementRequest",
+     *      tags={"DisbursementRequest"},
+     *      summary="Update existing register",
      *      description="Returns updated port data",
      *  @OA\Parameter(
      *      name="id",
-     *      description="Active id",
+     *      description="Register id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -242,12 +238,12 @@ class ActiveController extends Controller
      *  ),
      *  @OA\RequestBody(
      *      required=true,
-     *      @OA\JsonContent(ref="#/components/schemas/Active")
+     *      @OA\JsonContent(ref="#/components/schemas/DisbursementRequest")
      *   ),
      *   @OA\Response(
      *      response=200,
      *      description="Successful operation",
-     *      @OA\JsonContent(ref="#/components/schemas/Active")
+     *      @OA\JsonContent(ref="#/components/schemas/DisbursementRequest")
      *   ),
      *   @OA\Response(
      *      response=400,
@@ -267,19 +263,17 @@ class ActiveController extends Controller
      *   )
      * )
      */
-    public function update(UpdateActiveRequest $request, Active $active)
+    public function update(UpdateDisbursementRequestRequest $request, DisbursementRequest $disbursementRequest)
     {
-        $active->name = $request->name;
-        $active->status = $request->status;
-        $active->description = $request->description;
-        $active->ownerable_type = $request->ownerable_type;
-        $active->ownerable_id = $request->ownerable_id;
-        $active->user_created_id = $request->user_created_id;
+        $disbursementRequest->coin_id = $request->coin_id;
+        $disbursementRequest->request_branch_office_id = $request->request_branch_office_id;
+        $disbursementRequest->amount = $request->amount;
+        $disbursementRequest->user_created_id = $request->user_created_id;
+        $disbursementRequest->update();
 
-        $active->update();
-        return (new ActiveResource($active))->additional(
+        return (new DisbursementRequestResource($disbursementRequest))->additional(
             [
-                'message:' => 'successfully updated active'
+                'message:' => 'successfully registered data'
             ],
             200
         );
@@ -288,18 +282,18 @@ class ActiveController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Active  $active
+     * @param  \App\Models\DisbursementRequest  $disbursementRequest
      * @return \Illuminate\Http\Response
      * 
-     * @OA\Delete(
-     *  path="/actives/{id}",
-     *  operationId="deleteactive",
-     *  tags={"Active"},
-     *  summary="Delete existing active",
+     *  @OA\Delete(
+     *  path="/disbursement-requests/{id}",
+     *  operationId="deletedisbursementRequest",
+     *  tags={"DisbursementRequest"},
+     *  summary="Delete existing register",
      *  description="Deletes a record and returns no content",
      *  @OA\Parameter(
      *      name="id",
-     *      description="active id",
+     *      description="Register id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -325,9 +319,9 @@ class ActiveController extends Controller
      *  )
      * )
      */
-    public function destroy(Active $active)
+    public function destroy(DisbursementRequest $disbursementRequest)
     {
-        $active->delete();
+        $disbursementRequest->delete();
         return response()->json(
             [
                 'message' => 'the data was deleted successfully'

@@ -74,6 +74,7 @@ class AuthServiceProvider extends ServiceProvider
         VoucherType::class => VoucherTypePolicy::class,
         Contract::class => ContractPolicy::class,
         Service::class => ServicePolicy::class,
+        DisbursementRequest::class => DisbursementRequestPolicy::class,
     ];
 
 
