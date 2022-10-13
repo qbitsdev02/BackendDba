@@ -23,100 +23,101 @@ class PaymentOrderController extends Controller
     }
 
     /**
-    * Display a listing of the resource.
-    *
-    * @return \Illuminate\Http\Response
-    *
-    * @OA\Get(
-    *     path="/payment-orders",
-    *     operationId="getpaymetOrder",
-    *     tags={"PaymentOrder"},
-    *     @OA\Parameter(
-    *       name="paginate",
-    *       in="query",
-    *       description="paginate",
-    *       required=false,
-    *       @OA\Schema(
-    *           title="Paginate",
-    *           example="true",
-    *           type="boolean",
-    *           description="The Paginate data"
-    *       )
-    *     ),
-    *     @OA\Parameter(
-    *       name="sortBy",
-    *       in="query",
-    *       description="turno resource name",
-    *       required=false,
-    *       @OA\Schema(
-    *           type="string",
-    *           example="id",
-    *           description="The unique identifier of a turno resource"
-    *       )
-    *     ),
-    *     @OA\Parameter(
-    *       name="sortOrder",
-    *       in="query",
-    *       description="turno resource name",
-    *       required=false,
-    *       @OA\Schema(
-    *           type="string",
-    *           example="desc",
-    *           description="The unique identifier of a turno resource"
-    *       )
-    *      ),
-    *     @OA\Parameter(
-    *       name="perPage",
-    *       in="query",
-    *       description="Sort order field",
-    *       @OA\Schema(
-    *           title="perPage",
-    *           type="number",
-    *           default="10",
-    *           description="The unique identifier of a curso resource"
-    *       )
-    *      ),
-    *     @OA\Parameter(
-    *       name="dataSearch",
-    *       in="query",
-    *       description="turno resource name",
-    *       required=false,
-    *       @OA\Schema(
-    *           type="string",
-    *           description="Search data"
-    *       )
-    *      ),
-    *     @OA\Parameter(
-    *       name="dataFilter",
-    *       in="query",
-    *       description="turno resource name",
-    *       required=false,
-    *       @OA\Schema(
-    *           type="string",
-    *           description="The unique identifier of a turno resource"
-    *       )
-    *     ),
-    *     @OA\Response(
-    *         response=200,
-    *         description="payment orders all."
-    *     ),
-    *     @OA\Response(
-    *         response="default",
-    *         description="error."
-    *     )
-    *  )
-    */
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     *
+     * @OA\Get(
+     *     path="/payment-orders",
+     *     operationId="getpaymetOrder",
+     *     tags={"PaymentOrder"},
+     *     @OA\Parameter(
+     *       name="paginate",
+     *       in="query",
+     *       description="paginate",
+     *       required=false,
+     *       @OA\Schema(
+     *           title="Paginate",
+     *           example="true",
+     *           type="boolean",
+     *           description="The Paginate data"
+     *       )
+     *     ),
+     *     @OA\Parameter(
+     *       name="sortBy",
+     *       in="query",
+     *       description="turno resource name",
+     *       required=false,
+     *       @OA\Schema(
+     *           type="string",
+     *           example="id",
+     *           description="The unique identifier of a turno resource"
+     *       )
+     *     ),
+     *     @OA\Parameter(
+     *       name="sortOrder",
+     *       in="query",
+     *       description="turno resource name",
+     *       required=false,
+     *       @OA\Schema(
+     *           type="string",
+     *           example="desc",
+     *           description="The unique identifier of a turno resource"
+     *       )
+     *      ),
+     *     @OA\Parameter(
+     *       name="perPage",
+     *       in="query",
+     *       description="Sort order field",
+     *       @OA\Schema(
+     *           title="perPage",
+     *           type="number",
+     *           default="10",
+     *           description="The unique identifier of a curso resource"
+     *       )
+     *      ),
+     *     @OA\Parameter(
+     *       name="dataSearch",
+     *       in="query",
+     *       description="turno resource name",
+     *       required=false,
+     *       @OA\Schema(
+     *           type="string",
+     *           description="Search data"
+     *       )
+     *      ),
+     *     @OA\Parameter(
+     *       name="dataFilter",
+     *       in="query",
+     *       description="turno resource name",
+     *       required=false,
+     *       @OA\Schema(
+     *           type="string",
+     *           description="The unique identifier of a turno resource"
+     *       )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="payment orders all."
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="error."
+     *     )
+     *  )
+     */
     public function index(Request $request)
     {
 
         $payment_order = PaymentOrder::filters($request->all())
             ->search($request->all());
 
-            return (PaymentOrderResource::collection($payment_order))->additional(
-                [
-                    'message' => 'successfully response'
-                ],200
-            );
+        return (PaymentOrderResource::collection($payment_order))->additional(
+            [
+                'message' => 'successfully response'
+            ],
+            200
+        );
     }
 
 
@@ -153,21 +154,21 @@ class PaymentOrderController extends Controller
      *       response="default",
      *       description="an ""unexpected"" error",
      *   )
-    * )
-    */
+     * )
+     */
     public function store(StorePaymentOrderRequest $request)
     {
         $payment_order = new PaymentOrder();
         $payment_order->description = $request->description;
         $payment_order->status = $request->status;
         $payment_order->amount = $request->amount;
-        $payment_order->operation_type_id = $request->operation_type_id;
-        $payment_order->organization_id = 1;
-        $payment_order->country_id = 1;
+        $payment_order->payment_method_id = $request->payment_method_id;
+        $payment_order->organization_id = $request->organization_id;
+        $payment_order->country_id = $request->country_id;
         $payment_order->concept_id = $request->concept_id;
         $payment_order->ownerable_id = $request->ownerable_id;
         $payment_order->ownerable_type = $request->ownerable_type;
-        $payment_order->entity_id = $request->entity_id;
+        $payment_order->branch_office_id = $request->branch_office_id;
         $payment_order->coin_id = $request->coin_id;
         $payment_order->payment_date = $request->payment_date;
         $payment_order->user_created_id = $request->user_created_id;
@@ -177,7 +178,8 @@ class PaymentOrderController extends Controller
         return (new PaymentOrderResource($payment_order))->additional(
             [
                 "message" => "successfully registerd payment order"
-            ],200
+            ],
+            200
         );
     }
 
@@ -192,7 +194,9 @@ class PaymentOrderController extends Controller
         return (new PaymentOrderResource($paymentOrder))->additional(
             [
                 "message" => "successfully response"
-            ],200);
+            ],
+            200
+        );
     }
 
     /**
@@ -247,23 +251,26 @@ class PaymentOrderController extends Controller
     public function update(UpdatePaymentOrderRequest $request, PaymentOrder $payment_order)
     {
         $payment_order->description = $request->description;
+        $payment_order->status = $request->status;
         $payment_order->amount = $request->amount;
-        $payment_order->operation_type_id = $request->operation_type_id;
+        $payment_order->payment_method_id = $request->payment_method_id;
+        $payment_order->organization_id = $request->organization_id;
+        $payment_order->country_id = $request->country_id;
         $payment_order->concept_id = $request->concept_id;
         $payment_order->ownerable_id = $request->ownerable_id;
         $payment_order->ownerable_type = $request->ownerable_type;
-        $payment_order->entity_id = $request->entity_id;
+        $payment_order->branch_office_id = $request->branch_office_id;
         $payment_order->coin_id = $request->coin_id;
-        $payment_order->status = $request->status;
         $payment_order->payment_date = $request->payment_date;
-        $payment_order->user_updated_id = $request->user_updated_id;
+        $payment_order->user_created_id = $request->user_created_id;
 
         $payment_order->update();
 
         return (new PaymentOrderResource($payment_order))->additional(
             [
                 "message" => "successfully updated payment order"
-            ],200
+            ],
+            200
         );
     }
 

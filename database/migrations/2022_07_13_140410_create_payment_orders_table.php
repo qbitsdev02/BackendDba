@@ -16,15 +16,15 @@ class CreatePaymentOrdersTable extends Migration
         Schema::create('payment_orders', function (Blueprint $table) {
             $table->id();
             $table->string('description')->nullable();
-            $table->enum('status', ['pending_approval', 'approved','canceled'])->default('pending_approval');
+            $table->enum('status', ['pending_approval', 'approved', 'canceled'])->default('pending_approval');
             $table->float('amount');
-            $table->foreignId('operation_type_id')->constrained();
+            $table->foreignId('payment_method_id')->constrained('payment_methods');
             $table->foreignId('organization_id')->constrained();
             $table->morphs('ownerable');
-            $table->foreignId('entity_id')->constrained();
+            $table->foreignId('branch_office_id')->constrained();
             $table->foreignId('coin_id')->constrained();
             $table->foreignId('concept_id')->constrained();
-            $table->foreignId('country_id')->constrained();
+            $table->foreignId('country_id')->nullable()->constrained();
             $table->date('payment_date')->nullable()->constrained();
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');

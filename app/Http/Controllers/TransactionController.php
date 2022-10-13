@@ -31,84 +31,84 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      *
-      * @OA\Get(
-      *     path="/transactions",
-      *     operationId="gettransaction",
-      *     tags={"Transaction"},
-      *     @OA\Parameter(
-      *       name="paginate",
-      *       in="query",
-      *       description="paginate",
-      *       required=false,
-      *       @OA\Schema(
-      *           title="Paginate",
-      *           example="true",
-      *           type="boolean",
-      *           description="The Paginate data"
-      *       )
-      *     ),
-      *     @OA\Parameter(
-      *       name="sortBy",
-      *       in="query",
-      *       description="turno resource name",
-      *       required=false,
-      *       @OA\Schema(
-      *           type="string",
-      *           example="id",
-      *           description="The unique identifier of a turno resource"
-      *       )
-      *     ),
-      *     @OA\Parameter(
-      *       name="sortOrder",
-      *       in="query",
-      *       description="turno resource name",
-      *       required=false,
-      *       @OA\Schema(
-      *           type="string",
-      *           example="desc",
-      *           description="The unique identifier of a turno resource"
-      *       )
-      *      ),
-      *     @OA\Parameter(
-      *       name="perPage",
-      *       in="query",
-      *       description="Sort order field",
-      *       @OA\Schema(
-      *           title="perPage",
-      *           type="number",
-      *           default="10",
-      *           description="The unique identifier of a curso resource"
-      *       )
-      *      ),
-      *     @OA\Parameter(
-      *       name="dataSearch",
-      *       in="query",
-      *       description="turno resource name",
-      *       required=false,
-      *       @OA\Schema(
-      *           type="string",
-      *           description="Search data"
-      *       )
-      *      ),
-      *     @OA\Parameter(
-      *       name="dataFilter",
-      *       in="query",
-      *       description="turno resource name",
-      *       required=false,
-      *       @OA\Schema(
-      *           type="string",
-      *           description="The unique identifier of a turno resource"
-      *       )
-      *     ),
-      *     @OA\Response(
-      *         response=200,
-      *         description="transaction all."
-      *     ),
-      *     @OA\Response(
-      *         response="default",
-      *         description="error."
-      *     )
-      *  )
+     * @OA\Get(
+     *     path="/transactions",
+     *     operationId="gettransaction",
+     *     tags={"Transaction"},
+     *     @OA\Parameter(
+     *       name="paginate",
+     *       in="query",
+     *       description="paginate",
+     *       required=false,
+     *       @OA\Schema(
+     *           title="Paginate",
+     *           example="true",
+     *           type="boolean",
+     *           description="The Paginate data"
+     *       )
+     *     ),
+     *     @OA\Parameter(
+     *       name="sortBy",
+     *       in="query",
+     *       description="turno resource name",
+     *       required=false,
+     *       @OA\Schema(
+     *           type="string",
+     *           example="id",
+     *           description="The unique identifier of a turno resource"
+     *       )
+     *     ),
+     *     @OA\Parameter(
+     *       name="sortOrder",
+     *       in="query",
+     *       description="turno resource name",
+     *       required=false,
+     *       @OA\Schema(
+     *           type="string",
+     *           example="desc",
+     *           description="The unique identifier of a turno resource"
+     *       )
+     *      ),
+     *     @OA\Parameter(
+     *       name="perPage",
+     *       in="query",
+     *       description="Sort order field",
+     *       @OA\Schema(
+     *           title="perPage",
+     *           type="number",
+     *           default="10",
+     *           description="The unique identifier of a curso resource"
+     *       )
+     *      ),
+     *     @OA\Parameter(
+     *       name="dataSearch",
+     *       in="query",
+     *       description="turno resource name",
+     *       required=false,
+     *       @OA\Schema(
+     *           type="string",
+     *           description="Search data"
+     *       )
+     *      ),
+     *     @OA\Parameter(
+     *       name="dataFilter",
+     *       in="query",
+     *       description="turno resource name",
+     *       required=false,
+     *       @OA\Schema(
+     *           type="string",
+     *           description="The unique identifier of a turno resource"
+     *       )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="transaction all."
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="error."
+     *     )
+     *  )
      */
     public function index(Request $request)
     {
@@ -118,7 +118,8 @@ class TransactionController extends Controller
         return (TransactionResource::collection($transactions))->additional(
             [
                 'message:' => 'Successfully response'
-            ], 200
+            ],
+            200
         );
     }
 
@@ -128,34 +129,34 @@ class TransactionController extends Controller
      * @param  \App\Http\Requests\StoreTransactionRequest  $request
      * @return \Illuminate\Http\Response
      *
-    *  @OA\Post(
-    *   path="/transactions",
-    *   summary="Creates a new transaction",
-    *   description="Creates a new transaction",
-    *   tags={"Transaction"},
-    *   security={{"passport": {"*"}}},
-    *   @OA\RequestBody(
-    *       @OA\MediaType(
-    *           mediaType="application/json",
-    *           @OA\Schema(ref="#/components/schemas/Transaction")
-    *       )
-    *   ),
-    *   @OA\Response(
-    *       @OA\MediaType(mediaType="application/json"),
-    *       response=200,
-    *       description="The Provider resource created",
-    *   ),
-    *   @OA\Response(
-    *       @OA\MediaType(mediaType="application/json"),
-    *       response=401,
-    *       description="Unauthenticated."
-    *   ),
-    *   @OA\Response(
-    *       @OA\MediaType(mediaType="application/json"),
-    *       response="default",
-    *       description="an ""unexpected"" error",
-    *   )
-    * )
+     *  @OA\Post(
+     *   path="/transactions",
+     *   summary="Creates a new transaction",
+     *   description="Creates a new transaction",
+     *   tags={"Transaction"},
+     *   security={{"passport": {"*"}}},
+     *   @OA\RequestBody(
+     *       @OA\MediaType(
+     *           mediaType="application/json",
+     *           @OA\Schema(ref="#/components/schemas/Transaction")
+     *       )
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response=200,
+     *       description="The Provider resource created",
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response=401,
+     *       description="Unauthenticated."
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response="default",
+     *       description="an ""unexpected"" error",
+     *   )
+     * )
      */
     public function store(StoreTransactionRequest $request)
     {
@@ -163,6 +164,10 @@ class TransactionController extends Controller
         $transaction = new Transaction();
         $transaction->amount = $request->amount;
         $transaction->description = $request->description;
+        $transaction->transactionable_type = $request->transactionable_type;
+        $transaction->transactionable_id = $request->transactionable_id;
+        $transaction->concept_id = $request->concept_id;
+        $transaction->branch_office_id = $request->branch_office_id;
         $transaction->responsable_id = $request->responsable_id;
         $transaction->date = $request->date;
         $transaction->payment_order_id = $request->payment_order_id;
@@ -173,7 +178,8 @@ class TransactionController extends Controller
         return (new TransactionResource($transaction))->additional(
             [
                 'message:' => 'successfully registered data'
-            ],201
+            ],
+            201
         );
     }
 
@@ -217,10 +223,11 @@ class TransactionController extends Controller
      */
     public function show(Transaction $transaction)
     {
-        return ( new TransactionResource($transaction))->additional(
+        return (new TransactionResource($transaction))->additional(
             [
                 'message:' => 'successfully response'
-            ],200
+            ],
+            200
         );
     }
 
@@ -277,8 +284,12 @@ class TransactionController extends Controller
     {
         $transaction->amount = $request->amount;
         $transaction->description = $request->description;
-        $transaction->date = $request->date;
+        $transaction->transactionable_type = $request->transactionable_type;
+        $transaction->transactionable_id = $request->transactionable_id;
+        $transaction->concept_id = $request->concept_id;
+        $transaction->branch_office_id = $request->branch_office_id;
         $transaction->responsable_id = $request->responsable_id;
+        $transaction->date = $request->date;
         $transaction->payment_order_id = $request->payment_order_id;
         $transaction->reference = $request->reference;
         $transaction->user_created_id = $request->user_created_id;
@@ -287,7 +298,8 @@ class TransactionController extends Controller
         return (new TransactionResource($transaction))->additional(
             [
                 'message:' => 'successfully updated data'
-            ],200
+            ],
+            200
         );
     }
 
@@ -337,7 +349,8 @@ class TransactionController extends Controller
         return response()->json(
             [
                 'message' => 'the data was deleted successfully'
-            ],200
+            ],
+            200
         );
     }
 }

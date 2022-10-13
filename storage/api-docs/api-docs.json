@@ -11123,8 +11123,8 @@
                         ],
                         "type": "number"
                     },
-                    "operation_type_id": {
-                        "description": "The operation type to payment order",
+                    "payment_method_id": {
+                        "description": "The payment_method_id to payment order",
                         "required": [
                             "true"
                         ],
@@ -11145,8 +11145,8 @@
                         "type": "string",
                         "example": "App\\Model\\Name"
                     },
-                    "entity_id": {
-                        "description": "The entity_id to payment order",
+                    "branch_office_id": {
+                        "description": "The branch_office_id to payment order",
                         "required": [
                             "true"
                         ],
@@ -11898,6 +11898,21 @@
                         ],
                         "type": "string",
                         "default": "active"
+                    },
+                    "transactionable_type": {
+                        "description": "The Trailer transactionable_type",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "string",
+                        "example": "App\\Models\\exampleModel"
+                    },
+                    "transactionable_id": {
+                        "description": "The Trailer transactionable_id",
+                        "required": [
+                            "true"
+                        ],
+                        "type": "number"
                     },
                     "date": {
                         "description": "date transaction",
