@@ -18,7 +18,7 @@ class MasterSheetImport implements ToModel, WithHeadingRow
      */
     public function model(array $row)
     {
-
+        info($row);
         return new MasterSheet([
             'company' => $row['empresa_solicitante_de_guia'],
             'inventory' => $row['inventario'],
