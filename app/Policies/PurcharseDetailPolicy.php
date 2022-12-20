@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\OperationType;
-use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use App\Models\PurcharseDetail;
+use App\Models\User;
 
-class OperationTypePolicy
+class PurcharseDetailPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class OperationTypePolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\OperationType  $operationType
+     * @param  \App\Models\PurcharseDetail  $purcharseDetail
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, OperationType $operationType)
+    public function view(User $user, PurcharseDetail $purcharseDetail)
     {
         //
     }
@@ -48,10 +48,10 @@ class OperationTypePolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\OperationType  $operationType
+     * @param  \App\Models\PurcharseDetail  $purcharseDetail
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, OperationType $operationType)
+    public function update(User $user, PurcharseDetail $purcharseDetail)
     {
         //
     }
@@ -60,10 +60,10 @@ class OperationTypePolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\OperationType  $operationType
+     * @param  \App\Models\PurcharseDetail  $purcharseDetail
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, OperationType $operationType)
+    public function delete(User $user, PurcharseDetail $purcharseDetail)
     {
         //
     }
@@ -72,10 +72,10 @@ class OperationTypePolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\OperationType  $operationType
+     * @param  \App\Models\PurcharseDetail  $purcharseDetail
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, OperationType $operationType)
+    public function restore(User $user, PurcharseDetail $purcharseDetail)
     {
         //
     }
@@ -84,10 +84,10 @@ class OperationTypePolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\OperationType  $operationType
+     * @param  \App\Models\PurcharseDetail  $purcharseDetail
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, OperationType $operationType)
+    public function forceDelete(User $user, PurcharseDetail $purcharseDetail)
     {
         //
     }

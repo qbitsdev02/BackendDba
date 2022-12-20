@@ -30,10 +30,10 @@ use Illuminate\Database\Eloquent\Model;
  *       description="The amount to payment order"
  *   ),
  *   @OA\Property(
- *       property="operation_type_id",
+ *       property="payment_method_id",
  *       type="number",
  *       required={"true"},
- *       description="The operation type to payment order"
+ *       description="The payment_method_id to payment order"
  *   ),
  *   @OA\Property(
  *       property="ownerable_id",
@@ -49,10 +49,10 @@ use Illuminate\Database\Eloquent\Model;
  *       description="The ownerable_type to payment order"
  *   ),
  *   @OA\Property(
- *       property="entity_id",
+ *       property="branch_office_id",
  *       type="number",
  *       required={"true"},
- *       description="The entity_id to payment order"
+ *       description="The branch_office_id to payment order"
  *   ),
  *   @OA\Property(
  *       property="coin_id",
@@ -115,9 +115,9 @@ class PaymentOrder extends Base
      * Get the entity associated to the payment orden
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */
-    public function entity()
+    public function branchOffice()
     {
-        return $this->belongsTo(Entity::class);
+        return $this->belongsTo(BranchOffice::class);
     }
 
     /**
@@ -125,9 +125,9 @@ class PaymentOrder extends Base
      * Get the operation type associated to the payment orden
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */
-    public function operationType()
+    public function paymentMethod()
     {
-        return $this->belongsTo(OperationType::class);
+        return $this->belongsTo(PaymentMethod::class);
     }
 
     /**

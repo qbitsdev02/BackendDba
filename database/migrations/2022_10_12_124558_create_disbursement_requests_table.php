@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOperationTypesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateOperationTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('operation_types', function (Blueprint $table) {
+        Schema::create('disbursement_requests', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description')->nullable();
+            $table->foreignId('coin_id')->constrained();
+            $table->foreignId('request_branch_office_id')->constrained('branch_offices');
+            $table->float('amount');
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
-            $table->timestamps();
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 
@@ -31,6 +32,6 @@ class CreateOperationTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('operation_types');
+        Schema::dropIfExists('disbursement_requests');
     }
-}
+};

@@ -2,21 +2,33 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+
+
 /**
+ *
  * @OA\Schema(
- *   schema="OperationType",
+ *   schema="VoucherType",
  *   type="object",
  *   @OA\Property(
  *       property="name",
  *       type="string",
  *       required={"true"},
- *       description="The OperationType name"
+ *       description="name"
  *   ),
  *   @OA\Property(
  *       property="description",
  *       type="string",
  *       required={"true"},
- *       description="The OperationType description"
+ *       description="description"
+ *   ),
+ * @OA\Property(
+ *       property="series_name",
+ *       type="string",
+ *       required={"true"},
+ *       description="series_name"
  *   ),
  *   @OA\Property(
  *       property="user_created_id",
@@ -33,16 +45,18 @@ namespace App\Models;
  *       description="The Users update"
  *   ),
  * )
- */
-class OperationType extends Base
+ * */
+class VoucherType extends Base
 {
+    use HasFactory;
+
     /**
-    * Relationship payment order
-    * Get the operations order associated to the operation type
-    * @return \Illuminate\Database\Eloquent\Relations\hasMany 
-    */
-    public function operationOrders()
+     * Get all of the services for the VoucherType
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function services()
     {
-        return $this->hasMany(PaymentOrder::class);
+        return $this->hasMany(Service::class);
     }
 }

@@ -19,32 +19,32 @@ class PaymentOrderResource extends JsonResource
             'description' => $this->description,
             'status' => $this->status,
             'amount' => $this->amount,
-            'ownerable_type' =>$this->ownerable_type,
-            'ownerable_id' =>$this->ownerable_id,
-            'ownerable' =>$this->ownerable,
+            'ownerable_type' => $this->ownerable_type,
+            'ownerable_id' => $this->ownerable_id,
+            'ownerable' => $this->ownerable,
             'payment_date' => $this->payment_date,
             'user_created' => $this->user_created_id,
             'pending' => $this->pending,
-            'operation_type_id' => $this->operation_type_id, 
-            'concept_id' => $this->concept_id, 
-            'entity_id' => $this->entity_id, 
-            'coin_id' => $this->coin_id, 
+            'payment_method_id' => $this->payment_method_id,
+            'concept_id' => $this->concept_id,
+            'branch_office_id' => $this->branch_office_id,
+            'coin_id' => $this->coin_id,
             'operation_type' => [
                 'id' => $this->operationType->id,
-                'name' =>$this->operationType->name,
-             ],
+                'name' => $this->operationType->name,
+            ],
             'concept' => [
                 'id' => $this->concept->id,
-                'name' =>$this->concept->name,
-             ],
+                'name' => $this->concept->name,
+            ],
             'entity' => [
                 'id' => $this->entity->id,
-                'name' =>$this->entity->name,
+                'name' => $this->entity->name,
             ],
             'coin' => [
-                'id' =>$this->coin->id,
-                'name' =>$this->coin->name,
-                'symbol' =>$this->coin->symbol
+                'id' => $this->coin->id,
+                'name' => $this->coin->name,
+                'symbol' => $this->coin->symbol
             ],
         ];
     }

@@ -18,10 +18,14 @@ class TransactionResource extends JsonResource
             'id' => $this->id,
             'amount' => $this->amount,
             'description' => $this->description,
+            'transactionable_type' => $this->transactionable_type,
+            'transactionable_id' => $this->transactionable_id,
+            'concept_id' => $this->concept_id,
+            'branch_office_id' => $this->branch_office_id,
             'date' => $this->date,
             'reference' => $this->reference,
-            'beneficiary_id'=>$this->beneficiary_id,
-            'full_description'=>$this->full_description,
+            'responsable_id' => $this->responsable_id,
+            'full_description' => $this->full_description,
             'payment_order' => new PaymentOrderResource($this->paymentOrder)
         ];
     }

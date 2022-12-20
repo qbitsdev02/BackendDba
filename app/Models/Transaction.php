@@ -23,6 +23,19 @@ use Illuminate\Database\Eloquent\Model;
  *       default="active",
  *       description="The description transaction"
  *   ),
+ *  @OA\Property(
+ *       property="transactionable_type",
+ *       type="string",
+ *       required={"true"},
+ *       example="App\Models\exampleModel",
+ *       description="The Trailer transactionable_type"
+ *   ),
+ *   @OA\Property(
+ *       property="transactionable_id",
+ *       type="number",
+ *       required={"true"},
+ *       description="The Trailer transactionable_id"
+ *   ),
  *   @OA\Property(
  *       property="date",
  *       type="string",
@@ -100,5 +113,10 @@ class Transaction extends Base
         return $this->paymentOrder->concept->conceptType->category->name . ', ' .
             $this->paymentOrder->concept->conceptType->name . ', ' .
             $this->paymentOrder->concept->name . ', ' . $this->description;
+    }
+
+    public function transactionable()
+    {
+        return $this->morphTo();
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 /**
  * @OA\Schema(
  *   schema="BranchOffice",
@@ -74,5 +75,25 @@ class BranchOffice extends Base
     public function series()
     {
         return $this->hasMany(Serie::class);
+    }
+
+    /**
+     * Get all of the disbursement for the BranchOffice
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function disbursements()
+    {
+        return $this->hasMany(Disbursement::class);
+    }
+
+    /**
+     * Get all of the disbursementRequests for the BranchOffice
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function disbursementRequests()
+    {
+        return $this->hasMany(DisbursementRequest::class);
     }
 }

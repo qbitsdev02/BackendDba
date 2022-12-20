@@ -250,8 +250,8 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
-                 //27
-                 [
+                //27
+                [
                     'name' => 'payment-orders',
                     'icon' => 'person',
                     'route' => 'PaymentOrder',
@@ -259,8 +259,8 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
-                 //28
-                 [
+                //28
+                [
                     'name' => 'ports',
                     'icon' => 'person',
                     'route' => 'Port',
@@ -268,8 +268,8 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
-                 //29
-                 [
+                //29
+                [
                     'name' => 'staff-types',
                     'icon' => 'person',
                     'route' => 'StaffType',
@@ -295,8 +295,8 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
-                 //32
-                 [
+                //32
+                [
                     'name' => 'attributes',
                     'icon' => 'person',
                     'route' => 'Attribute',
@@ -306,12 +306,12 @@ class ModuleSeeder extends Seeder
                 ],
                 //33
                 [
-                'name' => 'companies',
-                'icon' => 'person',
-                'route' => 'Company',
-                'section_id' => 4,
-                'devices' => '["mobile", "desktop"]',
-                'user_created_id' => 1
+                    'name' => 'companies',
+                    'icon' => 'person',
+                    'route' => 'Company',
+                    'section_id' => 4,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
                 ],
                 //34
                 [
@@ -322,8 +322,8 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
-                 //35
-                 [
+                //35
+                [
                     'name' => 'categories',
                     'icon' => 'person',
                     'route' => 'Category',
@@ -333,13 +333,67 @@ class ModuleSeeder extends Seeder
                 ],
                 //36
                 [
-                'name' => 'field-cash-flows',
-                'icon' => 'person',
-                'route' => 'FieldCashFlow',
-                'section_id' => 1,
-                'devices' => '["mobile", "desktop"]',
-                'user_created_id' => 1
-            ]
-        ]);
+                    'name' => 'field-cash-flows',
+                    'icon' => 'person',
+                    'route' => 'FieldCashFlow',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                //37
+                [
+                    'name' => 'disbursements',
+                    'icon' => 'person',
+                    'route' => 'Disbursement',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                //38
+                [
+                    'name' => 'voucher-types',
+                    'icon' => 'person',
+                    'route' => 'VoucherType',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                //39
+                [
+                    'name' => 'contracts',
+                    'icon' => 'person',
+                    'route' => 'Contract',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                //40
+                [
+                    'name' => 'services',
+                    'icon' => 'person',
+                    'route' => 'Service',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                //41
+                [
+                    'name' => 'disbursement-requests',
+                    'icon' => 'person',
+                    'route' => 'Service',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                //42
+                [
+                    'name' => 'download-master',
+                    'icon' => 'source',
+                    'route' => 'DownloadMaster',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+            ]);
     }
 }

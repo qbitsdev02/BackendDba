@@ -13,104 +13,105 @@ class ActiveController extends Controller
 {
 
     /**
-      * 
-      */
-     function __construct()
-     {
-         $this->authorizeResource(Active::class,'active');
-     }
+     *
+     */
+    function __construct()
+    {
+        $this->authorizeResource(Active::class, 'active');
+    }
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-      * @OA\Get(
-      *     path="/actives",
-      *     operationId="getactive",
-      *     tags={"Active"},
-      *     @OA\Parameter(
-      *       name="paginate",
-      *       in="query",
-      *       description="paginate",
-      *       required=false,
-      *       @OA\Schema(
-      *           title="Paginate",
-      *           example="true",
-      *           description="The Paginate data"
-      *       )
-      *     ),
-      *     @OA\Parameter(
-      *       name="sortBy",
-      *       in="query",
-      *       description="turno resource name",
-      *       required=false,
-      *       @OA\Schema(
-      *           type="string",
-      *           example="id",
-      *           description="The unique identifier of a turno resource"
-      *       )
-      *     ),
-      *     @OA\Parameter(
-      *       name="sortOrder",
-      *       in="query",
-      *       description="turno resource name",
-      *       required=false,
-      *       @OA\Schema(
-      *           type="string",
-      *           example="desc",
-      *           description="The unique identifier of a turno resource"
-      *       )
-      *      ),
-      *     @OA\Parameter(
-      *       name="perPage",
-      *       in="query",
-      *       description="Sort order field",
-      *       @OA\Schema(
-      *           title="perPage",
-      *           type="number",
-      *           default="10",
-      *           description="The unique identifier of a curso resource"
-      *       )
-      *      ),
-      *     @OA\Parameter(
-      *       name="dataSearch",
-      *       in="query",
-      *       description="turno resource name",
-      *       required=false,
-      *       @OA\Schema(
-      *           type="string",
-      *           description="Search data"
-      *       )
-      *      ),
-      *     @OA\Parameter(
-      *       name="dataFilter",
-      *       in="query",
-      *       description="turno resource name",
-      *       required=false,
-      *       @OA\Schema(
-      *           type="string",
-      *           description="The unique identifier of a turno resource"
-      *       )
-      *     ),
-      *     @OA\Response(
-      *         response=200,
-      *         description="active all."
-      *     ),
-      *     @OA\Response(
-      *         response="default",
-      *         description="error."
-      *     )
-      *  )
+     * @OA\Get(
+     *     path="/actives",
+     *     operationId="getactive",
+     *     tags={"Active"},
+     *     @OA\Parameter(
+     *       name="paginate",
+     *       in="query",
+     *       description="paginate",
+     *       required=false,
+     *       @OA\Schema(
+     *           title="Paginate",
+     *           example="true",
+     *           description="The Paginate data"
+     *       )
+     *     ),
+     *     @OA\Parameter(
+     *       name="sortBy",
+     *       in="query",
+     *       description="turno resource name",
+     *       required=false,
+     *       @OA\Schema(
+     *           type="string",
+     *           example="id",
+     *           description="The unique identifier of a turno resource"
+     *       )
+     *     ),
+     *     @OA\Parameter(
+     *       name="sortOrder",
+     *       in="query",
+     *       description="turno resource name",
+     *       required=false,
+     *       @OA\Schema(
+     *           type="string",
+     *           example="desc",
+     *           description="The unique identifier of a turno resource"
+     *       )
+     *      ),
+     *     @OA\Parameter(
+     *       name="perPage",
+     *       in="query",
+     *       description="Sort order field",
+     *       @OA\Schema(
+     *           title="perPage",
+     *           type="number",
+     *           default="10",
+     *           description="The unique identifier of a curso resource"
+     *       )
+     *      ),
+     *     @OA\Parameter(
+     *       name="dataSearch",
+     *       in="query",
+     *       description="turno resource name",
+     *       required=false,
+     *       @OA\Schema(
+     *           type="string",
+     *           description="Search data"
+     *       )
+     *      ),
+     *     @OA\Parameter(
+     *       name="dataFilter",
+     *       in="query",
+     *       description="turno resource name",
+     *       required=false,
+     *       @OA\Schema(
+     *           type="string",
+     *           description="The unique identifier of a turno resource"
+     *       )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="active all."
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="error."
+     *     )
+     *  )
      */
     public function index(Request $request)
     {
         $actives = Active::filters($request->all())
             ->search($request->all());
-    
+
         return (ActiveResource::collection($actives))->additional(
             [
                 'message:' => 'Successfully response'
-            ],200
+            ],
+            200
         );
     }
 
@@ -119,39 +120,39 @@ class ActiveController extends Controller
      *
      * @param  \App\Http\Requests\StoreActiveRequest  $request
      * @return \Illuminate\Http\Response
-     * 
-    * @OA\Post(
-    *   path="/actives",
-    *   summary="Creates a new active",
-    *   description="Creates a new active",
-    *   tags={"Active"},
-    *   security={{"passport": {"*"}}},
-    *   @OA\RequestBody(
-    *       @OA\MediaType(
-    *           mediaType="application/json",
-    *           @OA\Schema(ref="#/components/schemas/Active")
-    *       )
-    *   ),
-    *   @OA\Response(
-    *       @OA\MediaType(mediaType="application/json"),
-    *       response=200,
-    *       description="The Provider resource created",
-    *   ),
-    *   @OA\Response(
-    *       @OA\MediaType(mediaType="application/json"),
-    *       response=401,
-    *       description="Unauthenticated."
-    *   ),
-    *   @OA\Response(
-    *       @OA\MediaType(mediaType="application/json"),
-    *       response="default",
-    *       description="an ""unexpected"" error",
-    *   )
-    * )
+     *
+     * @OA\Post(
+     *   path="/actives",
+     *   summary="Creates a new active",
+     *   description="Creates a new active",
+     *   tags={"Active"},
+     *   security={{"passport": {"*"}}},
+     *   @OA\RequestBody(
+     *       @OA\MediaType(
+     *           mediaType="application/json",
+     *           @OA\Schema(ref="#/components/schemas/Active")
+     *       )
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response=200,
+     *       description="The Provider resource created",
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response=401,
+     *       description="Unauthenticated."
+     *   ),
+     *   @OA\Response(
+     *       @OA\MediaType(mediaType="application/json"),
+     *       response="default",
+     *       description="an ""unexpected"" error",
+     *   )
+     * )
      */
     public function store(StoreActiveRequest $request)
-    {   
- 
+    {
+
         $active = new Active();
         $active->name = $request->name;
         $active->status = $request->status;
@@ -160,13 +161,13 @@ class ActiveController extends Controller
         $active->ownerable_id = $request->ownerable_id;
         $active->user_created_id = $request->user_created_id;
         $active->save();
-        
+
         return (new ActiveResource($active))->additional(
             [
                 'message:' => 'successfully registered active'
-            ],201
+            ],
+            201
         );
-
     }
 
     /**
@@ -212,7 +213,8 @@ class ActiveController extends Controller
         return (new ActiveResource($active))->additional(
             [
                 'message:' => 'successfully response'
-            ],200
+            ],
+            200
         );
     }
 
@@ -278,7 +280,8 @@ class ActiveController extends Controller
         return (new ActiveResource($active))->additional(
             [
                 'message:' => 'successfully updated active'
-            ],200
+            ],
+            200
         );
     }
 
@@ -328,7 +331,8 @@ class ActiveController extends Controller
         return response()->json(
             [
                 'message' => 'the data was deleted successfully'
-            ],200
+            ],
+            200
         );
     }
 }

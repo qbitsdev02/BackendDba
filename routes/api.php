@@ -4,17 +4,24 @@ use App\Http\Controllers\ActiveController;
 use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ContractController;
+use App\Http\Controllers\DisbursementController;
+use App\Http\Controllers\DisbursementRequestController;
 use App\Http\Controllers\FieldCashFlowController;
+use App\Http\Controllers\MasterSheetController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\PaymentOrderController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\PortController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ProviderTypeController;
 use App\Http\Controllers\RateController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\StaffTypeController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\VoucherTypeController;
 use App\Http\Resources\CompanyResource;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
@@ -31,11 +38,15 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
+$router->resource('master-sheets', MasterSheetController::class);
+$router->post('import-field-sheets', [MasterSheetController::class, 'importData'])->name('importData');
+$router->get('master-sheet/export', [MasterSheetController::class, 'export'])->name('export');
+
 Route::group([
     'prefix' => 'authentication',
 ], function ($router) {
     // Routes
-    $router->post('/login', 'Login\Login@authentication');
+    $router->post('/login', 'Login\Login@authentication')->name('login');
     $router->post('/refresh-token', 'Login\RefreshToken@refreshToken');
 });
 
@@ -52,7 +63,7 @@ Route::group([
     $router->resource('roles', RoleController::class);
     $router->resource('sections', SectionController::class);
     $router->resource('concept-types', ConceptTypeController::class);
-    $router->resource('operation-types', OperationTypeController::class);
+    $router->resource('payment-methods', PaymentMethodController::class);
     $router->resource('entities', EntityController::class);
     $router->resource('fields', FieldController::class);
     $router->resource('organizations', OrganizationController::class);
@@ -92,4 +103,11 @@ Route::group([
     $router->resource('field-cash-flows', FieldCashFlowController::class);
     $router->resource('branch-offices', BranchOfficeController::class);
     $router->get('notifications', [NotificationController::class, 'getAll'])->name('getAll');
+    $router->resource('disbursements', DisbursementController::class);
+    $router->resource('voucher-types', VoucherTypeController::class);
+    $router->resource('contracts', ContractController::class);
+    $router->resource('services', ServiceController::class);
+    $router->resource('disbursement-requests', DisbursementRequestController::class);
+    //$router->resource('master-sheets', MasterSheetController::class);
+    //$router->post('import-field-sheets', [MasterSheetController::class, 'importData'])->name('importData');
 });
