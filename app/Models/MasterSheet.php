@@ -108,7 +108,7 @@ class MasterSheet extends Base
         'operative_team_price',
         'administrative_team_price',
         'roman_weighing_price',
-        'material_recepcion_price',
+        'material_reception_price',
         'security_and_surveillance_measurement_price',
         'sales_price',
         'user_created_at',
