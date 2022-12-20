@@ -8,6 +8,7 @@ use App\Http\Controllers\ContractController;
 use App\Http\Controllers\DisbursementController;
 use App\Http\Controllers\DisbursementRequestController;
 use App\Http\Controllers\FieldCashFlowController;
+use App\Http\Controllers\MasterSheetController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\PaymentOrderController;
@@ -37,11 +38,15 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
+$router->resource('master-sheets', MasterSheetController::class);
+$router->post('import-field-sheets', [MasterSheetController::class, 'importData'])->name('importData');
+$router->get('master-sheet/export', [MasterSheetController::class, 'export'])->name('export');
+
 Route::group([
     'prefix' => 'authentication',
 ], function ($router) {
     // Routes
-    $router->post('/login', 'Login\Login@authentication');
+    $router->post('/login', 'Login\Login@authentication')->name('login');
     $router->post('/refresh-token', 'Login\RefreshToken@refreshToken');
 });
 
@@ -103,4 +108,6 @@ Route::group([
     $router->resource('contracts', ContractController::class);
     $router->resource('services', ServiceController::class);
     $router->resource('disbursement-requests', DisbursementRequestController::class);
+    //$router->resource('master-sheets', MasterSheetController::class);
+    //$router->post('import-field-sheets', [MasterSheetController::class, 'importData'])->name('importData');
 });

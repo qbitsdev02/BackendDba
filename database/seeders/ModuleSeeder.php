@@ -385,6 +385,15 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
+                //42
+                [
+                    'name' => 'download-master',
+                    'icon' => 'source',
+                    'route' => 'DownloadMaster',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
             ]);
     }
 }
