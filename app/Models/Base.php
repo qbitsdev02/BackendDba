@@ -125,4 +125,27 @@ class Base extends Model
 			return $q->get();
 		}
 	}
+
+    public function scopeFilterWhereIn($q, array $data = array())
+	{
+		if (!empty($data['whereIn'])) {
+			$fields = json_decode($data['whereIn'], true);
+			$fields = Arr::except($fields, static::$filterable);
+			$q->where(function ($query) use ($fields) {
+				foreach ($fields as $field => $value) {
+					if (isset($fields[$field]) && count($fields[$field]) > 0) {
+						$contains = Str::of($field)->contains('.');
+						$relations = Str::of($field)->explode('.');
+						if ($contains) {
+							$query->whereHas(Str::camel($relations[0]), function ($q) use ($relations, $fields, $field) {
+								$q->whereIn($relations[1], $fields[$field]);
+							});
+						} else {
+							$query->whereIn($field, $fields[$field]);
+						}
+					}
+				}
+			});
+		}
+	}
 }

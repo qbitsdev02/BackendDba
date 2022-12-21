@@ -8,6 +8,7 @@ use App\Http\Controllers\ContractController;
 use App\Http\Controllers\DisbursementController;
 use App\Http\Controllers\DisbursementRequestController;
 use App\Http\Controllers\FieldCashFlowController;
+use App\Http\Controllers\MasterReportController;
 use App\Http\Controllers\MasterSheetController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PaymentMethodController;
@@ -38,9 +39,17 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
+Route::group([
+    'prefix' => 'master-sheets',
+], function ($router) {
+    $router->post('import-field-sheets', [MasterSheetController::class, 'importData'])->name('importData');
+    $router->get('export', [MasterSheetController::class, 'export'])->name('export');
+    $router->get('filter-selects', [MasterSheetController::class, 'filterSelects'])->name('filterSelects');
+    $router->get('reports/totales', [MasterReportController::class, 'totales'])->name('totales');
+});
+
+
 $router->resource('master-sheets', MasterSheetController::class);
-$router->post('import-field-sheets', [MasterSheetController::class, 'importData'])->name('importData');
-$router->get('master-sheet/export', [MasterSheetController::class, 'export'])->name('export');
 
 Route::group([
     'prefix' => 'authentication',

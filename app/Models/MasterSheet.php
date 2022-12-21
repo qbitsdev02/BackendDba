@@ -140,8 +140,7 @@ class MasterSheet extends Base
         'guide_cost',
         'operative_team_cost',
         'administrative_team_cost',
-        'material_reception_cost',
-        'final_price_after_discount'
+        'material_reception_cost'
     ];
 
     /**

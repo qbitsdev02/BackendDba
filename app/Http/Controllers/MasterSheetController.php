@@ -22,6 +22,7 @@ class MasterSheetController extends Controller
     public function index(Request $request)
     {
         $data = MasterSheet::filters(request()->all())
+            ->filterWhereIn($request->all())
             ->search(request()->all());
         return response()->json(
             [
@@ -128,4 +129,17 @@ class MasterSheetController extends Controller
 
         return new MasterSheetExport(MasterSheet::all(), $request->columns, $request->heading);
     }
+
+    /**
+     *
+     */
+
+     public function filterSelects (Request $request)
+     {
+        $masterSheets = MasterSheet::select($request->select)
+            ->filters($request->all())
+            ->groupBy($request->select)
+            ->search($request->all());
+        return response()->json($masterSheets, 200);
+     }
 }
