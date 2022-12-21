@@ -257,7 +257,7 @@ class MasterSheet extends Base
             + $this->vzgn_cost_815 + $this->vzgn_cost_faja + $this->vzgn_cost_desur + $this->vzvfgn2_cost
             + $this->vzeb_cost + $this->vzeb_cost_field + $this->vzsb_cost + $this->vzctd_cost + $this->vzdsi_cost
             + $this->cost_services_in_field + $this->corpoez_cost + $this->operative_team_cost + $this->administrative_team_cost
-            + $this->roman_weighing_cost + $this->material_recepcion_cost + $this->security_and_surveillance_measurement_cost
+            + $this->roman_weighing_cost + $this->material_reception_cost + $this->security_and_surveillance_measurement_cost
             + $this->port_enablement_cost;
     }
 
