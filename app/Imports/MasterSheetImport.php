@@ -18,21 +18,23 @@ class MasterSheetImport implements ToModel, WithHeadingRow
      */
     public function model(array $row)
     {
+        info($row);
         if ($row['fecha']) {
             return new MasterSheet([
                 'company' => $row['empresa_solicitante_de_guia'],
-                'inventory' => $row['inventario'],
+                'inventory' => isset($row['inventario']) ? $row['inventario'] : $row['descargas'],
                 'material_type' =>  $row['tipo_de_material'],
-                'client' => $row['cliente_puerto_descarga'],
+                'client' => isset($row['cliente_puerto_descarga']) ? $row['cliente_puerto_descarga'] : $row['clientes_ventas'],
                 'status_material' => $row['estatus_material'],
                 'correlative_number' => $row['n_correlativo'],
                 'date' => $row['fecha'] && !empty(trim($row['fecha'])) ? Carbon::createFromFormat('d/m/Y', $row['fecha'])->format('Y-m-d') : null,
                 'guide_number' => $row['numero_guia_copoez'],
+                'guide_status' => isset($row['estatus_de_guia']) ? $row['estatus_de_guia'] : null,
                 'region' => $row['region'],
                 'origin' => $row['origen'],
-                'provider_type' => $row['contrato_proveedor'],
+                'provider_type' => isset($row['contrato_proveedor']) ? $row['contrato_proveedor'] : $row['tipo_de_proyecto'],
+                'contract' => $row['numero_de_contrato_proveedor'],
                 'provider' => $row['proveedor_contrato'],
-                'contract' => $row['numero_de_contrato_proveedor_natural'],
                 'weighing_control' => $row['control_de_pesaje'] ?? 0,
                 'download_date' => $row['fecha_de_descarga'] && !empty(trim($row['fecha_de_descarga'])) ? Carbon::createFromFormat('d/m/Y', $row['fecha_de_descarga'])->format('Y-m-d') : null,
                 'download_hour' => $row['hora_de_descarga'],
@@ -48,7 +50,7 @@ class MasterSheetImport implements ToModel, WithHeadingRow
                 'balance_payment_control' => $row['saldo_control_de_pago'] ?? 0,
                 'status_payment' => $row['estatus_control_de_pago'],
                 'dec' => $row['dec_alberto_campos'],
-                //'provider_cutting' => $row['precio_acordado_corte'],
+                'provider_cutting' => $row['provedor_corte_de_material'],
                 'price_cutting' => $row['precio_acordado_corte'] ?? 0,
                 'cost_cutting' => $row['costo_corte'] ?? 0,
                 'transport_provider' => $row['proveedor_transporte'],
@@ -85,8 +87,8 @@ class MasterSheetImport implements ToModel, WithHeadingRow
                 'guide_price' => $row['guia_cropoez_precio'] ?? 0,
                 'description_services' => $row['serivicio_de_logistica_descripcion'],
                 'price_services_in_field' => $row['precio_servicio_de_logistica_en_patio'] ?? 0,
-                'corpoez' => $row['corpoez'],
-                'corpoez2' => $row['corpoez2'],
+                // 'corpoez' => $row['corpoez'],
+                // 'corpoez2' => $row['corpoez2'],
                 'corpoez_cost' => $row['costo_corpoez'] ?? 0,
                 'operative_team_price' => $row['equipo_operativo_precio'] ?? 0,
                 'administrative_team_price' => $row['equipo_administrativo_precio'] ?? 0,

@@ -46,6 +46,7 @@ Route::group([
     $router->get('export', [MasterSheetController::class, 'export'])->name('export');
     $router->get('filter-selects', [MasterSheetController::class, 'filterSelects'])->name('filterSelects');
     $router->get('reports/totales', [MasterReportController::class, 'totales'])->name('totales');
+    $router->get('reports/graph-productions', [MasterReportController::class, 'graphProductions'])->name('graphProductions');
 });
 
 
