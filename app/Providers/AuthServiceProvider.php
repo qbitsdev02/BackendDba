@@ -33,6 +33,9 @@ use App\Policies\AttributePolicy;
 use App\Policies\CategoryPolicy;
 use App\Policies\CoinPolicy;
 use App\Policies\CompanyPolicy;
+use App\Policies\ContractPolicy;
+use App\Policies\DisbursementPolicy;
+use App\Policies\DisbursementRequestPolicy;
 use App\Policies\FieldCashFlowPolicy;
 use App\Policies\PaymentOrderPolicy;
 use App\Policies\PersonalPolicy;
@@ -40,10 +43,12 @@ use App\Policies\PortPolicy;
 use App\Policies\ProviderPolicy;
 use App\Policies\ProviderTypePolicy;
 use App\Policies\RatePolicy;
+use App\Policies\ServicePolicy;
 use App\Policies\StaffTypePolicy;
 use App\Policies\StatePolicy;
 use App\Policies\TicketPolicy;
 use App\Policies\TransactionPolicy;
+use App\Policies\VoucherTypePolicy;
 use Attribute;
 
 class AuthServiceProvider extends ServiceProvider

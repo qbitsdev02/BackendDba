@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ActiveController;
 use App\Http\Controllers\AttributeController;
+use App\Http\Controllers\CashFlowController;
+use App\Http\Controllers\CashFlowReportController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContractController;
@@ -39,18 +41,6 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
-Route::group([
-    'prefix' => 'master-sheets',
-], function ($router) {
-    $router->post('import-field-sheets', [MasterSheetController::class, 'importData'])->name('importData');
-    $router->get('export', [MasterSheetController::class, 'export'])->name('export');
-    $router->get('filter-selects', [MasterSheetController::class, 'filterSelects'])->name('filterSelects');
-    $router->get('reports/totales', [MasterReportController::class, 'totales'])->name('totales');
-    $router->get('reports/graph-productions', [MasterReportController::class, 'graphProductions'])->name('graphProductions');
-});
-
-
-$router->resource('master-sheets', MasterSheetController::class);
 
 Route::group([
     'prefix' => 'authentication',
@@ -59,6 +49,8 @@ Route::group([
     $router->post('/login', 'Login\Login@authentication')->name('login');
     $router->post('/refresh-token', 'Login\RefreshToken@refreshToken');
 });
+$router->get('cash-flows/export', [CashFlowController::class, 'export'])->name('exportCashFlow');
+$router->get('master-sheets/export', [MasterSheetController::class, 'export'])->name('export');
 
 Route::group([
     'middleware' => 'auth:api',
@@ -118,6 +110,29 @@ Route::group([
     $router->resource('contracts', ContractController::class);
     $router->resource('services', ServiceController::class);
     $router->resource('disbursement-requests', DisbursementRequestController::class);
+
+    Route::group([
+        'prefix' => 'master-sheets',
+    ], function ($router) {
+        $router->post('import-field-sheets', [MasterSheetController::class, 'importData'])->name('importData');
+        // $router->get('export', [MasterSheetController::class, 'export'])->name('export');
+        $router->get('filter-selects', [MasterSheetController::class, 'filterSelects'])->name('filterSelects');
+        $router->get('reports/totales', [MasterReportController::class, 'totales'])->name('totales');
+        $router->get('reports/graph-productions', [MasterReportController::class, 'graphProductions'])->name('graphProductions');
+    });
+    Route::group([
+        'prefix' => 'cash-flows',
+    ], function ($router) {
+        $router->post('import', [CashFlowController::class, 'importData'])->name('importDataCashFlow');
+       // $router->get('export', [CashFlowController::class, 'export'])->name('exportCashFlow');
+        $router->get('filter-selects', [CashFlowController::class, 'filterSelects'])->name('CashFlowFilterSelects');
+        $router->get('balance', [CashFlowReportController::class, 'getBalance'])->name('getBalance');
+        // $router->get('reports/totales', [MasterReportController::class, 'totales'])->name('totales');
+        // $router->get('reports/graph-productions', [MasterReportController::class, 'graphProductions'])->name('graphProductions');
+    });
+
+    $router->resource('cash-flows', CashFlowController::class);
+    $router->resource('master-sheets', MasterSheetController::class);
     //$router->resource('master-sheets', MasterSheetController::class);
     //$router->post('import-field-sheets', [MasterSheetController::class, 'importData'])->name('importData');
 });
