@@ -8,6 +8,7 @@ use App\Models\Client;
 use App\Models\FieldCashFlow;
 use App\Models\FieldSupervisor;
 use App\Models\Order;
+use App\Models\Personal;
 use App\Models\Provider;
 use App\Models\Rate;
 use App\Models\Responsable;
@@ -22,6 +23,7 @@ use App\Observers\ClientObserver;
 use App\Observers\FieldCashFlowObserver;
 use App\Observers\FieldSupervisorObserver;
 use App\Observers\OrderObserver;
+use App\Observers\PersonalObserver;
 use App\Observers\ProviderObserver;
 use App\Observers\RateObserver;
 use App\Observers\ResponsableObserver;
@@ -61,6 +63,7 @@ class AppServiceProvider extends ServiceProvider
         Active::observe(ActiveObserver::class);
         FieldCashFlow::observe(FieldCashFlowObserver::class);
         Transaction::observe(TransactionObserver::class);
+        Personal::observe(PersonalObserver::class);
 
     }
 }

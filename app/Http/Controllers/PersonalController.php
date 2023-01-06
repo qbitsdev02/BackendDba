@@ -14,8 +14,8 @@ class PersonalController extends Controller
 
         /**
      * Create the controller instance to Authorizing Resource Controller.
-     *  
-     * You may make use of the (authorizeResource) method in your controller's constructor. 
+     *
+     * You may make use of the (authorizeResource) method in your controller's constructor.
      * This method will attach the appropriate can middleware definitions to the resource controller's methods.
      */
     public function __construct(){
@@ -27,7 +27,7 @@ class PersonalController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     * 
+     *
       * @OA\Get(
       *     path="/personals",
       *     operationId="getpersonal",
@@ -111,7 +111,7 @@ class PersonalController extends Controller
     {
         $personals = Personal::filters($request->all())
             ->search($request->all());
-        
+
         return (PersonalResource::collection($personals))->additional(
             [
                 'message:' => 'Successfully response'
@@ -124,7 +124,7 @@ class PersonalController extends Controller
      *
      * @param  \App\Http\Requests\StorePersonalRequest  $request
      * @return \Illuminate\Http\Response
-     * 
+     *
     * @OA\Post(
     *   path="/personals",
     *   summary="Creates a new personal",
@@ -183,7 +183,7 @@ class PersonalController extends Controller
      *
      * @param  \App\Models\Personal  $personal
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Get(
      *      path="/personals/{id}",
      *      operationId="getpersonalById",
@@ -231,7 +231,7 @@ class PersonalController extends Controller
      * @param  \App\Http\Requests\UpdatePersonalRequest  $request
      * @param  \App\Models\Personal  $personal
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Put(
      *      path="/personals/{id}",
      *      operationId="updatepersonal",
@@ -285,7 +285,7 @@ class PersonalController extends Controller
         $personal->ownerable_id = $request->ownerable_id;
         $personal->staff_type_id = $request->staff_type_id;
         $personal->user_id = $request->user_id;
-        $personal->user_created_id = $request->user_created_id;
+        $personal->user_updated_id = $request->user_updated_id;
 
         $personal->update();
 
@@ -302,7 +302,7 @@ class PersonalController extends Controller
      *
      * @param  \App\Models\Personal  $personal
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Delete(
      *  path="/personals/{id}",
      *  operationId="deletepersonal",

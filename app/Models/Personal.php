@@ -144,5 +144,9 @@ class Personal extends Base
         return $this->morphTo();
     }
 
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 
 }

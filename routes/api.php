@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActiveController;
+use App\Http\Controllers\ApiTercerosController;
 use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\CashFlowController;
 use App\Http\Controllers\CashFlowReportController;
@@ -130,9 +131,7 @@ Route::group([
         // $router->get('reports/totales', [MasterReportController::class, 'totales'])->name('totales');
         // $router->get('reports/graph-productions', [MasterReportController::class, 'graphProductions'])->name('graphProductions');
     });
-
+    $router->get('document-number', [ApiTercerosController::class, 'getDocumentNumber'])->name('getDocumentNumber');
     $router->resource('cash-flows', CashFlowController::class);
     $router->resource('master-sheets', MasterSheetController::class);
-    //$router->resource('master-sheets', MasterSheetController::class);
-    //$router->post('import-field-sheets', [MasterSheetController::class, 'importData'])->name('importData');
 });

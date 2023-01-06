@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Image extends Model
 {
@@ -11,11 +12,16 @@ class Image extends Model
 
     protected $guarded = [];
 
+
+    public function getImgAttribute($value)
+    {
+        return Storage::url($value);
+    }
     /**
      * Relationship
      */
-    public function fieldCashFlow()
+    public function imageable()
     {
-        return $this->belongsTo(FieldCashFlow::class);
+        return $this->morphTo();
     }
 }

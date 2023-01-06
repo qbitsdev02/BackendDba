@@ -12,21 +12,21 @@ use Illuminate\Http\Request;
 class StaffTypeController extends Controller
 {
 
-        /**
+    /**
      * Create the controller instance to Authorizing Resource Controller.
-     *  
-     * You may make use of the (authorizeResource) method in your controller's constructor. 
+     *
+     * You may make use of the (authorizeResource) method in your controller's constructor.
      * This method will attach the appropriate can middleware definitions to the resource controller's methods.
      */
-    public function __construct(){
-        $this->authorizeResource(StaffType::class, 'staff_type');
-    }
+    // public function __construct(){
+    //     $this->authorizeResource(StaffType::class, 'staff_type');
+    // }
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     * 
+     *
       * @OA\Get(
       *     path="/staff-types",
       *     operationId="getstaffType",
@@ -123,7 +123,7 @@ class StaffTypeController extends Controller
      *
      * @param  \App\Http\Requests\StoreStaffTypeRequest  $request
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Post(
      *   path="/staff-types",
      *   summary="Creates a new staff type",
@@ -174,7 +174,7 @@ class StaffTypeController extends Controller
      *
      * @param  \App\Models\StaffType  $staffType
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Get(
      *      path="/staff-types/{id}",
      *      operationId="getstaffTypeId",
@@ -222,7 +222,7 @@ class StaffTypeController extends Controller
      * @param  \App\Http\Requests\UpdateStaffTypeRequest  $request
      * @param  \App\Models\StaffType  $staffType
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Put(
      *      path="/staff-types/{id}",
      *      operationId="updatestaffType",
@@ -285,7 +285,7 @@ class StaffTypeController extends Controller
      *
      * @param  \App\Models\StaffType  $staffType
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Delete(
      *  path="/staff-types/{id}",
      *  operationId="deletestaffType",

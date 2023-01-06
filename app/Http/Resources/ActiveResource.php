@@ -15,8 +15,8 @@ class ActiveResource extends JsonResource
     public function toArray($request)
     {
         return [
-            "id" => $this->id, 
-            "name" => $this->name, 
+            "id" => $this->id,
+            "name" => $this->name,
             "description" => $this->description,
             "status" => $this->status,
             "ownerable" => [
@@ -24,7 +24,7 @@ class ActiveResource extends JsonResource
                 'name' => $this->ownerable->name,
             ],
             "ownerable_type" => $this->ownerable_type,
-            "attribute" => ActiveAttributeResource::collection($this->attributes),
+            "attributes" => ActiveAttributeResource::collection($this->attributes),
         ];
     }
 }

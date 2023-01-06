@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreignId('staff_type_id')->constrained();
             $table->foreignId('user_id')->nullable()->constrained();
             $table->foreignId('user_created_id')->constrained('users');
-            $table->foreignId('user_update_id')->nullable()->constrained('users');
+            $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->softDeletes();
             $table->timestamps();
         });
