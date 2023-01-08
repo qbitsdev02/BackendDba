@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Active;
+use App\Services\ActiveService;
 
 class ActiveObserver
 {
@@ -14,7 +15,9 @@ class ActiveObserver
      */
     public function created(Active $active)
     {
-        $active->attributes()->attach(request()['attributes']);
+        $service = new ActiveService();
+        $service->saveAttribute($active, request()['attributes']);
+        $service->saveImages($active, request()['images']);
     }
 
     /**

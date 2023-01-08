@@ -22,6 +22,8 @@ class PersonalResource extends JsonResource
             "staff_type" => $this->staff_type_id,
             "phone_number" => $this->phone_number,
             "images" => $this->images,
+            "ownerable_type" => $this->ownerable_type,
+            "ownerable_id" => $this->ownerable_id,
             "ownerable" => [
                 'name' => $this->ownerable->name,
                 'email' => $this->ownerable->email,

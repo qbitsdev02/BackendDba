@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             CoinSeeder::class,
             StaffTypeSeeder::class,
             PortSeeder::class,
-            OperationTypeSeeder::class,
+            // OperationTypeSeeder::class,
             CountrySeeder::class,
             CategorySeeder::class,
             ConceptTypeSeeder::class,

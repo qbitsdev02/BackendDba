@@ -12,13 +12,12 @@ use Illuminate\Http\Request;
 class ActiveController extends Controller
 {
 
-    /**
-     *
+    /*
+        function __construct()
+        {
+            $this->authorizeResource(Active::class, 'active');
+        }
      */
-    function __construct()
-    {
-        $this->authorizeResource(Active::class, 'active');
-    }
 
     /**
      * Display a listing of the resource.
@@ -175,7 +174,7 @@ class ActiveController extends Controller
      *
      * @param  \App\Models\Active  $active
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Get(
      *      path="/actives/{id}",
      *      operationId="getactivesById",
@@ -224,7 +223,7 @@ class ActiveController extends Controller
      * @param  \App\Http\Requests\UpdateActiveRequest  $request
      * @param  \App\Models\Active  $active
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Put(
      *      path="/actives/{id}",
      *      operationId="updateactive",
@@ -290,7 +289,7 @@ class ActiveController extends Controller
      *
      * @param  \App\Models\Active  $active
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Delete(
      *  path="/actives/{id}",
      *  operationId="deleteactive",

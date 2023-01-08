@@ -77,8 +77,8 @@ class Active extends Base
     /**
      * Relationship ticket
      * A active has many ticket associated
-     * 
-     * Get the ticket associated to the active 
+     *
+     * Get the ticket associated to the active
      * @return \Illuminate\Database\Eloquent\Relations\hasMany
      */
     public function tickets()
@@ -98,19 +98,24 @@ class Active extends Base
     }
 
     /**
-     * Relationship attribute 
+     * Relationship attribute
      */
     public function attributes()
     {
-        return $this->belongsToMany(Attribute::class, "active_attribute")
+        return $this->belongsToMany(Attribute::class)
             ->withPivot('valor');
     }
 
     /**
-     * 
+     *
      */
     public function ownerable()
     {
         return $this->morphTo();
+    }
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
     }
 }

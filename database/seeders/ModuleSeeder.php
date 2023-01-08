@@ -394,6 +394,24 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
+                // 43
+                [
+                    'name' => 'cash-flow',
+                    'icon' => 'box',
+                    'route' => 'CashFlow',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                // 44
+                [
+                    'name' => 'dashboard',
+                    'icon' => 'dashboard',
+                    'route' => 'Dashboard',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ]
             ]);
     }
 }

@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class ActiveAttribute extends Pivot
 {
-    //
+    protected $guarded = [];
 }

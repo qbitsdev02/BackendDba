@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePersonalRequest;
 use App\Http\Requests\UpdatePersonalRequest;
 use App\Http\Resources\PersonalResource;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PersonalController extends Controller
@@ -18,10 +19,12 @@ class PersonalController extends Controller
      * You may make use of the (authorizeResource) method in your controller's constructor.
      * This method will attach the appropriate can middleware definitions to the resource controller's methods.
      */
-    public function __construct(){
+/*
+     public function __construct()
+    {
         $this->authorizeResource(Personal::class, 'personal');
     }
-
+*/
 
     /**
      * Display a listing of the resource.
@@ -286,7 +289,7 @@ class PersonalController extends Controller
         $personal->staff_type_id = $request->staff_type_id;
         $personal->user_id = $request->user_id;
         $personal->user_updated_id = $request->user_updated_id;
-
+        $personal->updated_at = Carbon::now();
         $personal->update();
 
         return (new PersonalResource($personal))->additional(
