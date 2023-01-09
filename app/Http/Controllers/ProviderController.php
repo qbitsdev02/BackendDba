@@ -16,10 +16,10 @@ class ProviderController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->authorizeResource(Provider::class, 'provider');
-    }
+    // public function __construct()
+    // {
+    //     $this->authorizeResource(Provider::class, 'provider');
+    // }
 
 
       /**
@@ -110,9 +110,9 @@ class ProviderController extends Controller
     {
         $providers = Provider::filters($request->all())
             ->search($request->all());
-            
+
         return  (ProviderResource::collection($providers));
-        
+
     }
 
     /**
@@ -162,7 +162,7 @@ class ProviderController extends Controller
         $provider->email = $request->email;
         $provider->phone_number = $request->phone_number;
         $provider->user_created_id = $request->user_created_id;
-        
+
         $provider->save();
 
         return (new ProviderResource($provider))->additional(
@@ -177,8 +177,8 @@ class ProviderController extends Controller
      *
      * @param  \App\Models\MaterialSupplier  $materialSupplier
      * @return \Illuminate\Http\Response
-     * 
-     * 
+     *
+     *
      * @OA\Get(
      *      path="/providers/{id}",
      *      operationId="getproviderById",
@@ -296,7 +296,7 @@ class ProviderController extends Controller
      *
      * @param  \App\Models\Provider  $provider
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Delete(
      *  path="/providers/{id}",
      *  operationId="deleteprovider",

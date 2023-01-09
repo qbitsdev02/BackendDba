@@ -121,7 +121,7 @@ class Guide extends Base
      */
     public function trailer()
     {
-        return $this->belongsTo(Trailer::class);
+        return $this->belongsTo(Active::class);
     }
     /**
      * Get the vehicle that owns the Guide
@@ -130,7 +130,7 @@ class Guide extends Base
      */
     public function vehicle()
     {
-        return $this->belongsTo(Vehicle::class);
+        return $this->belongsTo(Active::class);
     }
     /**
      * Get the driver that owns the Guide
@@ -139,7 +139,7 @@ class Guide extends Base
      */
     public function driver()
     {
-        return $this->belongsTo(Driver::class);
+        return $this->belongsTo(Personal::class);
     }
 
     public function swornDeclarations()
@@ -166,10 +166,27 @@ class Guide extends Base
     }
 
     /**
-     * 
+     *
      */
     public function fieldCashFlows()
     {
         return $this->hasMany(FieldCashFlow::class);
+    }
+    /**
+     * Morph many
+     */
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
+    /**
+     * The guideServiceCosts that belong to the Guide
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function guideServiceCosts()
+    {
+        return $this->belongsToMany(GuideServiceCost::class)
+            ->withPivot('price');
     }
 }

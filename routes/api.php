@@ -111,6 +111,7 @@ Route::group([
     $router->resource('contracts', ContractController::class);
     $router->resource('services', ServiceController::class);
     $router->resource('disbursement-requests', DisbursementRequestController::class);
+    $router->resource('guide-service-costs', GuideServiceCostController::class);
 
     Route::group([
         'prefix' => 'master-sheets',

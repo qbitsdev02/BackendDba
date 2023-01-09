@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Guide;
 use App\Http\Requests\StoreGuideRequest;
 use App\Http\Requests\UpdateGuideRequest;
+use App\Http\Resources\GuideResource;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -96,18 +97,9 @@ class GuideController extends Controller
       */
     public function index(Request $request)
     {
-        $guides = Guide::with(
-                'client:id,name,document_number',
-                'provider:id,name,document_number,logo,signature,seal',
-                'trailer:id,plate,brand,model,color',
-                'vehicle:id,name,plate,brand,model',
-                'driver:id,name,document_number',
-                'swornDeclarations:id,imagen,guide_id',
-                'unitOfMeasurement:id,name,acronym'
-            )
-            ->filters($request->all())
+        $guides = Guide::filters($request->all())
             ->search($request->all());
-        return response()->json($guides, 200);
+        return GuideResource::collection($guides);
     }
 
     /**
@@ -166,13 +158,12 @@ class GuideController extends Controller
         $guide->origin_address = $request->origin_address;
         $guide->destination_address = $request->destination_address;
         $guide->material = $request->material;
-        $guide->code_runpa = $request->code_runpa;
         $guide->driver_id = $request->driver_id;
         $guide->user_created_id = $request->user_created_id;
         $guide->unit_of_measurement_id = $request->unit_of_measurement_id;
         $guide->weight = $request->weight;
         $guide->save();
-        return response()->json($guide, 201);
+        return new GuideResource($guide);
     }
 
     /**
@@ -214,18 +205,9 @@ class GuideController extends Controller
      *      )
      *   )
      */
-    public function show($id)
+    public function show(Guide $guide)
     {
-        $guide = Guide::with(
-            'client:id,name,document_number',
-            'materialSupplier:id,name,document_number,logo,signature,seal',
-            'trailer:id,plate,brand,model,color',
-            'vehicle:id,name,plate,brand,model,color',
-            'driver:id,name,document_number',
-            'swornDeclarations:id,imagen,guide_id',
-            'unitOfMeasurement:id,name,acronym'
-        )->findOrFail($id);
-        return response($guide, 200);
+        return new GuideResource($guide);
     }
 
     /**
@@ -299,13 +281,13 @@ class GuideController extends Controller
         $guide->origin_address = $request->origin_address;
         $guide->destination_address = $request->destination_address;
         $guide->material = $request->material;
-        $guide->code_runpa = $request->code_runpa;
         $guide->driver_id = $request->driver_id;
-        $guide->user_updated_id = $request->user_updated_id;
+        $guide->user_created_id = $request->user_created_id;
         $guide->unit_of_measurement_id = $request->unit_of_measurement_id;
         $guide->weight = $request->weight;
+        $guide->updated_at = Carbon::now();
         $guide->update();
-        return response()->json($guide, 201);
+        return new GuideResource($guide);
     }
 
     /**
