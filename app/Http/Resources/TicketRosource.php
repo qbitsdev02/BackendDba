@@ -18,34 +18,40 @@ class TicketRosource extends JsonResource
     public function toArray($request)
     {
         return [
-            "provider" => [
-                'id' => $this->provider->id,
-                'name' =>$this->provider->name
-            ],
-            "field" => [
-                "id" => $this->field->id,
-                "name" => $this->field->denomination
-            ],
+            // "provider" => [
+            //     'id' => $this->provider->id,
+            //     'name' =>$this->provider->name
+            // ],
+            // "field" => [
+            //     "id" => $this->field->id,
+            //     "name" => $this->field->denomination
+            // ],
             "guide" => [
                 'id' =>$this->guide->id,
-                "number guide" => $this->guide->serie_number
+                "number_guide" => $this->id,
+                "driver" => $this->guide->driver
             ],
-            
-            "detalles" => ActivePersonalTicketResource::collection
-                ($this->activePersonalTickes),
-                
+            "penalty" => $this->penalty,
+            "checkweighing" => $this->checkweighing,
+            "net_weight" => $this->gross_weight - $this->tare_weight,
+
+            "detalles" => ActivePersonalTicketResource::collection($this->activePersonalTickes),
+
             "tare_weight" => $this->tare_weight,
             "gross_weight" => $this->gross_weight,
-            "tare" => $this->tare,
-            "vehicle_number" => $this->vehicle_number,
-            "certificate" => $this->certificate,
+            // "tare" => $this->tare,
+            // "vehicle_number" => $this->vehicle_number,
+            // "certificate" => $this->certificate,
             "start_date" => $this->start_date,
             "final_date" => $this->final_date,
-            "checkweighing" => $this->checkweighing,
+            // "checkweighing" => $this->checkweighing,
             "client" => [
                 "id" =>$this->client->id ,
-                "name" =>$this->client->name 
+                "name" =>$this->client->name
             ],
+            "created_at" => $this->created_at,
+            "final_date" => $this->final_date,
+            "final_time" => $this->final_time,
             "user_created_id" => $this->user_created_id,
 
         ];

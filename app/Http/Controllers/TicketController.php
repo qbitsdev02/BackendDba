@@ -16,16 +16,16 @@ class TicketController extends Controller
 
     /**
      * Create the controller instance to Authorizing Resource Controller.
-     *  
-     * You may make use of the (authorizeResource) method in your controller's constructor. 
+     *
+     * You may make use of the (authorizeResource) method in your controller's constructor.
      * This method will attach the appropriate can middleware definitions to the resource controller's methods.
      */
     public function __construct()
     {
-        $this->authorizeResource(Ticket::class, 'ticket');   
+        $this->authorizeResource(Ticket::class, 'ticket');
     }
 
-    
+
     /**
       * Display a listing of the resource.
       *
@@ -115,7 +115,7 @@ class TicketController extends Controller
         $tickets = Ticket::filters($request->all())
             ->search($request->all());
 
-        
+
         return (TicketRosource::collection($tickets))->additional(
             [
                 "message" => "successfully response"
@@ -129,7 +129,7 @@ class TicketController extends Controller
      *
      * @param  \App\Http\Requests\StoreTicketRequest  $request
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Post(
      *   path="/tickets",
      *   summary="Creates a new ticket",
@@ -160,7 +160,7 @@ class TicketController extends Controller
     * )
     */
     public function store(StoreTicketRequest $request)
-    {   
+    {
         $ticket = new Ticket();
         $ticket->provider_id = $request->provider_id;
         $ticket->field_id = $request->field_id;
@@ -172,17 +172,19 @@ class TicketController extends Controller
         $ticket->certificate = $request->certificate;
         $ticket->start_date = $request->start_date;
         $ticket->final_date = $request->final_date;
+        $ticket->final_time = $request->final_time;
         $ticket->checkweighing = $request->checkweighing;
         $ticket->client_id = $request->client_id;
+        $ticket->penalty = $request->penalty;
         $ticket->user_created_id = $request->user_created_id;
 
         $ticket->save();
-        
+
         return (new TicketRosource($ticket))->additional(
             [
                 "message" => " successfully registerd ticket "
             ],200
-        ); 
+        );
 
     }
 
@@ -191,8 +193,8 @@ class TicketController extends Controller
      *
      * @param  \App\Models\Tickect  rate
      * @return \Illuminate\Http\Response
-     * 
-     * 
+     *
+     *
      * @OA\Get(
      *      path="/tickets/{id}",
      *      operationId="getticketId",
@@ -298,6 +300,8 @@ class TicketController extends Controller
         $ticket->final_date = $request->final_date;
         $ticket->checkweighing = $request->checkweighing;
         $ticket->client_id = $request->client_id;
+        $ticket->penalty = $request->penalty;
+        $ticket->final_time = $request->final_time;
         $ticket->user_created_id = $request->user_created_id;
 
         $ticket->update();
@@ -315,9 +319,9 @@ class TicketController extends Controller
      *
      * @param  \App\Models\Ticket  $ticket
      * @return \Illuminate\Http\Response
-     * 
+     *
      *Remove the specified resource from storage.
-     * 
+     *
      * @OA\Delete(
      *  path="/tickets/{id}",
      *  operationId="deleteticket",
@@ -351,7 +355,7 @@ class TicketController extends Controller
      *      description="Resource Not Found"
      *  )
      * )
-     * 
+     *
      */
     public function destroy(Ticket $ticket)
     {

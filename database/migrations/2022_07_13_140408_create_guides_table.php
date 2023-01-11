@@ -23,7 +23,7 @@ class CreateGuidesTable extends Migration
             $table->string('material');
             $table->string('code_runpa');
             $table->float('weight');
-            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->enum('status', ['requested', 'accepted', 'rejected', 'loss'])->default('requested');
             $table->foreignId('provider_id')->constrained();
             $table->foreignId('unit_of_measurement_id')->constrained();
             $table->foreignId('vehicle_id')->constrained('actives');

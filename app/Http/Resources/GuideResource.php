@@ -31,10 +31,11 @@ class GuideResource extends JsonResource
             'weight' => $this->weight,
             'provider' => $this->provider,
             'status' => $this->status,
-            'vehicle' => $this->vehicle,
+            'vehicle' => new ActiveResource($this->vehicle),
             'client' => $this->client,
-            'trailer' => $this->trailer,
+            'trailer' => new ActiveResource($this->trailer),
             'driver' => $this->driver,
+            'images' => $this->images,
             'unit_of_measurement' => $this->unitOfMeasurement
         ];
     }
