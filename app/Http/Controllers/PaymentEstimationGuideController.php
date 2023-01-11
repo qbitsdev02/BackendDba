@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Guide;
-use App\Http\Requests\StoreGuideRequest;
-use App\Http\Requests\UpdateGuideRequest;
-use App\Http\Resources\GuideResource;
+use App\Models\PaymentEstimationGuide;
+use App\Http\Requests\StorePaymentEstimationGuideRequest;
+use App\Http\Requests\UpdatePaymentEstimationGuideRequest;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 
-class GuideController extends Controller
+class PaymentEstimationGuideController extends Controller
 {
 
     /**
@@ -17,9 +15,9 @@ class GuideController extends Controller
       *
       * @return \Illuminate\Http\Response
       * @OA\Get(
-      *     path="/guides",
-      *     operationId="getGuide",
-      *     tags={"Guide"},
+      *     path="/payment-estimation-guides",
+      *     operationId="getPaymentEstimationGuide",
+      *     tags={"PaymentEstimationGuide"},
       *     @OA\Parameter(
       *       name="paginate",
       *       in="query",
@@ -87,7 +85,7 @@ class GuideController extends Controller
       *     ),
       *     @OA\Response(
       *         response=200,
-      *         description="Show Guides all."
+      *         description="Show PaymentEstimationGuides all."
       *     ),
       *     @OA\Response(
       *         response="default",
@@ -97,9 +95,8 @@ class GuideController extends Controller
       */
     public function index(Request $request)
     {
-        $guides = Guide::filters($request->all())
-            ->search($request->all());
-        return GuideResource::collection($guides);
+        $paymentEstimationGuides = PaymentEstimationGuide::filters($request->all())->search($request->all());
+        return response()->json($paymentEstimationGuides, 200);
     }
 
     /**
@@ -115,24 +112,24 @@ class GuideController extends Controller
     /**
       * Store a newly created resource in storage.
       *
-      * @param  \App\Http\Requests\StoreGuideRequest  $request
+      * @param  \App\Http\Requests\StorePaymentEstimationGuideRequest  $request
       * @return \Illuminate\Http\Response
       * @OA\Post(
-      *   path="/guides",
-      *   summary="Creates a new Guide",
-      *   description="Creates a new Guide",
-      *   tags={"Guide"},
+      *   path="/payment-estimation-guides",
+      *   summary="Creates a new PaymentEstimationGuide",
+      *   description="Creates a new PaymentEstimationGuide",
+      *   tags={"PaymentEstimationGuide"},
       *   security={{"passport": {"*"}}},
       *   @OA\RequestBody(
       *       @OA\MediaType(
       *           mediaType="application/json",
-      *           @OA\Schema(ref="#/components/schemas/Guide")
+      *           @OA\Schema(ref="#/components/schemas/PaymentEstimationGuide")
       *       )
       *   ),
       *   @OA\Response(
       *       @OA\MediaType(mediaType="application/json"),
       *       response=200,
-      *       description="The Guide resource created",
+      *       description="The PaymentEstimationGuide resource created",
       *   ),
       *   @OA\Response(
       *       @OA\MediaType(mediaType="application/json"),
@@ -146,39 +143,32 @@ class GuideController extends Controller
       *   )
       * )
      */
-    public function store(StoreGuideRequest $request)
+    public function store(StorePaymentEstimationGuideRequest $request)
     {
-        $guide = new Guide();
-        $guide->organization_id = $request->organization_id;
-        $guide->vehicle_id = $request->vehicle_id;
-        $guide->trailer_id = $request->trailer_id;
-        $guide->start_date = $request->start_date;
-        $guide->deadline = $request->deadline;
-        $guide->origin_address = $request->origin_address;
-        $guide->destination_address = $request->destination_address;
-        $guide->material = $request->material;
-        $guide->driver_id = $request->driver_id;
-        $guide->user_created_id = $request->user_created_id;
-        $guide->unit_of_measurement_id = $request->unit_of_measurement_id;
-        $guide->weight = $request->weight;
-        $guide->save();
-        return new GuideResource($guide);
+        $paymentEstimationGuide = new PaymentEstimationGuide();
+        $paymentEstimationGuide->guide_id = $request->guide_id;
+        $paymentEstimationGuide->guide_service_cost_id = $request->guide_service_cost_id;
+        $paymentEstimationGuide->amount = $request->amount;
+        $paymentEstimationGuide->price = $request->price;
+        $paymentEstimationGuide->user_created_id = $request->user_created_id;
+        $paymentEstimationGuide->save();
+        return response()->json($paymentEstimationGuide, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Guide  $guide
+     * @param  \App\Models\PaymentEstimationGuide  $paymentEstimationGuide
      * @return \Illuminate\Http\Response
      * @OA\Get(
-     *   path="/guides/{id}",
-     *   operationId="getGuideById",
-     *   tags={"Guide"},
-     *   summary="Get Guide information",
-     *   description="Returns Guide data",
+     *   path="/payment-estimation-guides/{id}",
+     *   operationId="getPaymentEstimationGuideById",
+     *   tags={"PaymentEstimationGuide"},
+     *   summary="Get PaymentEstimationGuide information",
+     *   description="Returns PaymentEstimationGuide data",
      *   @OA\Parameter(
      *      name="id",
-     *      description="Guide id",
+     *      description="PaymentEstimationGuide id",
      *      required=true,
      *      in="path",
      *          @OA\Schema(
@@ -188,7 +178,7 @@ class GuideController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
-     *          @OA\JsonContent(ref="#/components/schemas/Guide")
+     *          @OA\JsonContent(ref="#/components/schemas/PaymentEstimationGuide")
      *       ),
      *      @OA\Response(
      *          response=400,
@@ -204,18 +194,18 @@ class GuideController extends Controller
      *      )
      *   )
      */
-    public function show(Guide $guide)
+    public function show(PaymentEstimationGuide $paymentEstimationGuide)
     {
-        return new GuideResource($guide);
+        return response($paymentEstimationGuide, 200);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Guide  $guide
+     * @param  \App\Models\PaymentEstimationGuide  $paymentEstimationGuide
      * @return \Illuminate\Http\Response
      */
-    public function edit(Guide $guide)
+    public function edit(PaymentEstimationGuide $paymentEstimationGuide)
     {
         //
     }
@@ -224,18 +214,18 @@ class GuideController extends Controller
      * Update the specified resource in storage.
      *
      *
-     * @param  \App\Http\Requests\UpdateGuideRequest  $request
-     * @param  \App\Models\Guide  $guide
+     * @param  \App\Http\Requests\UpdatePaymentEstimationGuideRequest  $request
+     * @param  \App\Models\PaymentEstimationGuide  $paymentEstimationGuide
      * @return \Illuminate\Http\Response
      * @OA\Put(
-     *  path="/guides/{id}",
-     *  operationId="updateGuide",
-     *  tags={"Guide"},
-     *  summary="Update existing Guide",
-     *  description="Returns updated Guide data",
+     *  path="/payment-estimation-guides/{id}",
+     *  operationId="updatePaymentEstimationGuide",
+     *  tags={"PaymentEstimationGuide"},
+     *  summary="Update existing PaymentEstimationGuide",
+     *  description="Returns updated PaymentEstimationGuide data",
      *  @OA\Parameter(
      *      name="id",
-     *      description="Guide id",
+     *      description="PaymentEstimationGuide id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -244,12 +234,12 @@ class GuideController extends Controller
      *  ),
      *  @OA\RequestBody(
      *      required=true,
-     *      @OA\JsonContent(ref="#/components/schemas/Guide")
+     *      @OA\JsonContent(ref="#/components/schemas/PaymentEstimationGuide")
      *   ),
      *   @OA\Response(
      *      response=202,
      *      description="Successful operation",
-     *      @OA\JsonContent(ref="#/components/schemas/Guide")
+     *      @OA\JsonContent(ref="#/components/schemas/PaymentEstimationGuide")
      *   ),
      *   @OA\Response(
      *      response=400,
@@ -269,39 +259,31 @@ class GuideController extends Controller
      *   )
      * )
      */
-    public function update(UpdateGuideRequest $request, Guide $guide)
+    public function update(UpdatePaymentEstimationGuideRequest $request, PaymentEstimationGuide $paymentEstimationGuide)
     {
-        $guide->organization_id = $request->organization_id;
-        $guide->vehicle_id = $request->vehicle_id;
-        $guide->trailer_id = $request->trailer_id;
-        $guide->start_date = $request->start_date;
-        $guide->deadline = $request->deadline;
-        $guide->origin_address = $request->origin_address;
-        $guide->destination_address = $request->destination_address;
-        $guide->material = $request->material;
-        $guide->driver_id = $request->driver_id;
-        $guide->user_created_id = $request->user_created_id;
-        $guide->unit_of_measurement_id = $request->unit_of_measurement_id;
-        $guide->weight = $request->weight;
-        $guide->updated_at = Carbon::now();
-        $guide->update();
-        return new GuideResource($guide);
+        $paymentEstimationGuide->guide_id = $request->guide_id;
+        $paymentEstimationGuide->guide_service_cost_id = $request->guide_service_cost_id;
+        $paymentEstimationGuide->amount = $request->amount;
+        $paymentEstimationGuide->price = $request->price;
+        $paymentEstimationGuide->user_updated_id = $request->user_updated_id;
+        $paymentEstimationGuide->update();
+        return response()->json($paymentEstimationGuide, 201);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Guide  $guide
+     * @param  \App\Models\PaymentEstimationGuide  $paymentEstimationGuide
      * @return \Illuminate\Http\Response
      * @OA\Delete(
-     *  path="/guides/{id}",
-     *  operationId="deleteGuide",
-     *  tags={"Guide"},
-     *  summary="Delete existing Guide",
+     *  path="/payment-estimation-guides/{id}",
+     *  operationId="deletePaymentEstimationGuide",
+     *  tags={"PaymentEstimationGuide"},
+     *  summary="Delete existing PaymentEstimationGuide",
      *  description="Deletes a record and returns no content",
      *  @OA\Parameter(
      *      name="id",
-     *      description="Guide id",
+     *      description="PaymentEstimationGuide id",
      *      required=true,
      *      in="path",
      *      @OA\Schema(
@@ -327,9 +309,19 @@ class GuideController extends Controller
      *  )
      * )
      */
-    public function destroy(Guide $guide)
+    public function destroy(PaymentEstimationGuide $paymentEstimationGuide)
     {
-        $guide->delete();
+        $paymentEstimationGuide->delete();
         return response('the data was deleted successfully', 200);
+    }
+
+    public function storeMany(Request $request)
+    {
+        collect($request->paymentEstimationGuide)
+            ->each(function($paymentEstimationGuide) {
+                PaymentEstimationGuide::create($paymentEstimationGuide);
+            });
+
+        return response()->json('creted success', 201);
     }
 }

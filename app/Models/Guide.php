@@ -110,9 +110,9 @@ class Guide extends Base
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function provider()
+    public function organization()
     {
-        return $this->belongsTo(Provider::class);
+        return $this->belongsTo(Organization::class);
     }
     /**
      * Get the trailer that owns the Guide
@@ -188,5 +188,14 @@ class Guide extends Base
     {
         return $this->belongsToMany(GuideServiceCost::class)
             ->withPivot('price');
+    }
+    /**
+     * Get the paymentEstimationGuides that owns the Guide
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function paymentEstimationGuides()
+    {
+        return $this->belongsTo(PaymentEstimationGuide::class);
     }
 }

@@ -112,6 +112,8 @@ Route::group([
     $router->resource('services', ServiceController::class);
     $router->resource('disbursement-requests', DisbursementRequestController::class);
     $router->resource('guide-service-costs', GuideServiceCostController::class);
+    $router->post('store-all-payment-estimation-guides', [PaymentEstimationGuideController::class, 'storeMany']);
+    $router->resource('payment-estimation-guides', PaymentEstimationGuideController::class);
 
     Route::group([
         'prefix' => 'master-sheets',

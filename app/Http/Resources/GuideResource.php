@@ -29,7 +29,7 @@ class GuideResource extends JsonResource
             'user_created_id' => $this->user_created_id,
             'unit_of_measurement_id' => $this->unit_of_measurement_id,
             'weight' => $this->weight,
-            'provider' => $this->provider,
+            'organization' => $this->organization,
             'status' => $this->status,
             'vehicle' => new ActiveResource($this->vehicle),
             'client' => $this->client,

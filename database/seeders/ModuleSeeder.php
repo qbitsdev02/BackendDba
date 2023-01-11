@@ -397,7 +397,7 @@ class ModuleSeeder extends Seeder
                 // 43
                 [
                     'name' => 'cash-flow',
-                    'icon' => 'box',
+                    'icon' => 'inventory',
                     'route' => 'CashFlow',
                     'section_id' => 1,
                     'devices' => '["mobile", "desktop"]',
@@ -408,6 +408,24 @@ class ModuleSeeder extends Seeder
                     'name' => 'dashboard',
                     'icon' => 'dashboard',
                     'route' => 'Dashboard',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                // 45
+                [
+                    'name' => 'payment-estimates',
+                    'icon' => 'payment',
+                    'route' => 'PaymentEstimate',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                // 46
+                [
+                    'name' => 'costs',
+                    'icon' => 'payment',
+                    'route' => 'Cost',
                     'section_id' => 1,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1

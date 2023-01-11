@@ -24,11 +24,10 @@ class CreateGuidesTable extends Migration
             $table->string('code_runpa');
             $table->float('weight');
             $table->enum('status', ['requested', 'accepted', 'rejected', 'loss'])->default('requested');
-            $table->foreignId('provider_id')->constrained();
+            $table->foreignId('organization_id')->constrained();
             $table->foreignId('unit_of_measurement_id')->constrained();
             $table->foreignId('vehicle_id')->constrained('actives');
             $table->foreignId('trailer_id')->constrained('actives');
-            $table->foreignId('client_id')->constrained();
             $table->foreignId('driver_id')->constrained('personals');
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
