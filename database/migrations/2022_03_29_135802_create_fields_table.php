@@ -15,7 +15,6 @@ class CreateFieldsTable extends Migration
     {
         Schema::create('fields', function (Blueprint $table) {
             $table->id();
-            $table->string('contract_number');
             $table->string('denomination');
             $table->string('acronym');
             $table->string('address');

@@ -145,7 +145,7 @@ class ModuleSeeder extends Seeder
                 //15
                 [
                     'name' => 'tickets',
-                    'icon' => 'person',
+                    'icon' => 'confirmation_number',
                     'route' => 'Ticket',
                     'section_id' => 1,
                     'devices' => '["mobile", "desktop"]',

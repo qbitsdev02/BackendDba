@@ -148,7 +148,7 @@ class GuideServiceCostController extends Controller
     {
         $guideServiceCost = new GuideServiceCost();
         $guideServiceCost->name = $request->name;
-        $guideServiceCost->acronym = $request->acronym;
+        $guideServiceCost->description = $request->description;
         $guideServiceCost->user_created_id = $request->user_created_id;
         $guideServiceCost->save();
         return response()->json($guideServiceCost, 201);
@@ -262,7 +262,7 @@ class GuideServiceCostController extends Controller
     public function update(Request $request, GuideServiceCost $guideServiceCost)
     {
         $guideServiceCost->name = $request->name;
-        $guideServiceCost->acronym = $request->acronym;
+        $guideServiceCost->description = $request->description;
         $guideServiceCost->user_updated_id = $request->user_updated_id;
         $guideServiceCost->updated_at = \Carbon\Carbon::now();
         $guideServiceCost->update();

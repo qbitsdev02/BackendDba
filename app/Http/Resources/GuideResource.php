@@ -36,7 +36,8 @@ class GuideResource extends JsonResource
             'trailer' => new ActiveResource($this->trailer),
             'driver' => $this->driver,
             'images' => $this->images,
-            'unit_of_measurement' => $this->unitOfMeasurement
+            'unit_of_measurement' => $this->unitOfMeasurement,
+            'created_at' => $this->created_at
         ];
     }
 }

@@ -141,10 +141,10 @@ class FieldController extends Controller
     public function store(StoreFieldRequest $request)
     {
         $field = new Field();
-        $field->contract_number = $request->contract_number;
         $field->denomination = $request->denomination;
         $field->acronym = $request->acronym;
         $field->address = $request->address;
+        $field->port_id = $request->port_id;
         $field->organization_id = $request->organization_id;
         $field->field_supervisor_id = $request->field_supervisor_id;
         $field->user_created_id = $request->user_created_id;
@@ -247,10 +247,10 @@ class FieldController extends Controller
      */
     public function update(UpdateFieldRequest $request, Field $field)
     {
-        $field->contract_number = $request->contract_number;
         $field->denomination = $request->denomination;
         $field->acronym = $request->acronym;
         $field->address = $request->address;
+        $field->port_id = $request->port_id;
         $field->organization_id = $request->organization_id;
         $field->field_supervisor_id = $request->field_supervisor_id;
         $field->user_created_id = $request->user_created_id;

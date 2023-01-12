@@ -162,19 +162,16 @@ class TicketController extends Controller
     public function store(StoreTicketRequest $request)
     {
         $ticket = new Ticket();
-        $ticket->provider_id = $request->provider_id;
         $ticket->field_id = $request->field_id;
         $ticket->guide_id = $request->guide_id;
         $ticket->tare_weight = $request->tare_weight;
         $ticket->gross_weight = $request->gross_weight;
-        $ticket->tare = $request->tare;
-        $ticket->vehicle_number = $request->vehicle_number;
-        $ticket->certificate = $request->certificate;
         $ticket->start_date = $request->start_date;
         $ticket->final_date = $request->final_date;
         $ticket->final_time = $request->final_time;
         $ticket->checkweighing = $request->checkweighing;
         $ticket->client_id = $request->client_id;
+        $ticket->personal_id = $request->driver_id;
         $ticket->penalty = $request->penalty;
         $ticket->user_created_id = $request->user_created_id;
 
@@ -288,20 +285,17 @@ class TicketController extends Controller
      */
     public function update(UpdateTicketRequest $request, Ticket $ticket)
     {
-        $ticket->provider_id = $request->provider_id;
         $ticket->field_id = $request->field_id;
         $ticket->guide_id = $request->guide_id;
         $ticket->tare_weight = $request->tare_weight;
         $ticket->gross_weight = $request->gross_weight;
-        $ticket->tare = $request->tare;
-        $ticket->vehicle_number = $request->vehicle_number;
-        $ticket->certificate = $request->certificate;
         $ticket->start_date = $request->start_date;
         $ticket->final_date = $request->final_date;
         $ticket->checkweighing = $request->checkweighing;
         $ticket->client_id = $request->client_id;
         $ticket->penalty = $request->penalty;
         $ticket->final_time = $request->final_time;
+        $ticket->personal_id = $request->driver_id;
         $ticket->user_created_id = $request->user_created_id;
 
         $ticket->update();

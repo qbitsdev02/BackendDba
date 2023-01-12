@@ -15,15 +15,11 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('provider_id')->constrained();
             $table->foreignId('field_id')->constrained();
             $table->foreignId('guide_id')->constrained();
             $table->float('tare_weight');
             $table->float('gross_weight');
-            $table->float('tare');
             $table->float('penalty')->default(0);
-            $table->string('vehicle_number');
-            $table->string('certificate');
             $table->date('start_date')->nullable();
             $table->time('start_time')->nullable();
             $table->time('final_time');
