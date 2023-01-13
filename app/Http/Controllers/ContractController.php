@@ -12,10 +12,10 @@ use Illuminate\Http\Request;
 class ContractController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->authorizeResource(Contract::class, 'contract');
-    }
+    // public function __construct()
+    // {
+    //     $this->authorizeResource(Contract::class, 'contract');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -116,7 +116,7 @@ class ContractController extends Controller
      *
      * @param  \App\Http\Requests\StoreContractRequest  $request
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Post(
      *   path="/contracts",
      *   summary="Creates a new contract",
@@ -168,7 +168,7 @@ class ContractController extends Controller
      *
      * @param  \App\Models\Contract  $contract
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Get(
      *      path="/contracts/{id}",
      *      operationId="getcontractById",
@@ -217,7 +217,7 @@ class ContractController extends Controller
      * @param  \App\Http\Requests\UpdateContractRequest  $request
      * @param  \App\Models\Contract  $contract
      * @return \Illuminate\Http\Response
-     * 
+     *
      *  @OA\Put(
      *      path="/contracts/{id}",
      *      operationId="updatecontract",
@@ -281,7 +281,7 @@ class ContractController extends Controller
      *
      * @param  \App\Models\Contract  $contract
      * @return \Illuminate\Http\Response
-     * 
+     *
      * @OA\Delete(
      *  path="/contracts/{id}",
      *  operationId="deletecontract",

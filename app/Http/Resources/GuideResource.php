@@ -16,7 +16,7 @@ class GuideResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'provider_id' => $this->provider_id,
+            'organization_id' => $this->organization_id,
             'vehicle_id' => $this->vehicle_id,
             'client_id' => $this->client_id,
             'trailer_id' => $this->trailer_id,
