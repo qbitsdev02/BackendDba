@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class GuideOwner extends Model
 {
-    use HasFactory;
+    public function ownerable()
+    {
+        return $this->morphTo();
+    }
+
+    public function responsable()
+    {
+        return $this->morphTo();
+    }
 }

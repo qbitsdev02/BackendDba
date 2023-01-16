@@ -11,9 +11,11 @@ use App\Http\Controllers\ContractController;
 use App\Http\Controllers\DisbursementController;
 use App\Http\Controllers\DisbursementRequestController;
 use App\Http\Controllers\FieldCashFlowController;
+use App\Http\Controllers\GuideOwnerController;
 use App\Http\Controllers\MasterReportController;
 use App\Http\Controllers\MasterSheetController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\PaymentEstimationGuideController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\PaymentOrderController;
 use App\Http\Controllers\PersonalController;
@@ -114,6 +116,7 @@ Route::group([
     $router->resource('guide-service-costs', GuideServiceCostController::class);
     $router->post('store-all-payment-estimation-guides', [PaymentEstimationGuideController::class, 'storeMany']);
     $router->resource('payment-estimation-guides', PaymentEstimationGuideController::class);
+    $router->resource('guide-owners', GuideOwnerController::class);
 
     Route::group([
         'prefix' => 'master-sheets',

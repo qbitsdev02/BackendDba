@@ -12,7 +12,6 @@ class Image extends Model
 
     protected $guarded = [];
 
-
     public function getImgAttribute($value)
     {
         return Storage::url($value);

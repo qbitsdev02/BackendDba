@@ -279,6 +279,7 @@ class GuideController extends Controller
         $guide->origin_address = $request->origin_address;
         $guide->destination_address = $request->destination_address;
         $guide->material = $request->material;
+        $guide->status = $request->status;
         $guide->driver_id = $request->driver_id;
         $guide->user_created_id = $request->user_created_id;
         $guide->unit_of_measurement_id = $request->unit_of_measurement_id;

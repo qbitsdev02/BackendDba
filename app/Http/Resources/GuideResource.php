@@ -37,6 +37,15 @@ class GuideResource extends JsonResource
             'driver' => $this->driver,
             'images' => $this->images,
             'unit_of_measurement' => $this->unitOfMeasurement,
+            'guide_owner' => $this->guideOwner ? [
+                'id' => $this->guideOwner->id,
+                'ownerable_type' => $this->guideOwner->ownerable_type,
+                'ownerable_id' => $this->guideOwner->ownerable_id,
+                'responsable_type' => $this->guideOwner->responsable_type,
+                'responsable_id' => $this->guideOwner->responsable_id,
+                'ownerable' => $this->guideOwner->ownerable,
+                'responsable' => $this->guideOwner->responsable
+            ] : null,
             'created_at' => $this->created_at
         ];
     }

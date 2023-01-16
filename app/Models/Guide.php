@@ -198,4 +198,14 @@ class Guide extends Base
     {
         return $this->belongsTo(PaymentEstimationGuide::class);
     }
+
+    /**
+     * Get all of the guideOwners for the Guide
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function guideOwner()
+    {
+        return $this->hasOne(GuideOwner::class);
+    }
 }
