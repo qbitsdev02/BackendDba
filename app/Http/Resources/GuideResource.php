@@ -20,6 +20,7 @@ class GuideResource extends JsonResource
             'vehicle_id' => $this->vehicle_id,
             'client_id' => $this->client_id,
             'trailer_id' => $this->trailer_id,
+            'serie_number' => $this->serie_number,
             'start_date' => $this->start_date,
             'deadline' => $this->deadline,
             'origin_address' => $this->origin_address,
@@ -36,6 +37,9 @@ class GuideResource extends JsonResource
             'trailer' => new ActiveResource($this->trailer),
             'driver' => $this->driver,
             'images' => $this->images,
+            'logo' => $this->logo,
+            'seal' => $this->seal,
+            'signature' => $this->signature,
             'unit_of_measurement' => $this->unitOfMeasurement,
             'guide_owner' => $this->guideOwner ? [
                 'id' => $this->guideOwner->id,

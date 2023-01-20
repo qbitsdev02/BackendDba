@@ -150,6 +150,7 @@ class GuideController extends Controller
     {
         $guide = new Guide();
         $guide->organization_id = $request->organization_id;
+        $guide->serie_number = $request->serie_number;
         $guide->vehicle_id = $request->vehicle_id;
         $guide->trailer_id = $request->trailer_id;
         $guide->start_date = $request->start_date;
@@ -279,6 +280,7 @@ class GuideController extends Controller
         $guide->origin_address = $request->origin_address;
         $guide->destination_address = $request->destination_address;
         $guide->material = $request->material;
+        $guide->serie_number = $request->serie_number;
         $guide->status = $request->status;
         $guide->driver_id = $request->driver_id;
         $guide->user_created_id = $request->user_created_id;

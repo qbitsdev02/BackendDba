@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\ImageHelper;
 use App\Models\Organization;
 use App\Http\Requests\StoreOrganizationRequest;
 use App\Http\Requests\UpdateOrganizationRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class OrganizationController extends Controller
 {
@@ -146,6 +148,7 @@ class OrganizationController extends Controller
     public function store(StoreOrganizationRequest $request)
     {
         $organization = new Organization();
+        $organization->name = $request->name;
         $organization->document_type = $request->document_type;
         $organization->document_number = $request->document_number;
         $organization->code_runpa = $request->code_runpa;
@@ -268,12 +271,16 @@ class OrganizationController extends Controller
      */
     public function update(UpdateOrganizationRequest $request, Organization $organization)
     {
+        $organization->name = $request->name;
         $organization->document_type = $request->document_type;
         $organization->document_number = $request->document_number;
         $organization->code_runpa = $request->code_runpa;
         $organization->address = $request->address;
         $organization->phone_number = $request->phone_number;
         $organization->email = $request->email;
+        $organization->logo = ImageHelper::saveImage($request->logo, "organization/$organization->code_runpa}") ?? $organization->logo;
+        $organization->seal = ImageHelper::saveImage($request->seal, "organization/$organization->code_runpa}") ?? $organization->seal;
+        $organization->signature =ImageHelper::saveImage($request->signature, "organization/$organization->code_runpa}") ?? $organization->signature;
         $organization->description = $request->description;
         $organization->document_type_legal_representative = $request->document_type_legal_representative;
         $organization->nationality_legal_representative = $request->nationality_legal_representative;

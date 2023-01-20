@@ -306,15 +306,6 @@ class ModuleSeeder extends Seeder
                 ],
                 //33
                 [
-                    'name' => 'companies',
-                    'icon' => 'person',
-                    'route' => 'Company',
-                    'section_id' => 4,
-                    'devices' => '["mobile", "desktop"]',
-                    'user_created_id' => 1
-                ],
-                //34
-                [
                     'name' => 'transactions',
                     'icon' => 'person',
                     'route' => 'Transaction',
@@ -322,16 +313,7 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
-                //35
-                [
-                    'name' => 'categories',
-                    'icon' => 'person',
-                    'route' => 'Category',
-                    'section_id' => 4,
-                    'devices' => '["mobile", "desktop"]',
-                    'user_created_id' => 1
-                ],
-                //36
+                //34
                 [
                     'name' => 'field-cash-flows',
                     'icon' => 'person',
@@ -340,7 +322,7 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
-                //37
+                //35
                 [
                     'name' => 'disbursements',
                     'icon' => 'person',
@@ -349,7 +331,7 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
-                //38
+                //36
                 [
                     'name' => 'voucher-types',
                     'icon' => 'person',
@@ -358,7 +340,7 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
-                //39
+                //37
                 [
                     'name' => 'contracts',
                     'icon' => 'person',
@@ -367,7 +349,7 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
-                //40
+                //38
                 [
                     'name' => 'services',
                     'icon' => 'person',
@@ -376,7 +358,7 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
-                //41
+                //39
                 [
                     'name' => 'disbursement-requests',
                     'icon' => 'person',
@@ -385,7 +367,7 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
-                //42
+                //40
                 [
                     'name' => 'download-master',
                     'icon' => 'source',
@@ -394,7 +376,7 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
-                // 43
+                // 41
                 [
                     'name' => 'cash-flow',
                     'icon' => 'inventory',
@@ -403,7 +385,7 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
-                // 44
+                // 42
                 [
                     'name' => 'dashboard',
                     'icon' => 'dashboard',
@@ -412,7 +394,7 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
-                // 45
+                // 43
                 [
                     'name' => 'payment-estimates',
                     'icon' => 'payment',
@@ -421,7 +403,7 @@ class ModuleSeeder extends Seeder
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
                 ],
-                // 46
+                // 44
                 [
                     'name' => 'costs',
                     'icon' => 'payment',

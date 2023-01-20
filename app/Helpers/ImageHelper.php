@@ -16,4 +16,12 @@ class ImageHelper
         Storage::disk('google')->put("{$file}/{$imageName}", base64_decode($image));
         return "{$file}/{$imageName}";
     }
+
+    static function saveImage($file, $archive)
+    {
+        if (gettype($file) != 'string') {
+            return Storage::putFile($archive, $file);
+        }
+        return null;
+    }
 }

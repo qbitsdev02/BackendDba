@@ -21,7 +21,6 @@ class CreateGuidesTable extends Migration
             $table->string('origin_address');
             $table->string('destination_address');
             $table->string('material');
-            $table->string('code_runpa');
             $table->float('weight');
             $table->enum('status', ['requested', 'accepted', 'rejected', 'loss'])->default('requested');
             $table->foreignId('organization_id')->constrained();

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Storage;
+
 /**
  * @OA\Schema(
  *   schema="Organization",
@@ -41,6 +43,18 @@ class Organization extends Base
     public function getFullNameAttribute()
     {
         return "{$this->name}";
+    }
+    public function getLogoAttribute($value)
+    {
+        return Storage::url($value);
+    }
+    public function getSignatureAttribute($value)
+    {
+        return Storage::url($value);
+    }
+    public function getSealAttribute($value)
+    {
+        return Storage::url($value);
     }
 
     /**
