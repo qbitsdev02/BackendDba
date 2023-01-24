@@ -29,7 +29,7 @@ class ActiveService
                 $active->attributes()
                     ->attach(
                         [
-                            'attribute_id' => $attr['attribute']['id']
+                            'attribute_id' => $attr->attribute->id
                         ],
                         [
                             'valor' => $attr['valor'],
