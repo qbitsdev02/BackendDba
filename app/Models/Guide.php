@@ -90,11 +90,25 @@ namespace App\Models;
  */
 class Guide extends Base
 {
-    protected $appends = ['full_name'];
+    protected $appends = ['full_name', 'payments_estimate'];
 
     public function getFullNameAttribute()
     {
         return "{$this->code_runpa}-{$this->material}";
+    }
+    /**
+     * Payment estimate
+     */
+    public function getPaymentsEstimateAttribute()
+    {
+        return $this->paymentEstimationGuides->sum('cost');
+    }
+    /**
+     * Payment services
+     */
+    public function getPaymentServicesAttribute()
+    {
+        return $this->guideServiceCosts->sum('cost');
     }
     /**
      * Get the client that owns the Guide
@@ -196,7 +210,7 @@ class Guide extends Base
      */
     public function paymentEstimationGuides()
     {
-        return $this->belongsTo(PaymentEstimationGuide::class);
+        return $this->hasMany(PaymentEstimationGuide::class);
     }
 
     /**

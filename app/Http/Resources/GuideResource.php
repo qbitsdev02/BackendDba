@@ -40,6 +40,8 @@ class GuideResource extends JsonResource
             'logo' => $this->logo,
             'seal' => $this->seal,
             'signature' => $this->signature,
+            'payments_estimate' => $this->payments_estimate,
+            'payment_estimation_guides' => $this->paymentEstimationGuides,
             'unit_of_measurement' => $this->unitOfMeasurement,
             'guide_owner' => $this->guideOwner ? [
                 'id' => $this->guideOwner->id,

@@ -317,7 +317,6 @@ class PaymentEstimationGuideController extends Controller
 
     public function storeMany(Request $request)
     {
-        info($request->all());
         collect($request->paymentEstimateGuides)
             ->each(function($paymentEstimationGuide) {
                 info($paymentEstimationGuide);

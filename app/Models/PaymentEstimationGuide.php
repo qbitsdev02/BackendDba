@@ -15,6 +15,13 @@ class PaymentEstimationGuide extends Model
         'user_created_id',
         'user_updated_id'
     ];
+
+    protected $appends = ['cost'];
+
+    public function getCostAttribute()
+    {
+        return $this->price * $this->amount;
+    }
     /**
      * Get the guide that owns the PaymentEstimationGuide
      *
