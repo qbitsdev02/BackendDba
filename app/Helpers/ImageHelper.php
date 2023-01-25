@@ -22,6 +22,6 @@ class ImageHelper
         if (gettype($file) != 'string') {
             return Storage::putFile($archive, $file);
         }
-        return null;
+        return false;
     }
 }
