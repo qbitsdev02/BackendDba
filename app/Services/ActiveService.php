@@ -26,16 +26,21 @@ class ActiveService
         collect($attributes)
             ->each(function ($attribute) use($active) {
                 $attr = json_decode($attribute, true);
-                $active->attributes()
-                    ->attach(
-                        [
-                            'attribute_id' => $attr->attribute->id
-                        ],
-                        [
-                            'valor' => $attr['valor'],
-                            'user_created_id' => $active->user_created_id
-                        ]
-                );
+                collect($attr)
+                    ->each(function($att) use($active) {
+                        if (isset($att['attribute'])) {
+                            $active->attributes()
+                                ->attach(
+                                    [
+                                        'attribute_id' => $att['attribute']['id']
+                                    ],
+                                    [
+                                        'value' => $att['value'],
+                                        'user_created_id' => $active->user_created_id
+                                    ]
+                            );
+                        }
+                    });
         });
     }
 }

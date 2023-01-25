@@ -49,7 +49,7 @@ use Illuminate\Database\Eloquent\Model;
  *       required={"false"},
  *       @OA\Items(
  *           @OA\Property(property="attribute_id", type="number"),
- *           @OA\Property(property="valor", type="string"),
+ *           @OA\Property(property="value", type="string"),
  *           @OA\Property(property="user_created_id", type="number", example=1)
  *       ),
  *       description="The active attribute_types"
@@ -103,7 +103,14 @@ class Active extends Base
     public function attributes()
     {
         return $this->belongsToMany(Attribute::class)
-            ->withPivot('valor');
+            ->withPivot('value');
+    }
+    /**
+     * Relationship attribute
+     */
+    public function activeAttributes()
+    {
+        return $this->hasMany(ActiveAttribute::class, );
     }
 
     /**

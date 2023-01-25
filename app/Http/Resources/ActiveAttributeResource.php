@@ -17,7 +17,7 @@ class ActiveAttributeResource extends JsonResource
         return [
            'id' => $this->id,
            'name' => $this->name,
-           'valor' => $this->pivot->valor,
+           'value' => $this->pivot->value,
         ];
     }
 }

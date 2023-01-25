@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('active_id')->constrained();
             $table->foreignId('attribute_id')->constrained();
-            $table->string('valor');
+            $table->string('value');
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->softDeletes();

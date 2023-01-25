@@ -135,7 +135,7 @@ class Guide extends Base
      */
     public function trailer()
     {
-        return $this->belongsTo(Active::class);
+        return $this->belongsTo(Active::class)->withTrashed();
     }
     /**
      * Get the vehicle that owns the Guide
@@ -144,7 +144,7 @@ class Guide extends Base
      */
     public function vehicle()
     {
-        return $this->belongsTo(Active::class);
+        return $this->belongsTo(Active::class)->withTrashed();
     }
     /**
      * Get the driver that owns the Guide
@@ -153,7 +153,7 @@ class Guide extends Base
      */
     public function driver()
     {
-        return $this->belongsTo(Personal::class);
+        return $this->belongsTo(Personal::class)->withTrashed();
     }
 
     public function swornDeclarations()
