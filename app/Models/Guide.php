@@ -111,15 +111,6 @@ class Guide extends Base
         return $this->guideServiceCosts->sum('cost');
     }
     /**
-     * Get the client that owns the Guide
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function client()
-    {
-        return $this->belongsTo(Client::class);
-    }
-    /**
      * Get the provider that owns the Guide
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -136,6 +127,15 @@ class Guide extends Base
     public function trailer()
     {
         return $this->belongsTo(Active::class)->withTrashed();
+    }
+    /**
+     * Get the client that owns the Guide
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function client()
+    {
+        return $this->belongsTo(Client::class)->withTrashed();
     }
     /**
      * Get the vehicle that owns the Guide

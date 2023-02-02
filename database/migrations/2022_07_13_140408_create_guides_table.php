@@ -25,6 +25,7 @@ class CreateGuidesTable extends Migration
             $table->enum('status', ['requested', 'accepted', 'rejected', 'loss'])->default('requested');
             $table->foreignId('organization_id')->constrained();
             $table->foreignId('unit_of_measurement_id')->constrained();
+            $table->foreignId('client_id')->constrained();
             $table->foreignId('vehicle_id')->constrained('actives');
             $table->foreignId('trailer_id')->constrained('actives');
             $table->foreignId('driver_id')->constrained('personals');
