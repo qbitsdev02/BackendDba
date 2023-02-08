@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 
 /**
- * 
+ *
  * @OA\Schema(
  *   schema="Ticket",
  *   type="object",
@@ -75,8 +75,8 @@ use Illuminate\Database\Eloquent\Model;
  *       property="checkweighing",
  *       type="string",
  *       required={"true"},
- *       description="The ticket checkweighing"   
- *   ), 
+ *       description="The ticket checkweighing"
+ *   ),
  *  @OA\Property(
  *       property="actives",
  *       type="array",
@@ -93,7 +93,7 @@ use Illuminate\Database\Eloquent\Model;
  *       type="number",
  *       required={"true"},
  *       description="The ticket client_id"
- * 
+ *
  *   ),
  *   @OA\Property(
  *       property="user_created_id",
@@ -115,28 +115,33 @@ class Ticket extends Base
 {
     use HasFactory;
 
+    protected $appends = ['net_weight'];
     /**
      * Relationship Provider.
      * A ticket only has one provider.
-     * 
+     *
      * Get the provider that owns the attributes
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      *
      */
-    public function provider(){
-        
+    public function provider()
+    {
         return $this->belongsTo(Provider::class);
+    }
 
+    public function getNetWeightAttribute()
+    {
+        return $this->gross_weight - $this->tare_weight;
     }
 
     /**
      * Relationship field
      * A ticket only has one field.
-     * 
+     *
      * Get the field associated to the ticket that owns attributes
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     * 
+     *
      */
     public function field()
     {
@@ -147,7 +152,7 @@ class Ticket extends Base
     /**
      * Ralationship guide
      * A ticket only has one guide
-     * 
+     *
      * Get the guide associated to the ticket that owns attributes
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -158,9 +163,9 @@ class Ticket extends Base
 
 
     /**
-     * Relationship client 
+     * Relationship client
      * A ticket only has client
-     * 
+     *
      * Get the clints associated to the ticket.
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -172,7 +177,7 @@ class Ticket extends Base
     /**
      * Relationship Active
      * A ticket only has associated to one personal
-     * 
+     *
      * Get the active associated to the ticket.
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -182,9 +187,9 @@ class Ticket extends Base
     }
 
     /**
-     * Relationship personal 
+     * Relationship personal
      * A ticket only has associated to one personal
-     * 
+     *
      * Get the personal associated to the ticket
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -194,13 +199,13 @@ class Ticket extends Base
     }
 
     /**
-     * Relationship activePersonalTicket. 
+     * Relationship activePersonalTicket.
      */
     public function activePersonalTickes()
     {
         return $this->hasMany(ActivePersonalTicket::class);
     }
-    
+
     /**
      * Relationship payment orden
      * Get the payment orden associated to the ticket

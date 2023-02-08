@@ -19,6 +19,7 @@ class CreateGuidesTable extends Migration
             $table->date('start_date');
             $table->date('deadline');
             $table->string('origin_address');
+            $table->string('act_number');
             $table->string('destination_address');
             $table->string('material');
             $table->float('weight');

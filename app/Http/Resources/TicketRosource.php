@@ -26,9 +26,10 @@ class TicketRosource extends JsonResource
             //     "id" => $this->field->id,
             //     "name" => $this->field->denomination
             // ],
+            "guide_id" => $this->guide_id,
             "guide" => [
-                'id' =>$this->guide->id,
-                "number_guide" => $this->id,
+                'id' =>$this->guide_id,
+                "number_guide" => $this->guide_id,
                 "driver" => $this->guide->driver
             ],
             "penalty" => $this->penalty,
@@ -45,8 +46,9 @@ class TicketRosource extends JsonResource
             "start_date" => $this->start_date,
             "final_date" => $this->final_date,
             // "checkweighing" => $this->checkweighing,
+            "client_id" =>$this->client_id,
             "client" => [
-                "id" =>$this->client->id ,
+                "id" =>$this->client_id,
                 "name" =>$this->client->name
             ],
             "created_at" => $this->created_at,

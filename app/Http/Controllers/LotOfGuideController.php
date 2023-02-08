@@ -96,6 +96,7 @@ class LotOfGuideController extends Controller
     public function index(Request $request)
     {
         $lotOfGuides = LotOfGuide::filters($request->all())
+            ->with('guides.guideOwner.ownerable', 'guides.guideOwner.responsable', 'guides.organization')
             ->search($request->all());
         return response()->json($lotOfGuides, 200);
     }

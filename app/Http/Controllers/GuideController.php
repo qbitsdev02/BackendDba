@@ -98,6 +98,10 @@ class GuideController extends Controller
     public function index(Request $request)
     {
         $guides = Guide::filters($request->all())
+            ->ifNotEstimate($request->ifNotEstimate)
+            ->ifNotTicket($request->ifNotTicket)
+            ->ifNotPrice($request->ifNotPrice)
+            ->ifNotTicket($request->ifNotTicket)
             ->search($request->all());
         return GuideResource::collection($guides);
     }
@@ -155,10 +159,12 @@ class GuideController extends Controller
         $guide->trailer_id = $request->trailer_id;
         $guide->start_date = $request->start_date;
         $guide->deadline = $request->deadline;
+        $guide->act_number = $request->act_number;
         $guide->origin_address = $request->origin_address;
         $guide->destination_address = $request->destination_address;
         $guide->material = $request->material;
         $guide->driver_id = $request->driver_id;
+        $guide->client_id = $request->client_id;
         $guide->user_created_id = $request->user_created_id;
         $guide->unit_of_measurement_id = $request->unit_of_measurement_id;
         $guide->weight = $request->weight;
@@ -283,6 +289,8 @@ class GuideController extends Controller
         $guide->serie_number = $request->serie_number;
         $guide->status = $request->status;
         $guide->driver_id = $request->driver_id;
+        $guide->act_number = $request->act_number;
+        $guide->client_id = $request->client_id;
         $guide->user_created_id = $request->user_created_id;
         $guide->unit_of_measurement_id = $request->unit_of_measurement_id;
         $guide->weight = $request->weight;

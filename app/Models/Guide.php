@@ -90,7 +90,7 @@ namespace App\Models;
  */
 class Guide extends Base
 {
-    protected $appends = ['full_name', 'payments_estimate'];
+    protected $appends = ['full_name', 'payments_estimate', 'cost_total_services', 'net_weight'];
 
     public function getFullNameAttribute()
     {
@@ -106,9 +106,40 @@ class Guide extends Base
     /**
      * Payment services
      */
-    public function getPaymentServicesAttribute()
+    public function getCostTotalServicesAttribute()
     {
-        return $this->guideServiceCosts->sum('cost');
+        return $this->guideServiceCosts->sum(function ($cost) {
+            return $cost->pivot->price * $this->net_weight;
+        });
+    }
+
+    public function scopeIfNotEstimate($query, $ifNotEstimate)
+    {
+        if ($ifNotEstimate) {
+            return $query->doesntHave('lotOfGuides');
+        }
+    }
+
+    public function scopeIfNotTicket($query, $ifNotTicket)
+    {
+        if ($ifNotTicket) {
+            return $query->doesntHave('ticket');
+        }
+    }
+
+    public function scopeIfNotPrice($query, $ifNotPrice)
+    {
+        if ($ifNotPrice) {
+            return $query->doesntHave('guideServiceCosts');
+        }
+    }
+
+    public function getNetWeightAttribute()
+    {
+        if ($this->ticket) {
+            return $this->ticket->net_weight;
+        }
+        return 0;
     }
     /**
      * Get the provider that owns the Guide
@@ -165,8 +196,6 @@ class Guide extends Base
     {
         return $this->belongsTo(UnitOfMeasurement::class);
     }
-
-
     /**
      * Relationship ticket
      * A guide has many ticket
@@ -174,11 +203,10 @@ class Guide extends Base
      * Get the ticket associated to the guide
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function tickets()
+    public function ticket()
     {
-        return $this->belongsTo(Ticket::class);
+        return $this->hasOne(Ticket::class);
     }
-
     /**
      *
      */
@@ -222,4 +250,13 @@ class Guide extends Base
     {
         return $this->hasOne(GuideOwner::class);
     }
+    /*
+    * Get all of the guides for the LotOfGuide
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+   public function lotOfGuides()
+   {
+       return $this->belongsToMany(LotOfGuide::class);
+   }
 }
