@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Guide;
+use App\Models\Organization;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,26 +16,23 @@ class GuideSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('guides')->insert(
-            [
-                [
-                    'serie_number'=>000014,
-                    'start_date'=>'25-08-2022',
-                    'deadline'=>'26-08-2022',
-                    'origin_address'=>'Guarico',
-                    'destination_address'=>'Guanta',
-                    'material'=>'tipo 1',
-                    'code_runpa'=>'00001',
-                    'weight'=>'10000',
-                    'status'=>'active',
-                    'organization_id'=>1,
-                    'unit_of_measurement_id'=>3,
-                    'vehicle_id'=>1,
-                    'trailer_id'=>1,
-                    'driver_id'=>1,
-                    'user_created_id'=>1,
-                ],
-            ]
-        );
+        $jsonFile = file_get_contents(app_path('Data/guias.json'));
+        $dataMaster = json_decode($jsonFile);
+        foreach($dataMaster as $data) {
+            $guide = new Guide();
+            $guide->created_at = $data['FECHA DE SOLICITUD'];
+            $guide->material = $data['MATERIAL'];
+            $guide->weight = $data['PESO'];
+            $guide->origin_address = $data['ORIGEN'];
+            $guide->destination_address = $data['DESTINO'];
+            $guide->start_date = $data['FECHA INICIO'];
+            $guide->deadline = $data['FECHA CIERRE'];
+            $guide->organization_id = $this->getOrganization($data['CODIGO_RUNPA'])->id;
+        }
+    }
+
+    public function getOrganization($code)
+    {
+        return Organization::where('code_runpa', $code)->first();
     }
 }
