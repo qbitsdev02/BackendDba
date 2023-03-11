@@ -22,10 +22,10 @@ use Illuminate\Database\Eloquent\Model;
  *       description="The Concept description"
  *   ),
  *   @OA\Property(
- *       property="concept_type_id",
+ *       property="concept_id",
  *       type="number",
  *       required={"true"},
- *       description="The Concept concept_type_id"
+ *       description="The Concept concept_id"
  *   ),
  *  @OA\Property(
  *       property="category_id",

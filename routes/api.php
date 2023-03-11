@@ -118,6 +118,7 @@ Route::group([
     $router->resource('payment-estimation-guides', PaymentEstimationGuideController::class);
     $router->resource('guide-owners', GuideOwnerController::class);
     $router->resource('lot-of-guides', LotOfGuideController::class);
+    $router->resource('chart-of-accounts', ChartOfAccountController::class);
 
     Route::group([
         'prefix' => 'master-sheets',

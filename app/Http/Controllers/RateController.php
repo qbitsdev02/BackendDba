@@ -18,7 +18,8 @@ class RateController extends Controller
      * You may make use of the (authorizeResource) method in your controller's constructor.
      * This method will attach the appropriate can middleware definitions to the resource controller's methods.
      */
-    public function __construct(){
+    public function __construct()
+    {
         $this->authorizeResource(Rate::class, 'rate');
     }
 

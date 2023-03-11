@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\OperationType;
-use App\Http\Requests\StoreOperationTypeRequest;
-use App\Http\Requests\UpdateOperationTypeRequest;
 use App\Models\PaymentMethod;
+use App\Http\Requests\StorePaymentMethodRequest;
+use App\Http\Requests\UpdatePaymentMethodRequest;
 use Illuminate\Http\Request;
 
 class PaymentMethodController extends Controller
@@ -86,7 +85,7 @@ class PaymentMethodController extends Controller
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Show OperationTypes all."
+     *         description="Show PaymentMethods all."
      *     ),
      *     @OA\Response(
      *         response="default",
@@ -103,7 +102,7 @@ class PaymentMethodController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreOperationTypeRequest  $request
+     * @param  \App\Http\Requests\StorePaymentMethodRequest  $request
      * @return \Illuminate\Http\Response
      * @OA\Post(
      *   path="/payment-methods",
@@ -120,7 +119,7 @@ class PaymentMethodController extends Controller
      *   @OA\Response(
      *       @OA\MediaType(mediaType="application/json"),
      *       response=200,
-     *       description="The OperationType resource created",
+     *       description="The PaymentMethod resource created",
      *   ),
      *   @OA\Response(
      *       @OA\MediaType(mediaType="application/json"),
@@ -134,20 +133,20 @@ class PaymentMethodController extends Controller
      *   )
      * )
      */
-    public function store(StoreOperationTypeRequest $request)
+    public function store(StorePaymentMethodRequest $request)
     {
-        $OperationType = new PaymentMethod();
-        $OperationType->name = $request->name;
-        $OperationType->description = $request->description;
-        $OperationType->user_created_id = $request->user_created_id;
-        $OperationType->save();
-        return response()->json($OperationType, 201);
+        $paymentMethod = new PaymentMethod();
+        $paymentMethod->name = $request->name;
+        $paymentMethod->description = $request->description;
+        $paymentMethod->user_created_id = $request->user_created_id;
+        $paymentMethod->save();
+        return response()->json($paymentMethod, 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\OperationType  $OperationType
+     * @param  \App\Models\PaymentMethod  $paymentMethod
      * @return \Illuminate\Http\Response
      * @OA\Get(
      *   path="/payment-methods/{id}",
@@ -183,17 +182,17 @@ class PaymentMethodController extends Controller
      *      )
      *   )
      */
-    public function show(PaymentMethod $OperationType)
+    public function show(PaymentMethod $paymentMethod)
     {
-        return response($OperationType, 200);
+        return response($paymentMethod, 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
      *
-     * @param  \App\Http\Requests\UpdateOperationTypeRequest  $request
-     * @param  \App\Models\OperationType  $OperationType
+     * @param  \App\Http\Requests\UpdatePaymentMethodRequest  $request
+     * @param  \App\Models\PaymentMethod  $paymentMethod
      * @return \Illuminate\Http\Response
      * @OA\Put(
      *  path="/payment-methods/{id}",
@@ -237,19 +236,19 @@ class PaymentMethodController extends Controller
      *   )
      * )
      */
-    public function update(UpdateOperationTypeRequest $request, PaymentMethod $OperationType)
+    public function update(UpdatePaymentMethodRequest $request, PaymentMethod $paymentMethod)
     {
-        $OperationType->name = $request->name;
-        $OperationType->description = $request->description;
-        $OperationType->user_created_id = $request->user_created_id;
-        $OperationType->update();
-        return response()->json($OperationType, 201);
+        $paymentMethod->name = $request->name;
+        $paymentMethod->description = $request->description;
+        $paymentMethod->user_created_id = $request->user_created_id;
+        $paymentMethod->update();
+        return response()->json($paymentMethod, 201);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\OperationType  $PaymentMethod
+     * @param  \App\Models\PaymentMethod  $paymentMethod
      * @return \Illuminate\Http\Response
      * @OA\Delete(
      *  path="/payment-methods/{id}",
@@ -285,9 +284,9 @@ class PaymentMethodController extends Controller
      *  )
      * )
      */
-    public function destroy(PaymentMethod $OperationType)
+    public function destroy(PaymentMethod $paymentMethod)
     {
-        $OperationType->delete();
+        $paymentMethod->delete();
         return response('the data was deleted successfully', 200);
     }
 }

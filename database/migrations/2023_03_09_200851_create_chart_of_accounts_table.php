@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateConceptTypesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,19 @@ class CreateConceptTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('concept_types', function (Blueprint $table) {
+        Schema::create('chart_of_accounts', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->foreignId('chart_of_account_id')
+                ->nullable()
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->foreignId('user_created_id')->constrained('users');
-            $table->foreignId('user_updated_id')->nullable()->constrained('users');
-            $table->timestamps();
+            $table->foreignId('user_update_id')->nullable()->constrained('users');
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 
@@ -31,6 +36,6 @@ class CreateConceptTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('concept_types');
+        Schema::dropIfExists('chart_of_accounts');
     }
-}
+};
