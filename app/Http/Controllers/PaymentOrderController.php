@@ -163,12 +163,12 @@ class PaymentOrderController extends Controller
         $payment_order->status = $request->status;
         $payment_order->amount = $request->amount;
         $payment_order->payment_method_id = $request->payment_method_id;
-        $payment_order->organization_id = $request->organization_id;
+        $payment_order->organization_id = 1;
         $payment_order->country_id = $request->country_id;
         $payment_order->concept_id = $request->concept_id;
         $payment_order->ownerable_id = $request->ownerable_id;
         $payment_order->ownerable_type = $request->ownerable_type;
-        $payment_order->branch_office_id = $request->branch_office_id;
+        $payment_order->branch_office_id = 1;
         $payment_order->coin_id = $request->coin_id;
         $payment_order->payment_date = $request->payment_date;
         $payment_order->user_created_id = $request->user_created_id;
@@ -262,7 +262,7 @@ class PaymentOrderController extends Controller
         $payment_order->branch_office_id = $request->branch_office_id;
         $payment_order->coin_id = $request->coin_id;
         $payment_order->payment_date = $request->payment_date;
-        $payment_order->user_created_id = $request->user_created_id;
+        $payment_order->user_updated_id = $request->user_updated_id;
 
         $payment_order->update();
 
