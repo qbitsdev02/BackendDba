@@ -28,24 +28,17 @@ class PaymentOrderResource extends JsonResource
             'payment_method_id' => $this->payment_method_id,
             'concept_id' => $this->concept_id,
             'branch_office_id' => $this->branch_office_id,
+            'organization_id' => $this->organization_id,
             'coin_id' => $this->coin_id,
-            'operation_type' => [
-                'id' => $this->operationType->id,
-                'name' => $this->operationType->name,
-            ],
             'concept' => [
                 'id' => $this->concept->id,
                 'name' => $this->concept->name,
-            ],
-            'entity' => [
-                'id' => $this->entity->id,
-                'name' => $this->entity->name,
             ],
             'coin' => [
                 'id' => $this->coin->id,
                 'name' => $this->coin->name,
                 'symbol' => $this->coin->symbol
-            ],
+            ]
         ];
     }
 }
