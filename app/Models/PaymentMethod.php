@@ -39,7 +39,7 @@ class  PaymentMethod extends Base
     /**
      * Relationship payment order
      * Get the operations order associated to the operation type
-     * @return \Illuminate\Database\Eloquent\Relations\hasMany 
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
      */
     public function operationOrders()
     {
@@ -54,5 +54,17 @@ class  PaymentMethod extends Base
     public function services()
     {
         return $this->hasMany(Service::class);
+    }
+
+
+    public function paymentOrders()
+    {
+        return $this->belongsToMany(PaymentOrder::class, 'payment_order_payment_method', 'payment_method_id', 'payment_order_id');
+    }
+
+
+    public function attributes()
+    {
+        return $this->hasMany(PaymentMethodAttribute::class);
     }
 }

@@ -160,4 +160,10 @@ class PaymentOrder extends Base
     {
         return $this->amount - $this->transactions->sum('amount');
     }
+
+
+    public function paymentMethods()
+    {
+        return $this->belongsToMany(PaymentMethod::class, 'payment_order_payment_method', 'payment_order_id', 'payment_method_id');
+    }
 }
