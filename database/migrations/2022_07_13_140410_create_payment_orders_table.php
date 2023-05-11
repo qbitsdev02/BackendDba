@@ -18,7 +18,7 @@ class CreatePaymentOrdersTable extends Migration
             $table->string('description')->nullable();
             $table->enum('status', ['pending_approval', 'approved', 'canceled'])->default('pending_approval');
             $table->float('amount');
-            $table->foreignId('payment_method_id')->constrained('payment_methods');
+            $table->foreignId('payment_method_id')->nullable()->constrained('payment_methods');
             $table->foreignId('organization_id')->constrained();
             $table->morphs('ownerable');
             $table->foreignId('branch_office_id')->constrained();

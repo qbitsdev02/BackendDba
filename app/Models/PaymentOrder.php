@@ -166,4 +166,12 @@ class PaymentOrder extends Base
     {
         return $this->belongsToMany(PaymentMethod::class, 'payment_order_payment_method', 'payment_order_id', 'payment_method_id');
     }
+
+
+    public function paymentMethodAttributes()
+    {
+        return $this->belongsToMany(PaymentMethodAttribute::class)
+            ->withPivot('value')
+            ->withTimestamps();
+    }
 }

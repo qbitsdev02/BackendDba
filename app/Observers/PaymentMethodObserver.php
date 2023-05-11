@@ -14,9 +14,7 @@ class PaymentMethodObserver
      */
     public function created(PaymentMethod $paymentMethod)
     {
-        info(request()->all());
         collect(request()['attributes'])->each(function ($attribute) use ($paymentMethod) {
-            info($attribute);
             $paymentMethod->attributes()->create(
                 $attribute,
             );

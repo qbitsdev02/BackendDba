@@ -10,4 +10,11 @@ class PaymentMethodAttribute extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function paymentOrders()
+    {
+        return $this->belongsToMany(PaymentOrder::class)
+            ->withPivot('value')
+            ->withTimestamps();
+    }
 }
