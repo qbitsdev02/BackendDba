@@ -110,6 +110,7 @@ class PaymentOrderController extends Controller
     {
 
         $payment_order = PaymentOrder::filters($request->all())
+            ->morphSearch($request->all())
             ->search($request->all());
 
         return (PaymentOrderResource::collection($payment_order))->additional(

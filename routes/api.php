@@ -18,6 +18,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PaymentEstimationGuideController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\PaymentOrderController;
+use App\Http\Controllers\PaymentOrderReportController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\PortController;
 use App\Http\Controllers\ProviderController;
@@ -142,4 +143,10 @@ Route::group([
     $router->get('document-number', [ApiTercerosController::class, 'getDocumentNumber'])->name('getDocumentNumber');
     $router->resource('cash-flows', CashFlowController::class);
     $router->resource('master-sheets', MasterSheetController::class);
+
+    Route::group([
+        'prefix' => 'reports',
+    ], function ($router) {
+        $router->get('get-total-for-status', [PaymentOrderReportController::class, 'getTotalForStatus'])->name('getTotalForStatus');
+    });
 });
