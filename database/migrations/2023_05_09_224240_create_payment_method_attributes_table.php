@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('payment_method_attributes', function (Blueprint $table) {
             $table->id();
             $table->string('attribute_name');
-            $table->text('attribute_value');
             $table->foreignId('payment_method_id')->constrained('payment_methods');
             $table->timestamps();
             $table->softDeletes();

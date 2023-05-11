@@ -95,7 +95,9 @@ class PaymentMethodController extends Controller
      */
     public function index(Request $request)
     {
-        $operationType = PaymentMethod::filters($request->all())->search($request->all());
+        $operationType = PaymentMethod::with('attributes')
+            ->filters($request->all())
+            ->search($request->all());
         return response()->json($operationType, 200);
     }
 

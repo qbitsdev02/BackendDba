@@ -10,6 +10,7 @@ use App\Models\FieldSupervisor;
 use App\Models\Guide;
 use App\Models\LotOfGuide;
 use App\Models\Order;
+use App\Models\PaymentMethod;
 use App\Models\Personal;
 use App\Models\Provider;
 use App\Models\Rate;
@@ -27,6 +28,7 @@ use App\Observers\FieldSupervisorObserver;
 use App\Observers\GuideObserver;
 use App\Observers\LotOfGuideObserver;
 use App\Observers\OrderObserver;
+use App\Observers\PaymentMethodObserver;
 use App\Observers\PersonalObserver;
 use App\Observers\ProviderObserver;
 use App\Observers\RateObserver;
@@ -70,5 +72,6 @@ class AppServiceProvider extends ServiceProvider
         Personal::observe(PersonalObserver::class);
         Guide::observe(GuideObserver::class);
         LotOfGuide::observe(LotOfGuideObserver::class);
+        PaymentMethod::observe(PaymentMethodObserver::class);
     }
 }
