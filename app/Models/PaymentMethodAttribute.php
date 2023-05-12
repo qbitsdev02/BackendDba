@@ -17,4 +17,14 @@ class PaymentMethodAttribute extends Model
             ->withPivot('value')
             ->withTimestamps();
     }
+
+    /**
+     * Get the  that owns the PaymentMethodAttribute
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function paymentMethod()
+    {
+        return $this->belongsTo(PaymentMethod::class);
+    }
 }
