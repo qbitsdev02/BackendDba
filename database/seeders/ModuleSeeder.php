@@ -411,6 +411,24 @@ class ModuleSeeder extends Seeder
                     'section_id' => 1,
                     'devices' => '["mobile", "desktop"]',
                     'user_created_id' => 1
+                ],
+                //45
+                [
+                    'name' => 'list-order-payments',
+                    'icon' => 'checklist',
+                    'route' => 'ListOrderPayment',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
+                ],
+                //46
+                [
+                    'name' => 'approved-order-payments',
+                    'icon' => 'checklist',
+                    'route' => 'ApprovedOrderPayment',
+                    'section_id' => 1,
+                    'devices' => '["mobile", "desktop"]',
+                    'user_created_id' => 1
                 ]
             ]);
     }
