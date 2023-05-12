@@ -4,16 +4,6 @@ namespace App\Models;
 
 class ChartOfAccount extends Base
 {
-    public static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($chartOfAccount) {
-            $parent = $chartOfAccount->parent;
-            $max = $parent->children()->max('code') ?: $parent->code;
-            $chartOfAccount->code = $max + 1;
-        });
-    }
     public function parent()
     {
         return $this->belongsTo(ChartOfAccount::class);
@@ -21,7 +11,9 @@ class ChartOfAccount extends Base
 
     public function children()
     {
-        return $this->hasMany(ChartOfAccount::class);
+        return $this->hasMany(ChartOfAccount::class)
+            ->with('children')
+            ->orderBy('code', 'asc');
     }
 
     public function scopeRoots($query)

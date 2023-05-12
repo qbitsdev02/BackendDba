@@ -44,6 +44,7 @@ class ChartOfAccountController extends Controller
     public function store(StoreChartOfAccountRequest $request)
     {
         $chartOfAccount = new ChartOfAccount();
+        $chartOfAccount->code = $request->code;
         $chartOfAccount->name = $request->name;
         $chartOfAccount->chart_of_account_id = $request->chart_of_account_id;
         $chartOfAccount->user_created_id = $request->user_created_id;
