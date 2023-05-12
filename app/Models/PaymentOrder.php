@@ -174,4 +174,15 @@ class PaymentOrder extends Base
             ->withPivot('value')
             ->withTimestamps();
     }
+
+
+    /**
+     * Get the bank t the PaymentOrder
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function bank()
+    {
+        return $this->belongsTo(Bank::class);
+    }
 }

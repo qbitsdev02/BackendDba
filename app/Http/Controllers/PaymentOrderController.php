@@ -109,7 +109,8 @@ class PaymentOrderController extends Controller
     public function index(Request $request)
     {
 
-        $payment_order = PaymentOrder::filters($request->all())
+        $payment_order = PaymentOrder::with('paymentMethodAttributes.paymentMethod,bank')
+            ->filters($request->all())
             ->search($request->all());
 
         return (PaymentOrderResource::collection($payment_order))->additional(
@@ -171,6 +172,8 @@ class PaymentOrderController extends Controller
         $payment_order->branch_office_id = 1;
         $payment_order->coin_id = $request->coin_id;
         $payment_order->payment_date = $request->payment_date;
+        $payment_order->bank_reference = $request->bank_reference;
+        $payment_order->bank_id = $request->bank_id;
         $payment_order->user_created_id = $request->user_created_id;
 
         $payment_order->save();

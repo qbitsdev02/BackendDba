@@ -38,7 +38,8 @@ class PaymentOrderResource extends JsonResource
                 'id' => $this->coin->id,
                 'name' => $this->coin->name,
                 'symbol' => $this->coin->symbol
-            ]
+            ],
+            'payment_method_attributes' => $this->paymentMethodAttributes
         ];
     }
 }
