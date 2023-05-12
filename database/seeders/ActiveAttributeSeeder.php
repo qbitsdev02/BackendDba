@@ -20,19 +20,16 @@ class ActiveAttributeSeeder extends Seeder
                 [
                     'active_id'=> 1,
                     'attribute_id'=> 1,
-                    'valor'=>'negro',
                     'user_created_id'=> 1,
                 ],
                 [
                     'active_id'=> 1,
                     'attribute_id'=> 2,
-                    'valor'=>'Ford',
                     'user_created_id'=> 1,
                 ],
                 [
                     'active_id'=> 1,
                     'attribute_id'=> 3,
-                    'valor'=>'F50',
                     'user_created_id'=> 1,
                 ],
             ]
