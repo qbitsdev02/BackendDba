@@ -109,7 +109,7 @@ class PaymentOrderController extends Controller
     public function index(Request $request)
     {
 
-        $payment_order = PaymentOrder::with('paymentMethodAttributes.paymentMethod,bank')
+        $payment_order = PaymentOrder::with('paymentMethodAttributes.paymentMethod', 'bank')
             ->filters($request->all())
             ->morphSearch($request->all())
             ->search($request->all());
