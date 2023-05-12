@@ -26,7 +26,6 @@ class ConceptTypeSeeder extends Seeder
                     [
                         'name' => $egressType->concept_type_id,
                         'description' => $egressType->concept_type_id,
-                        'category_id' => Category::where('name', $egressType->category_id)->first()->id,
                         'user_created_id' => 1,
                     ]
                 );
