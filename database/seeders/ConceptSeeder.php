@@ -25,6 +25,7 @@ class ConceptSeeder extends Seeder
                 $conceptTypeModel = new Concept();
                 $conceptTypeModel->name = $egressType->concept_id;
                 $conceptTypeModel->description = $egressType->concept_id;
+                $conceptTypeModel->concept_type_id = ConceptType::where('name', $egressType->concept_type_id)->first()->id;
                 $conceptTypeModel->user_created_id = 1;
                 $conceptTypeModel->save();
             }
