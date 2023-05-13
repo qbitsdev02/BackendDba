@@ -14,10 +14,10 @@ class CoinController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->authorizeResource(Coin::class, 'coin');
-    }
+    // public function __construct()
+    // {
+    //     $this->authorizeResource(Coin::class, 'coin');
+    // }
 
     /**
       * Display a listing of the resource.
