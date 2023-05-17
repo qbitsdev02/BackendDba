@@ -1,0 +1,1081 @@
+[
+ {
+  "Code": "1",
+  "Partida": "Activos"
+ },
+ {
+  "Code": "1.1",
+  "Partida": "Activos",
+  "TipodePartida": "Anticipo a proveedor"
+ },
+ {
+  "Code": "1.1.1",
+  "Partida": "Activos",
+  "TipodePartida": "Anticipo a proveedor",
+  "Concepto": "Anticipo a proveedor de flete"
+ },
+ {
+  "Code": "1.2",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar - Corpoez"
+ },
+ {
+  "Code": "1.2.1",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar - Corpoez",
+  "Concepto": "Alquiler de inmueble"
+ },
+ {
+  "Code": "1.2.2",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar - Corpoez",
+  "Concepto": "Apoyo Institucional GNB"
+ },
+ {
+  "Code": "1.2.3",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar - Corpoez",
+  "Concepto": "Apoyo al personal"
+ },
+ {
+  "Code": "1.2.4",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar - Corpoez",
+  "Concepto": "Apoyo institucional Alcadía de Caracas"
+ },
+ {
+  "Code": "1.2.5",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar - Corpoez",
+  "Concepto": "Apoyo institucional GNB"
+ },
+ {
+  "Code": "1.2.6",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar - Corpoez",
+  "Concepto": "Apoyo institucional Gobernación del Estado Anzoátegui"
+ },
+ {
+  "Code": "1.2.7",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar - Corpoez",
+  "Concepto": "Apoyo institucional PNB"
+ },
+ {
+  "Code": "1.2.8",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar - Corpoez",
+  "Concepto": "Apoyo institucional REDI Oriental"
+ },
+ {
+  "Code": "1.2.9",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar - Corpoez",
+  "Concepto": "Cuentas por cobrar - Corpoez"
+ },
+ {
+  "Code": "1.2.10",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar - Corpoez",
+  "Concepto": "Eventos"
+ },
+ {
+  "Code": "1.2.11",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar - Corpoez",
+  "Concepto": "Gestión Social"
+ },
+ {
+  "Code": "1.2.12",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar - Corpoez",
+  "Concepto": "Logística"
+ },
+ {
+  "Code": "1.2.13",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar - Corpoez",
+  "Concepto": "Mantenimiento de vehículos"
+ },
+ {
+  "Code": "1.2.14",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar - Corpoez",
+  "Concepto": "Material de oficina"
+ },
+ {
+  "Code": "1.2.15",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar - Corpoez",
+  "Concepto": "Nómina inspectores"
+ },
+ {
+  "Code": "1.2.16",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar - Corpoez",
+  "Concepto": "Patrocinio de actividades sociales"
+ },
+ {
+  "Code": "1.2.17",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar - Corpoez",
+  "Concepto": "Propiedad planta y equipos"
+ },
+ {
+  "Code": "1.2.18",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar - Corpoez",
+  "Concepto": "Servicio de comida"
+ },
+ {
+  "Code": "1.3",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar Persona Natural"
+ },
+ {
+  "Code": "1.3.1",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar Persona Natural",
+  "Concepto": "Banco-Oficina"
+ },
+ {
+  "Code": "1.3.2",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar Persona Natural",
+  "Concepto": "Préstamo persona natural"
+ },
+ {
+  "Code": "1.3.3",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar Persona Natural",
+  "Concepto": "Préstamo persona natural - Diferencias"
+ },
+ {
+  "Code": "1.3.4",
+  "Partida": "Activos",
+  "TipodePartida": "Cuentas por cobrar Persona Natural",
+  "Concepto": "TDC-Oficina"
+ },
+ {
+  "Code": "1.4",
+  "Partida": "Activos",
+  "TipodePartida": "Ingreso por cambio de divisa"
+ },
+ {
+  "Code": "1.4.1",
+  "Partida": "Activos",
+  "TipodePartida": "Ingreso por cambio de divisa",
+  "Concepto": "Material de oficina"
+ },
+ {
+  "Code": "1.5",
+  "Partida": "Activos",
+  "TipodePartida": "Inversiones"
+ },
+ {
+  "Code": "1.5.1",
+  "Partida": "Activos",
+  "TipodePartida": "Inversiones",
+  "Concepto": "Qbits Inc"
+ },
+ {
+  "Code": "1.5.2",
+  "Partida": "Activos",
+  "TipodePartida": "Inversiones",
+  "Concepto": "Restaurante Hera"
+ },
+ {
+  "Code": "1.6",
+  "Partida": "Activos",
+  "TipodePartida": "Otras cuentas por cobrar Persona Jurídica"
+ },
+ {
+  "Code": "1.6.1",
+  "Partida": "Activos",
+  "TipodePartida": "Otras cuentas por cobrar Persona Jurídica",
+  "Concepto": "Préstamo persona jurídica"
+ },
+ {
+  "Code": "1.7",
+  "Partida": "Activos",
+  "TipodePartida": "Propiedad planta y equipo"
+ },
+ {
+  "Code": "1.7.1",
+  "Partida": "Activos",
+  "TipodePartida": "Propiedad planta y equipo",
+  "Concepto": "Mejoras a la propiedad arrendada"
+ },
+ {
+  "Code": "2",
+  "Partida": "Anticipo utilidad socio"
+ },
+ {
+  "Code": "2.1",
+  "Partida": "Anticipo utilidad socio",
+  "TipodePartida": "HG"
+ },
+ {
+  "Code": "2.1.1",
+  "Partida": "Anticipo utilidad socio",
+  "TipodePartida": "HG",
+  "Concepto": "Anticipo socio Henry González"
+ },
+ {
+  "Code": "2.1.2",
+  "Partida": "Anticipo utilidad socio",
+  "TipodePartida": "HG",
+  "Concepto": "Bono de producción personal de seguridad"
+ },
+ {
+  "Code": "2.1.3",
+  "Partida": "Anticipo utilidad socio",
+  "TipodePartida": "HG",
+  "Concepto": "Personal de seguridad"
+ },
+ {
+  "Code": "2.2",
+  "Partida": "Anticipo utilidad socio",
+  "TipodePartida": "Ingreso por cambio de divisa"
+ },
+ {
+  "Code": "2.2.1",
+  "Partida": "Anticipo utilidad socio",
+  "TipodePartida": "Ingreso por cambio de divisa",
+  "Concepto": "Anticipo socio Samiel Altuve"
+ },
+ {
+  "Code": "2.3",
+  "Partida": "Anticipo utilidad socio",
+  "TipodePartida": "SA"
+ },
+ {
+  "Code": "2.3.1",
+  "Partida": "Anticipo utilidad socio",
+  "TipodePartida": "SA",
+  "Concepto": "Anticipo socio Samiel Altuve"
+ },
+ {
+  "Code": "3",
+  "Partida": "Costos"
+ },
+ {
+  "Code": "3.1",
+  "Partida": "Costos",
+  "TipodePartida": "Material Ferroso"
+ },
+ {
+  "Code": "3.1.1",
+  "Partida": "Costos",
+  "TipodePartida": "Material Ferroso",
+  "Concepto": "Adecuación de material"
+ },
+ {
+  "Code": "3.1.2",
+  "Partida": "Costos",
+  "TipodePartida": "Material Ferroso",
+  "Concepto": "Arancel municipal"
+ },
+ {
+  "Code": "3.1.3",
+  "Partida": "Costos",
+  "TipodePartida": "Material Ferroso",
+  "Concepto": "CJ-N"
+ },
+ {
+  "Code": "3.1.4",
+  "Partida": "Costos",
+  "TipodePartida": "Material Ferroso",
+  "Concepto": "CTD"
+ },
+ {
+  "Code": "3.1.5",
+  "Partida": "Costos",
+  "TipodePartida": "Material Ferroso",
+  "Concepto": "Carga de material"
+ },
+ {
+  "Code": "3.1.6",
+  "Partida": "Costos",
+  "TipodePartida": "Material Ferroso",
+  "Concepto": "Confrontación GNB Guanta"
+ },
+ {
+  "Code": "3.1.7",
+  "Partida": "Costos",
+  "TipodePartida": "Material Ferroso",
+  "Concepto": "Corpoez"
+ },
+ {
+  "Code": "3.1.8",
+  "Partida": "Costos",
+  "TipodePartida": "Material Ferroso",
+  "Concepto": "DSI"
+ },
+ {
+  "Code": "3.1.9",
+  "Partida": "Costos",
+  "TipodePartida": "Material Ferroso",
+  "Concepto": "Pesaje en romana"
+ },
+ {
+  "Code": "3.1.10",
+  "Partida": "Costos",
+  "TipodePartida": "Material Ferroso",
+  "Concepto": "Proveedor de Material"
+ },
+ {
+  "Code": "3.1.11",
+  "Partida": "Costos",
+  "TipodePartida": "Material Ferroso",
+  "Concepto": "Proveedor de flete"
+ },
+ {
+  "Code": "3.1.12",
+  "Partida": "Costos",
+  "TipodePartida": "Material Ferroso",
+  "Concepto": "Proveedor de material"
+ },
+ {
+  "Code": "3.1.13",
+  "Partida": "Costos",
+  "TipodePartida": "Material Ferroso",
+  "Concepto": "Seguridad"
+ },
+ {
+  "Code": "3.1.14",
+  "Partida": "Costos",
+  "TipodePartida": "Material Ferroso",
+  "Concepto": "Servicios logístico en puerto de Guanta"
+ },
+ {
+  "Code": "3.1.15",
+  "Partida": "Costos",
+  "TipodePartida": "Material Ferroso",
+  "Concepto": "seguridad"
+ },
+ {
+  "Code": "3.1.16",
+  "Partida": "Costos",
+  "TipodePartida": "Material No Ferroso",
+  "Concepto": "Proveedor de flete"
+ },
+ {
+  "Code": "3.2",
+  "Partida": "Costos",
+  "TipodePartida": "Material No Ferroso"
+ },
+ {
+  "Code": "3.2.1",
+  "Partida": "Costos",
+  "TipodePartida": "Material No Ferroso",
+  "Concepto": "Viáticos"
+ },
+ {
+  "Code": "4",
+  "Partida": "Donaciones"
+ },
+ {
+  "Code": "4.1",
+  "Partida": "Donaciones",
+  "TipodePartida": "Apoyo individual"
+ },
+ {
+  "Code": "4.1.1",
+  "Partida": "Donaciones",
+  "TipodePartida": "Apoyo individual",
+  "Concepto": "Personal CICPC"
+ },
+ {
+  "Code": "4.1.2",
+  "Partida": "Donaciones",
+  "TipodePartida": "Apoyo individual",
+  "Concepto": "Personal FANB"
+ },
+ {
+  "Code": "4.1.3",
+  "Partida": "Donaciones",
+  "TipodePartida": "Apoyo individual",
+  "Concepto": "Personal PDVSA"
+ },
+ {
+  "Code": "4.2",
+  "Partida": "Donaciones",
+  "TipodePartida": "Apoyo institucional"
+ },
+ {
+  "Code": "4.2.1",
+  "Partida": "Donaciones",
+  "TipodePartida": "Apoyo institucional",
+  "Concepto": "Alcaldía del Municipio Freites"
+ },
+ {
+  "Code": "4.2.2",
+  "Partida": "Donaciones",
+  "TipodePartida": "Apoyo institucional",
+  "Concepto": "Apoyo Institucional GNB"
+ },
+ {
+  "Code": "4.2.3",
+  "Partida": "Donaciones",
+  "TipodePartida": "Apoyo institucional",
+  "Concepto": "CICPC"
+ },
+ {
+  "Code": "4.2.4",
+  "Partida": "Donaciones",
+  "TipodePartida": "Apoyo institucional",
+  "Concepto": "DGCIM"
+ },
+ {
+  "Code": "4.2.5",
+  "Partida": "Donaciones",
+  "TipodePartida": "Apoyo institucional",
+  "Concepto": "GNB"
+ },
+ {
+  "Code": "4.2.6",
+  "Partida": "Donaciones",
+  "TipodePartida": "Apoyo institucional",
+  "Concepto": "Gobernación del Estado Anzoátegui"
+ },
+ {
+  "Code": "4.2.7",
+  "Partida": "Donaciones",
+  "TipodePartida": "Apoyo institucional",
+  "Concepto": "PDVSA"
+ },
+ {
+  "Code": "4.2.8",
+  "Partida": "Donaciones",
+  "TipodePartida": "Apoyo institucional",
+  "Concepto": "PNB"
+ },
+ {
+  "Code": "4.2.9",
+  "Partida": "Donaciones",
+  "TipodePartida": "Apoyo institucional",
+  "Concepto": "SEBIN"
+ },
+ {
+  "Code": "5",
+  "Partida": "Gastos Administrativos"
+ },
+ {
+  "Code": "5.1",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Adecuación de planta física"
+ },
+ {
+  "Code": "5.1.1",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Adecuación de planta física",
+  "Concepto": "Adecuación Oficina LEC"
+ },
+ {
+  "Code": "5.2",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Comisión por cambio de divisa"
+ },
+ {
+  "Code": "5.2.1",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Comisión por cambio de divisa",
+  "Concepto": "Comisión por cambio de divisa"
+ },
+ {
+  "Code": "5.3",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Egreso no reportado"
+ },
+ {
+  "Code": "5.3.1",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Egreso no reportado",
+  "Concepto": "Egreso no reportado"
+ },
+ {
+  "Code": "5.4",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Gastos Asignaciones"
+ },
+ {
+  "Code": "5.4.1",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Gastos Asignaciones",
+  "Concepto": "Material de oficina"
+ },
+ {
+  "Code": "5.5",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Gastos de representación"
+ },
+ {
+  "Code": "5.5.1",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Gastos de representación",
+  "Concepto": "Gastos de representación"
+ },
+ {
+  "Code": "5.6",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Impuestos"
+ },
+ {
+  "Code": "5.6.1",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Impuestos",
+  "Concepto": "Multas y sanciones"
+ },
+ {
+  "Code": "5.7",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Mobiliario y equipamiento"
+ },
+ {
+  "Code": "5.7.1",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Mobiliario y equipamiento",
+  "Concepto": "Mobiliario y equipamiento"
+ },
+ {
+  "Code": "5.8",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Nómina de la organización"
+ },
+ {
+  "Code": "5.8.1",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Nómina de la organización",
+  "Concepto": "Anticipo personal operacional"
+ },
+ {
+  "Code": "5.8.2",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Nómina de la organización",
+  "Concepto": "Bono de fin de año"
+ },
+ {
+  "Code": "5.8.3",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Nómina de la organización",
+  "Concepto": "Bono de navidad"
+ },
+ {
+  "Code": "5.8.4",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Nómina de la organización",
+  "Concepto": "Bono de producción"
+ },
+ {
+  "Code": "5.8.5",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Nómina de la organización",
+  "Concepto": "Bono de producción personal administrativo"
+ },
+ {
+  "Code": "5.8.6",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Nómina de la organización",
+  "Concepto": "Personal administrativo"
+ },
+ {
+  "Code": "5.8.7",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Nómina de la organización",
+  "Concepto": "Personal de mantenimiento"
+ },
+ {
+  "Code": "5.8.8",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Nómina de la organización",
+  "Concepto": "Personal de seguridad"
+ },
+ {
+  "Code": "5.8.9",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Nómina de la organización",
+  "Concepto": "Personal operacional"
+ },
+ {
+  "Code": "5.9",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Oficina"
+ },
+ {
+  "Code": "5.9.1",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Oficina",
+  "Concepto": "Accesorios y dispositivos periféricos oficina LEC"
+ },
+ {
+  "Code": "5.9.2",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Oficina",
+  "Concepto": "Adecuación de planta física"
+ },
+ {
+  "Code": "5.9.3",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Oficina",
+  "Concepto": "Alimentos y bebidas oficina LEC"
+ },
+ {
+  "Code": "5.9.4",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Oficina",
+  "Concepto": "Alquiler oficina LEC"
+ },
+ {
+  "Code": "5.9.5",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Oficina",
+  "Concepto": "Condominio oficina LEC"
+ },
+ {
+  "Code": "5.9.6",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Oficina",
+  "Concepto": "Internet oficina LEC"
+ },
+ {
+  "Code": "5.9.7",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Oficina",
+  "Concepto": "Mantenimiento oficina LEC"
+ },
+ {
+  "Code": "5.9.8",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Oficina",
+  "Concepto": "Material de oficina LEC"
+ },
+ {
+  "Code": "5.9.9",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Oficina",
+  "Concepto": "Mobiliario "
+ },
+ {
+  "Code": "5.9.10",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Oficina",
+  "Concepto": "Productos de higiene oficina LEC"
+ },
+ {
+  "Code": "5.9.11",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Oficina",
+  "Concepto": "Productos de limpieza oficina LEC"
+ },
+ {
+  "Code": "5.9.12",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Oficina",
+  "Concepto": "Servicio de encomiendas oficina LEC"
+ },
+ {
+  "Code": "5.9.13",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Oficina",
+  "Concepto": "Traslado Personal Externo"
+ },
+ {
+  "Code": "5.10",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Servicio de comida"
+ },
+ {
+  "Code": "5.10.1",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Servicio de comida",
+  "Concepto": "Serviciio de comida"
+ },
+ {
+  "Code": "5.10.2",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Servicio de comida",
+  "Concepto": "Servicio de comida"
+ },
+ {
+  "Code": "5.11",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Servicios profesionales"
+ },
+ {
+  "Code": "5.11.1",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Servicios profesionales",
+  "Concepto": "Consultoría contable"
+ },
+ {
+  "Code": "5.11.2",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Servicios profesionales",
+  "Concepto": "Consultoría en SIHO"
+ },
+ {
+  "Code": "5.11.3",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Servicios profesionales",
+  "Concepto": "Consultoría jurídica"
+ },
+ {
+  "Code": "5.11.4",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Servicios profesionales",
+  "Concepto": "Desarrollador de software"
+ },
+
+ {
+  "Code": "5.12",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Nómina de la organización"
+ },
+ {
+  "Code": "5.12.1",
+  "Partida": "Gastos Administrativos",
+  "TipodePartida": "Nómina de la organización",
+  "Concepto": "Personal administrativo"
+ },
+ {
+  "Code": "6",
+  "Partida": "Gastos Operacionales"
+ },
+ {
+  "Code": "6.1",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Alquiler de Inmueble"
+ },
+ {
+  "Code": "6.1.1",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Alquiler de Inmueble",
+  "Concepto": "Casa de Anaco"
+ },
+ {
+  "Code": "6.1.2",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Alquiler de Inmueble",
+  "Concepto": "Casa de El Tigre"
+ },
+ {
+  "Code": "6.2",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Dotaciones del personal"
+ },
+ {
+  "Code": "6.2.1",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Dotaciones del personal",
+  "Concepto": "Suministro de EPP"
+ },
+ {
+  "Code": "6.2.2",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Logística"
+ },
+ {
+  "Code": "6.2.3",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Logística",
+  "Concepto": "Personal de la organización"
+ },
+ {
+  "Code": "6.2.4",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Logística",
+  "Concepto": "Personal externo"
+ },
+ {
+  "Code": "6.3",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Mantenimiento de equipos de carga"
+ },
+ {
+  "Code": "6.3.1",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Mantenimiento de equipos de carga",
+  "Concepto": "Mantenimiento de equipos de carga"
+ },
+ {
+  "Code": "6.3.2",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Mantenimiento de flota de Vehículos",
+  "Concepto": "Lavado de vehículo"
+ },
+ {
+  "Code": "6.3.3",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Mantenimiento de flota de Vehículos",
+  "Concepto": "Mantenimiento y reparación"
+ },
+ {
+  "Code": "6.3.4",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Mantenimiento de flota de Vehículos",
+  "Concepto": "Recarga de combustible"
+ },
+ {
+  "Code": "6.4",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Mobiliario y equipamiento"
+ },
+ {
+  "Code": "6.4.1",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Mobiliario y equipamiento",
+  "Concepto": "Mobiliario y equipamiento"
+ },
+ {
+  "Code": "6.5",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Patios en Guanta"
+ },
+ {
+  "Code": "6.5.1",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Patios en Guanta",
+  "Concepto": "Herramientas"
+ },
+ {
+  "Code": "6.5.2",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Patios en Guanta",
+  "Concepto": "Insumos de serguridad"
+ },
+ {
+  "Code": "6.6",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Servicio de comida"
+ },
+ {
+  "Code": "6.6.1",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Servicio de comida",
+  "Concepto": "Pago de servicio comida personal administrativo"
+ },
+ {
+  "Code": "6.6.2",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Servicio de comida",
+  "Concepto": "Pago de servicio comida personal externo"
+ },
+ {
+  "Code": "6.6.3",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Servicio de comida",
+  "Concepto": "Pago de servicio comida personal operacional"
+ },
+ {
+  "Code": "6.6.4",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Servicio de comida",
+  "Concepto": "Servicio de comida"
+ },
+ {
+  "Code": "6.7",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Viáticos"
+ },
+ {
+  "Code": "6.7.1",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Viáticos",
+  "Concepto": "Viáticos"
+ },
+ {
+  "Code": "6.7.2",
+  "Partida": "Gastos Operacionales",
+  "TipodePartida": "Viáticos",
+  "Concepto": "Viáticos chofer"
+ },
+ {
+  "Code": "7",
+  "Partida": "Gestión Social"
+ },
+ {
+  "Code": "7.1",
+  "Partida": "Gestión Social",
+  "TipodePartida": "Gastos médicos"
+ },
+ {
+  "Code": "7.1.1",
+  "Partida": "Gestión Social",
+  "TipodePartida": "Gastos médicos",
+  "Concepto": "Comunidad"
+ },
+ {
+  "Code": "7.1.2",
+  "Partida": "Gestión Social",
+  "TipodePartida": "Gastos médicos",
+  "Concepto": "Gastos médicos"
+ },
+ {
+  "Code": "7.2",
+  "Partida": "Gestión Social",
+  "TipodePartida": "Mejoras de infraestructura"
+ },
+ {
+  "Code": "7.2.1",
+  "Partida": "Gestión Social",
+  "TipodePartida": "Mejoras de infraestructura",
+  "Concepto": "Espacios públicos"
+ },
+ {
+  "Code": "7.2.2",
+  "Partida": "Gestión Social",
+  "TipodePartida": "Mejoras de infraestructura",
+  "Concepto": "PDVSA Gas Anaco"
+ },
+ {
+  "Code": "8",
+  "Partida": "Otros egresos"
+ },
+ {
+  "Code": "8.1",
+  "Partida": "Otros egresos",
+  "TipodePartida": "Egreso por movimiento entre oficina"
+ },
+ {
+  "Code": "8.1.1",
+  "Partida": "Otros egresos",
+  "TipodePartida": "Egreso por movimiento entre oficina",
+  "Concepto": "Flujo de Caja LEC"
+ },
+ {
+  "Code": "8.1.2",
+  "Partida": "Otros egresos",
+  "TipodePartida": "Egreso por movimiento entre oficina",
+  "Concepto": "Flujo de Caja LEC"
+ },
+ {
+  "Code": "8.2",
+  "Partida": "Otros egresos",
+  "TipodePartida": "Otros egresos"
+ },
+ {
+  "Code": "8.2.1",
+  "Partida": "Otros egresos",
+  "TipodePartida": "Otros egresos",
+  "Concepto": "Comsión TDC"
+ },
+ {
+  "Code": "9",
+  "Partida": "Otros ingresos"
+ },
+ {
+  "Code": "9.1",
+  "Partida": "Otros ingresos",
+  "TipodePartida": "Ingreso por cambio de divisa"
+ },
+ {
+  "Code": "9.1.1",
+  "Partida": "Otros ingresos",
+  "TipodePartida": "Ingreso por cambio de divisa",
+  "Concepto": "Banco-Oficina"
+ },
+ {
+  "Code": "9.1.2",
+  "Partida": "Otros ingresos",
+  "TipodePartida": "Ingreso por cambio de divisa",
+  "Concepto": "TDC-Oficina"
+ },
+ {
+  "Code": "9.2",
+  "Partida": "Otros ingresos",
+  "TipodePartida": "Otros ingresos"
+ },
+ {
+  "Code": "9.2.1",
+  "Partida": "Otros ingresos",
+  "TipodePartida": "Otros ingresos",
+  "Concepto": "Banco-Oficina"
+ },
+ {
+  "Code": "9.2.2",
+  "Partida": "Otros ingresos",
+  "TipodePartida": "Otros ingresos",
+  "Concepto": "Entre-Oficina"
+ },
+ {
+  "Code": "9.2.3",
+  "Partida": "Otros ingresos",
+  "TipodePartida": "Otros ingresos",
+  "Concepto": "Oficina-Oficina"
+ },
+ {
+  "Code": "10",
+  "Partida": "Pasivos"
+ },
+ {
+  "Code": "10.1",
+  "Partida": "Pasivos",
+  "TipodePartida": "Cuentas por pagar Persona Natural"
+ },
+ {
+  "Code": "10.1.1",
+  "Partida": "Pasivos",
+  "TipodePartida": "Cuentas por pagar Persona Natural",
+  "Concepto": "Préstamo persona natural"
+ },
+ {
+  "Code": "10.1.2",
+  "Partida": "Pasivos",
+  "TipodePartida": "Cuentas por pagar persona natural",
+  "Concepto": "Préstamo persona natural"
+ },
+ {
+  "Code": "10.2",
+  "Partida": "Pasivos",
+  "TipodePartida": "Impuestos"
+ },
+ {
+  "Code": "10.2.1",
+  "Partida": "Pasivos",
+  "TipodePartida": "Impuestos",
+  "Concepto": "Retencionnes I.S.L.R."
+ },
+ {
+  "Code": "11",
+  "Partida": "Transferencias Inter Sedes"
+ },
+ {
+  "Code": "11.1",
+  "Partida": "Transferencias Inter Sedes",
+  "TipodePartida": "Transferencia interna"
+ },
+ {
+  "Code": "11.1.1",
+  "Partida": "Transferencias Inter Sedes",
+  "TipodePartida": "Transferencia interna",
+  "Concepto": "Banco-Oficina"
+ },
+ {
+  "Code": "11.1.2",
+  "Partida": "Transferencias Inter Sedes",
+  "TipodePartida": "Transferencia interna",
+  "Concepto": "Entre-Oficina"
+ },
+ {
+  "Code": "11.1.3",
+  "Partida": "Transferencias Inter Sedes",
+  "TipodePartida": "Transferencia interna",
+  "Concepto": "TDC-Oficina"
+ },
+ {
+  "Code": "12",
+  "Partida": "Ventas"
+ },
+ {
+  "Code": "12.1",
+  "Partida": "Ventas",
+  "TipodePartida": "Material Ferroso"
+ },
+ {
+  "Code": "12.1.1",
+  "Partida": "Ventas",
+  "TipodePartida": "Material Ferroso",
+  "Concepto": "Clientes nacionales"
+ }
+]
