@@ -26,7 +26,7 @@ class PaymentOrderResource extends JsonResource
             'user_created' => $this->user_created_id,
             'pending' => $this->pending,
             'payment_method_id' => $this->payment_method_id,
-            'chart_of_account' => $this->chart_of_account_id,
+            'chart_of_account_id' => $this->chart_of_account_id,
             'branch_office_id' => $this->branch_office_id,
             'organization_id' => $this->organization_id,
             'coin_id' => $this->coin_id,
@@ -42,6 +42,7 @@ class PaymentOrderResource extends JsonResource
             ],
             'payment_method_attributes' => $this->paymentMethodAttributes,
             'bank' => $this->bank,
+            'bank_reference' => $this->bank_reference,
             'correlative' => $this->correlative,
         ];
     }
