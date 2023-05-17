@@ -21,6 +21,7 @@ class ProviderResource extends JsonResource
             'serie_number' => $this->serie_number,
             'signature' => $this->signature,
             'name' => $this->name,
+            "full_name" => "{$this->document_number} - {$this->name} {$this->last_name}",
             'document_number' => $this->document_number,
             'address' => $this->address,
             'email' => $this->email,
