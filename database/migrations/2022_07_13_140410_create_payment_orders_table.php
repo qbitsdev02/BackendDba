@@ -23,7 +23,7 @@ class CreatePaymentOrdersTable extends Migration
             $table->morphs('ownerable');
             $table->foreignId('branch_office_id')->constrained();
             $table->foreignId('coin_id')->constrained();
-            $table->foreignId('concept_id')->constrained();
+            $table->foreignId('chart_of_account_id')->nullable()->constrained();
             $table->foreignId('country_id')->nullable()->constrained();
             $table->date('payment_date')->nullable()->constrained();
             $table->string('bank_reference')->nullable();

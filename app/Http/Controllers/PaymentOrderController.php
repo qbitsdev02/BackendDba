@@ -109,7 +109,7 @@ class PaymentOrderController extends Controller
     public function index(Request $request)
     {
 
-        $payment_order = PaymentOrder::with('paymentMethodAttributes.paymentMethod', 'bank')
+        $payment_order = PaymentOrder::with('paymentMethodAttributes.paymentMethod', 'bank', 'chartOfAccount')
             ->filters($request->all())
             ->morphSearch($request->all())
             ->search($request->all());
@@ -167,7 +167,7 @@ class PaymentOrderController extends Controller
         $payment_order->payment_method_id = $request->payment_method_id;
         $payment_order->organization_id = 1;
         $payment_order->country_id = $request->country_id;
-        $payment_order->concept_id = $request->concept_id;
+        $payment_order->chart_of_account_id = $request->chart_of_account_id;
         $payment_order->ownerable_id = $request->ownerable_id;
         $payment_order->ownerable_type = $request->ownerable_type;
         $payment_order->branch_office_id = 1;
@@ -260,7 +260,7 @@ class PaymentOrderController extends Controller
         $payment_order->payment_method_id = $request->payment_method_id;
         $payment_order->organization_id = $request->organization_id;
         $payment_order->country_id = $request->country_id;
-        $payment_order->concept_id = $request->concept_id;
+        $payment_order->chart_of_account_id = $request->chart_of_account_id;
         $payment_order->bank_id = $request->bank_id;
         $payment_order->bank_reference = $request->bank_reference;
         $payment_order->ownerable_id = $request->ownerable_id;

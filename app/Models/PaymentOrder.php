@@ -152,6 +152,13 @@ class PaymentOrder extends Base
     {
         return $this->belongsTo(Concept::class);
     }
+    /**
+     * Relationship transaction
+     */
+    public function chartOfAccount()
+    {
+        return $this->belongsTo(ChartOfAccount::class);
+    }
 
     /**
      *
@@ -184,5 +191,10 @@ class PaymentOrder extends Base
     public function bank()
     {
         return $this->belongsTo(Bank::class);
+    }
+
+    public function getCorrelativeAttribute()
+    {
+        return str_pad($this->id, 5, '0', STR_PAD_LEFT);
     }
 }

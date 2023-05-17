@@ -27,4 +27,15 @@ class ChartOfAccount extends Base
             return $item->children->isEmpty() ? $item : [$item, $item->descendantsAndSelf($item->id)];
         });
     }
+
+
+    /**
+     * Get all of the paymentOrders for the Concept
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function paymentOrders()
+    {
+        return $this->hasMany(PaymentOrder::class);
+    }
 }
