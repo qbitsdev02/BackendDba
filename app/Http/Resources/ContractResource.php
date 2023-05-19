@@ -19,6 +19,7 @@ class ContractResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'organization_id' => $this->organization_id,
+            'organization' => $this->organization,
             'user_created_id' => $this->user_created_id,
         ];
     }

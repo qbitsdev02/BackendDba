@@ -4,7 +4,7 @@ namespace App\Models;
 
 class ChartOfAccount extends Base
 {
-    public function parent()
+    public function chartOfAccount()
     {
         return $this->belongsTo(ChartOfAccount::class);
     }
@@ -12,7 +12,7 @@ class ChartOfAccount extends Base
     public function children()
     {
         return $this->hasMany(ChartOfAccount::class)
-            ->with('children')
+            ->with('children', 'chartOfAccount')
             ->orderBy('code', 'asc');
     }
 

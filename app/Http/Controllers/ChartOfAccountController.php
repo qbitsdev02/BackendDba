@@ -18,7 +18,7 @@ class ChartOfAccountController extends Controller
     public function index(Request $request)
     {
         $chartOfAccounts = ChartOfAccount::roots()
-            ->with('children')
+            ->with('children', 'chartOfAccount')
             ->filters($request->all())
             ->search($request->all());
 

@@ -153,10 +153,6 @@ class ProviderController extends Controller
     {
         $provider = new Provider();
         $provider->name = $request->name;
-        $provider->seal = $request->seal;
-        $provider->logo = $request->logo;
-        $provider->serie_number = $request->serie_number;
-        $provider->signature = $request->signature;
         $provider->document_number = $request->document_number;
         $provider->address = $request->address;
         $provider->email = $request->email;
@@ -272,13 +268,9 @@ class ProviderController extends Controller
     public function update(UpdateProviderRequest $request, Provider $provider)
     {
         $provider->name = $request->name;
-        $provider->seal = $request->seal;
-        $provider->signature = $request->signature;
         $provider->address = $request->address;
-        $provider->logo = $request->logo;
         $provider->document_number = $request->document_number;
         $provider->email = $request->email;
-        $provider->serie_number = $request->serie_number;
         $provider->phone_number = $request->phone_number;
         $provider->user_updated_id = $request->user_updated_id;
 

@@ -15,10 +15,6 @@ class CreateProvidersTable extends Migration
     {
         Schema::create('providers', function (Blueprint $table) {
             $table->id();
-            $table->text('seal')->nullable();
-            $table->text('logo')->nullable();
-            $table->integer('serie_number')->default(1);
-            $table->text('signature')->nullable();
             $table->string('name');
             $table->string('document_number');
             $table->string('address')->nullable();

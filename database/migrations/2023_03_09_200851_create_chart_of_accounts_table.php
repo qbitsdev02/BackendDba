@@ -23,7 +23,7 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->foreignId('user_created_id')->constrained('users');
-            $table->foreignId('user_update_id')->nullable()->constrained('users');
+            $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->softDeletes();
             $table->timestamps();
         });

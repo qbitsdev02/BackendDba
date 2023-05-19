@@ -99,7 +99,7 @@ class Provider extends Base
     }
 
 
-    /** 
+    /**
      * Provaider has many Rates
      */
     public function rates(){
@@ -109,10 +109,10 @@ class Provider extends Base
     }
 
     /**
-     * Relationship Ticket. 
-     * 
+     * Relationship Ticket.
+     *
      * A provider has many ticket.
-     * 
+     *
      */
     public function tickets(){
 
@@ -128,11 +128,16 @@ class Provider extends Base
         return $this->hasMany(Personal::class);
     }
     /**
-     * 
+     *
      */
     public function ownerable()
     {
         return $this->morphTo();
+    }
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
     }
 }
 

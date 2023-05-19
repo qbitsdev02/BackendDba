@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Provider;
+use App\Services\ProviderService;
 
 class ProviderObserver
 {
@@ -14,7 +15,10 @@ class ProviderObserver
      */
     public function created(Provider $provider)
     {
-        $provider->providerTypes()->attach(request()->providerType);
+        $service = new ProviderService();
+        $service
+            ->saveImages($provider, request()->images)
+            ->saveProviderTypes($provider, request()->providerType);
     }
 
     /**

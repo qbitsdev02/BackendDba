@@ -48,4 +48,14 @@ use Illuminate\Database\Eloquent\Model;
 class Contract extends Base
 {
     use HasFactory;
+
+    /**
+     * Get the organization that owns the Contract
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function organization()
+    {
+        return $this->belongsTo(Organization::class);
+    }
 }
