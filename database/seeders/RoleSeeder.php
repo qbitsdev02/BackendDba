@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+
 class RoleSeeder extends Seeder
 {
     /**
@@ -43,7 +44,18 @@ class RoleSeeder extends Seeder
                 'name' => 'Supervisor de campo',
                 'acronym' => 'field_supervisor',
                 'user_created_id' => 1
-            ]
+            ],
+            [
+                'name' => 'Banquero',
+                'acronym' => 'banker',
+                'user_created_id' => 1
+            ],
+            [
+                'name' => 'Gerente',
+                'acronym' => 'gerente',
+                'user_created_id' => 1
+            ],
+
         ]);
     }
 }

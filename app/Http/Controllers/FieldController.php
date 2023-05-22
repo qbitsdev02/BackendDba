@@ -105,16 +105,6 @@ class FieldController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
       * Store a newly created resource in storage.
       *
       * @param  \App\Http\Requests\StoreFieldRequest  $request
@@ -154,6 +144,7 @@ class FieldController extends Controller
         $field->denomination = $request->denomination;
         $field->acronym = $request->acronym;
         $field->address = $request->address;
+        $field->port_id = $request->port_id;
         $field->organization_id = $request->organization_id;
         $field->field_supervisor_id = $request->field_supervisor_id;
         $field->user_created_id = $request->user_created_id;
@@ -203,17 +194,6 @@ class FieldController extends Controller
     public function show(Field $field)
     {
         return response($field, 200);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Field  $field
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Field $field)
-    {
-        //
     }
 
     /**
@@ -270,6 +250,7 @@ class FieldController extends Controller
         $field->denomination = $request->denomination;
         $field->acronym = $request->acronym;
         $field->address = $request->address;
+        $field->port_id = $request->port_id;
         $field->organization_id = $request->organization_id;
         $field->field_supervisor_id = $request->field_supervisor_id;
         $field->user_created_id = $request->user_created_id;

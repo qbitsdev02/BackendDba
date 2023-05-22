@@ -16,7 +16,20 @@ class CreateOrganizationsTable extends Migration
         Schema::create('organizations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('document_type');
+            $table->string('document_number');
+            $table->string('code_runpa')->nullable();
+            $table->string('address');
+            $table->string('phone_number');
+            $table->string('email');
             $table->string('description')->nullable();
+            $table->string('document_type_legal_representative');
+            $table->string('nationality_legal_representative');
+            $table->string('name_legal_representative');
+            $table->string('document_number_legal_representative');
+            $table->text('seal')->nullable();
+            $table->text('logo')->nullable();
+            $table->text('signature')->nullable();
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');
             $table->timestamps();

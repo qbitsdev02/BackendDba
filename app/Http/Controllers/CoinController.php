@@ -9,6 +9,15 @@ use Illuminate\Http\Request;
 
 class CoinController extends Controller
 {
+    /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    // public function __construct()
+    // {
+    //     $this->authorizeResource(Coin::class, 'coin');
+    // }
 
     /**
       * Display a listing of the resource.
@@ -18,6 +27,13 @@ class CoinController extends Controller
       *     path="/coins",
       *     operationId="getCoin",
       *     tags={"Coin"},
+      *     security={{"passport": {"*"}}},
+      *     @OA\Parameter(
+      *         name="Authorization",
+      *         in="header",
+      *         required=true,
+      *         description="Authorization"
+      *     ),
       *     @OA\Parameter(
       *       name="paginate",
       *       in="query",
@@ -33,23 +49,23 @@ class CoinController extends Controller
       *     @OA\Parameter(
       *       name="sortBy",
       *       in="query",
-      *       description="turno resource name",
+      *       description="coin resource name",
       *       required=false,
       *       @OA\Schema(
       *           type="string",
       *           example="id",
-      *           description="The unique identifier of a turno resource"
+      *           description="The unique identifier of a coin resource"
       *       )
       *     ),
       *     @OA\Parameter(
       *       name="sortOrder",
       *       in="query",
-      *       description="turno resource name",
+      *       description="coin resource name",
       *       required=false,
       *       @OA\Schema(
       *           type="string",
       *           example="desc",
-      *           description="The unique identifier of a turno resource"
+      *           description="The unique identifier of a coin resource"
       *       )
       *      ),
       *     @OA\Parameter(
@@ -66,7 +82,7 @@ class CoinController extends Controller
       *     @OA\Parameter(
       *       name="dataSearch",
       *       in="query",
-      *       description="turno resource name",
+      *       description="coin resource name",
       *       required=false,
       *       @OA\Schema(
       *           type="string",
@@ -76,11 +92,11 @@ class CoinController extends Controller
       *     @OA\Parameter(
       *       name="dataFilter",
       *       in="query",
-      *       description="turno resource name",
+      *       description="coin resource name",
       *       required=false,
       *       @OA\Schema(
       *           type="string",
-      *           description="The unique identifier of a turno resource"
+      *           description="The unique identifier of a coin resource"
       *       )
       *     ),
       *     @OA\Response(

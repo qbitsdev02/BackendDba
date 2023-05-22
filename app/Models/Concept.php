@@ -22,13 +22,19 @@ use Illuminate\Database\Eloquent\Model;
  *       description="The Concept description"
  *   ),
  *   @OA\Property(
- *       property="sign",
- *       type="string",
+ *       property="concept_id",
+ *       type="number",
  *       required={"true"},
- *       description="The Concept sign"
+ *       description="The Concept concept_id"
+ *   ),
+ *  @OA\Property(
+ *       property="category_id",
+ *       type="number",
+ *       required={"true"},
+ *       description="The category_id"
  *   ),
  *   @OA\Property(
- *       property="conceptType_created_id",
+ *       property="user_created_id",
  *       type="number",
  *       required={"true"},
  *       example=1,
@@ -53,5 +59,39 @@ class Concept extends Base
     public function conceptType()
     {
         return $this->belongsTo(ConceptType::class);
+    }
+
+    /**
+     * relationship
+     */
+    public function transactios()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    /**
+     *
+     */
+    public function fieldCashFlows()
+    {
+        return $this->hasMany(FieldCashFlow::class);
+    }
+
+    /**
+     *
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * Get all of the paymentOrders for the Concept
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function paymentOrders()
+    {
+        return $this->hasMany(PaymentOrder::class);
     }
 }

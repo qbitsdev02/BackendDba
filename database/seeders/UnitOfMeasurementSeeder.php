@@ -31,6 +31,12 @@ class UnitOfMeasurementSeeder extends Seeder
                 'acronym' => 'T',
                 'user_created_id' => 1
             ],
+            [
+                'name' => 'Hora',
+                'acronym' => 'Hr',
+                'user_created_id' => 1
+            ],
+            
         ]);
     }
 }

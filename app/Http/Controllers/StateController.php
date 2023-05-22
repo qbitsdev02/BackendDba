@@ -9,7 +9,15 @@ use Illuminate\Http\Request;
 
 class StateController extends Controller
 {
-
+    /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(State::class, 'state');
+    }
     /**
       * Display a listing of the resource.
       *

@@ -6,6 +6,12 @@ namespace App\Models;
  * @OA\Schema(
  *   schema="Field",
  *   type="object",
+ * @OA\Property(
+ *       property="contract_number",
+ *       type="string",
+ *       required={"true"},
+ *       description="The contract_number"
+ *   ),
  *   @OA\Property(
  *       property="denomination",
  *       type="string",
@@ -56,6 +62,12 @@ namespace App\Models;
  */
 class Field extends Base
 {
+    protected $appends = ['full_name'];
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->denomination} - {$this->contract_number}";
+    }
     /**
      * Get the organization that owns the Field
      *
@@ -75,4 +87,40 @@ class Field extends Base
         return $this->belongsTo(FieldSupervisor::class);
     }
 
+    /**
+     * Relationship ticket
+     * A field has many tickect
+     *
+     * Get the tickets associated to field that owns the attributes.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     *
+     */
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
+
+
+    /**
+     * Relationship port
+     * A field belong to port
+     *
+     * Get the port associated to field that owns the attributes.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongTo
+     *
+     */
+    public function port()
+    {
+        return $this->belongsTo(Port::class);
+    }
+
+    /**
+     *
+     */
+    public function fieldCashFlows()
+    {
+        return $this->hasMany(FieldCashFlow::class);
+    }
 }

@@ -143,7 +143,7 @@ class ClientController extends Controller
       *   @OA\Response(
       *       @OA\MediaType(mediaType="application/json"),
       *       response="default",
-      *       description="an ""unexpected"" error",
+      *       description="an unexpected error",
       *   )
       * )
      */

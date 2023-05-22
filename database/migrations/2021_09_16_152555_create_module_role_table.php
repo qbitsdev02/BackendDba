@@ -17,6 +17,7 @@ class CreateModuleRoleTable extends Migration
             $table->id();
             $table->foreignId('module_id')->constrained();
             $table->foreignId('role_id')->constrained();
+            $table->string('permissions');
             $table->timestamps();
             $table->softDeletes();
         });

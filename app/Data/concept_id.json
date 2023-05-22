@@ -1,0 +1,855 @@
+[
+    {
+        "category_id": "Ventas"
+    },
+    {
+        "category_id": "Ventas",
+        "concept_type_id": "Material Ferroso"
+    },
+    {
+        "category_id": "Ventas",
+        "concept_type_id": "Material Ferroso",
+        "concept_id": "Mundo Acero Oriente"
+    },
+    {
+        "category_id": "Ventas",
+        "concept_type_id": "Material Ferroso",
+        "concept_id": "Pacific Metals"
+    },
+    {
+        "category_id": "Ventas",
+        "concept_type_id": "Material Ferroso",
+        "concept_id": "La Export"
+    },
+    {
+        "category_id": "Ventas",
+        "concept_type_id": "Material Ferroso",
+        "concept_id": "Reciplast de Venezuela"
+    },
+    {
+        "category_id": "Ventas",
+        "concept_type_id": "Material Ferroso",
+        "concept_id": "Ecogreen"
+    },
+    {
+        "category_id": "Ventas",
+        "concept_type_id": "Material Cobre"
+    },
+    {
+        "category_id": "Ventas",
+        "concept_type_id": "Material Cobre",
+        "concept_id": "Cliente 1"
+    },
+    {
+        "category_id": "Ventas",
+        "concept_type_id": "Material Cobre",
+        "concept_id": "Cliente 2"
+    },
+    {
+        "category_id": "Ventas",
+        "concept_type_id": "Material Aluminio"
+    },
+    {
+        "category_id": "Ventas",
+        "concept_type_id": "Material Aluminio",
+        "concept_id": "Cliente 1"
+    },
+    {
+        "category_id": "Ventas",
+        "concept_type_id": "Material Aluminio",
+        "concept_id": "Cliente 2"
+    },
+    {
+        "category_id": "Costos"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Material"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Material",
+        "concept_id": "Pago proveedor de material"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Material",
+        "concept_id": "Pago asignación Corpoez"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Adecuación de Material"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Adecuación de Material",
+        "concept_id": "Pago de servicio de corte"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Adecuación de Material",
+        "concept_id": "Pago de servicio de compactación"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Carga de Material"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Carga de Material",
+        "concept_id": "Pago de caleta de material"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Carga de Material",
+        "concept_id": "Pago  de arrume de material"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Carga de Material",
+        "concept_id": "Pago de servicio de Pickman"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Carga de Material",
+        "concept_id": "Pago Servicio de Grúa"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Carga de Material",
+        "concept_id": "Pago Servicio de Montacarga"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Carga de Material",
+        "concept_id": "Pago Servicio de Lowboy"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Seguridad"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Seguridad",
+        "concept_id": "VE-OSU"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Seguridad",
+        "concept_id": "VE-MON"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Seguridad",
+        "concept_id": "VE-WIN"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Seguridad",
+        "concept_id": "VE-XXX"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Seguridad",
+        "concept_id": "VE-FRA"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Seguridad",
+        "concept_id": "VE-GOM"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "CTD"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "CTD",
+        "concept_id": "RAB"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "CTD",
+        "concept_id": "MAB"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "CTD",
+        "concept_id": "CTD -3"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "DSI"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "DSI",
+        "concept_id": "JMR"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "DSI",
+        "concept_id": "ELG"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "DSI",
+        "concept_id": "PEG"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "DSI",
+        "concept_id": "LUG"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Corpoez"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Corpoez",
+        "concept_id": "M. Urdaneta"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Corpoez",
+        "concept_id": "M. Prado"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Servicios Logístico en Puerto"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Servicios Logístico en Puerto",
+        "concept_id": "Pesaje en Romana"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Servicios Logístico en Puerto",
+        "concept_id": "Medición de Material"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Servicios Logístico en Puerto",
+        "concept_id": "Recepción de Material"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Servicio de Flete"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Servicio de Flete",
+        "concept_id": "Pago de flete proveedor de material"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Servicio de Flete",
+        "concept_id": "Pago a proveedor de flete"
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Guía Corpoez "
+    },
+    {
+        "category_id": "Costos",
+        "concept_type_id": "Pesaje de Romana",
+        "concept_id": "Servicio de pesaje en Romana - Asignación"
+    },
+    {
+        "category_id": "Gastos Operacionales"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Mantenimiento de flota de Vehículos",
+        "concept_id": "proveedor_id (1:n)"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Mantenimiento de infraestructura"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Mantenimiento de infraestructura",
+        "concept_id": "Pago de mantenimiento Ofic. Lec"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Mantenimiento de infraestructura",
+        "concept_id": "Pago de mantenimiento Ofic. CCS"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Mantenimiento de infraestructura",
+        "concept_id": "Pago de mantenimiento Ofic. Mia"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Mantenimiento de equipos de carga"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Mantenimiento de equipos de carga",
+        "concept_id": "Mantenimiento Brazo Pickman"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Mantenimiento de equipos de carga",
+        "concept_id": "Mantenimiento Haiba"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Mantenimiento de equipos de carga",
+        "concept_id": "Mantenimiento Monta Cargas"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Mantenimiento de equipos de carga",
+        "concept_id": "Mantenimiento Grúa"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Reparación de infraestructura"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Servicio de Internet"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Servicio de Internet",
+        "concept_id": "Pago servicio internet oficina LEC"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Servicio de Internet",
+        "concept_id": "Pago servicio internet oficina CCS"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Servicio de Internet",
+        "concept_id": "Pago servicio internet oficina MIA"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Servicio de Agua"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Servicio de Telefonía"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Servicio de Electricidad"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Alquiler de Oficina"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Alquiler de Oficina",
+        "concept_id": "Pago alquiler Oficina CCS"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Alquiler de Oficina",
+        "concept_id": "Pago alquiler Oficina LEC"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Alquiler de Oficina",
+        "concept_id": "Pago alquiler Oficina MIA"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Gastos Asignaciones"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Gastos Asignaciones",
+        "concept_id": "Servicio de pesaje en Romana"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Gastos Asignaciones",
+        "concept_id": "Nómina Personal PDVSA"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Gastos Asignaciones"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Alquiler de Inmuble"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Alquiler de Inmuble",
+        "concept_id": "Casa"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Alquiler de Inmuble",
+        "concept_id": "Apartamento"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Alquiler de Inmuble",
+        "concept_id": "Galpón"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Condominio"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Insumos de papelería y accesorios"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Insumos de papelería y accesorios",
+        "concept_id": "Compra de material de oficina LEC"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Insumos de papelería y accesorios",
+        "concept_id": "Compra de material de oficina CCS"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Insumos de papelería y accesorios",
+        "concept_id": "Compra de material de oficina MIA"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Alimentos y bebidas"
+    },
+    {
+        "category_id": "Gastos Operacionales"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Insumos de limpieza e higiene"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Viáticos",
+        "concept_id": "Pago de Hospedaje"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Viáticos",
+        "concept_id": "Pago de Comida"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Viáticos",
+        "concept_id": "Pago de Traslado"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Mobiliario y equipamiento"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Mobiliario y equipamiento",
+        "concept_id": "Compra de silla"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Mobiliario y equipamiento",
+        "concept_id": "Compra de electrodoméstico"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Mobiliario y equipamiento",
+        "concept_id": "Compra de equipo de computación"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Mobiliario y equipamiento",
+        "concept_id": "Compra de impresora"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Mobiliario y equipamiento",
+        "concept_id": "Compra de equipo electrónico"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Mobiliario y equipamiento",
+        "concept_id": "Compra de accesorios y dispositivos periféricos"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Servicio de comida"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Servicio de comida",
+        "concept_id": "Pago de servicio comida personal administrativo"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Servicio de comida",
+        "concept_id": "Pago de servicio comida personal operacional"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Servicio de comida",
+        "concept_id": "Pago de servicio comida personal externo"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Adecuación de planta física"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Adecuación de planta física",
+        "concept_id": "Adecuación Oficina LEC"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Adecuación de planta física",
+        "concept_id": "Adecuación Oficina CCS"
+    },
+    {
+        "category_id": "Gastos Operacionales",
+        "concept_type_id": "Adecuación de planta física",
+        "concept_id": "Adecuación Oficina MIA"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Nómina de la organización"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Nómina de la organización",
+        "concept_id": "Payroll Personal EEUU"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Nómina de la organización",
+        "concept_id": "Pago Personal Administrativo"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Nómina de la organización",
+        "concept_id": "Pago  Personal Operacional"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Nómina de la organización",
+        "concept_id": "Pago  Personal de Mantenimiento"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Nómina de la organización",
+        "concept_id": "Anticipo Personal Administrativo"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Nómina de la organización",
+        "concept_id": "Anticipo   Personal Operacional"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Nómina de la organización",
+        "concept_id": "Anticipo  Personal de Mantenimiento"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Nómina de la organización",
+        "concept_id": "Pago de bono de producción Personal Administrativo"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Nómina de la organización",
+        "concept_id": "Pago de bono de producción Personal Operacional"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Nómina de la organización",
+        "concept_id": "Pago de bono de producción Personal de Mantenimiento"
+    },
+    {
+        "category_id": "Gastos Administrativos"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Taxes federal"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Taxes payroll"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Taxes payroll",
+        "concept_id": "Por pago de nómina empleado"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Wire transfer fee"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Gastos de representación"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Gastos de representación",
+        "concept_id": "Gerencia CMM"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Gastos de representación",
+        "concept_id": "Gerencia PC"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Nómina Corpoez"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Nómina Corpoez",
+        "concept_id": "Analista de guía Corpoez"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Nómina Corpoez",
+        "concept_id": "Inspector Corpoez"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Comisión por cambio de divisa"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Comisión por cambio de divisa",
+        "concept_id": "Pago de comisión por cambio a cash"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Comisión por cambio de divisa"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Servicios Profesionales",
+        "concept_id": "Pago de consultoría jurídica"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Servicios Profesionales",
+        "concept_id": "Pago de consultoría contable"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Egreso no reportado"
+    },
+    {
+        "category_id": "Gastos Administrativos",
+        "concept_type_id": "Egreso no reportado",
+        "concept_id": "Cash no reportado"
+    },
+    {
+        "category_id": "Gestión Social"
+    },
+    {
+        "category_id": "Gestión Social",
+        "concept_type_id": "Mejoras de infraestructura"
+    },
+    {
+        "category_id": "Gestión Social",
+        "concept_type_id": "Mejoras de infraestructura",
+        "concept_id": "Centro de Salud"
+    },
+    {
+        "category_id": "Gestión Social",
+        "concept_type_id": "Mejoras de infraestructura",
+        "concept_id": "Centro de Educación"
+    },
+    {
+        "category_id": "Gestión Social",
+        "concept_type_id": "Mejoras de infraestructura",
+        "concept_id": "Organismo de Seguridad"
+    },
+    {
+        "category_id": "Gestión Social",
+        "concept_type_id": "Mejoras de infraestructura",
+        "concept_id": "Espacios públicos"
+    },
+    {
+        "category_id": "Gestión Social",
+        "concept_type_id": "Gastos médicos"
+    },
+    {
+        "category_id": "Gestión Social",
+        "concept_type_id": "Gastos médicos",
+        "concept_id": "Comunidad"
+    },
+    {
+        "category_id": "Gestión Social",
+        "concept_type_id": "Gastos médicos",
+        "concept_id": "Personal Corpoez"
+    },
+    {
+        "category_id": "Gestión Social",
+        "concept_type_id": "Gastos médicos",
+        "concept_id": "Personal PC"
+    },
+    {
+        "category_id": "Gestión Social",
+        "concept_type_id": "Gastos médicos",
+        "concept_id": "Personal CMM"
+    },
+    {
+        "category_id": "Gestión Social",
+        "concept_type_id": "Patrocinio de actividades sociales"
+    },
+    {
+        "category_id": "Donaciones"
+    },
+    {
+        "category_id": "Donaciones",
+        "concept_type_id": "Apoyo institucional"
+    },
+    {
+        "category_id": "Donaciones",
+        "concept_type_id": "Apoyo institucional",
+        "concept_id": "Gobernación del Estado Anzoátegui"
+    },
+    {
+        "category_id": "Donaciones",
+        "concept_type_id": "Apoyo institucional",
+        "concept_id": "Gobernación del Estado Monagas"
+    },
+    {
+        "category_id": "Donaciones",
+        "concept_type_id": "Apoyo institucional",
+        "concept_id": "DGCIM"
+    },
+    {
+        "category_id": "Donaciones",
+        "concept_type_id": "Apoyo institucional",
+        "concept_id": "PDVSA"
+    },
+    {
+        "category_id": "Donaciones",
+        "concept_type_id": "Apoyo institucional",
+        "concept_id": "Alcadía de Freites"
+    },
+    {
+        "category_id": "Donaciones",
+        "concept_type_id": "Apoyo institucional",
+        "concept_id": "Corpoez"
+    },
+    {
+        "category_id": "Donaciones",
+        "concept_type_id": "Apoyo individual"
+    },
+    {
+        "category_id": "Donaciones",
+        "concept_type_id": "Apoyo individual",
+        "concept_id": "Jefe"
+    },
+    {
+        "category_id": "Donaciones",
+        "concept_type_id": "Apoyo individual",
+        "concept_id": "Apoyo personal Corpoez"
+    },
+    {
+        "category_id": "Donaciones",
+        "concept_type_id": "Apoyo individual"
+    },
+    {
+        "category_id": "Inversiones"
+    },
+    {
+        "category_id": "Inversiones",
+        "concept_type_id": "Vehículos",
+        "concept_id": "activos_id"
+    },
+    {
+        "category_id": "Inversiones",
+        "concept_type_id": "Maquinarias",
+        "concept_id": "activos_id"
+    },
+    {
+        "category_id": "Inversiones",
+        "concept_type_id": "Equipo de computación",
+        "concept_id": "activos_id"
+    },
+    {
+        "category_id": "Inversiones",
+        "concept_type_id": "Equipo de telecomunicaciones",
+        "concept_id": "activos_id"
+    },
+    {
+        "category_id": "Inversiones",
+        "concept_type_id": "Mobiliario de oficina",
+        "concept_id": "activos_id"
+    },
+    {
+        "category_id": "Inversiones",
+        "concept_type_id": "Herramientas",
+        "concept_id": "activos_id"
+    },
+    {
+        "category_id": "Inversiones",
+        "concept_type_id": "Negocios"
+    },
+    {
+        "category_id": "Inversiones",
+        "concept_type_id": "Negocios",
+        "concept_id": "Minería"
+    },
+    {
+        "category_id": "Inversiones",
+        "concept_type_id": "Negocios",
+        "concept_id": "Bitcoin"
+    },
+    {
+        "category_id": "Inversiones",
+        "concept_type_id": "Negocios",
+        "concept_id": "Procesamiento de madera"
+    },
+    {
+        "category_id": "Financiamientos",
+        "concept_type_id": "Corporación Venuranio Corp, C.A."
+    },
+    {
+        "category_id": "Financiamientos",
+        "concept_type_id": "Corporación Venuranio Corp, C.A.",
+        "concept_id": "Anticipo"
+    },
+    {
+        "category_id": "Financiamientos",
+        "concept_type_id": "Qbits Inc"
+    },
+    {
+        "category_id": "Financiamientos",
+        "concept_type_id": "Qbits Inc",
+        "concept_id": "Anticipo"
+    },
+    {
+        "category_id": "Anticipo utilidad socio"
+    },
+    {
+        "category_id": "Anticipo utilidad socio",
+        "concept_type_id": "HG",
+        "concept_id": "Pago anticipo Socio Henry González"
+    },
+    {
+        "category_id": "Anticipo utilidad socio",
+        "concept_type_id": "MF",
+        "concept_id": "Pago anticipo Socio María Fernanda"
+    },
+    {
+        "category_id": "Anticipo utilidad socio",
+        "concept_type_id": "SA",
+        "concept_id": "Pago anticipo Socio Samiel Altuve"
+    }
+]

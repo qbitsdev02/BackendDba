@@ -16,7 +16,6 @@ class CreateConceptTypesTable extends Migration
         Schema::create('concept_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('sign');
             $table->string('description')->nullable();
             $table->foreignId('user_created_id')->constrained('users');
             $table->foreignId('user_updated_id')->nullable()->constrained('users');

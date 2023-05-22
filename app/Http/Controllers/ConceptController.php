@@ -99,15 +99,6 @@ class ConceptController extends Controller
         return response()->json($concepts, 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
       * Store a newly created resource in storage.
@@ -147,7 +138,7 @@ class ConceptController extends Controller
     {
         $concept = new Concept();
         $concept->name = $request->name;
-        $concept->concept_type_id = $request->concept_type_id;
+        $concept->concept_id = $request->concept_id;
         $concept->description = $request->description;
         $concept->user_created_id = $request->user_created_id;
         $concept->save();
@@ -196,17 +187,6 @@ class ConceptController extends Controller
     public function show(Concept $concept)
     {
         return response($concept, 200);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Concept  $concept
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Concept $concept)
-    {
-        //
     }
 
     /**
@@ -262,7 +242,7 @@ class ConceptController extends Controller
     {
         $concept->name = $request->name;
         $concept->description = $request->description;
-        $concept->concept_type_id = $request->concept_type_id;
+        $concept->concept_id = $request->concept_id;
         $concept->user_created_id = $request->user_created_id;
         $concept->update();
         return response()->json($concept, 201);

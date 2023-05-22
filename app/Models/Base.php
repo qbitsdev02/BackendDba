@@ -83,8 +83,6 @@ class Base extends Model
             });
 		}
     }
-
-
 	/**
 	 * Search function of fields in the database.
 	 *
@@ -100,7 +98,7 @@ class Base extends Model
 			$fields = json_decode($data['dataSearch'], true);
             $fields = array_filter($fields, 'strlen');
             $fields = Arr::except($fields, static::$filterable);
-            $q->where(function ($query) use ($fields) {
+            $q->orWhere(function ($query) use ($fields) {
 				foreach ($fields as $field => $value) {
 					if (isset($fields[$field])) {
 						$contains = Str::of($field)->contains('.');
@@ -125,6 +123,46 @@ class Base extends Model
 			return $q->paginate($data['perPage']);
 		} else {
 			return $q->get();
+		}
+	}
+
+    public function scopeFilterWhereIn($q, array $data = array())
+	{
+		if (!empty($data['whereIn'])) {
+			$fields = json_decode($data['whereIn'], true);
+			$fields = Arr::except($fields, static::$filterable);
+			$q->where(function ($query) use ($fields) {
+				foreach ($fields as $field => $value) {
+					if (isset($fields[$field]) && count($fields[$field]) > 0) {
+						$contains = Str::of($field)->contains('.');
+						$relations = Str::of($field)->explode('.');
+						if ($contains) {
+							$query->whereHas(Str::camel($relations[0]), function ($q) use ($relations, $fields, $field) {
+								$q->whereIn($relations[1], $fields[$field]);
+							});
+						} else {
+							$query->whereIn($field, $fields[$field]);
+						}
+					}
+				}
+			});
+		}
+	}
+
+    public function scopeMorphSearch($q, array $data = array())
+	{
+        if (!empty($data['polyMorphSearch'])) {
+            $q->where(function ($q) use ($data) {
+                collect($data['polyMorphSearch'])
+                    ->each(function($polySearch) use($q) {
+                        $search = json_decode($polySearch, true);
+                        $q->orWhereMorphRelation('ownerable', $search['morphs'], function ($q) use($search) {
+                            foreach ($search['fields'] as $field => $value) {
+                                $q->orWhere($field, 'LIKE', "%$value%");
+                            }
+                        });
+                    });
+                });
 		}
 	}
 }

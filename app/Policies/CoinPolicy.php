@@ -18,7 +18,7 @@ class CoinPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->can('coins-viewAny');
     }
 
     /**
@@ -30,7 +30,7 @@ class CoinPolicy
      */
     public function view(User $user, Coin $coin)
     {
-        //
+        return $user->can('coins-read');
     }
 
     /**
@@ -41,7 +41,7 @@ class CoinPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->can('coins-create');
     }
 
     /**
@@ -53,7 +53,7 @@ class CoinPolicy
      */
     public function update(User $user, Coin $coin)
     {
-        //
+        return $user->can('coins-update');
     }
 
     /**
@@ -65,7 +65,7 @@ class CoinPolicy
      */
     public function delete(User $user, Coin $coin)
     {
-        //
+        return $user->can('coins-delete');
     }
 
     /**
@@ -77,7 +77,7 @@ class CoinPolicy
      */
     public function restore(User $user, Coin $coin)
     {
-        //
+        return $user->can('coins-restore');
     }
 
     /**
@@ -89,6 +89,6 @@ class CoinPolicy
      */
     public function forceDelete(User $user, Coin $coin)
     {
-        //
+        return $user->can('coins-forceDelete');
     }
 }

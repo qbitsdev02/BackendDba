@@ -90,23 +90,65 @@ namespace App\Models;
  */
 class Guide extends Base
 {
-    /**
-     * Get the client that owns the Guide
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function client()
+    protected $appends = ['full_name', 'payments_estimate', 'cost_total_services', 'net_weight'];
+
+    public function getFullNameAttribute()
     {
-        return $this->belongsTo(Client::class);
+        return "{$this->code_runpa}-{$this->material}";
     }
     /**
-     * Get the materialSupplier that owns the Guide
+     * Payment estimate
+     */
+    public function getPaymentsEstimateAttribute()
+    {
+        return $this->paymentEstimationGuides->sum('cost');
+    }
+    /**
+     * Payment services
+     */
+    public function getCostTotalServicesAttribute()
+    {
+        return $this->guideServiceCosts->sum(function ($cost) {
+            return $cost->pivot->price * $this->net_weight;
+        });
+    }
+
+    public function scopeIfNotEstimate($query, $ifNotEstimate)
+    {
+        if ($ifNotEstimate) {
+            return $query->doesntHave('lotOfGuides');
+        }
+    }
+
+    public function scopeIfNotTicket($query, $ifNotTicket)
+    {
+        if ($ifNotTicket) {
+            return $query->doesntHave('ticket');
+        }
+    }
+
+    public function scopeIfNotPrice($query, $ifNotPrice)
+    {
+        if ($ifNotPrice) {
+            return $query->doesntHave('guideServiceCosts');
+        }
+    }
+
+    public function getNetWeightAttribute()
+    {
+        if ($this->ticket) {
+            return $this->ticket->net_weight;
+        }
+        return 0;
+    }
+    /**
+     * Get the provider that owns the Guide
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function materialSupplier()
+    public function organization()
     {
-        return $this->belongsTo(MaterialSupplier::class);
+        return $this->belongsTo(Organization::class);
     }
     /**
      * Get the trailer that owns the Guide
@@ -115,7 +157,16 @@ class Guide extends Base
      */
     public function trailer()
     {
-        return $this->belongsTo(Trailer::class);
+        return $this->belongsTo(Active::class)->withTrashed();
+    }
+    /**
+     * Get the client that owns the Guide
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function client()
+    {
+        return $this->belongsTo(Client::class)->withTrashed();
     }
     /**
      * Get the vehicle that owns the Guide
@@ -124,7 +175,7 @@ class Guide extends Base
      */
     public function vehicle()
     {
-        return $this->belongsTo(Vehicle::class);
+        return $this->belongsTo(Active::class)->withTrashed();
     }
     /**
      * Get the driver that owns the Guide
@@ -133,16 +184,79 @@ class Guide extends Base
      */
     public function driver()
     {
-        return $this->belongsTo(Driver::class);
+        return $this->belongsTo(Personal::class)->withTrashed();
     }
 
     public function swornDeclarations()
     {
         return $this->hasMany(SwornDeclaration::class);
     }
-    
+
     public function unitOfMeasurement()
     {
         return $this->belongsTo(UnitOfMeasurement::class);
     }
+    /**
+     * Relationship ticket
+     * A guide has many ticket
+     *
+     * Get the ticket associated to the guide
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function ticket()
+    {
+        return $this->hasOne(Ticket::class);
+    }
+    /**
+     *
+     */
+    public function fieldCashFlows()
+    {
+        return $this->hasMany(FieldCashFlow::class);
+    }
+    /**
+     * Morph many
+     */
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
+    /**
+     * The guideServiceCosts that belong to the Guide
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function guideServiceCosts()
+    {
+        return $this->belongsToMany(GuideServiceCost::class)
+            ->withPivot('price');
+    }
+    /**
+     * Get the paymentEstimationGuides that owns the Guide
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function paymentEstimationGuides()
+    {
+        return $this->hasMany(PaymentEstimationGuide::class);
+    }
+
+    /**
+     * Get all of the guideOwners for the Guide
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function guideOwner()
+    {
+        return $this->hasOne(GuideOwner::class);
+    }
+    /*
+    * Get all of the guides for the LotOfGuide
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+   public function lotOfGuides()
+   {
+       return $this->belongsToMany(LotOfGuide::class);
+   }
 }

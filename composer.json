@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "beyondcode/laravel-websockets": "^1.13",
         "darkaonline/l5-swagger": "^8.3",
         "fakerphp/faker": "^1.9.1",
         "fruitcake/laravel-cors": "^2.0",
@@ -16,9 +17,14 @@
         "laravel/framework": "^9.0",
         "laravel/passport": "^10.1",
         "laravel/tinker": "^2.5",
+        "maatwebsite/excel": "^3.1",
+        "masbug/flysystem-google-drive-ext": "^2.2",
+        "psr/simple-cache": "^2.0",
+        "pusher/pusher-php-server": "^7.0",
         "spatie/flysystem-dropbox": "^2.0",
         "symfony-bundles/json-request-bundle": "^4.0",
-        "symfony/psr-http-message-bridge": "^2.1"
+        "symfony/psr-http-message-bridge": "^2.1",
+        "tomorrow-ideas/plaid-sdk-php": "^1.0"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^1.0",

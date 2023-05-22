@@ -67,7 +67,7 @@ use Illuminate\Support\Str;
  */
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasApiTokens, SoftDeletes;
+    use HasFactory, Notifiable, HasApiTokens, SoftDeletes; use Notifiable;
     /**
      * Create a new controller instance.
      *
@@ -127,7 +127,7 @@ class User extends Authenticatable
 
     public function getFullNameAttribute()
     {
-        return "{$this->document_number} - {$this->name} {$this->last_name}";
+        return "{$this->name} {$this->last_name}";
     }
 
     public static $filterable = [];
@@ -206,6 +206,24 @@ class User extends Authenticatable
 			return $q->get();
 		}
 	}
+
+    // Authorization
+    /**
+     * Check if the user has permission over a specific module
+     *
+     * @return User instance or null
+     */
+    public function hasAccess($moduleId, $permissionId) {
+        return $this->join('branch_office_role_user', 'users.id', 'branch_office_role_user.user_id')
+            ->join('roles', 'branch_office_role_user.role_id', 'roles.id')
+            ->join('module_role', 'roles.id', 'module_role.role_id')
+            ->where('users.id', $this->id)
+            // ->where('branch_office_role_user.branch_office_id', $schoolId)
+            ->where('module_role.module_id', $moduleId)
+            ->whereRaw('module_role.permissions like \'%"' . $permissionId . '"%\'')
+            ->first();
+    }
+
 
     public function roles()
     {

@@ -2,10 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class Bank extends Model
+class Bank extends Base
 {
-    use HasFactory;
+    protected $guarded = [];
+
+
+    /**
+     * Get all of the comments for the Bank
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function paymentOrders()
+    {
+        return $this->hasMany(PaymentOrder::class);
+    }
 }

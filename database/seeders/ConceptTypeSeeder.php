@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use App\Models\ConceptType;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class ConceptTypeSeeder extends Seeder
 {
@@ -14,17 +15,21 @@ class ConceptTypeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('concept_types')->insert([
-            [
-                'name' => 'Ingreso',
-                'sign' => '+',
-                'user_created_id' => 1
-            ],
-            [
-                'name' => 'Egreso',
-                'sign' => '-',
-                'user_created_id' => 1
-            ]
-        ]);
+        $jsonFile = file_get_contents(app_path('Data/concept_id.json'));
+        $conceptType = json_decode($jsonFile);
+        foreach($conceptType as $egressType)
+        {
+            if (isset($egressType->concept_type_id) && $egressType->concept_type_id)
+            {
+                ConceptType::updateOrCreate(
+                    ['name' => $egressType->concept_type_id],
+                    [
+                        'name' => $egressType->concept_type_id,
+                        'description' => $egressType->concept_type_id,
+                        'user_created_id' => 1,
+                    ]
+                );
+            }
+        }
     }
 }
